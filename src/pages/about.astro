@@ -4,22 +4,260 @@ import { SITE_CONFIG } from '../config';
 ---
 
 <MainLayout title="About Me">
-	<img src="https://placehold.co/300x300?text=Profile+Picture" alt="Profile Picture" style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover; margin-bottom: 2rem;" />
-	<h1>About Me</h1>
-	<p>I am a software engineer passionate about building amazing things.</p>
-	
-	<section>
-		<h2>Contact Information</h2>
-		<p>Email: <a href={`mailto:${SITE_CONFIG.email}`}>{SITE_CONFIG.email}</a></p>
-		<p>Phone: {SITE_CONFIG.phone}</p>
-		<a href={SITE_CONFIG.resumeUrl} download class="button">Download Resume</a>
-	</section>
+  <div class="about-container">
+    <img src="https://placehold.co/300x300?text=Profile+Picture" alt="Profile Picture" class="profile-img" />
+    
+    <div class="biography">
+      <h1>About Me</h1>
+      <p>I am a software engineer passionate about building efficient, accessible, and user-centric web experiences. I love crafting clean code and solving complex technical challenges.</p>
+    </div>
 
-	<section>
-		<h2>Social Profiles</h2>
-		<ul>
-			<li><a href={SITE_CONFIG.socials.github}>GitHub</a></li>
-			<li><a href={SITE_CONFIG.socials.linkedin}>LinkedIn</a></li>
-		</ul>
-	</section>
+    <!-- Social & CV Section -->
+    <section class="actions">
+      <a href={SITE_CONFIG.resumeUrl} download class="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Download CV
+      </a>
+      <div class="socials">
+        <a href={SITE_CONFIG.socials.github} target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.4rem;"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            GitHub
+        </a>
+        <a href={SITE_CONFIG.socials.linkedin} target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.4rem;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            LinkedIn
+        </a>
+        <a href={`mailto:${SITE_CONFIG.email}`}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.4rem;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            Email
+        </a>
+      </div>
+    </section>
+
+    <!-- Separate Section -->
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skills-list">
+        {SITE_CONFIG.skills.map(skill => <span>{skill}</span>)}
+      </div>
+    </section>
+
+    <!-- Tabbed Interface -->
+    <div class="tabs-container">
+      <div class="tabs">
+        <button class="tab-button active" data-target="experience">Experience</button>
+        <button class="tab-button" data-target="education">Education</button>
+        <button class="tab-button" data-target="certifications">Certifications</button>
+      </div>
+
+      <div id="experience" class="tab-content active">
+        <ul class="experience-list">
+          {SITE_CONFIG.experience.map(exp => (
+            <li class="exp-item">
+              <div class="exp-header">
+                <h3>{exp.role}</h3>
+                <span class="company">{exp.company}</span>
+                <small>{exp.duration}</small>
+              </div>
+              <ul>
+                {exp.description.map(desc => <li>{desc}</li>)}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div id="education" class="tab-content">
+        <ul class="list-none">
+          {SITE_CONFIG.education.map(edu => (
+            <li class="tab-item">
+              <div class="tab-header">
+                <h3>{edu.degree}</h3>
+                <span class="company">{edu.institution}</span>
+                <small>{edu.year}</small>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div id="certifications" class="tab-content">
+        <ul class="list-none">
+          {SITE_CONFIG.certifications.map(cert => (
+            <li class="tab-item">
+              <div class="tab-header">
+                <h3>{cert.name}</h3>
+                <span class="company">{cert.issuer}</span>
+                <small>{cert.year}</small>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.tab-button');
+    const contents = document.querySelectorAll('.tab-content');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.getAttribute('data-target');
+        
+        buttons.forEach(btn => btn.classList.remove('active'));
+        contents.forEach(content => content.classList.remove('active'));
+        
+        button.classList.add('active');
+        document.getElementById(target)?.classList.add('active');
+      });
+    });
+  </script>
+
+  <style>
+    .about-container {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    
+    .button {
+      padding: 0.6rem 1.2rem;
+      font-weight: 600;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .socials {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .socials a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid rgba(128, 128, 128, 0.2);
+      border-radius: var(--border-radius);
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+    }
+    .socials a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      background-color: rgba(128, 128, 128, 0.05);
+    }
+    
+    .tabs-container {
+      border: 1px solid rgba(128, 128, 128, 0.2);
+      border-radius: var(--border-radius);
+      padding: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .experience-list {
+      list-style: none;
+      padding: 0;
+    }
+    .tab-button {
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: var(--text-base);
+    }
+    .tab-button.active {
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+    }
+    .tab-content {
+      display: none;
+      padding-top: 1rem;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .skills-list {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .skills-list span {
+      background: rgba(128, 128, 128, 0.1);
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+    }
+    h2 {
+      font-size: var(--text-xl);
+      margin-top: 2rem;
+    }
+    
+    .exp-item {
+      margin-bottom: 1rem;
+    }
+    .exp-header h3 {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      margin: 0;
+    }
+    .exp-item ul {
+      padding-left: 1.25rem;
+      margin-top: 0.5rem;
+      color: var(--text-secondary);
+      font-size: var(--text-base);
+    }
+
+    .exp-header .company {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+    .exp-header small {
+      display: inline-block;
+      color: var(--text-secondary);
+      margin-left: 0.5rem;
+    }
+
+    .tab-item {
+      margin-bottom: 1rem;
+    }
+    .tab-header h3 {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      margin: 0;
+    }
+    .tab-header .company {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+    .tab-header small {
+      display: inline-block;
+      color: var(--text-secondary);
+      margin-left: 0.5rem;
+    }
+  </style>
 </MainLayout>

@@ -8,4 +8,19 @@ export const SITE_CONFIG = {
     linkedin: 'https://linkedin.com/in/yourusername',
   },
   resumeUrl: '/resume.pdf',
+  experience: [
+    { 
+      role: 'Software Engineer', 
+      company: 'Tech Corp', 
+      duration: '2020 - Present',
+      description: ['Led development of...', 'Improved performance by...'] 
+    },
+  ],
+  skills: ['JavaScript', 'TypeScript', 'Astro', 'React', 'CSS'],
+  education: [
+    { degree: 'B.Sc. Computer Science', institution: 'University Name', year: '2020' },
+  ],
+  certifications: [
+    { name: 'AWS Certified Developer', issuer: 'Amazon', year: '2022' },
+  ],
 };
