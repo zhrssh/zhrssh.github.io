@@ -47,28 +47,36 @@ const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
 
   <style>
     .controls {
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
     }
     input, select {
-      padding: 0.5rem;
-      border: 1px solid #ccc;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid rgba(128, 128, 128, 0.2);
       border-radius: var(--border-radius);
+      background-color: var(--bg);
+      color: var(--text-primary);
     }
     .project-list {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
       list-style: none;
       padding: 0;
     }
 
     .project-card {
-      border: 1px solid #ccc;
-      padding: 1rem;
-      border-radius: 8px;
+      border: 1px solid rgba(128, 128, 128, 0.2);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
     }
 
     .project-link {
@@ -77,21 +85,30 @@ const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
       display: block;
     }
 
-    .project-link:hover {
-      background-color: #f9f9f9;
+    .project-link h3 {
+      margin: 1rem 0 0.5rem;
+      font-size: var(--text-lg);
+    }
+
+    .project-link p {
+      color: var(--text-secondary);
+      font-size: var(--text-base);
+      margin-bottom: 1rem;
     }
 
     .tags {
-      margin-top: 0.5rem;
+      margin-top: 1rem;
       display: flex;
       gap: 0.5rem;
-      font-size: 0.8rem;
+      flex-wrap: wrap;
     }
 
     .tags span {
-      background: #eee;
-      padding: 0.2rem 0.5rem;
+      background: rgba(128, 128, 128, 0.1);
+      padding: 0.2rem 0.6rem;
       border-radius: 4px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
     }
   </style>
 

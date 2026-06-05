@@ -28,14 +28,15 @@ const allTags = [...new Set(allBlogs.flatMap((p) => p.data.tags))].sort();
       allBlogs
         .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
         .map((post) => (
-          <li class="blog-card" data-tags={post.data.tags.join(" ")} data-title={post.data.title} data-date={post.data.date.getTime()}>
+          <li class="blog-item" data-tags={post.data.tags.join(" ")} data-title={post.data.title} data-date={post.data.date.getTime()}>
             <a href={`/blog/${post.id}`} class="blog-link">
-              {post.data.coverImage && <img src={post.data.coverImage} alt={post.data.title} style="width: 100%; height: auto; border-radius: 8px 8px 0 0;" />}
-              <h3>{post.data.title}</h3>
-              <p>{post.data.description}</p>
-              <small>
-                By {post.data.author} • {post.data.date.toLocaleDateString()} • {getReadingTime(post.body || "")} min read
-              </small>
+              <div class="blog-meta">
+                <span class="blog-date">{post.data.date.toLocaleDateString()}</span>
+                <span>• {getReadingTime(post.body || "")} min read</span>
+                <span>• By {post.data.author}</span>
+              </div>
+              <h3 class="blog-title">{post.data.title}</h3>
+              <p class="blog-desc">{post.data.description}</p>
               <div class="tags">
                 {post.data.tags.map((tag) => <span>#{tag}</span>)}
               </div>
@@ -50,7 +51,7 @@ const allTags = [...new Set(allBlogs.flatMap((p) => p.data.tags))].sort();
     const tagFilter = document.getElementById("tag-filter") as HTMLSelectElement;
     const sortSelect = document.getElementById("sort-select") as HTMLSelectElement;
     const blogList = document.getElementById("blog-list") as HTMLUListElement;
-    let blogCards = Array.from(document.querySelectorAll(".blog-card")) as HTMLElement[];
+    let blogCards = Array.from(document.querySelectorAll(".blog-item")) as HTMLElement[];
 
     function updateView() {
       const searchTerm = searchInput.value.toLowerCase();
@@ -83,46 +84,65 @@ const allTags = [...new Set(allBlogs.flatMap((p) => p.data.tags))].sort();
 
   <style>
     .controls {
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
     }
     input, select {
-      padding: 0.5rem;
-      border: 1px solid #ccc;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid rgba(128, 128, 128, 0.2);
       border-radius: var(--border-radius);
+      background-color: var(--bg);
+      color: var(--text-primary);
     }
     .blog-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
       list-style: none;
       padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
-    .blog-card {
-      border: 1px solid #ccc;
-      padding: 1rem;
-      border-radius: 8px;
+    .blog-item {
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(128, 128, 128, 0.1);
     }
     .blog-link {
       text-decoration: none;
       color: inherit;
       display: block;
     }
-    .blog-link:hover {
-      background-color: #f9f9f9;
+    .blog-meta {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    .blog-title {
+      margin: 0 0 0.5rem;
+      font-size: var(--text-xl);
+      color: var(--text-primary);
+      transition: color 0.2s;
+    }
+    .blog-desc {
+      color: var(--text-secondary);
+      margin: 0;
+      font-size: var(--text-base);
+    }
+    .blog-link:hover .blog-title {
+      color: var(--accent);
     }
     .tags {
-      margin-top: 0.5rem;
+      margin-top: 0.75rem;
       display: flex;
       gap: 0.5rem;
-      font-size: 0.8rem;
+      flex-wrap: wrap;
     }
     .tags span {
-      background: #eee;
-      padding: 0.2rem 0.5rem;
+      background: rgba(128, 128, 128, 0.1);
+      padding: 0.2rem 0.6rem;
       border-radius: 4px;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
     }
   </style>
 </MainLayout>

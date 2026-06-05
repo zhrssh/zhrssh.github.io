@@ -1,24 +1,34 @@
 :root {
+  /* Colors */
   --bg: #ffffff;
-  --text-primary: #1a1a1a;
-  --text-secondary: #666666;
-  --accent: #2563eb;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --accent: #1e3a8a; /* Dark blue accent */
+  
+  /* Typography - Fluid Scale */
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1.05rem + 0.375vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.35rem + 0.75vw, 2rem);
+  
+  /* Layout */
   --max-width: 65ch;
-  --border-radius: 6px;
+  --border-radius: 4px;
 }
 
 [data-theme='dark'] {
-  --bg: #121212;
-  --text-primary: #e0e0e0;
-  --text-secondary: #a0a0a0;
-  --accent: #3b82f6;
+  --bg: #0f172a;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --accent: #60a5fa; /* Lighter blue for dark mode visibility */
 }
 
 body {
   background-color: var(--bg);
   color: var(--text-primary);
   font-family: var(--font-family);
+  font-size: var(--text-base);
   line-height: 1.6;
   margin: 0;
   transition: background-color 0.3s, color 0.3s;
@@ -32,11 +42,26 @@ header {
   position: sticky;
   top: 0;
   background-color: var(--bg);
-  border-bottom: 1px solid rgba(102, 102, 102, 0.2);
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   z-index: 1000;
+  border-bottom: none; /* Minimalism: remove border */
   transition: background-color 0.3s;
 }
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width); /* Use variable */
+  margin: 0 auto;
+}
+
+main {
+  max-width: var(--max-width); /* Use variable */
+  margin: 3rem auto; /* More whitespace */
+  padding: 0 1rem;
+}
+
 
 nav {
   display: flex;
@@ -48,34 +73,23 @@ nav {
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem; /* More spacing */
 }
 
 .nav-links a {
   text-decoration: none;
-  color: var(--text-primary);
-  font-weight: 500;
+  color: var(--text-secondary); /* Muted by default */
+  font-weight: 400; /* Lighter weight */
   position: relative;
   transition: color 0.3s;
 }
 
 .nav-links a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 2px;
-  background-color: var(--accent);
-  transition: width 0.3s;
+  display: none; /* Remove underline animation */
 }
 
 .nav-links a:hover {
-  color: var(--accent);
-}
-
-.nav-links a:hover::after {
-  width: 100%;
+  color: var(--accent); /* Accent on hover */
 }
 
 .nav-actions {
