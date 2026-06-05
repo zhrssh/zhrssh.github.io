@@ -1,0 +1,66 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --accent-color: #0070f3;
+  --nav-bg: #f4f4f4;
+}
+
+[data-theme='dark'] {
+  --bg-color: #1a1a1a;
+  --text-color: #f0f0f0;
+  --accent-color: #3291ff;
+  --nav-bg: #2d2d2d;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+  color: var(--accent-color);
+}
+
+header {
+  background-color: var(--nav-bg);
+  padding: 1rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-links a {
+  margin-right: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#theme-toggle {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid #ccc;
+}

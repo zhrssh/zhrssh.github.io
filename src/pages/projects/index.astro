@@ -1,0 +1,88 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects');
+const allTags = [...new Set(allProjects.flatMap(p => p.data.tags))];
+---
+
+<MainLayout title="Projects">
+	<h1>Projects</h1>
+
+	<section class="filters">
+		<button class="filter-btn active" data-tag="all">All</button>
+		{allTags.map(tag => (
+			<button class="filter-btn" data-tag={tag}>{tag}</button>
+		))}
+	</section>
+
+	<ul id="projects-list">
+		{allProjects.map(project => (
+			<li class="project-card" data-tags={project.data.tags.join(' ')}>
+				<a href={`/projects/${project.slug}`}>
+					<h3>{project.data.title}</h3>
+					<p>{project.data.description}</p>
+				</a>
+			</li>
+		))}
+	</ul>
+
+	<script>
+		const filterButtons = document.querySelectorAll('.filter-btn');
+		const projectCards = document.querySelectorAll('.project-card');
+
+		filterButtons.forEach(button => {
+			button.addEventListener('click', () => {
+				// Update active button
+				filterButtons.forEach(btn => btn.classList.remove('active'));
+				button.classList.add('active');
+
+				const selectedTag = button.getAttribute('data-tag');
+
+				projectCards.forEach(card => {
+					const cardTags = card.getAttribute('data-tags') || '';
+					if (selectedTag === 'all' || cardTags.includes(selectedTag)) {
+						card.style.display = 'block';
+					} else {
+						card.style.display = 'none';
+					}
+				});
+			});
+		});
+	</script>
+</MainLayout>
+
+<style>
+	.filters {
+		margin-bottom: 2rem;
+		display: flex;
+		gap: 0.5rem;
+		flex-wrap: wrap;
+	}
+
+	.filter-btn {
+		padding: 0.5rem 1rem;
+		cursor: pointer;
+		border: 1px solid var(--accent-color);
+		background: transparent;
+		color: var(--text-color);
+		border-radius: 4px;
+	}
+
+	.filter-btn.active {
+		background-color: var(--accent-color);
+		color: white;
+	}
+
+	#projects-list {
+		list-style: none;
+		padding: 0;
+	}
+
+	.project-card {
+		padding: 1rem;
+		border: 1px solid #ccc;
+		margin-bottom: 1rem;
+		border-radius: 4px;
+	}
+</style>

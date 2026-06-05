@@ -1,0 +1,61 @@
+---
+import '../styles/global.css';
+import type { HTMLAttributes } from 'astro/types';
+import { SITE_CONFIG } from '../config';
+import BaseHead from '../components/BaseHead.astro';
+
+interface Props extends HTMLAttributes<'html'> {
+  title: string;
+}
+
+const { title, ...astroAttributes } = Astro.props;
+---
+
+<html lang="en" {...astroAttributes}>
+  <BaseHead title={title} description={SITE_CONFIG.description} />
+  <body>
+    <header>
+      <nav>
+        <!-- Navbar -->
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/blog">Blog</a>
+          <a href="/projects">Projects</a>
+          <a href="/about">About</a>
+        </div>
+        <button id="theme-toggle" aria-label="Toggle dark mode">
+          Toggle Theme
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <p>&copy; {new Date().getFullYear()} - {SITE_CONFIG.title}</p>
+    </footer>
+
+    <script>
+      const themeToggle = document.getElementById('theme-toggle');
+      const htmlElement = document.documentElement;
+
+      // Check for saved theme or system preference
+      const savedTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const initialTheme = savedTheme || systemTheme;
+
+      htmlElement.setAttribute('data-theme', initialTheme);
+
+      themeToggle?.addEventListener('click', () => {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      });
+    </script>
+  </body>
+</html>
+

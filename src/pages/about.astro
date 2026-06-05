@@ -1,0 +1,23 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { SITE_CONFIG } from '../config';
+---
+
+<MainLayout title="About Me">
+	<h1>About Me</h1>
+	<p>I am a software engineer passionate about building amazing things.</p>
+	
+	<section>
+		<h2>Contact Information</h2>
+		<p>Email: <a href={`mailto:${SITE_CONFIG.email}`}>{SITE_CONFIG.email}</a></p>
+		<p>Phone: {SITE_CONFIG.phone}</p>
+	</section>
+
+	<section>
+		<h2>Social Profiles</h2>
+		<ul>
+			<li><a href={SITE_CONFIG.socials.github}>GitHub</a></li>
+			<li><a href={SITE_CONFIG.socials.linkedin}>LinkedIn</a></li>
+		</ul>
+	</section>
+</MainLayout>
