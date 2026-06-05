@@ -30,3 +30,18 @@ Each collection is schema-validated in `src/content.config.ts`.
 - **SEO:** Meta tags, Open Graph, and Twitter cards are managed via `src/components/BaseHead.astro`.
 - **Configuration:** Site-wide metadata (links, contact info, social handles) is centralized in `src/config.ts`.
 - **Images:** Use `src/assets/` for optimized images via Astro's `<Image />` component.
+
+## Agent skills
+
+### Issue tracker
+
+GitHub Issues. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Canonical triage roles (needs-triage, needs-info, ready-for-agent, ready-for-human, wontfix). See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context. See `docs/agents/domain.md`.
+
