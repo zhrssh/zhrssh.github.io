@@ -1,38 +1,48 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
+import MainLayout from "../layouts/MainLayout.astro";
 
-const blogs = await getCollection('blog');
-const latestBlog = blogs.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())[0];
+const blogs = await getCollection("blog");
+const latestBlog = blogs.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+)[0];
 
-const projects = await getCollection('projects');
-const latestProject = projects.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())[0];
+const projects = await getCollection("projects");
+const latestProject = projects.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+)[0];
 ---
 
 <MainLayout title="Home">
-	<h1>Welcome to my portfolio!</h1>
-	
-	<section>
-		<h2>Latest Blog</h2>
-		{latestBlog ? (
-			<div>
-				<h3><a href={`/blog/${latestBlog.slug}`}>{latestBlog.data.title}</a></h3>
-				<p>{latestBlog.data.description}</p>
-			</div>
-		) : (
-			<p>No blog posts yet.</p>
-		)}
-	</section>
+  <h1>Welcome to my portfolio!</h1>
 
-	<section>
-		<h2>Recently Deployed Project</h2>
-		{latestProject ? (
-			<div>
-				<h3>{latestProject.data.title}</h3>
-				<p>{latestProject.data.description}</p>
-			</div>
-		) : (
-			<p>No projects yet.</p>
-		)}
-	</section>
+  <section>
+    <h2>Latest Blog</h2>
+    {
+      latestBlog ? (
+        <div>
+          <h3>
+            <a href={`/blog/${latestBlog.id}`}>{latestBlog.data.title}</a>
+          </h3>
+          <p>{latestBlog.data.description}</p>
+        </div>
+      ) : (
+        <p>No blog posts yet.</p>
+      )
+    }
+  </section>
+
+  <section>
+    <h2>Recently Deployed Project</h2>
+    {
+      latestProject ? (
+        <div>
+          <h3>{latestProject.data.title}</h3>
+          <p>{latestProject.data.description}</p>
+        </div>
+      ) : (
+        <p>No projects yet.</p>
+      )
+    }
+  </section>
 </MainLayout>
