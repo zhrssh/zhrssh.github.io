@@ -19,9 +19,46 @@ const readingTime = getReadingTime(entry.body || "");
 
 <MainLayout title={entry.data.title}>
   <article>
-    <h1>{entry.data.title}</h1>
-    {entry.data.coverImage && <img src={entry.data.coverImage} alt={entry.data.title} style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem;" />}
-    <p><em>{entry.data.date.toDateString()} • {readingTime} min read</em></p>
+    <header class="hero">
+      <h1>{entry.data.title}</h1>
+      <p class="description">{entry.data.description}</p>
+      {entry.data.coverImage && <img src={entry.data.coverImage} alt={entry.data.title} class="cover-image" />}
+      <p><em>Published on: {entry.data.date.toDateString()} • {readingTime} min read</em></p>
+      <div class="tags">
+        {entry.data.tags.map(tag => <span>#{tag}</span>)}
+      </div>
+    </header>
     <Content />
   </article>
 </MainLayout>
+
+<style>
+  .hero {
+    position: static;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+  }
+  .description {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  .cover-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 1rem 0;
+  }
+  .tags {
+    margin: 1rem 0;
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .tags span {
+    background: #eee;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+  }
+</style>

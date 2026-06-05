@@ -19,16 +19,37 @@ const readingTime = getReadingTime(entry.body || "");
 
 <MainLayout title={entry.data.title}>
   <article>
-    <h1>{entry.data.title}</h1>
-    <p><em>{entry.data.date.toDateString()} • {readingTime} min read</em></p>
-    <div class="tags">
-      {entry.data.tags.map(tag => <span>#{tag}</span>)}
-    </div>
+    <header class="hero">
+      <h1>{entry.data.title}</h1>
+      <p class="description">{entry.data.description}</p>
+      {entry.data.coverImage && <img src={entry.data.coverImage} alt={entry.data.title} class="cover-image" />}
+      <p><em>By {entry.data.author} • {entry.data.date.toDateString()} • {readingTime} min read</em></p>
+      <div class="tags">
+        {entry.data.tags.map(tag => <span>#{tag}</span>)}
+      </div>
+    </header>
     <Content />
   </article>
 </MainLayout>
 
 <style>
+  .hero {
+    position: static;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+  }
+  .description {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  .cover-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 1rem 0;
+  }
   .tags {
     margin: 1rem 0;
     display: flex;
