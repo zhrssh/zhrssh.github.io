@@ -4,14 +4,14 @@ import MainLayout from "../../layouts/MainLayout.astro";
 import { getReadingTime } from "../../utils/readingTime";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("blog");
-  return blogEntries.map((entry) => ({
+  const projectEntries = await getCollection("projects");
+  return projectEntries.map((entry) => ({
     params: { id: entry.id },
     props: { entry },
   }));
 }
 
-type Props = { entry: CollectionEntry<"blog"> };
+type Props = { entry: CollectionEntry<"projects"> };
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const readingTime = getReadingTime(entry.body || "");
@@ -20,24 +20,8 @@ const readingTime = getReadingTime(entry.body || "");
 <MainLayout title={entry.data.title}>
   <article>
     <h1>{entry.data.title}</h1>
+    {entry.data.coverImage && <img src={entry.data.coverImage} alt={entry.data.title} style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem;" />}
     <p><em>{entry.data.date.toDateString()} • {readingTime} min read</em></p>
-    <div class="tags">
-      {entry.data.tags.map(tag => <span>#{tag}</span>)}
-    </div>
     <Content />
   </article>
 </MainLayout>
-
-<style>
-  .tags {
-    margin: 1rem 0;
-    display: flex;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-  }
-  .tags span {
-    background: #eee;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-  }
-</style>

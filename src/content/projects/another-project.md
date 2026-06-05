@@ -1,0 +1,13 @@
+---
+title: "Open Source Tooling"
+description: "Building developer-focused CLI tools in Go."
+date: 2026-06-03
+coverImage: "https://placehold.co/600x400?text=Open+Source+Tool"
+tags: ["go", "cli", "open-source"]
+link: "https://example.com/tool"
+github: "https://github.com/example/tool"
+---
+
+# Open Source Tooling
+
+Description of the open source tool...

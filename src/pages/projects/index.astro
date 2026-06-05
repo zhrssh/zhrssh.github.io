@@ -1,88 +1,136 @@
 ---
-import MainLayout from '../../layouts/MainLayout.astro';
-import { getCollection } from 'astro:content';
+import MainLayout from "../../layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+import { getReadingTime } from "../../utils/readingTime";
 
-const allProjects = await getCollection('projects');
-const allTags = [...new Set(allProjects.flatMap(p => p.data.tags))];
+const allProjects = await getCollection("projects");
+const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
 ---
 
 <MainLayout title="Projects">
-	<h1>Projects</h1>
+  <h1>Projects</h1>
 
-	<section class="filters">
-		<button class="filter-btn active" data-tag="all">All</button>
-		{allTags.map(tag => (
-			<button class="filter-btn" data-tag={tag}>{tag}</button>
-		))}
-	</section>
+  <section class="controls">
+    <input type="text" id="search-input" placeholder="Search projects..." />
+    <select id="tag-filter">
+      <option value="all">All Tags</option>
+      {allTags.map((tag) => <option value={tag}>{tag}</option>)}
+    </select>
+    <select id="sort-select">
+      <option value="newest">Newest to Oldest</option>
+      <option value="oldest">Oldest to Newest</option>
+      <option value="title">Title</option>
+    </select>
+  </section>
 
-	<ul id="projects-list">
-		{allProjects.map(project => (
-			<li class="project-card" data-tags={project.data.tags.join(' ')}>
-				<a href={`/projects/${project.slug}`}>
-					<h3>{project.data.title}</h3>
-					<p>{project.data.description}</p>
-				</a>
-			</li>
-		))}
-	</ul>
+  <ul class="project-list" id="projects-list">
+    {
+      allProjects
+        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+        .map((project) => (
+          <li class="project-card" data-tags={project.data.tags.join(" ")} data-title={project.data.title} data-date={project.data.date.getTime()}>
+            <a href={`/projects/${project.id}`} class="project-link">
+              {project.data.coverImage && <img src={project.data.coverImage} alt={project.data.title} style="width: 100%; height: auto; border-radius: 8px 8px 0 0;" />}
+              <h3>{project.data.title}</h3>
+              <p>{project.data.description}</p>
+              <small>
+                Published on: {project.data.date.toLocaleDateString()} • {getReadingTime(project.body || "")} min read
+              </small>
+              <div class="tags">
+                {project.data.tags.map((tag) => <span>#{tag}</span>)}
+              </div>
+            </a>
+          </li>
+        ))
+    }
+  </ul>
 
-	<script>
-		const filterButtons = document.querySelectorAll('.filter-btn');
-		const projectCards = document.querySelectorAll('.project-card');
+  <style>
+    .controls {
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    input, select {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: var(--border-radius);
+    }
+    .project-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      list-style: none;
+      padding: 0;
+    }
 
-		filterButtons.forEach(button => {
-			button.addEventListener('click', () => {
-				// Update active button
-				filterButtons.forEach(btn => btn.classList.remove('active'));
-				button.classList.add('active');
+    .project-card {
+      border: 1px solid #ccc;
+      padding: 1rem;
+      border-radius: 8px;
+    }
 
-				const selectedTag = button.getAttribute('data-tag');
+    .project-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
 
-				projectCards.forEach(card => {
-					const cardTags = card.getAttribute('data-tags') || '';
-					if (selectedTag === 'all' || cardTags.includes(selectedTag)) {
-						card.style.display = 'block';
-					} else {
-						card.style.display = 'none';
-					}
-				});
-			});
-		});
-	</script>
+    .project-link:hover {
+      background-color: #f9f9f9;
+    }
+
+    .tags {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    .tags span {
+      background: #eee;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+  </style>
+
+  <script>
+    const searchInput = document.getElementById("search-input") as HTMLInputElement;
+    const tagFilter = document.getElementById("tag-filter") as HTMLSelectElement;
+    const sortSelect = document.getElementById("sort-select") as HTMLSelectElement;
+    const projectList = document.getElementById("projects-list") as HTMLUListElement;
+    let projectCards = Array.from(document.querySelectorAll(".project-card")) as HTMLElement[];
+
+    function updateView() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const selectedTag = tagFilter.value;
+      const sortBy = sortSelect.value;
+
+      // Filter
+      let filtered = projectCards.filter((card) => {
+        const title = card.getAttribute("data-title")!.toLowerCase();
+        const tags = card.getAttribute("data-tags")!;
+        const matchesSearch = title.includes(searchTerm);
+        const matchesTag = selectedTag === "all" || tags.split(" ").includes(selectedTag);
+        return matchesSearch && matchesTag;
+      });
+
+      // Sort
+      filtered.sort((a, b) => {
+        if (sortBy === "newest") return parseInt(b.getAttribute("data-date")!) - parseInt(a.getAttribute("data-date")!);
+        if (sortBy === "oldest") return parseInt(a.getAttribute("data-date")!) - parseInt(b.getAttribute("data-date")!);
+        if (sortBy === "title") return a.getAttribute("data-title")!.localeCompare(b.getAttribute("data-title")!);
+        return 0;
+      });
+
+      // Re-render
+      projectList.innerHTML = "";
+      filtered.forEach((card) => projectList.appendChild(card));
+    }
+
+    searchInput.addEventListener("input", updateView);
+    tagFilter.addEventListener("change", updateView);
+    sortSelect.addEventListener("change", updateView);
+  </script>
 </MainLayout>
-
-<style>
-	.filters {
-		margin-bottom: 2rem;
-		display: flex;
-		gap: 0.5rem;
-		flex-wrap: wrap;
-	}
-
-	.filter-btn {
-		padding: 0.5rem 1rem;
-		cursor: pointer;
-		border: 1px solid var(--accent-color);
-		background: transparent;
-		color: var(--text-color);
-		border-radius: 4px;
-	}
-
-	.filter-btn.active {
-		background-color: var(--accent-color);
-		color: white;
-	}
-
-	#projects-list {
-		list-style: none;
-		padding: 0;
-	}
-
-	.project-card {
-		padding: 1rem;
-		border: 1px solid #ccc;
-		margin-bottom: 1rem;
-		border-radius: 4px;
-	}
-</style>

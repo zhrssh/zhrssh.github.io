@@ -1,32 +1,106 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
+import { getReadingTime } from "../../utils/readingTime";
 
 const allBlogs = await getCollection("blog");
+const allTags = [...new Set(allBlogs.flatMap((p) => p.data.tags))].sort();
 ---
 
 <MainLayout title="Blog">
   <h1>Blog Posts</h1>
-  <ul class="blog-list">
+
+  <section class="controls">
+    <input type="text" id="search-input" placeholder="Search blogs..." />
+    <select id="tag-filter">
+      <option value="all">All Tags</option>
+      {allTags.map((tag) => <option value={tag}>{tag}</option>)}
+    </select>
+    <select id="sort-select">
+      <option value="newest">Newest to Oldest</option>
+      <option value="oldest">Oldest to Newest</option>
+      <option value="title">Title</option>
+    </select>
+  </section>
+
+  <ul class="blog-list" id="blog-list">
     {
-      allBlogs.map((post) => (
-        <li class="blog-card">
-          <a href={`/blog/${post.id}`} class="blog-link">
-            <h3>{post.data.title}</h3>
-            <p>{post.data.description}</p>
-            <small>Published on: {post.data.date.toLocaleDateString()}</small>
-          </a>
-        </li>
-      ))
+      allBlogs
+        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+        .map((post) => (
+          <li class="blog-card" data-tags={post.data.tags.join(" ")} data-title={post.data.title} data-date={post.data.date.getTime()}>
+            <a href={`/blog/${post.id}`} class="blog-link">
+              {post.data.coverImage && <img src={post.data.coverImage} alt={post.data.title} style="width: 100%; height: auto; border-radius: 8px 8px 0 0;" />}
+              <h3>{post.data.title}</h3>
+              <p>{post.data.description}</p>
+              <small>
+                By {post.data.author} • {post.data.date.toLocaleDateString()} • {getReadingTime(post.body || "")} min read
+              </small>
+              <div class="tags">
+                {post.data.tags.map((tag) => <span>#{tag}</span>)}
+              </div>
+            </a>
+          </li>
+        ))
     }
   </ul>
+
+  <script>
+    const searchInput = document.getElementById("search-input") as HTMLInputElement;
+    const tagFilter = document.getElementById("tag-filter") as HTMLSelectElement;
+    const sortSelect = document.getElementById("sort-select") as HTMLSelectElement;
+    const blogList = document.getElementById("blog-list") as HTMLUListElement;
+    let blogCards = Array.from(document.querySelectorAll(".blog-card")) as HTMLElement[];
+
+    function updateView() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const selectedTag = tagFilter.value;
+      const sortBy = sortSelect.value;
+
+      let filtered = blogCards.filter((card) => {
+        const title = card.getAttribute("data-title")!.toLowerCase();
+        const tags = card.getAttribute("data-tags")!;
+        const matchesSearch = title.includes(searchTerm);
+        const matchesTag = selectedTag === "all" || tags.split(" ").includes(selectedTag);
+        return matchesSearch && matchesTag;
+      });
+
+      filtered.sort((a, b) => {
+        if (sortBy === "newest") return parseInt(b.getAttribute("data-date")!) - parseInt(a.getAttribute("data-date")!);
+        if (sortBy === "oldest") return parseInt(a.getAttribute("data-date")!) - parseInt(b.getAttribute("data-date")!);
+        if (sortBy === "title") return a.getAttribute("data-title")!.localeCompare(b.getAttribute("data-title")!);
+        return 0;
+      });
+
+      blogList.innerHTML = "";
+      filtered.forEach((card) => blogList.appendChild(card));
+    }
+
+    searchInput.addEventListener("input", updateView);
+    tagFilter.addEventListener("change", updateView);
+    sortSelect.addEventListener("change", updateView);
+  </script>
+
   <style>
+    .controls {
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    input, select {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: var(--border-radius);
+    }
     .blog-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
       list-style: none;
       padding: 0;
     }
     .blog-card {
-      margin-bottom: 2rem;
       border: 1px solid #ccc;
       padding: 1rem;
       border-radius: 8px;
@@ -38,6 +112,17 @@ const allBlogs = await getCollection("blog");
     }
     .blog-link:hover {
       background-color: #f9f9f9;
+    }
+    .tags {
+      margin-top: 0.5rem;
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+    }
+    .tags span {
+      background: #eee;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
     }
   </style>
 </MainLayout>

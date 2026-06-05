@@ -16,7 +16,9 @@ const { title, ...astroAttributes } = Astro.props;
   <body>
     <header>
       <nav>
-        <!-- Navbar -->
+        <div class="site-name">
+          <a href="/"><strong>{SITE_CONFIG.title}</strong></a>
+        </div>
         <div class="nav-links">
           <a href="/">Home</a>
           <a href="/blog">Blog</a>
@@ -24,7 +26,7 @@ const { title, ...astroAttributes } = Astro.props;
           <a href="/about">About</a>
         </div>
         <button id="theme-toggle" aria-label="Toggle dark mode">
-          Toggle Theme
+          Theme
         </button>
       </nav>
     </header>
