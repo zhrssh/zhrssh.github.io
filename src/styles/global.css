@@ -1,32 +1,46 @@
 :root {
-  --bg-color: #ffffff;
-  --text-color: #1a1a1a;
-  --accent-color: #0070f3;
-  --nav-bg: #f4f4f4;
+  --bg: #ffffff;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --accent: #2563eb;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --max-width: 65ch;
+  --border-radius: 6px;
 }
 
 [data-theme='dark'] {
-  --bg-color: #1a1a1a;
-  --text-color: #f0f0f0;
-  --accent-color: #3291ff;
-  --nav-bg: #2d2d2d;
+  --bg: #121212;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --accent: #3b82f6;
 }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: system-ui, sans-serif;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  line-height: 1.6;
   margin: 0;
   transition: background-color 0.3s, color 0.3s;
 }
 
 a {
-  color: var(--accent-color);
+  color: var(--accent);
 }
 
 header {
-  background-color: var(--nav-bg);
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--text-secondary);
   padding: 1rem;
+}
+
+#theme-toggle {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
 }
 
 nav {
