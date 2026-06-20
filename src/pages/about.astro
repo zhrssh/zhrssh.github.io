@@ -4,98 +4,128 @@ import { SITE_CONFIG } from '../config';
 ---
 
 <MainLayout title="About Me">
-  <div class="about-container">
-    <img src="https://placehold.co/300x300?text=Profile+Picture" alt="Profile Picture" class="profile-img" />
-    
-    <div class="biography">
-      <h1>About Me</h1>
-      <p>I am a software engineer passionate about building efficient, accessible, and user-centric web experiences. I love crafting clean code and solving complex technical challenges.</p>
-    </div>
-
-    <!-- Social & CV Section -->
-    <section class="actions">
-      <a href={SITE_CONFIG.resumeUrl} download class="button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-        Download CV
-      </a>
-      <div class="socials">
-        <a href={SITE_CONFIG.socials.github} target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.4rem;"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-            GitHub
-        </a>
-        <a href={SITE_CONFIG.socials.linkedin} target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.4rem;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            LinkedIn
-        </a>
-        <a href={`mailto:${SITE_CONFIG.email}`}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.4rem;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            Email
-        </a>
-      </div>
-    </section>
-
-    <!-- Separate Section -->
-    <section>
-      <h2>Technical Skills</h2>
-      <div class="skills-list">
-        {SITE_CONFIG.skills.map(skill => <span>{skill}</span>)}
-      </div>
-    </section>
-
-    <!-- Tabbed Interface -->
-    <div class="tabs-container">
-      <div class="tabs">
-        <button class="tab-button active" data-target="experience">Experience</button>
-        <button class="tab-button" data-target="education">Education</button>
-        <button class="tab-button" data-target="certifications">Certifications</button>
-      </div>
-
-      <div id="experience" class="tab-content active">
-        <ul class="experience-list">
-          {SITE_CONFIG.experience.map(exp => (
-            <li class="exp-item">
-              <div class="exp-header">
-                <h3>{exp.role}</h3>
-                <span class="company">{exp.company}</span>
-                <small>{exp.duration}</small>
-              </div>
-              <ul>
-                {exp.description.map(desc => <li>{desc}</li>)}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div id="education" class="tab-content">
-        <ul class="list-none">
-          {SITE_CONFIG.education.map(edu => (
-            <li class="tab-item">
-              <div class="tab-header">
-                <h3>{edu.degree}</h3>
-                <span class="company">{edu.institution}</span>
-                <small>{edu.year}</small>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div id="certifications" class="tab-content">
-        <ul class="list-none">
-          {SITE_CONFIG.certifications.map(cert => (
-            <li class="tab-item">
-              <div class="tab-header">
-                <h3>{cert.name}</h3>
-                <span class="company">{cert.issuer}</span>
-                <small>{cert.year}</small>
-              </div>
-            </li>
-          ))}
-        </ul>
+  <div class="about-hero">
+    <div class="about-hero-content">
+      <img src="/me.jpg" alt="Zherish" class="profile-img" />
+      <div class="about-hero-text">
+        <h1>About Me</h1>
+        <p class="about-tagline">Software engineer passionate about building efficient, accessible, and user-centric web experiences.</p>
       </div>
     </div>
   </div>
+
+  <section class="about-section">
+    <h2>What I Do</h2>
+    <p>I love crafting clean code and solving complex technical challenges. With a focus on modern web technologies, I build applications that are fast, accessible, and delightful to use.</p>
+  </section>
+
+  <section class="about-section">
+    <h2>Get in Touch</h2>
+    <div class="actions">
+      <a href={SITE_CONFIG.resumeUrl} download class="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Download CV
+      </a>
+      <div class="socials">
+        <a href={SITE_CONFIG.socials.github} target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          GitHub
+        </a>
+        <a href={SITE_CONFIG.socials.linkedin} target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          LinkedIn
+        </a>
+        <a href={`mailto:${SITE_CONFIG.email}`}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Email
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2>Technical Skills</h2>
+    <div class="skills-grid">
+      {SITE_CONFIG.skills.map(skill => (
+        <div class="skill-card">
+          <span>{skill}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="tabs-container">
+      <div class="tabs">
+        <button class="tab-button active" data-target="experience">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          Experience
+        </button>
+        <button class="tab-button" data-target="education">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+          Education
+        </button>
+        <button class="tab-button" data-target="certifications">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+          Certifications
+        </button>
+      </div>
+
+      <div id="experience" class="tab-content active">
+        <div class="timeline">
+          {SITE_CONFIG.experience.map(exp => (
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-header">
+                  <h3>{exp.role}</h3>
+                  <span class="timeline-duration">{exp.duration}</span>
+                </div>
+                <p class="timeline-company">{exp.company}</p>
+                <ul class="timeline-list">
+                  {exp.description.map(desc => <li>{desc}</li>)}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div id="education" class="tab-content">
+        <div class="timeline">
+          {SITE_CONFIG.education.map(edu => (
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-header">
+                  <h3>{edu.degree}</h3>
+                  <span class="timeline-duration">{edu.year}</span>
+                </div>
+                <p class="timeline-company">{edu.institution}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div id="certifications" class="tab-content">
+        <div class="timeline">
+          {SITE_CONFIG.certifications.map(cert => (
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-header">
+                  <h3>{cert.name}</h3>
+                  <span class="timeline-duration">{cert.year}</span>
+                </div>
+                <p class="timeline-company">{cert.issuer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
 
   <script>
     const buttons = document.querySelectorAll('.tab-button');
@@ -115,149 +145,279 @@ import { SITE_CONFIG } from '../config';
   </script>
 
   <style>
-    .about-container {
-      display: grid;
-      gap: 1.5rem;
+    .about-hero {
+      margin-bottom: var(--space-3xl);
     }
+
+    .about-hero-content {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2xl);
+    }
+
     .profile-img {
-      width: 200px;
-      height: 200px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       object-fit: cover;
+      border: 4px solid var(--bg-secondary);
+      box-shadow: var(--shadow-lg);
     }
+
+    .about-hero-text h1 {
+      margin: 0 0 var(--space-sm);
+    }
+
+    .about-tagline {
+      color: var(--text-secondary);
+      font-size: var(--text-lg);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .about-section {
+      margin-bottom: var(--space-3xl);
+    }
+
+    .about-section h2 {
+      margin-bottom: var(--space-lg);
+      padding-bottom: var(--space-sm);
+      border-bottom: 2px solid var(--border);
+    }
+
+    .about-section p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
     .actions {
       display: flex;
       align-items: center;
-      gap: 1.5rem;
+      gap: var(--space-lg);
       flex-wrap: wrap;
-      margin-top: 1rem;
-    }
-    
-    .button {
-      padding: 0.6rem 1.2rem;
-      font-weight: 600;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
-    }
-    .button:hover {
-      transform: translateY(-2px);
     }
 
     .socials {
       display: flex;
-      gap: 0.75rem;
+      gap: var(--space-md);
+      flex-wrap: wrap;
     }
+
     .socials a {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
       color: var(--text-secondary);
       text-decoration: none;
-      padding: 0.4rem 0.75rem;
-      border: 1px solid rgba(128, 128, 128, 0.2);
+      padding: var(--space-sm) var(--space-md);
+      border: 1px solid var(--border);
       border-radius: var(--border-radius);
-      font-size: 0.9rem;
-      transition: all 0.2s;
-      display: flex;
-      align-items: center;
+      font-size: var(--text-sm);
+      font-weight: 500;
+      transition: all var(--transition-fast);
     }
+
     .socials a:hover {
       color: var(--accent);
       border-color: var(--accent);
-      background-color: rgba(128, 128, 128, 0.05);
+      background-color: rgba(249, 115, 22, 0.05);
+      transform: translateY(-2px);
     }
-    
-    .tabs-container {
-      border: 1px solid rgba(128, 128, 128, 0.2);
+
+    [data-theme='dark'] .socials a:hover {
+      background-color: rgba(251, 146, 60, 0.1);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: var(--space-md);
+    }
+
+    .skill-card {
+      padding: var(--space-md);
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border);
       border-radius: var(--border-radius);
-      padding: 1rem;
-      margin-top: 1.5rem;
+      text-align: center;
+      font-weight: 500;
+      font-size: var(--text-sm);
+      transition: all var(--transition-fast);
+    }
+
+    .skill-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .tabs-container {
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
     }
 
     .tabs {
       display: flex;
-      gap: 1rem;
-      border-bottom: 1px solid rgba(128, 128, 128, 0.2);
-      margin-bottom: 0.5rem;
-      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+      background-color: var(--bg-secondary);
     }
-    
-    .experience-list {
-      list-style: none;
-      padding: 0;
-    }
+
     .tab-button {
-      padding: 0.5rem 1rem;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      padding: var(--space-md) var(--space-lg);
       cursor: pointer;
       background: none;
       border: none;
+      border-bottom: 2px solid transparent;
       color: var(--text-secondary);
-      font-size: var(--text-base);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      transition: all var(--transition-fast);
     }
+
+    .tab-button:hover {
+      color: var(--text-primary);
+      background-color: rgba(128, 128, 128, 0.05);
+    }
+
     .tab-button.active {
       color: var(--accent);
-      border-bottom: 2px solid var(--accent);
+      border-bottom-color: var(--accent);
+      background-color: var(--bg);
     }
+
     .tab-content {
       display: none;
-      padding-top: 1rem;
+      padding: var(--space-xl);
     }
+
     .tab-content.active {
       display: block;
+      animation: fadeIn 0.3s ease;
     }
-    .skills-list {
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: var(--space-xl);
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background-color: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: var(--space-xl);
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -25px;
+      top: 8px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    .timeline-content {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      padding: var(--space-lg);
+    }
+
+    .timeline-header {
       display: flex;
-      gap: 0.5rem;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-md);
+      margin-bottom: var(--space-xs);
       flex-wrap: wrap;
     }
-    .skills-list span {
-      background: rgba(128, 128, 128, 0.1);
-      padding: 0.25rem 0.75rem;
+
+    .timeline-header h3 {
+      margin: 0;
+      font-size: var(--text-lg);
+    }
+
+    .timeline-duration {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      background-color: var(--bg);
+      padding: var(--space-xs) var(--space-sm);
       border-radius: 4px;
-    }
-    h2 {
-      font-size: var(--text-xl);
-      margin-top: 2rem;
-    }
-    
-    .exp-item {
-      margin-bottom: 1rem;
-    }
-    .exp-header h3 {
-      font-size: var(--text-xl);
-      font-weight: 700;
-      margin: 0;
-    }
-    .exp-item ul {
-      padding-left: 1.25rem;
-      margin-top: 0.5rem;
-      color: var(--text-secondary);
-      font-size: var(--text-base);
+      white-space: nowrap;
     }
 
-    .exp-header .company {
-      color: var(--text-primary);
-      font-weight: 500;
-    }
-    .exp-header small {
-      display: inline-block;
+    .timeline-company {
       color: var(--text-secondary);
-      margin-left: 0.5rem;
+      font-size: var(--text-sm);
+      margin: 0 0 var(--space-md);
     }
 
-    .tab-item {
-      margin-bottom: 1rem;
-    }
-    .tab-header h3 {
-      font-size: var(--text-xl);
-      font-weight: 700;
+    .timeline-list {
       margin: 0;
-    }
-    .tab-header .company {
-      color: var(--text-primary);
-      font-weight: 500;
-    }
-    .tab-header small {
-      display: inline-block;
+      padding-left: var(--space-lg);
       color: var(--text-secondary);
-      margin-left: 0.5rem;
+      font-size: var(--text-sm);
+      line-height: 1.7;
+    }
+
+    .timeline-list li {
+      margin-bottom: var(--space-xs);
+    }
+
+    @media (max-width: 768px) {
+      .about-hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      }
+
+      .tabs {
+        flex-direction: column;
+      }
+
+      .tab-button {
+        border-bottom: none;
+        border-left: 2px solid transparent;
+      }
+
+      .tab-button.active {
+        border-left-color: var(--accent);
+      }
+
+      .timeline-header {
+        flex-direction: column;
+        gap: var(--space-xs);
+      }
     }
   </style>
 </MainLayout>
