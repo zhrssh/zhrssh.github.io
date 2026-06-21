@@ -16,38 +16,71 @@ export const SITE_CONFIG = {
   resumeUrl: "/zherishgalvinmayordo-cv.pdf",
   experience: [
     {
-      role: "Software Engineer",
-      company: "Tech Corp",
-      duration: "2020 - Present",
+      role: "N8N Automation Specialist",
+      company: "Freelance",
+      duration: "Jun. 2026 - Present",
+      description: [""],
+    },
+    {
+      role: "Trading Algorithm Programmer",
+      company: "Robin Ho",
+      duration: "Jul. 2024 - Nov. 2025",
       description: ["Led development of...", "Improved performance by..."],
     },
+    {
+      role: "Researcher Intern",
+      company: "DOST - Advanced Science and Technology Institute (ASTI)",
+      duration: "Mar. 2024 - Jul. 2024",
+      description: ["Lorem ipsum"],
+    },
   ],
-  skills: ["JavaScript", "TypeScript", "Astro", "React", "CSS"],
+  skills: ["Python", "JavaScript", "TypeScript", "Automation", "DevOps", "AI"],
   services: [
     {
-      title: "Web Development",
-      description: "Placeholder description for web development services.",
-      icon: "💻",
+      title: "Automation",
+      description:
+        "I design and build automated business workflows that eliminate repetitive, labor-intensive tasks, enabling businesses to save time, reduce operational costs, and operate more efficiently.",
+      icon: "🤖",
     },
     {
-      title: "UI/UX Design",
-      description: "Placeholder description for design services.",
-      icon: "🎨",
-    },
-    {
-      title: "Consulting",
-      description: "Placeholder description for consulting services.",
-      icon: "🔧",
+      title: "Backend Development",
+      description:
+        "I develop scalable backend systems, APIs, and integrations for modern applications, leveraging Python, JavaScript, and DevOps best practices to build reliable, secure, and maintainable solutions.",
+      icon: "⚙️",
     },
   ],
   education: [
     {
-      degree: "B.Sc. Computer Science",
-      institution: "University Name",
-      year: "2020",
+      degree: "Bachelor of Science in Computer Engineering",
+      institution: "Technological Institute of the Philippines, Quezon City",
+      year: "Completed 2025",
     },
   ],
   certifications: [
-    { name: "AWS Certified Developer", issuer: "Amazon", year: "2022" },
+    {
+      name: "DevOps and Software Engineering Professional Certificate",
+      issuer: "IBM",
+      year: "Issued Mar. 2026",
+    },
+    {
+      name: "Machine Learning Specialization",
+      issuer: "DeepLearning.AI & Stanford University",
+      year: "Issued Nov. 2025",
+    },
+    {
+      name: "CCNAv7: Enterprise Networking, Security, and Automation",
+      issuer: "Cisco Networking",
+      year: "Issued Dec. 2023",
+    },
+    {
+      name: "CCNAv7: Switching, Routing, and Wireless Essentials",
+      issuer: "Cisco Networking",
+      year: "Issued Jan. 2023",
+    },
+    {
+      name: "CCNAv7: Introduction to Networks",
+      issuer: "Cisco Networking",
+      year: "Issued Oct. 2022",
+    },
   ],
 };

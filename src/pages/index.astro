@@ -3,15 +3,11 @@ import { getCollection } from "astro:content";
 import MainLayout from "../layouts/MainLayout.astro";
 import { SITE_CONFIG } from "../config";
 
-const blogs = await getCollection("blog");
-const latestBlogs = blogs.sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
-).slice(0, 3);
-
 const projects = await getCollection("projects");
-const featuredProjects = projects.sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
-).slice(0, 3);
+const featuredProjects = projects
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+const projectCols = Math.min(featuredProjects.length, 3);
 ---
 
 <MainLayout title="Home">
@@ -31,14 +27,16 @@ const featuredProjects = projects.sort(
 
   <section class="section">
     <div class="section-header">
-      <h2>Services I Provide</h2>
+      <h2>My Services</h2>
     </div>
-    <div class="services-grid">
-      {SITE_CONFIG.services.map((service) => (
-        <div class="service-card">
+    <div class="services-list">
+      {SITE_CONFIG.services.slice(0, 2).map((service) => (
+        <div class="service-row">
           <div class="service-icon">{service.icon}</div>
-          <h3>{service.title}</h3>
-          <p>{service.description}</p>
+          <div class="service-body">
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+          </div>
         </div>
       ))}
     </div>
@@ -46,10 +44,10 @@ const featuredProjects = projects.sort(
 
   <section class="section">
     <div class="section-header">
-      <h2>Featured Projects</h2>
+      <h2>Projects</h2>
       <a href="/projects" class="section-link">View all →</a>
     </div>
-    <div class="projects-grid">
+    <div class="projects-grid" data-cols={projectCols}>
       {
         featuredProjects.length > 0 ? (
           featuredProjects.map((project) => (
@@ -77,46 +75,11 @@ const featuredProjects = projects.sort(
     </div>
   </section>
 
-  <section class="section">
-    <div class="section-header">
-      <h2>Latest from Blog</h2>
-      <a href="/blog" class="section-link">Read all →</a>
-    </div>
-    <div class="blog-grid">
-      {
-        latestBlogs.length > 0 ? (
-          latestBlogs.map((post) => (
-            <article class="blog-card">
-              <a href={`/blog/${post.id}`} class="blog-link">
-                <div class="blog-meta">
-                  <time datetime={post.data.date.toISOString()}>
-                    {post.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                  </time>
-                  <span class="blog-dot">•</span>
-                  <span>{post.data.tags[0]}</span>
-                </div>
-                <h3>{post.data.title}</h3>
-                <p>{post.data.description}</p>
-                <span class="blog-read-more">Read more →</span>
-              </a>
-            </article>
-          ))
-        ) : (
-          <p class="empty-state">No blog posts yet. Stay tuned!</p>
-        )
-      }
-    </div>
-  </section>
-
   <style>
     .hero {
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
       padding: var(--space-3xl) 0;
       position: relative;
+      overflow: hidden;
     }
 
     .hero::before {
@@ -124,27 +87,16 @@ const featuredProjects = projects.sort(
       position: absolute;
       top: 0;
       right: 0;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+      width: clamp(280px, 40vw, 600px);
+      height: clamp(280px, 40vw, 600px);
+      background: radial-gradient(circle farthest-side, var(--accent) 0%, transparent 70%);
+      mask-image: radial-gradient(circle, black 55%, transparent 100%);
+      -webkit-mask-image: radial-gradient(circle, black 55%, transparent 100%);
       opacity: 0.1;
       filter: blur(100px);
       z-index: 0;
       animation: float-1 8s ease-in-out infinite alternate;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
-      opacity: 0.12;
-      filter: blur(120px);
-      z-index: 0;
-      animation: float-2 10s ease-in-out infinite alternate;
+      pointer-events: none;
     }
 
     @keyframes float-1 {
@@ -152,14 +104,8 @@ const featuredProjects = projects.sort(
       to { transform: translate(-40px, 30px); }
     }
 
-    @keyframes float-2 {
-      from { transform: translate(0, 0); }
-      to { transform: translate(30px, -40px); }
-    }
-
     @media (prefers-reduced-motion: reduce) {
-      .hero::before,
-      .hero::after {
+      .hero::before {
         animation: none;
       }
     }
@@ -168,14 +114,11 @@ const featuredProjects = projects.sort(
       opacity: 0.15;
     }
 
-    [data-theme='dark'] .hero::after {
-      opacity: 0.18;
-    }
-
     .hero-content {
-      max-width: 700px;
+      max-width: 720px;
       position: relative;
       z-index: 1;
+      text-align: left;
     }
 
     .hero-badge {
@@ -211,15 +154,17 @@ const featuredProjects = projects.sort(
     .hero-cta {
       display: flex;
       gap: var(--space-md);
-      justify-content: center;
+      justify-content: flex-start;
       flex-wrap: wrap;
       opacity: 0;
     }
 
     .section {
       margin-top: var(--space-3xl);
-      padding-top: var(--space-3xl);
-      border-top: 1px solid var(--border);
+    }
+
+    .section:first-of-type {
+      margin-top: var(--space-2xl);
     }
 
     .section-header {
@@ -247,21 +192,24 @@ const featuredProjects = projects.sort(
       transform: translateX(4px);
     }
 
-    .services-grid {
+    .services-list {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: var(--space-xl);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-lg);
     }
 
-    .service-card {
+    .service-row {
+      display: flex;
+      gap: var(--space-lg);
       padding: var(--space-lg);
       border-radius: var(--border-radius-lg);
       border: 1px solid var(--border);
       transition: all var(--transition);
       background-color: var(--bg);
+      align-items: flex-start;
     }
 
-    .service-card:hover {
+    .service-row:hover {
       border-color: var(--accent);
       box-shadow: var(--shadow-md);
       transform: translateY(-2px);
@@ -269,15 +217,16 @@ const featuredProjects = projects.sort(
 
     .service-icon {
       font-size: 2.5rem;
-      margin-bottom: var(--space-md);
+      flex-shrink: 0;
+      line-height: 1;
     }
 
-    .service-card h3 {
+    .service-body h3 {
       margin: 0 0 var(--space-sm);
       font-size: var(--text-lg);
     }
 
-    .service-card p {
+    .service-body p {
       margin: 0;
       color: var(--text-secondary);
       font-size: var(--text-sm);
@@ -286,8 +235,13 @@ const featuredProjects = projects.sort(
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: var(--space-xl);
+    }
+
+    .projects-grid[data-cols="1"] {
+      max-width: 640px;
+      margin-inline: auto;
     }
 
     .project-card {
@@ -308,6 +262,7 @@ const featuredProjects = projects.sort(
       text-decoration: none;
       color: inherit;
       display: block;
+      height: 100%;
     }
 
     .project-image {
@@ -358,72 +313,6 @@ const featuredProjects = projects.sort(
       line-height: 1.6;
     }
 
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: var(--space-xl);
-    }
-
-    .blog-card {
-      padding: var(--space-lg);
-      border-radius: var(--border-radius-lg);
-      border: 1px solid var(--border);
-      transition: all var(--transition);
-      background-color: var(--bg);
-    }
-
-    .blog-card:hover {
-      border-color: var(--accent);
-      box-shadow: var(--shadow-md);
-      transform: translateY(-2px);
-    }
-
-    .blog-link {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    .blog-meta {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-      margin-bottom: var(--space-md);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .blog-dot {
-      color: var(--border);
-    }
-
-    .blog-card h3 {
-      margin: 0 0 var(--space-sm);
-      font-size: var(--text-lg);
-      line-height: 1.4;
-    }
-
-    .blog-card p {
-      margin: 0 0 var(--space-md);
-      color: var(--text-secondary);
-      font-size: var(--text-sm);
-      line-height: 1.6;
-    }
-
-    .blog-read-more {
-      display: inline-block;
-      color: var(--accent);
-      font-size: var(--text-sm);
-      font-weight: 500;
-      transition: all var(--transition-fast);
-    }
-
-    .blog-card:hover .blog-read-more {
-      transform: translateX(4px);
-    }
-
     .empty-state {
       text-align: center;
       color: var(--text-muted);
@@ -432,19 +321,8 @@ const featuredProjects = projects.sort(
     }
 
     @media (max-width: 768px) {
-      .hero {
-        min-height: 60vh;
-        padding: var(--space-xl) 0;
-      }
-
       .hero h1 {
         font-size: var(--text-3xl);
-      }
-
-      .projects-grid,
-      .blog-grid,
-      .services-grid {
-        grid-template-columns: 1fr;
       }
 
       .section-header {
