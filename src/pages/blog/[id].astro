@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry, getCollection, render } from "astro:content";
+import { Image } from "astro:assets";
 import MainLayout from "../../layouts/MainLayout.astro";
 import { getReadingTime } from "../../utils/readingTime";
 
@@ -20,6 +21,7 @@ const readingTime = getReadingTime(entry.body || "");
 <MainLayout title={entry.data.title}>
   <article class="post">
     <header class="post-header">
+      <span class="eyebrow">Blog</span>
       <div class="post-meta">
         <time datetime={entry.data.date.toISOString()}>
           {entry.data.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
@@ -30,6 +32,7 @@ const readingTime = getReadingTime(entry.body || "");
         <span>By {entry.data.author}</span>
       </div>
       <h1>{entry.data.title}</h1>
+      <hr class="accent-rule" />
       <p class="post-description">{entry.data.description}</p>
       <div class="post-tags">
         {entry.data.tags.map(tag => <span>{tag}</span>)}
@@ -38,7 +41,7 @@ const readingTime = getReadingTime(entry.body || "");
 
     {entry.data.coverImage && (
       <div class="post-cover">
-        <img src={entry.data.coverImage} alt={entry.data.title} />
+        <Image src={entry.data.coverImage} alt={entry.data.title} width={720} height={405} />
       </div>
     )}
 
@@ -49,25 +52,23 @@ const readingTime = getReadingTime(entry.body || "");
 
   <style>
     .post {
-      max-width: 720px;
+      max-width: var(--max-width);
       margin: 0 auto;
     }
 
     .post-header {
       margin-bottom: var(--space-2xl);
-      padding-bottom: var(--space-2xl);
-      border-bottom: 1px solid var(--border);
     }
 
     .post-meta {
       display: flex;
       align-items: center;
       gap: var(--space-sm);
-      font-size: var(--text-sm);
+      font-size: var(--text-xs);
       color: var(--text-muted);
-      margin-bottom: var(--space-lg);
+      margin-bottom: var(--space-md);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
     }
 
     .meta-dot {
@@ -76,15 +77,16 @@ const readingTime = getReadingTime(entry.body || "");
 
     .post-header h1 {
       font-size: var(--text-4xl);
-      margin: 0 0 var(--space-lg);
+      margin: 0 0 0;
       line-height: 1.2;
+      color: var(--text-primary);
     }
 
     .post-description {
       font-size: var(--text-lg);
       color: var(--text-secondary);
       line-height: 1.6;
-      margin: 0 0 var(--space-xl);
+      margin: 0 0 var(--space-lg);
     }
 
     .post-tags {
@@ -95,21 +97,22 @@ const readingTime = getReadingTime(entry.body || "");
 
     .post-tags span {
       font-size: var(--text-xs);
-      padding: var(--space-xs) var(--space-md);
-      background-color: var(--bg-secondary);
+      padding: 0.125rem 0.5rem;
       border: 1px solid var(--border);
-      border-radius: 100px;
+      border-radius: var(--border-radius);
       color: var(--text-secondary);
       font-weight: 500;
+      background-color: transparent;
     }
 
     .post-cover {
       margin-bottom: var(--space-2xl);
-      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
       overflow: hidden;
     }
 
-    .post-cover img {
+    .post-cover :global(img) {
       width: 100%;
       height: auto;
       display: block;
@@ -118,6 +121,7 @@ const readingTime = getReadingTime(entry.body || "");
     .post-content {
       font-size: var(--text-base);
       line-height: 1.8;
+      max-width: var(--max-width);
     }
 
     .post-content :global(h2) {
@@ -160,10 +164,10 @@ const readingTime = getReadingTime(entry.body || "");
 
     .post-content :global(blockquote) {
       margin: var(--space-xl) 0;
-      padding: var(--space-lg) var(--space-xl);
-      background-color: var(--bg-secondary);
-      border-left: 4px solid var(--accent);
-      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+      padding: var(--space-sm) var(--space-xl);
+      background-color: transparent;
+      border-left: 3px solid var(--accent);
+      border-radius: 0;
       font-style: italic;
       color: var(--text-secondary);
     }
@@ -171,10 +175,10 @@ const readingTime = getReadingTime(entry.body || "");
     .post-content :global(code) {
       font-family: var(--font-mono);
       font-size: 0.9em;
-      padding: 0.2em 0.4em;
+      padding: 0.15em 0.35em;
       background-color: var(--bg-secondary);
       border: 1px solid var(--border);
-      border-radius: 4px;
+      border-radius: var(--border-radius);
     }
 
     .post-content :global(pre) {

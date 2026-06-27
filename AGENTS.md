@@ -35,7 +35,7 @@ Each collection is schema-validated in `src/content.config.ts`.
 
 ### Issue tracker
 
-GitHub Issues. See `docs/agents/issue-tracker.md`.
+Local markdown issues under `.scratch/<feature-slug>/`. See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 

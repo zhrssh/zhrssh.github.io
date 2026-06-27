@@ -61,11 +61,13 @@ export const SITE_CONFIG = {
       name: "DevOps and Software Engineering Professional Certificate",
       issuer: "IBM",
       year: "Issued Mar. 2026",
+      url: "https://www.credly.com/",
     },
     {
       name: "Machine Learning Specialization",
       issuer: "DeepLearning.AI & Stanford University",
       year: "Issued Nov. 2025",
+      url: "https://www.coursera.org/",
     },
     {
       name: "CCNAv7: Enterprise Networking, Security, and Automation",

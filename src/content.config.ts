@@ -19,15 +19,16 @@ const projectsCollection = defineCollection({
     pattern: "**/*.{md,mdx}",
     base: "./src/content/projects",
   }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    date: z.date(),
-    coverImage: z.string().optional(),
-    tags: z.array(z.string()).default([]),
-    link: z.url().optional(),
-    github: z.url().optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      date: z.date(),
+      coverImage: image().optional(),
+      tags: z.array(z.string()).default([]),
+      link: z.url().optional(),
+      github: z.url().optional(),
+    }),
 });
 
 export const collections = {
