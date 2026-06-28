@@ -6,12 +6,17 @@ export const SITE_CONFIG = {
   socials: {
     github: "https://github.com/zhrssh",
     linkedin: "https://linkedin.com/in/zgmayordo",
+    whatsapp: "639957288817",
+  },
+  contact: {
+    formAccessKey: "316691c8-76a1-4903-b57b-cb06dcd28c26",
   },
   navLinks: [
     { label: "Home", href: "/" },
     { label: "Blog", href: "/blog" },
     { label: "Projects", href: "/projects" },
     { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
   ],
   resumeUrl: "/zherishgalvinmayordo-cv.pdf",
   experience: [

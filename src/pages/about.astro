@@ -56,8 +56,13 @@ const skillCols = Math.min(SITE_CONFIG.skills.length, 3);
       {SITE_CONFIG.experience.map(exp => (
         <div class="row">
           <div class="row-left">
-            <div class="row-title">{exp.company}</div>
-            <div class="row-sub">{exp.role}</div>
+            <div class="row-title">{exp.role}</div>
+            <div class="row-sub">{exp.company}</div>
+            {exp.description && (
+              <ul class="row-desc">
+                {exp.description.map(item => <li>{item}</li>)}
+              </ul>
+            )}
           </div>
           <div class="row-right">{exp.duration}</div>
         </div>
@@ -245,6 +250,24 @@ const skillCols = Math.min(SITE_CONFIG.skills.length, 3);
       font-style: italic;
       font-size: var(--text-sm);
       color: var(--text-secondary);
+    }
+
+    .row-desc {
+      list-style: disc;
+      padding-left: 1.25rem;
+      margin: var(--space-sm) 0 0;
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      max-width: 70ch;
+    }
+
+    .row-desc li {
+      margin-bottom: 0.25rem;
+    }
+
+    .row-desc li:last-child {
+      margin-bottom: 0;
     }
 
     .row-right {
