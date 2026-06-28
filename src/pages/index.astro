@@ -1,0 +1,276 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import MainLayout from "../layouts/MainLayout.astro";
+import { SITE_CONFIG } from "../config";
+
+const projects = await getCollection("projects");
+const featuredProjects = projects
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+const projectCols = Math.min(featuredProjects.length, 3);
+---
+
+<MainLayout title="Home">
+  <section class="hero">
+    <div class="hero-content">
+      <span class="eyebrow">Available for work</span>
+      <h1>Hi, I'm Zherish</h1>
+      <hr class="accent-rule" />
+      <p class="hero-tagline">
+      A passionate engineer building automated systems that work,<br>so you don't have to.
+      </p>
+      <div class="hero-cta">
+        <a href="/projects" class="button">View My Work</a>
+        <a href="/zherishgalvinmayordo-cv.pdf" class="button button-secondary" download>Download CV</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <span class="eyebrow">What I offer</span>
+      <h2>My Services</h2>
+      <hr class="rule" />
+    </div>
+    <div class="services-list">
+      {SITE_CONFIG.services.slice(0, 2).map((service) => (
+        <div class="service-row">
+          <div class="service-icon">{service.icon}</div>
+          <div class="service-body">
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <span class="eyebrow">Selected work</span>
+      <h2>Projects</h2>
+      <hr class="rule" />
+      <a href="/projects" class="section-link">View all →</a>
+    </div>
+    <div class="projects-grid" data-cols={projectCols}>
+      {
+        featuredProjects.length > 0 ? (
+          featuredProjects.map((project) => (
+            <article class="project-card">
+              <a href={`/projects/${project.id}`} class="project-link">
+                {project.data.coverImage && (
+                  <div class="project-image">
+                    <Image src={project.data.coverImage} alt={project.data.title} width={600} height={340} loading="lazy" />
+                  </div>
+                )}
+                <div class="project-content">
+                  <div class="project-tags">
+                    {project.data.tags.slice(0, 3).map((tag) => <span>{tag}</span>)}
+                  </div>
+                  <h3>{project.data.title}</h3>
+                  <p>{project.data.description}</p>
+                </div>
+              </a>
+            </article>
+          ))
+        ) : (
+          <p class="empty-state">No projects yet. Check back soon!</p>
+        )
+      }
+    </div>
+  </section>
+
+  <style>
+    .hero {
+      padding: var(--space-3xl) 0;
+    }
+
+    .hero-content {
+      max-width: 720px;
+      text-align: left;
+    }
+
+    .hero h1 {
+      font-size: var(--text-4xl);
+      margin: 0 0 0;
+      color: var(--text-primary);
+    }
+
+    .hero-tagline {
+      font-size: var(--text-lg);
+      color: var(--text-secondary);
+      margin: 0 0 var(--space-xl);
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: var(--space-md);
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .section {
+      margin-top: var(--space-3xl);
+    }
+
+    .section-header {
+      margin-bottom: var(--space-xl);
+    }
+
+    .section-header h2 {
+      margin: 0 0 0;
+    }
+
+    .section-link {
+      display: inline-block;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: var(--text-sm);
+      transition: color var(--transition-fast);
+      margin-top: var(--space-sm);
+    }
+
+    .section-link:hover {
+      color: var(--accent-hover);
+    }
+
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .service-row {
+      display: flex;
+      gap: var(--space-lg);
+      padding: var(--space-lg);
+      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--accent);
+      transition: border-color var(--transition-fast);
+      background-color: var(--bg);
+      align-items: flex-start;
+    }
+
+    .service-row:hover {
+      border-color: var(--border-hover);
+      border-top-color: var(--accent);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .service-body h3 {
+      margin: 0 0 var(--space-sm);
+      font-size: var(--text-lg);
+    }
+
+    .service-body p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-xl);
+    }
+
+    .projects-grid[data-cols="1"] {
+      max-width: 640px;
+      margin-inline: auto;
+    }
+
+    .project-card {
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--accent);
+      transition: border-color var(--transition-fast);
+    }
+
+    .project-card:hover {
+      border-color: var(--border-hover);
+      border-top-color: var(--accent);
+    }
+
+    .project-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      height: 100%;
+    }
+
+    .project-image {
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background-color: var(--bg-secondary);
+    }
+
+    .project-image :global(img) {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-content {
+      padding: var(--space-lg);
+    }
+
+    .project-tags {
+      display: flex;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    .project-tags span {
+      font-size: var(--text-xs);
+      padding: 0.125rem 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      color: var(--text-secondary);
+      background-color: transparent;
+    }
+
+    .project-content h3 {
+      margin: 0 0 var(--space-sm);
+      font-size: var(--text-lg);
+      transition: color var(--transition-fast);
+    }
+
+    .project-card:hover .project-content h3 {
+      color: var(--accent);
+    }
+
+    .project-content p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+    }
+
+    .empty-state {
+      text-align: center;
+      color: var(--text-muted);
+      padding: var(--space-3xl);
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: var(--text-3xl);
+      }
+    }
+  </style>
+</MainLayout>

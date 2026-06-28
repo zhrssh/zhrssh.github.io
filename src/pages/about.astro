@@ -1,0 +1,428 @@
+---
+import { SITE_CONFIG } from "../config";
+import MainLayout from "../layouts/MainLayout.astro";
+
+const skillCols = Math.min(SITE_CONFIG.skills.length, 3);
+---
+
+<MainLayout title="About Me">
+  <div class="about-hero">
+    <img src="/me.jpg" alt="Zherish Galvin Mayordo" class="profile-img" />
+    <div class="about-hero-text">
+      <span class="eyebrow">About</span>
+      <h1>Zherish Galvin Mayordo</h1>
+      <p class="about-bio">
+        I'm an Automation Engineer and Computer Engineering graduate based in
+        the Philippines. I build business automations and backend systems that
+        eliminate repetitive work, connect applications, and streamline
+        operations. I focus on creating clean, maintainable, and reliable
+        solutions that save businesses time, reduce costs, and scale with their
+        growth.
+      </p>
+      <div class="link-pills">
+        <a
+          href={SITE_CONFIG.socials.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-pill">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+            ></path></svg
+          >
+          GitHub
+        </a>
+        <a
+          href={SITE_CONFIG.socials.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-pill">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path
+              d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+            ></path><rect x="2" y="9" width="4" height="12"></rect><circle
+              cx="4"
+              cy="4"
+              r="2"></circle></svg
+          >
+          LinkedIn
+        </a>
+        <a href={`mailto:${SITE_CONFIG.email}`} class="link-pill">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path
+              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+            ></path><polyline points="22,6 12,13 2,6"></polyline></svg
+          >
+          Email
+        </a>
+        <a href={SITE_CONFIG.resumeUrl} download class="button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+            ></path><polyline points="7 10 12 15 17 10"></polyline><line
+              x1="12"
+              y1="15"
+              x2="12"
+              y2="3"></line></svg
+          >
+          Download CV
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <section class="about-section">
+    <span class="eyebrow">Skills</span>
+    <h2>Technical Skills</h2>
+    <hr class="rule" />
+    <div class="skills-grid" data-cols={skillCols}>
+      {
+        SITE_CONFIG.skills.map((skill) => (
+          <div class="skill-chip">
+            <span>{skill}</span>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="about-section">
+    <span class="eyebrow">Career</span>
+    <h2>Experience</h2>
+    <hr class="rule" />
+    <div class="row-list">
+      {
+        SITE_CONFIG.experience.map((exp) => (
+          <div class="row">
+            <div class="row-left">
+              <div class="row-title">{exp.role}</div>
+              <div class="row-sub">{exp.company}</div>
+              {exp.description && (
+                <ul class="row-desc">
+                  {exp.description.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <div class="row-right">{exp.duration}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="about-section">
+    <span class="eyebrow">Education</span>
+    <h2>Education</h2>
+    <hr class="rule" />
+    <div class="row-list">
+      {
+        SITE_CONFIG.education.map((edu) => (
+          <div class="row">
+            <div class="row-left">
+              <div class="row-title">{edu.degree}</div>
+              <div class="row-sub">{edu.institution}</div>
+            </div>
+            <div class="row-right">{edu.year}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="about-section">
+    <span class="eyebrow">Credentials</span>
+    <h2>Certifications</h2>
+    <hr class="rule" />
+    <div class="row-list">
+      {
+        SITE_CONFIG.certifications.map((cert) => (
+          <div class="row">
+            <div class="row-left">
+              <div class="row-title">{cert.name}</div>
+              <div class="row-sub">{cert.issuer}</div>
+            </div>
+            <div class="row-right">
+              <span class="cert-year">{cert.year}</span>
+              {cert.url && (
+                <a
+                  href={cert.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link">
+                  Certificate →
+                </a>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <style>
+    .about-hero {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2xl);
+      margin-bottom: var(--space-3xl);
+      max-width: 1200px;
+    }
+
+    .profile-img {
+      width: 10em;
+      height: 10em;
+      flex-shrink: 0;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
+
+    .about-hero-text h1 {
+      margin: 0 0 var(--space-sm);
+    }
+
+    .about-bio {
+      color: var(--text-secondary);
+      font-size: var(--text-base);
+      margin: 0 0 var(--space-lg);
+      line-height: 1.7;
+      max-width: 60ch;
+    }
+
+    .link-pills {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 0.375rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      transition:
+        color var(--transition-fast),
+        border-color var(--transition-fast);
+    }
+
+    .link-pill:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .about-section {
+      margin-bottom: var(--space-3xl);
+    }
+
+    .about-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-section h2 {
+      margin: 0 0 0;
+    }
+
+    .skills-grid {
+      display: grid;
+      gap: var(--space-sm);
+    }
+
+    .skills-grid[data-cols="1"] {
+      max-width: 640px;
+      grid-template-columns: 1fr;
+    }
+
+    .skills-grid[data-cols="2"] {
+      max-width: 720px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skills-grid[data-cols="3"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .skill-chip {
+      padding: 0.5rem var(--space-md);
+      background-color: transparent;
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      text-align: center;
+      font-weight: 500;
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      transition:
+        border-color var(--transition-fast),
+        color var(--transition-fast);
+    }
+
+    .skill-chip:hover {
+      border-color: var(--border-hover);
+      color: var(--text-primary);
+    }
+
+    .row-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-lg);
+      padding: var(--space-lg) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .row:first-child {
+      padding-top: 0;
+    }
+
+    .row:last-child {
+      border-bottom: none;
+    }
+
+    .row-left {
+      flex: 1;
+    }
+
+    .row-title {
+      font-weight: 600;
+      font-size: var(--text-base);
+      color: var(--text-primary);
+      margin-bottom: 0.125rem;
+    }
+
+    .row-sub {
+      font-style: italic;
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+    }
+
+    .row-desc {
+      list-style: disc;
+      padding-left: 1.25rem;
+      margin: var(--space-sm) 0 0;
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      max-width: 70ch;
+    }
+
+    .row-desc li {
+      margin-bottom: 0.25rem;
+    }
+
+    .row-desc li:last-child {
+      margin-bottom: 0;
+    }
+
+    .row-right {
+      text-align: right;
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+      white-space: nowrap;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.25rem;
+    }
+
+    .cert-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      font-weight: 500;
+      transition: color var(--transition-fast);
+    }
+
+    .cert-link:hover {
+      color: var(--accent-hover);
+    }
+
+    @media (max-width: 1024px) {
+      .skills-grid[data-cols="3"] {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .about-hero {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+
+      .about-bio {
+        margin-inline: auto;
+      }
+
+      .link-pills {
+        justify-content: center;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .skills-grid[data-cols="1"],
+      .skills-grid[data-cols="2"] {
+        max-width: 640px;
+      }
+
+      .row {
+        flex-direction: column;
+        gap: var(--space-xs);
+      }
+
+      .row-right {
+        text-align: left;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</MainLayout>
