@@ -1,6 +1,6 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import { SITE_CONFIG } from '../config';
+import { SITE_CONFIG } from "../config";
+import MainLayout from "../layouts/MainLayout.astro";
 
 const skillCols = Math.min(SITE_CONFIG.skills.length, 3);
 ---
@@ -12,23 +12,93 @@ const skillCols = Math.min(SITE_CONFIG.skills.length, 3);
       <span class="eyebrow">About</span>
       <h1>Zherish Galvin Mayordo</h1>
       <p class="about-bio">
-        I'm a software engineer and computer engineering graduate based in the Philippines, focused on automation and backend systems that take repetitive work off people's plates. Most recently I've built n8n workflows for businesses and trading algorithms in Python, after a research stint at DOST-ASTI. I care about clean, maintainable code and tools that genuinely save people time.
+        I'm an Automation Engineer and Computer Engineering graduate based in
+        the Philippines. I build automation and backend systems that eliminate
+        repetitive work, helping people focus on what matters most. I care about
+        creating clean, maintainable, and reliable solutions that genuinely save
+        time and reduce costs.
       </p>
       <div class="link-pills">
-        <a href={SITE_CONFIG.socials.github} target="_blank" rel="noopener noreferrer" class="link-pill">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        <a
+          href={SITE_CONFIG.socials.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-pill">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+            ></path></svg
+          >
           GitHub
         </a>
-        <a href={SITE_CONFIG.socials.linkedin} target="_blank" rel="noopener noreferrer" class="link-pill">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        <a
+          href={SITE_CONFIG.socials.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-pill">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path
+              d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+            ></path><rect x="2" y="9" width="4" height="12"></rect><circle
+              cx="4"
+              cy="4"
+              r="2"></circle></svg
+          >
           LinkedIn
         </a>
         <a href={`mailto:${SITE_CONFIG.email}`} class="link-pill">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path
+              d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+            ></path><polyline points="22,6 12,13 2,6"></polyline></svg
+          >
           Email
         </a>
         <a href={SITE_CONFIG.resumeUrl} download class="button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+            ></path><polyline points="7 10 12 15 17 10"></polyline><line
+              x1="12"
+              y1="15"
+              x2="12"
+              y2="3"></line></svg
+          >
           Download CV
         </a>
       </div>
@@ -40,11 +110,13 @@ const skillCols = Math.min(SITE_CONFIG.skills.length, 3);
     <h2>Technical Skills</h2>
     <hr class="rule" />
     <div class="skills-grid" data-cols={skillCols}>
-      {SITE_CONFIG.skills.map(skill => (
-        <div class="skill-chip">
-          <span>{skill}</span>
-        </div>
-      ))}
+      {
+        SITE_CONFIG.skills.map((skill) => (
+          <div class="skill-chip">
+            <span>{skill}</span>
+          </div>
+        ))
+      }
     </div>
   </section>
 
@@ -53,20 +125,24 @@ const skillCols = Math.min(SITE_CONFIG.skills.length, 3);
     <h2>Experience</h2>
     <hr class="rule" />
     <div class="row-list">
-      {SITE_CONFIG.experience.map(exp => (
-        <div class="row">
-          <div class="row-left">
-            <div class="row-title">{exp.role}</div>
-            <div class="row-sub">{exp.company}</div>
-            {exp.description && (
-              <ul class="row-desc">
-                {exp.description.map(item => <li>{item}</li>)}
-              </ul>
-            )}
+      {
+        SITE_CONFIG.experience.map((exp) => (
+          <div class="row">
+            <div class="row-left">
+              <div class="row-title">{exp.role}</div>
+              <div class="row-sub">{exp.company}</div>
+              {exp.description && (
+                <ul class="row-desc">
+                  {exp.description.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <div class="row-right">{exp.duration}</div>
           </div>
-          <div class="row-right">{exp.duration}</div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </section>
 
@@ -75,15 +151,17 @@ const skillCols = Math.min(SITE_CONFIG.skills.length, 3);
     <h2>Education</h2>
     <hr class="rule" />
     <div class="row-list">
-      {SITE_CONFIG.education.map(edu => (
-        <div class="row">
-          <div class="row-left">
-            <div class="row-title">{edu.degree}</div>
-            <div class="row-sub">{edu.institution}</div>
+      {
+        SITE_CONFIG.education.map((edu) => (
+          <div class="row">
+            <div class="row-left">
+              <div class="row-title">{edu.degree}</div>
+              <div class="row-sub">{edu.institution}</div>
+            </div>
+            <div class="row-right">{edu.year}</div>
           </div>
-          <div class="row-right">{edu.year}</div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </section>
 
@@ -92,20 +170,28 @@ const skillCols = Math.min(SITE_CONFIG.skills.length, 3);
     <h2>Certifications</h2>
     <hr class="rule" />
     <div class="row-list">
-      {SITE_CONFIG.certifications.map(cert => (
-        <div class="row">
-          <div class="row-left">
-            <div class="row-title">{cert.name}</div>
-            <div class="row-sub">{cert.issuer}</div>
+      {
+        SITE_CONFIG.certifications.map((cert) => (
+          <div class="row">
+            <div class="row-left">
+              <div class="row-title">{cert.name}</div>
+              <div class="row-sub">{cert.issuer}</div>
+            </div>
+            <div class="row-right">
+              <span class="cert-year">{cert.year}</span>
+              {cert.url && (
+                <a
+                  href={cert.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link">
+                  Certificate →
+                </a>
+              )}
+            </div>
           </div>
-          <div class="row-right">
-            <span class="cert-year">{cert.year}</span>
-            {cert.url && (
-              <a href={cert.url} target="_blank" rel="noopener noreferrer" class="cert-link">Certificate →</a>
-            )}
-          </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </section>
 
@@ -157,7 +243,9 @@ const skillCols = Math.min(SITE_CONFIG.skills.length, 3);
       border-radius: var(--border-radius);
       font-size: var(--text-sm);
       font-weight: 500;
-      transition: color var(--transition-fast), border-color var(--transition-fast);
+      transition:
+        color var(--transition-fast),
+        border-color var(--transition-fast);
     }
 
     .link-pill:hover {
@@ -205,7 +293,9 @@ const skillCols = Math.min(SITE_CONFIG.skills.length, 3);
       font-weight: 500;
       font-size: var(--text-sm);
       color: var(--text-secondary);
-      transition: border-color var(--transition-fast), color var(--transition-fast);
+      transition:
+        border-color var(--transition-fast),
+        color var(--transition-fast);
     }
 
     .skill-chip:hover {
