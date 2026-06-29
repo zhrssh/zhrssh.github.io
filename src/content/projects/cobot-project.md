@@ -2,7 +2,7 @@
 title: "Design of Optimized Path Generation for Physical Guidance-Driven Collaborative Robot Using Metaheuristic Algorithm"
 description: "A thesis project that uses metaheuristic algorithms to allow robotic arms to learn through physical guidance. Hence, removing the need for users to learn technical terminologies and programming."
 date: 2025-05-24
-tags: ["robotics", "Arduino", "algorithms", "python", "javascript"]
+tags: ["automation", "robotics", "Arduino", "algorithms", "python", "javascript"]
 link: "https://drive.google.com/file/d/1SfxgZ9-Dukk3jdeS3830_sPrebriNdmp/view?usp=sharing"
 github: "https://github.com/Kinectica"
 coverImage: "/public/images/cobot-project/cover.png"
