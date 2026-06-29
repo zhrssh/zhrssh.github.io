@@ -101,3 +101,4 @@ Potential enhancements include:
 * Automatic extraction of song titles and metadata, with integration into the formatted output.
 * Support for songs that span multiple pages. The current system supports only two input formats: a single PDF where each page contains one song, or one song per file. Supporting multi-page songs would require more advanced preprocessing, prompt engineering, and improved song boundary detection.
 * Adding a storage layer to cache previously formatted lyrics, allowing duplicate requests to be served without reprocessing the original document.
+* Improve workflow logic to handle edge cases, such as empty PDFs or PDFs with no text. Also clean up the workflow to reduce complexity and improve readability.
