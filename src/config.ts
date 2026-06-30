@@ -7,6 +7,7 @@ export const SITE_CONFIG = {
     github: "https://github.com/zhrssh",
     linkedin: "https://linkedin.com/in/zgmayordo",
     whatsapp: "639957288817",
+    viber: "+639957288817",
   },
   contact: {
     formAccessKey: "316691c8-76a1-4903-b57b-cb06dcd28c26",
