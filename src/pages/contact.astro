@@ -59,6 +59,11 @@ const whatsappUrl = `https://wa.me/${SITE_CONFIG.socials.whatsapp}`;
           <span class="btn-label">Send message</span>
         </button>
 
+        <p class="consent-note">
+          By sending this message, you agree to our
+          <a href="/privacy-policy">Privacy Policy</a>.
+        </p>
+
         <p id="form-success" class="form-message form-success" hidden>
           Thanks — your message has been sent. I'll reply to <span id="confirm-email"></span> shortly.
         </p>
@@ -271,6 +276,23 @@ const whatsappUrl = `https://wa.me/${SITE_CONFIG.socials.whatsapp}`;
 
     .form-error a {
       color: var(--accent);
+    }
+
+    .consent-note {
+      margin-top: var(--space-md);
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .consent-note a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .consent-note a:hover {
+      color: var(--accent-hover);
+      text-decoration: underline;
     }
 
     .channels-column {
