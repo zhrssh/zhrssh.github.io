@@ -34,7 +34,7 @@ const projectCols = Math.min(featuredProjects.length, 3);
       <hr class="rule" />
     </div>
     <div class="services-list">
-      {SITE_CONFIG.services.slice(0, 2).map((service) => (
+      {SITE_CONFIG.services.map((service) => (
         <div class="service-row">
           <div class="service-icon">{service.icon}</div>
           <div class="service-body">

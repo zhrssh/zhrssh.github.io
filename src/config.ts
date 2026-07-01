@@ -22,7 +22,7 @@ export const SITE_CONFIG = {
   resumeUrl: "/zherishgalvinmayordo-cv.pdf",
   experience: [
     {
-      role: "Automation Engineer",
+      role: "AI Automation Specialist",
       company: "Freelance",
       duration: "Jun. 2026 - Present",
       description: [
@@ -82,12 +82,6 @@ export const SITE_CONFIG = {
       description:
         "I design and build automated business workflows that eliminate repetitive, labor-intensive tasks, enabling businesses to save time, reduce operational costs, and operate more efficiently.",
       icon: "🤖",
-    },
-    {
-      title: "Backend Development",
-      description:
-        "I develop scalable backend systems, APIs, and integrations for modern applications using Python and JavaScript to build reliable, secure, and maintainable solutions.",
-      icon: "⚙️",
     },
   ],
   education: [
