@@ -40,32 +40,21 @@ The project aimed to:
 
 The workflow accepts either a PDF or TXT file through a simple upload interface.
 
-After receiving the file, the workflow automatically extracts the text, sends it to an AI model for intelligent formatting, validates the output, and returns lyrics that follow a ProPresenter-compatible structure.
+After receiving the file, the workflow automatically extracts the text, preprocesses it, uses AI to identify the song structure and clean the content, then uses a second AI model to generate ProPresenter-compatible formatting before returning the finished lyrics.
 
 Instead of spending several minutes formatting each song manually, users receive a clean, ready-to-use version in seconds.
 
 ## Technical Implementation
-
-### Workflow Components
-
-* n8n for workflow orchestration
-* AI (LLM) for intelligent lyric formatting
-* PDF text extraction
-* Text preprocessing and cleanup
-* File validation
-* Structured output generation
-
-### Workflow
+### Workflows
 ![Workflow 1](/images/propresenter-lyrics-formatter/workflow-1.png)
 #### Workflow 1: Lyrics Formatting Pipeline
 
 1. Receive a PDF or TXT upload.
-2. Detect the type of upload (1 song per page (single PDF) or 1 song per file).
+2. Detect the input type (a single PDF with one song per page or one song per file).
 3. Extract text from the document.
-4. Clean unnecessary whitespace and formatting artifacts and extract verses, choruses, and repeated sections using LLM.
-5. Send the extracted lyrics to an AI model with formatting instructions.
-6. Generate ProPresenter-compatible output.
-7. Return the formatted lyrics to the user.
+4. Use an AI model to identify verses, choruses, bridges, and repeated sections while preprocessing the extracted text by removing formatting artifacts and unnecessary whitespace.
+5. Send the structured lyrics to a second AI model to generate ProPresenter-compatible formatting.
+6. Return the formatted lyrics to the user.
 
 #### Sample Output
 ![Output](/images/propresenter-lyrics-formatter/output.png)
@@ -80,13 +69,7 @@ Balancing flexibility with consistent output required multiple iterations of bot
 
 ## Results
 
-The workflow successfully automates a task that would otherwise require manual editing for every song.
-
-Key outcomes include:
-
-* Reduced lyric preparation time from several minutes to a few seconds per song.
-* Consistent formatting across different input files.
-* Support for both PDF and TXT documents.
+This automated workflow saved us **at least 10 minutes per song** from manual formatting, which adds up to **several hours of time saved each month** for our worship team. The AI consistently produced clean, ProPresenter-compatible lyrics, reducing errors and improving the overall quality of our presentations.
 
 ## Lessons Learned
 

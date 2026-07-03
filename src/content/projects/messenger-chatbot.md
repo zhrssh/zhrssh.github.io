@@ -36,16 +36,6 @@ Rather than relying on a single vector search, the workflow decomposes complex q
 The generated answer is then verified before being sent to the user, ensuring responses remain grounded in the retrieved information.
 
 ## Technical Implementation
-
-### Workflow Components
-
-- **n8n** for workflow orchestration
-- **Facebook Graph API** for real-time messaging
-- **Google Gemini** for intent classification, query expansion, answer generation, and verification (it's fast and free!)
-- **PostgreSQL + PGVector** for vector similarity search
-- **Conversation Memory** for maintaining chat context
-- **Structured Output Parsers** for reliable LLM outputs
-
 ### Workflows
 ![Workflow 1](/images/messenger-chatbot/workflow-1.png)
 #### Section 1: Webhook Verification & Intent Classification
