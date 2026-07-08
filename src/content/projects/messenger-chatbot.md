@@ -3,7 +3,7 @@ title: "A Conversational AI with RAG Pipeline for Messenger"
 description: "A smart Messenger chatbot that can converse, answer questions, and provide information using Retrieval-Augmented Generation (RAG)."
 date: 2026-07-01
 tags: ["automation", "n8n", "AI", "RAG"]
-coverImage: "/public/images/messenger-chatbot/cover.png"
+coverImage: "../../assets/projects/messenger-chatbot/cover.png"
 ---
 
 ## Summary
@@ -26,7 +26,7 @@ The goal was to build a chatbot that provides reliable, context-aware answers by
 - Use a multi-stage workflow to improve reliability instead of relying on a single AI response.
 
 ## The Solution
-![Full Workflow](/images/messenger-chatbot/workflow.png)
+![Full Workflow](../../assets/projects/messenger-chatbot/workflow.png)
 The solution is a multi-stage Conversational RAG pipeline orchestrated entirely in n8n.
 
 Every incoming request is first authenticated before the user's intent is classified. General conversations are answered directly using conversation history, while knowledge queries proceed through an enhanced retrieval pipeline.
@@ -37,7 +37,7 @@ The generated answer is then verified before being sent to the user, ensuring re
 
 ## Technical Implementation
 ### Workflows
-![Workflow 1](/images/messenger-chatbot/workflow-1.png)
+![Workflow 1](../../assets/projects/messenger-chatbot/workflow-1.png)
 #### Section 1: Webhook Verification & Intent Classification
 
 Incoming Facebook requests are authenticated using webhook verification and HMAC signature validation before being acknowledged with an HTTP 200 response.
@@ -49,7 +49,7 @@ The workflow retrieves the conversation history and classifies the user's latest
 
 This ensures retrieval is only performed when necessary.
 
-![Workflow 2](/images/messenger-chatbot/workflow-2.png)
+![Workflow 2](../../assets/projects/messenger-chatbot/workflow-2.png)
 #### Section 2: Query Expansion & Retrieval
 
 Knowledge queries undergo several preprocessing steps before searching the vector database.
@@ -64,7 +64,7 @@ The workflow:
 
 This approach significantly improves document recall compared to traditional single-query retrieval.
 
-![Workflow 3](/images/messenger-chatbot/workflow-3.png)
+![Workflow 3](../../assets/projects/messenger-chatbot/workflow-3.png)
 #### Section 3: Answer Generation & Verification
 
 Using the aggregated retrieval context and conversation history, the AI generates an initial response.
@@ -80,7 +80,7 @@ Depending on the verification result, the workflow will:
 This verification layer helps minimize hallucinations while improving response reliability.
 
 ### Examples
-![Example 1](/images/messenger-chatbot/example-1.png)
+![Example 1](../../assets/projects/messenger-chatbot/example-1.png)
 #### Example 1
 
 As shown above, the chatbot can differentiate between general conversations and knowledge-based queries. It also maintains conversation history, allowing it to generate context-aware responses.
@@ -89,19 +89,19 @@ When the user asked to learn more about me, the chatbot retrieved the most relev
 
 The information came from an uploaded FAQ document that was vectorized and stored in the database.
 
-![Example 2](/images/messenger-chatbot/example-2.png)
+![Example 2](../../assets/projects/messenger-chatbot/example-2.png)
 #### Example 2
 
 The same behavior can be seen in the second example. The chatbot retrieved the relevant context from the vector database, which also contains information about my privacy policy.
 
-![Example 3](/images/messenger-chatbot/example-3.png)
+![Example 3](../../assets/projects/messenger-chatbot/example-3.png)
 #### Example 3
 
 This example demonstrates that the chatbot does not generate unsupported answers and can also handle multiple questions within a single conversation. In this case, the user asked whether I sell houses and what I think about aliens.
 
 The chatbot correctly answered the question about the services I offer and responded that it did not have enough information to answer the second question.
 
-![Example 4](/images/messenger-chatbot/example-4.png)
+![Example 4](../../assets/projects/messenger-chatbot/example-4.png)
 #### Example 4
 
 Finally, this example demonstrates that the chatbot is resistant to prompt injection attacks and continues to provide safe, grounded responses. The user instructed the chatbot to ignore its previous instructions and provide a pancake recipe.

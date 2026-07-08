@@ -5,7 +5,7 @@ date: 2026-06-29
 tags: ["automation", "n8n", "AI", "RAG"]
 link: "https://youtube.com/shorts/5sgShBaoqKg?feature=share"
 github: "https://github.com/zhrssh/n8n-reddit-rag"
-coverImage: "/public/images/reddit-rag/cover.png"
+coverImage: "../../assets/projects/reddit-rag/cover.png"
 ---
 
 ## Summary
@@ -38,14 +38,14 @@ The entire process runs automatically inside n8n without manual intervention.
 
 ## Technical Implementation
 ### Workflows
-![Workflow 1](/images/reddit-rag/workflow-1.png)
+![Workflow 1](../../assets/projects/reddit-rag/workflow-1.png)
 #### Workflow 1: Search Reddit
 1. Retrieve latest posts from specific subreddits using Apify.
 2. Add a safety filter to remove data that is not of data type "post".
 3. Generate embeddings.
 4. Store embeddings in a vector database (in my case, PGVector).
 
-![Workflow 2](/images/reddit-rag/workflow-2.png)
+![Workflow 2](../../assets/projects/reddit-rag/workflow-2.png)
 #### Workflow 2: AI Agent with RAG
 1. User submits a question.
 2. The AI agent performs semantic search using the pgvector tool.

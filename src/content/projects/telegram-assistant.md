@@ -4,7 +4,7 @@ description: "A personal assistant for Telegram that remembers user preferences 
 date: 2026-07-03
 tags: ["automation", "n8n", "AI", "RAG"]
 github: "https://free-personal-assistant.onrender.com/?utm_source=portfolio&utm_medium=website&utm_campaign=telegram-assistant"
-coverImage: "/public/images/telegram-assistant/cover.png"
+coverImage: "../../assets/projects/telegram-assistant/cover.png"
 ---
 
 ## Summary
@@ -34,7 +34,7 @@ The bot is created through BotFather, a Telegram bot creation tool. It can be in
 
 ## Technical Implementation
 ### Workflows
-![Workflow](/images/telegram-assistant/workflow.png)
+![Workflow](../../assets/projects/telegram-assistant/workflow.png)
 #### Workflow 1: Personal Assistant Pipeline
 
 1. User sends a message to the Telegram bot.
@@ -48,23 +48,23 @@ The bot is created through BotFather, a Telegram bot creation tool. It can be in
 9. The agent generates a response and sends it back through Telegram.
 
 ### Examples
-![Example 1](/images/telegram-assistant/example-1.jpg)
+![Example 1](../../assets/projects/telegram-assistant/example-1.jpg)
 #### Example 1
 
 In this example, I tested the personal assistant's capability of storing user preferences and retrieving them when needed. The assistant was able to remember my preferences even after creating a new session.
 
-![Example 2](/images/telegram-assistant/example-2.jpg)
+![Example 2](../../assets/projects/telegram-assistant/example-2.jpg)
 #### Example 2
 
 Another example of the personal assistant's capability of storing user preferences and testing it's ability to follow my preferences. The assistant was able to remember that I want it to speak only in a pirate language even after creating a new session.
 
-![Example 3](/images/telegram-assistant/example-3.png)
+![Example 3](../../assets/projects/telegram-assistant/example-3.png)
 #### Example 3
 
-![Example 4](/images/telegram-assistant/example-4.png)
+![Example 4](../../assets/projects/telegram-assistant/example-4.png)
 #### Example 4
 
-![Example 5](/images/telegram-assistant/example-5.png)
+![Example 5](../../assets/projects/telegram-assistant/example-5.png)
 #### Example 5
 
 ## Challenges

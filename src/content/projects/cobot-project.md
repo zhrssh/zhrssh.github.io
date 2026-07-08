@@ -5,7 +5,7 @@ date: 2025-05-24
 tags: ["automation", "robotics", "Arduino", "algorithms", "python", "javascript"]
 link: "https://drive.google.com/file/d/1SfxgZ9-Dukk3jdeS3830_sPrebriNdmp/view?usp=sharing"
 github: "https://github.com/Kinectica"
-coverImage: "/public/images/cobot-project/cover.png"
+coverImage: "../../assets/projects/cobot-project/cover.png"
 ---
 
 <small>_Co-authors: Jerico Delos Reyes Jr.; Miles Joshua Lagao; and, Kevin Roi Sumaya_</small>
@@ -25,27 +25,27 @@ The project aims to design and develop a physical guidance-driven collaborative 
 ## The Solution
 
 The project is a physical guidance-driven collaborative robot that learns tasks through user demonstrations and uses metaheuristic algorithms to optimize motion paths before execution.
-![Cobot Project](/images/cobot-project/cobot.png)
+![Cobot Project](../../assets/projects/cobot-project/cobot.png)
 It features a 3-DOF robotic arm with a gripper, wireless connectivity, and safety features compliant with collaborative robot standards.
-![Cobot UI](/images/cobot-project/ui.png)
+![Cobot UI](../../assets/projects/cobot-project/ui.png)
 A progressive web application enables users to record, manage, visualize, and execute demonstrated tasks, communicate with the robot wirelessly, and perform emergency stops, providing an intuitive interface for efficient and safe robot operation.
 
 ## Technical Implementation
 
-![Cobot Project Illustrative Diagram](/images/cobot-project/diagram-2.png)
+![Cobot Project Illustrative Diagram](../../assets/projects/cobot-project/diagram-2.png)
 The system is a pipeline: a human moves the arm, the path is recorded, an optimizer smooths it, then the arm replays. Four layers feed that pipeline — hardware, recording, optimization, and the interface that ties it all together.
-![Cobot Project Hardware](/images/cobot-project/hardware.png)
-![Cobot Project Hardware Box](/images/cobot-project/hardware-2.png)
+![Cobot Project Hardware](../../assets/projects/cobot-project/hardware.png)
+![Cobot Project Hardware Box](../../assets/projects/cobot-project/hardware-2.png)
 **Hardware.** The arm is 3-DOF and fully 3D-printed alongside with a box that houses the essential components to run it. Three Nema 17 stepper motors drive each joint and a servo motor controls the gripper, with an Arduino handling low-level control and reading the joint feedback using potentiometers. Through serial connectivity, the Arduino controls the CNC shield and carries commands to and from the connected Raspberry Pi 4B.
 
 **Recording the path.** When the user grabs the arm and moves it, the joint positions are sampled at a fixed rate and stored as a sequence of waypoints. The recording is the source of truth that will be optimized by the chosen metaheuristic algorithm.
 
 **The optimizer.** Three metaheuristics were tested against the same recorded paths: Genetic Algorithm, Particle Swarm Optimization, and Biogeography-Based Optimization. The fitness function tried to balance three things, keep the task intact (endpoints and key waypoints), shorten the path, and reduce jerk between segments. Population sizes and generation counts were tuned by hand. GA was the one that consistently landed on a better solution within a reasonable number of iterations.
-![Cobot UI 2](/images/cobot-project/ui-2.png)
+![Cobot UI 2](../../assets/projects/cobot-project/ui-2.png)
 **The PWA.** Browser-based, talks to the Raspberry Pi over WiFi. The user can record, replay the raw path, run the optimized path, or hit an emergency stop. The interface is intentionally simple — the whole point of LfD is that the user shouldn't need to know what's happening under the hood.
 
-![Cobot Project Block Diagram](/images/cobot-project/diagram.jpg)
-![Cobot Project System Architecture](/images/cobot-project/system-architecture.png)
+![Cobot Project Block Diagram](../../assets/projects/cobot-project/diagram.jpg)
+![Cobot Project System Architecture](../../assets/projects/cobot-project/system-architecture.png)
 
 ## Challenges
 
@@ -65,10 +65,10 @@ We encountered many challenges throughout this project. Here are some of the mos
 ## Results
 
 All 20 recorded demonstration paths were successfully optimized, resulting in a 100% task fidelity rate. The robotic arm reproduced the intended motion in every trial, and the optimized paths were consistently shorter and smoother than the original recorded trajectories. In this context, "optimized" means that the execution time was reduced compared to the unoptimized path, and the jerk between consecutive waypoints was lower.
-![Cobot Test 1](/images/cobot-project/test-1.png)
+![Cobot Test 1](../../assets/projects/cobot-project/test-1.png)
 **The first test.** This figure shows one representative run out of 20 trials conducted to verify that the collaborative robot correctly records and executes the raw demonstration path. The first row shows the user demonstration, the second row shows the recorded path visualized in 3D, and the third row shows the robot executing the recorded path.
-![Cobot Test 2](/images/cobot-project/test-2.png)
-**The second test.** This figure shows one representative run out of 20 trials conducted to verify that the recorded path is successfully optimized. The first row compares the path before and after optimization. The second row shows the execution time reported by the application, while the third row shows the actual execution time measured using a stopwatch. The measured times were consistent across both methods.![Cobot Test 3](/images/cobot-project/test-3.png)
+![Cobot Test 2](../../assets/projects/cobot-project/test-2.png)
+**The second test.** This figure shows one representative run out of 20 trials conducted to verify that the recorded path is successfully optimized. The first row compares the path before and after optimization. The second row shows the execution time reported by the application, while the third row shows the actual execution time measured using a stopwatch. The measured times were consistent across both methods.![Cobot Test 3](../../assets/projects/cobot-project/test-3.png)
 **The third test.** This test includes a reference robot from an external source to verify that the collaborative robot can perform the intended task. This figure shows one representative run out of 20 trials evaluating the execution of the optimized path. The first row shows the waypoint-by-waypoint progression of the robot, the second row shows the execution performed by the developed collaborative robot, and the third row shows the execution performed by the reference robot. The results were consistent, demonstrating that the optimized path preserved the intended task while reducing execution time.
 
 ## Lesson Learned

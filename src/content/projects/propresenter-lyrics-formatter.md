@@ -5,7 +5,7 @@ date: 2026-06-21
 tags: ["automation", "n8n", "AI", "document processing"]
 link: "https://youtu.be/HWpGaVl3Gwo"
 github: "https://github.com/zhrssh/n8n-propresenter-lyrics-formatter"
-coverImage: "/public/images/propresenter-lyrics-formatter/cover.png"
+coverImage: "../../assets/projects/propresenter-lyrics-formatter/cover.png"
 ---
 
 ## Summary
@@ -46,7 +46,7 @@ Instead of spending several minutes formatting each song manually, users receive
 
 ## Technical Implementation
 ### Workflows
-![Workflow 1](/images/propresenter-lyrics-formatter/workflow-1.png)
+![Workflow 1](../../assets/projects/propresenter-lyrics-formatter/workflow-1.png)
 #### Workflow 1: Lyrics Formatting Pipeline
 
 1. Receive a PDF or TXT upload.
@@ -57,7 +57,7 @@ Instead of spending several minutes formatting each song manually, users receive
 6. Return the formatted lyrics to the user.
 
 #### Sample Output
-![Output](/images/propresenter-lyrics-formatter/output.png)
+![Output](../../assets/projects/propresenter-lyrics-formatter/output.png)
 
 ## Challenges
 
