@@ -83,6 +83,30 @@ export const SITE_CONFIG = {
         "I design and build automated business workflows that eliminate repetitive, labor-intensive tasks, enabling businesses to save time, reduce operational costs, and operate more efficiently.",
       icon: "🤖",
     },
+    {
+      title: "System Integrations",
+      description:
+        "I connect disparate tools and platforms — CRMs, ERPs, APIs, and databases — so data flows seamlessly across your tech stack, eliminating silos and manual data transfer.",
+      icon: "🔌",
+    },
+    {
+      title: "System Design",
+      description:
+        "I architect end-to-end systems with the right mix of services, data stores, and automation, ensuring your infrastructure is scalable, reliable, and built to support your business as it grows.",
+      icon: "🧩",
+    },
+    {
+      title: "CRM Automation",
+      description:
+        "I automate CRM workflows — lead routing, follow-up sequences, pipeline updates, and data entry — so your sales and support teams can focus on relationships instead of repetitive admin work.",
+      icon: "📇",
+    },
+    {
+      title: "AI Implementation",
+      description:
+        "I integrate LLMs, embeddings, and machine learning models into your business processes — from chatbots and intelligent classification to retrieval-augmented generation and predictive workflows.",
+      icon: "✨",
+    },
   ],
   education: [
     {
