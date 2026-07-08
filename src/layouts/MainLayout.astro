@@ -205,6 +205,11 @@ const brand = SITE_CONFIG.title.split(' ').slice(0, 2).join(' ');
       <p class="footer-copyright">&copy; {new Date().getFullYear()} {SITE_CONFIG.title}. All rights reserved.</p>
     </footer>
 
+    <div class="lightbox-overlay" id="lightbox" tabindex="-1" role="dialog" aria-modal="true" aria-label="Image viewer">
+      <img src="" alt="" />
+      <span class="lightbox-caption"></span>
+    </div>
+
     <style>
       .site-footer {
         background-color: var(--bg);
@@ -365,6 +370,54 @@ const brand = SITE_CONFIG.title.split(' ').slice(0, 2).join(' ');
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && mobileDrawer?.classList.contains("active")) {
           toggleMenu();
+        }
+      });
+
+      // Lightbox for in-body content images
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = lightbox?.querySelector("img") as HTMLImageElement | null;
+      const lightboxCaption = lightbox?.querySelector(".lightbox-caption") as HTMLElement | null;
+      let activeImage: HTMLImageElement | null = null;
+
+      const closeLightbox = () => {
+        if (!lightbox) return;
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "";
+        activeImage?.focus();
+        activeImage = null;
+      };
+
+      const openLightbox = (img: HTMLImageElement) => {
+        if (!lightbox || !lightboxImg) return;
+        activeImage = img;
+        lightboxImg.src = img.currentSrc || img.src;
+        lightboxImg.alt = img.alt;
+        if (lightboxCaption) lightboxCaption.textContent = img.alt;
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+        lightbox.focus();
+      };
+
+      document.querySelectorAll(".post-content img").forEach((img) => {
+        const el = img as HTMLImageElement;
+        el.style.cursor = "zoom-in";
+        el.setAttribute("tabindex", "0");
+        el.setAttribute("role", "button");
+        el.setAttribute("aria-label", el.alt ? `Zoom: ${el.alt}` : "Zoom image");
+        el.addEventListener("click", () => openLightbox(el));
+        el.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openLightbox(el);
+          }
+        });
+      });
+
+      lightbox?.addEventListener("click", closeLightbox);
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && lightbox?.classList.contains("active")) {
+          closeLightbox();
         }
       });
     </script>
