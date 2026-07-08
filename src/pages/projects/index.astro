@@ -41,7 +41,7 @@ const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
             <a href={`/projects/${project.id}`} class="project-link">
               {project.data.coverImage && (
                 <div class="project-image">
-                  <Image src={project.data.coverImage} alt={project.data.title} width={600} height={375} loading="lazy" />
+                  <Image src={project.data.coverImage} alt={project.data.title} width={1200} height={675} widths={[360, 600, 900, 1200]} sizes="(max-width: 768px) 100vw, 380px" quality={90} loading="lazy" />
                 </div>
               )}
               <div class="project-content">
@@ -162,7 +162,7 @@ const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
     }
 
     .project-image {
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 16 / 9;
       overflow: hidden;
       background-color: var(--bg-secondary);
     }

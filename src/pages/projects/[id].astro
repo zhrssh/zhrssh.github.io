@@ -53,7 +53,7 @@ const readingTime = getReadingTime(entry.body || "");
 
     {entry.data.coverImage && (
       <div class="post-cover">
-        <Image src={entry.data.coverImage} alt={entry.data.title} width={720} height={405} />
+        <Image src={entry.data.coverImage} alt={entry.data.title} width={1440} height={810} widths={[480, 720, 1080, 1440]} sizes="(max-width: 768px) 100vw, 680px" quality={90} />
       </div>
     )}
 
