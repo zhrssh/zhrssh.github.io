@@ -2,7 +2,7 @@
 title: "Personal Assistant for Telegram with Long-term Memory"
 description: "A personal assistant for Telegram that remembers user preferences and generates personalized responses."
 date: 2026-07-03
-tags: ["automation", "n8n", "AI", "RAG"]
+tags: ["AI", "RAG", "Agentic", "n8n", "Automation"]
 github: "https://free-personal-assistant.onrender.com/?utm_source=portfolio&utm_medium=website&utm_campaign=telegram-assistant"
 coverImage: "../../assets/projects/telegram-assistant/cover.png"
 ---

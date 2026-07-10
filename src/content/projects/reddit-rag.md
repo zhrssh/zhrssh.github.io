@@ -2,7 +2,7 @@
 title: "Smart Reddit Search (RAG)"
 description: "A smart reddit agentic AI built using n8n that searches for specific posts from a vector store."
 date: 2026-06-29
-tags: ["automation", "n8n", "AI", "RAG"]
+tags: ["AI", "RAG", "n8n", "Automation"]
 link: "https://youtube.com/shorts/5sgShBaoqKg?feature=share"
 github: "https://github.com/zhrssh/n8n-reddit-rag"
 coverImage: "../../assets/projects/reddit-rag/cover.png"

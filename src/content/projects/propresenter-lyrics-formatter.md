@@ -2,7 +2,7 @@
 title: "PDF/TXT File to ProPresenter-compatible Lyrics Formatter"
 description: "A smart AI-powered document processing system that converts PDF/TXT files containing lyrics into ProPresenter-compatible lyrics."
 date: 2026-06-21
-tags: ["automation", "n8n", "AI", "document processing"]
+tags: ["AI", "Document Processing", "n8n", "Automation"]
 link: "https://youtu.be/HWpGaVl3Gwo"
 github: "https://github.com/zhrssh/n8n-propresenter-lyrics-formatter"
 coverImage: "../../assets/projects/propresenter-lyrics-formatter/cover.png"
