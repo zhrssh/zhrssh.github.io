@@ -8,7 +8,7 @@ import me from "../assets/me.jpg";
 const projects = await getCollection("projects");
 const featuredProjects = projects
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
+  .slice(0, 9);
 const projectCols = Math.min(featuredProjects.length, 3);
 ---
 

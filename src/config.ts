@@ -78,34 +78,22 @@ export const SITE_CONFIG = {
   ],
   services: [
     {
-      title: "Automation",
+      title: "AI Automation",
       description:
-        "I design and build automated business workflows that eliminate repetitive, labor-intensive tasks, enabling businesses to save time, reduce operational costs, and operate more efficiently.",
+        "Replace repetitive business processes with intelligent AI workflows that work 24/7, reduce manual effort, and scale with your business.",
       icon: "🤖",
     },
     {
-      title: "System Integrations",
+      title: "Business System Integration",
       description:
-        "I connect disparate tools and platforms — CRMs, ERPs, APIs, and databases — so data flows seamlessly across your tech stack, eliminating silos and manual data transfer.",
+        "Connect your business tools into a single automated ecosystem, ensuring data stays synchronized across every platform.",
       icon: "🔌",
     },
     {
-      title: "System Design",
+      title: "Sales & Operations Automation",
       description:
-        "I architect end-to-end systems with the right mix of services, data stores, and automation, ensuring your infrastructure is scalable, reliable, and built to support your business as it grows.",
-      icon: "🧩",
-    },
-    {
-      title: "CRM Automation",
-      description:
-        "I automate CRM workflows — lead routing, follow-up sequences, pipeline updates, and data entry — so your sales and support teams can focus on relationships instead of repetitive admin work.",
+        "Automate your customer journey from lead capture to onboarding with intelligent workflows that keep your pipeline moving.",
       icon: "📇",
-    },
-    {
-      title: "AI Implementation",
-      description:
-        "I integrate LLMs, embeddings, and machine learning models into your business processes — from chatbots and intelligent classification to retrieval-augmented generation and predictive workflows.",
-      icon: "✨",
     },
   ],
   education: [
