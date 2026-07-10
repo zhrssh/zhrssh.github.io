@@ -87,6 +87,12 @@ const projectCols = Math.min(featuredProjects.length, 3);
     </div>
   </section>
 
+  <section class="section cta-card">
+    <h2>Let's Work Together</h2>
+    <p>Have a project in mind, a question, or just want to connect? I'd love to hear from you.</p>
+    <a href="/contact" class="button">Get in Touch</a>
+  </section>
+
   <style>
     .hero {
       padding: var(--space-3xl) 0;
@@ -325,6 +331,27 @@ const projectCols = Math.min(featuredProjects.length, 3);
       color: var(--text-muted);
       padding: var(--space-3xl);
       grid-column: 1 / -1;
+    }
+
+    .cta-card {
+      padding: var(--space-3xl) var(--space-2xl);
+      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--border);
+      border-top: 2px solid var(--accent);
+      background-color: var(--bg);
+      text-align: center;
+    }
+
+    .cta-card h2 {
+      margin: 0 0 var(--space-md);
+    }
+
+    .cta-card p {
+      color: var(--text-secondary);
+      font-size: var(--text-lg);
+      max-width: 540px;
+      margin: 0 auto var(--space-xl);
+      line-height: 1.6;
     }
 
     @media (max-width: 768px) {
