@@ -15,6 +15,8 @@ tags: [
 coverImage: "../../assets/projects/spa-email-outreach/cover.png"
 ---
 
+https://www.loom.com/share/faa4ed5be576449a86da9808f2319b50
+
 ## Summary
 
 This project automates the end-to-end cold email outreach process for spa businesses. It retrieves leads from a database. Then, it uses AI to generate personalized email subjects and messages tailored to each business. It also includes a human approval step through Telegram before sending any email. Once approved, another AI converts the email into HTML and delivers it to the lead. After that, it updates the lead's status, and the process repeats for every lead. This reduces manual effort while maintaining personalized, high-quality outreach.
