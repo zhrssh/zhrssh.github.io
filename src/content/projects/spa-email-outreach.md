@@ -22,9 +22,9 @@ This project automates the end-to-end cold email outreach process for spa busine
 
 ## The Problem
 
-Sending personalized cold emails manually is repetitive and time-consuming. For every lead, I had to review the business, generate a personalized subject and email using AI, copy the subject and body into my email client, add my Loom demo video link, proofread everything, and send the email.
+Sending personalized cold emails manually was repetitive and time-consuming. For every lead, I had to copy a previous email, review my research notes in Notion, generate a personalized email using AI, regenerate it if it didn't match my writing style, copy the subject and body into my email client, add my Loom demo video link, proofread everything, and finally send the email.
 
-This process took 5 to 7 minutes per lead, making it difficult to scale outreach. As the number of leads grew, the manual effort became a bottleneck, reducing productivity and increasing the likelihood of mistakes such as copying the wrong content or missing important details.
+This process took 5 to 7 minutes per lead, making it difficult to scale outreach. As the number of leads grew, the manual work became a bottleneck. I was spending more time copying, pasting, and refining AI-generated emails than actually reaching out to prospects, while also increasing the risk of mistakes such as using the wrong content or overlooking important details.
 
 ## Project Objectives
 
