@@ -13,7 +13,6 @@ tags: [
   "Workflow Automation"
 ]
 coverImage: "../../assets/projects/spa-email-outreach/cover.png"
-link: "https://www.loom.com/share/577ab90414ca45ada1dc5a6f82f116d7"
 ---
 
 ## Summary
