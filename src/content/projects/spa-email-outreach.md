@@ -12,6 +12,7 @@ tags: [
   "Prompt Engineering",
   "Workflow Automation"
 ]
+impact: "Cuts email prep from 6 minutes to a quick approval"
 coverImage: "../../assets/projects/spa-email-outreach/cover.png"
 ---
 

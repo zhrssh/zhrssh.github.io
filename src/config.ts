@@ -21,6 +21,14 @@ export const SITE_CONFIG = {
   resumeUrl: "/zherishgalvinmayordo-cv.pdf",
   experience: [
     {
+      role: "Trading Algorithm Programmer",
+      company: "Robin Ho",
+      duration: "Jul. 2026 - Present",
+      description: [
+        "Developing trading algorithms to help traders position themselves in the market.",
+      ],
+    },
+    {
       role: "AI Automation Specialist",
       company: "Freelance",
       duration: "Jun. 2026 - Present",
@@ -79,20 +87,40 @@ export const SITE_CONFIG = {
     {
       title: "AI Automation",
       description:
-        "Replace repetitive business processes with intelligent AI workflows that work 24/7, reduce manual effort, and scale with your business.",
+        "Still doing repetitive tasks by hand? I build AI workflows that run them for you — 24/7, error-free, and ready to scale with your business.",
       icon: "🤖",
     },
     {
       title: "Business System Integration",
       description:
-        "Connect your business tools into a single automated ecosystem, ensuring data stays synchronized across every platform.",
+        "Tools that don't talk to each other create busywork and mistakes. I connect your stack into one automated system where data stays in sync everywhere.",
       icon: "🔌",
     },
     {
       title: "Sales & Operations Automation",
       description:
-        "Automate your customer journey from lead capture to onboarding with intelligent workflows that keep your pipeline moving.",
+        "Leads falling through the cracks? I automate your pipeline from first contact to onboarding, so nothing — and no one — gets missed.",
       icon: "📇",
+    },
+  ],
+  process: [
+    {
+      number: "1",
+      title: "Discovery Call",
+      description:
+        "We talk through what's eating your time or costing you leads. No jargon, no obligation.",
+    },
+    {
+      number: "2",
+      title: "Build & Test",
+      description:
+        "I design and build the automation, test it against real scenarios, and share progress via short Loom walkthroughs.",
+    },
+    {
+      number: "3",
+      title: "Launch & Support",
+      description:
+        "You get a working system, a walkthrough of how it runs, and support after launch to keep it running.",
     },
   ],
   education: [

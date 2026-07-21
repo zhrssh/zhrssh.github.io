@@ -3,6 +3,7 @@ title: "A Conversational AI with RAG Pipeline for Messenger"
 description: "A smart Messenger chatbot that can converse, answer questions, and provide information using Retrieval-Augmented Generation (RAG)."
 date: 2026-07-01
 tags: ["AI", "LLM", "RAG", "Chatbot", "n8n", "Automation"]
+impact: "Fewer hallucinated answers via validated retrieval"
 coverImage: "../../assets/projects/messenger-chatbot/cover.png"
 ---
 
