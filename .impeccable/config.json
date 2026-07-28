@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "space grotesk",
+        "createdAt": "2026-07-28T06:54:24.260Z",
+        "reason": "User confirmed Space Grotesk as Inter replacement in design-evolution-v2 issue 09 triage"
+      }
+    ]
+  }
+}
