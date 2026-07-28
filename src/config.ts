@@ -1,6 +1,7 @@
 export const SITE_CONFIG = {
   title: "Zherish Galvin Mayordo",
-  description: "A showcase of my projects and blog posts.",
+  description:
+    "AI automation and workflow engineering for service businesses — I build systems that save time, cut costs, and scale with your growth.",
   email: "zherishatbusiness@gmail.com",
   phone: "+639957288817",
   socials: {
@@ -89,19 +90,19 @@ export const SITE_CONFIG = {
       title: "AI Automation",
       description:
         "Still doing repetitive tasks by hand? I build AI workflows that run them for you — 24/7, error-free, and ready to scale with your business.",
-      icon: "🤖",
+      icon: "ai-automation" as const,
     },
     {
       title: "Business System Integration",
       description:
         "Tools that don't talk to each other create busywork and mistakes. I connect your stack into one automated system where data stays in sync everywhere.",
-      icon: "🔌",
+      icon: "integration" as const,
     },
     {
       title: "Sales & Operations Automation",
       description:
         "Leads falling through the cracks? I automate your pipeline from first contact to onboarding, so nothing — and no one — gets missed.",
-      icon: "📇",
+      icon: "sales-automation" as const,
     },
   ],
   process: [

@@ -1,0 +1,39 @@
+---
+import Icon from "./Icon.astro";
+import type { IconName } from "../lib/icons";
+
+interface Props {
+  href: string;
+  icon: IconName;
+  label: string;
+  external?: boolean;
+}
+
+const { href, icon, label, external = false } = Astro.props;
+---
+
+<a href={href} class="link-pill" target={external ? "_blank" : undefined} rel={external ? "noopener noreferrer" : undefined}>
+  <Icon name={icon} size={16} />
+  {label}
+</a>
+
+<style>
+  .link-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    transition: color var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .link-pill:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+</style>

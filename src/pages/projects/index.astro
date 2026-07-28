@@ -1,75 +1,78 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
+import Section from "../../components/Section.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import Icon from "../../components/Icon.astro";
 import { getCollection } from "astro:content";
-import { Image } from "astro:assets";
-import { getReadingTime } from "../../utils/readingTime";
 
-const allProjects = await getCollection("projects");
+const allProjects = (await getCollection("projects")).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
 const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
 ---
 
-<MainLayout title="Projects">
-  <div class="page-header">
-    <span class="eyebrow">Work</span>
-    <h1>Projects</h1>
-    <hr class="rule" />
-    <p class="page-description">A collection of things I've built and experimented with.</p>
-  </div>
-
-  <section class="controls">
-    <div class="search-wrapper">
-      <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-      <input type="text" id="search-input" placeholder="Search projects..." />
+<MainLayout
+  title="Projects"
+  description="Case studies in AI automation, workflow engineering, and business system integration — real projects with measurable results.">
+  <Section class="page-header-section">
+    <div class="page-header">
+      <span class="eyebrow">Work</span>
+      <h1>Projects</h1>
+      <hr class="rule" />
+      <p class="page-description">
+        A collection of things I've built and experimented with.
+      </p>
     </div>
-    <select id="tag-filter">
-      <option value="all">All Tags</option>
-      {allTags.map((tag) => <option value={tag}>{tag}</option>)}
-    </select>
-    <select id="sort-select">
-      <option value="newest">Newest First</option>
-      <option value="oldest">Oldest First</option>
-      <option value="title">Alphabetical</option>
-    </select>
-  </section>
+  </Section>
 
-  <ul class="project-list" id="projects-list">
-    {
-      allProjects
-        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-        .map((project) => (
-          <li class="project-card" data-tags={project.data.tags.join(" ")} data-title={project.data.title} data-date={project.data.date.getTime()}>
-            <a href={`/projects/${project.id}`} class="project-link">
-              {project.data.coverImage && (
-                <div class="project-image">
-                  <Image src={project.data.coverImage} alt={project.data.title} width={1200} height={675} widths={[360, 600, 900, 1200]} sizes="(max-width: 768px) 100vw, 380px" quality={90} loading="lazy" />
-                </div>
-              )}
-              <div class="project-content">
-                <div class="project-meta">
-                  <time datetime={project.data.date.toISOString()}>
-                    {project.data.date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
-                  </time>
-                  <span class="meta-dot">•</span>
-                  <span>{getReadingTime(project.body || "")} min read</span>
-                </div>
-                {project.data.impact && <span class="project-impact">{project.data.impact}</span>}
-                <h3>{project.data.title}</h3>
-                <p>{project.data.description}</p>
-                <div class="project-tags">
-                  {project.data.tags.map((tag) => <span>{tag}</span>)}
-                </div>
-              </div>
-            </a>
+  <div class="container">
+    <section class="controls">
+      <div class="search-wrapper">
+        <Icon name="search" size={18} class="search-icon" />
+        <input type="text" id="search-input" placeholder="Search projects..." />
+      </div>
+      <select id="tag-filter">
+        <option value="all">All Tags</option>
+        {allTags.map((tag) => <option value={tag}>{tag}</option>)}
+      </select>
+      <select id="sort-select">
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="title">Alphabetical</option>
+      </select>
+    </section>
+
+    <ul class="project-list" id="projects-list">
+      {
+        allProjects.map((project, index) => (
+          <li
+            class:list={[
+              "project-item",
+              index === 0 && "project-item-featured",
+            ]}
+            data-tags={project.data.tags.join(" ")}
+            data-title={project.data.title}
+            data-description={project.data.description}
+            data-date={project.data.date.getTime()}>
+            <ProjectCard
+              project={project}
+              variant={index === 0 ? "featured" : "compact"}
+              showMeta
+            />
           </li>
         ))
-    }
-  </ul>
+      }
+    </ul>
+
+    <div class="empty-state" id="empty-state" hidden>
+      <p>No projects match your filters.</p>
+      <button type="button" id="clear-filters" class="button button-secondary"
+        >Clear filters</button
+      >
+    </div>
+  </div>
 
   <style>
-    .page-header {
-      margin-bottom: var(--space-2xl);
-    }
-
     .page-header h1 {
       margin: 0 0 0;
     }
@@ -85,10 +88,9 @@ const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
       display: flex;
       gap: var(--space-md);
       flex-wrap: wrap;
-      padding: var(--space-md);
-      background-color: var(--bg);
+      padding: var(--space-md) var(--space-lg);
+      background-color: var(--surface-raised);
       border-radius: var(--border-radius);
-      border: 1px solid var(--border);
     }
 
     .search-wrapper {
@@ -106,7 +108,8 @@ const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
       pointer-events: none;
     }
 
-    input, select {
+    input,
+    select {
       padding: 0.375rem var(--space-md);
       border: 1px solid var(--border);
       border-radius: var(--border-radius);
@@ -121,7 +124,8 @@ const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
       padding-left: var(--space-2xl);
     }
 
-    input:focus, select:focus {
+    input:focus,
+    select:focus {
       outline: none;
       border-color: var(--accent);
     }
@@ -141,100 +145,45 @@ const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
       margin: 0;
     }
 
-    .project-card {
-      border-radius: var(--border-radius-lg);
-      overflow: hidden;
-      background-color: var(--bg);
-      border: 1px solid var(--border);
-      border-top: 2px solid var(--accent);
-      transition: border-color var(--transition-fast);
-    }
-
-    .project-card:hover {
-      border-color: var(--border-hover);
-      border-top-color: var(--accent);
-    }
-
-    .project-link {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      height: 100%;
-    }
-
-    .project-image {
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      background-color: var(--bg-secondary);
-    }
-
-    .project-image :global(img) {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .project-item {
       display: block;
     }
 
-    .project-content {
-      padding: var(--space-lg);
+    .project-list[hidden] {
+      display: none;
     }
 
-    .project-meta {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      font-size: var(--text-xs);
+    .empty-state {
+      display: none;
+      text-align: center;
+      padding: var(--space-3xl) var(--space-xl);
       color: var(--text-muted);
-      margin-bottom: var(--space-sm);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
     }
 
-    .meta-dot {
-      color: var(--border);
-    }
-
-    .project-impact {
-      display: block;
-      color: var(--accent);
-      font-size: var(--text-xs);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: var(--space-xs);
-    }
-
-    .project-content h3 {
-      margin: 0 0 var(--space-sm);
-      font-size: var(--text-lg);
-      line-height: 1.3;
-      transition: color var(--transition-fast);
-    }
-
-    .project-card:hover .project-content h3 {
-      color: var(--accent);
-    }
-
-    .project-content p {
-      margin: 0 0 var(--space-md);
-      color: var(--text-secondary);
-      font-size: var(--text-sm);
-      line-height: 1.6;
-    }
-
-    .project-tags {
+    .empty-state:not([hidden]) {
       display: flex;
-      gap: var(--space-sm);
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-lg);
     }
 
-    .project-tags span {
-      font-size: var(--text-xs);
-      padding: 0.125rem 0.5rem;
-      border: 1px solid var(--border);
-      border-radius: var(--border-radius);
-      color: var(--text-secondary);
-      background-color: transparent;
+    .empty-state p {
+      margin: 0;
+      font-size: var(--text-lg);
+    }
+
+    @media (min-width: 1024px) {
+      .project-item-featured {
+        grid-column: span 2;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .controls {
+        position: sticky;
+        top: var(--header-height, 65px);
+        z-index: 900;
+      }
     }
 
     @media (max-width: 768px) {
@@ -253,38 +202,96 @@ const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
   </style>
 
   <script>
-    const searchInput = document.getElementById("search-input") as HTMLInputElement;
-    const tagFilter = document.getElementById("tag-filter") as HTMLSelectElement;
-    const sortSelect = document.getElementById("sort-select") as HTMLSelectElement;
-    const projectList = document.getElementById("projects-list") as HTMLUListElement;
-    let projectCards = Array.from(document.querySelectorAll(".project-card")) as HTMLElement[];
+    const searchInput = document.getElementById(
+      "search-input",
+    ) as HTMLInputElement;
+    const tagFilter = document.getElementById(
+      "tag-filter",
+    ) as HTMLSelectElement;
+    const sortSelect = document.getElementById(
+      "sort-select",
+    ) as HTMLSelectElement;
+    const projectList = document.getElementById(
+      "projects-list",
+    ) as HTMLUListElement;
+    const emptyState = document.getElementById("empty-state") as HTMLElement;
+    const clearFiltersBtn = document.getElementById(
+      "clear-filters",
+    ) as HTMLButtonElement;
+    const projectItems = Array.from(
+      document.querySelectorAll(".project-item"),
+    ) as HTMLElement[];
 
     function updateView() {
-      const searchTerm = searchInput.value.toLowerCase();
+      const searchTerm = searchInput.value.trim().toLowerCase();
       const selectedTag = tagFilter.value;
       const sortBy = sortSelect.value;
 
-      let filtered = projectCards.filter((card) => {
-        const title = card.getAttribute("data-title")!.toLowerCase();
-        const tags = card.getAttribute("data-tags")!;
-        const matchesSearch = title.includes(searchTerm);
-        const matchesTag = selectedTag === "all" || tags.split(" ").includes(selectedTag);
+      let filtered = projectItems.filter((item) => {
+        const title = item.getAttribute("data-title")!.toLowerCase();
+        const description = item
+          .getAttribute("data-description")!
+          .toLowerCase();
+        const tags = item.getAttribute("data-tags")!.toLowerCase();
+        const matchesSearch =
+          !searchTerm ||
+          title.includes(searchTerm) ||
+          description.includes(searchTerm) ||
+          tags.includes(searchTerm);
+        const matchesTag =
+          selectedTag === "all" ||
+          item.getAttribute("data-tags")!.split(" ").includes(selectedTag);
         return matchesSearch && matchesTag;
       });
 
       filtered.sort((a, b) => {
-        if (sortBy === "newest") return parseInt(b.getAttribute("data-date")!) - parseInt(a.getAttribute("data-date")!);
-        if (sortBy === "oldest") return parseInt(a.getAttribute("data-date")!) - parseInt(b.getAttribute("data-date")!);
-        if (sortBy === "title") return a.getAttribute("data-title")!.localeCompare(b.getAttribute("data-title")!);
+        if (sortBy === "newest")
+          return (
+            parseInt(b.getAttribute("data-date")!) -
+            parseInt(a.getAttribute("data-date")!)
+          );
+        if (sortBy === "oldest")
+          return (
+            parseInt(a.getAttribute("data-date")!) -
+            parseInt(b.getAttribute("data-date")!)
+          );
+        if (sortBy === "title")
+          return a
+            .getAttribute("data-title")!
+            .localeCompare(b.getAttribute("data-title")!);
         return 0;
       });
 
       projectList.innerHTML = "";
-      filtered.forEach((card) => projectList.appendChild(card));
+      filtered.forEach((item) => projectList.appendChild(item));
+
+      const hasResults = filtered.length > 0;
+      projectList.hidden = !hasResults;
+      emptyState.hidden = hasResults;
+    }
+
+    function updateHeaderHeightVar() {
+      const header = document.querySelector(
+        ".site-header",
+      ) as HTMLElement | null;
+      if (header) {
+        document.documentElement.style.setProperty(
+          "--header-height",
+          `${header.offsetHeight}px`,
+        );
+      }
     }
 
     searchInput.addEventListener("input", updateView);
     tagFilter.addEventListener("change", updateView);
     sortSelect.addEventListener("change", updateView);
+    clearFiltersBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      tagFilter.value = "all";
+      updateView();
+    });
+
+    updateHeaderHeightVar();
+    window.addEventListener("resize", updateHeaderHeightVar);
   </script>
 </MainLayout>

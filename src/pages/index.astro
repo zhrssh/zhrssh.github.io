@@ -2,6 +2,10 @@
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import MainLayout from "../layouts/MainLayout.astro";
+import Section from "../components/Section.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import ProofStrip from "../components/ProofStrip.astro";
+import Icon from "../components/Icon.astro";
 import { SITE_CONFIG } from "../config";
 import me from "../assets/me.jpg";
 
@@ -12,37 +16,45 @@ const featuredProjects = projects
 const projectCols = Math.min(featuredProjects.length, 3);
 ---
 
-<MainLayout title="Home">
-  <section class="hero">
-    <div class="hero-content">
-      <span class="eyebrow">Available for work</span>
-      <h1>Hi, I'm Zherish</h1>
-      <hr class="accent-rule" />
-      <p class="hero-tagline">
-      I build AI-powered automations that fix the manual bottlenecks<br>quietly costing your business time and money.
-      </p>
-      <div class="hero-cta">
-        <a href="/projects" class="button">View My Work</a>
-        <a href="/zherishgalvinmayordo-cv.pdf" class="button button-secondary" download>Download CV</a>
+<MainLayout
+  title="Home"
+  description="AI automation and workflow engineering for service businesses — n8n builds that save hours, cut errors, and free up your team every week."
+>
+  <Section class="hero-section">
+    <div class="hero">
+      <div class="hero-content">
+        <span class="eyebrow eyebrow-live">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          Available for work
+        </span>
+        <h1>Automations that give your team its week back.</h1>
+        <hr class="accent-rule" />
+        <p class="hero-tagline">
+          I'm Zherish — I build AI-powered workflows for service businesses, so the manual bottlenecks stop costing you time and money.
+        </p>
+        <div class="hero-cta">
+          <a href={SITE_CONFIG.bookingUrl} class="button">Book a call</a>
+          <a href="/projects" class="button button-secondary">View my work</a>
+          <a href={SITE_CONFIG.resumeUrl} class="hero-tertiary" download>Download CV →</a>
+        </div>
+      </div>
+      <div class="hero-portrait">
+        <div class="hero-img-frame">
+          <Image src={me} alt="Zherish Galvin Mayordo" width={640} height={640} loading="eager" />
+        </div>
       </div>
     </div>
-    <div class="hero-portrait">
-      <div class="hero-img-frame">
-        <Image src={me} alt="Zherish Galvin Mayordo" width={640} height={640} loading="eager" />
-      </div>
-    </div>
-  </section>
+  </Section>
 
-  <section class="section">
-    <div class="section-header">
-      <span class="eyebrow">What I offer</span>
-      <h2>My Services</h2>
-      <hr class="rule" />
-    </div>
+  <Section surface="raised" eyebrow="Proof" title="Results, not promises">
+    <ProofStrip projects={projects} />
+  </Section>
+
+  <Section eyebrow="What I offer" title="My Services">
     <div class="services-list">
       {SITE_CONFIG.services.map((service) => (
         <div class="service-row">
-          <div class="service-icon">{service.icon}</div>
+          <Icon name={service.icon} size={28} class="service-icon" />
           <div class="service-body">
             <h3>{service.title}</h3>
             <p>{service.description}</p>
@@ -50,72 +62,42 @@ const projectCols = Math.min(featuredProjects.length, 3);
         </div>
       ))}
     </div>
-  </section>
+  </Section>
 
-  <section class="section">
-    <div class="section-header">
-      <span class="eyebrow">How it works</span>
-      <h2>How We'd Work Together</h2>
-      <hr class="rule" />
-    </div>
-    <div class="services-list">
+  <Section surface="raised" eyebrow="How it works" title="How We'd Work Together" class="process-section">
+    <div class="process-list">
       {SITE_CONFIG.process.map((step) => (
-        <div class="service-row">
-          <div class="service-icon service-step">{step.number}</div>
-          <div class="service-body">
+        <div class="process-row">
+          <span class="process-number">{step.number}</span>
+          <div class="process-body">
             <h3>{step.title}</h3>
             <p>{step.description}</p>
           </div>
         </div>
       ))}
     </div>
-  </section>
+  </Section>
 
-  <section class="section">
-    <div class="section-header">
-      <span class="eyebrow">Latest work</span>
-      <h2>Projects</h2>
-      <hr class="rule" />
-      <a href="/projects" class="section-link">View all →</a>
-    </div>
+  <Section eyebrow="Latest work" title="Projects" link={{ href: "/projects", label: "View all →" }} class="projects-section">
     <div class="projects-grid" data-cols={projectCols}>
       {
         featuredProjects.length > 0 ? (
-          featuredProjects.map((project) => (
-            <article class="project-card">
-              <a href={`/projects/${project.id}`} class="project-link">
-                {project.data.coverImage && (
-                  <div class="project-image">
-                    <Image src={project.data.coverImage} alt={project.data.title} width={1200} height={675} widths={[360, 600, 900, 1200]} sizes="(max-width: 768px) 100vw, 380px" quality={90} loading="lazy" />
-                  </div>
-                )}
-                <div class="project-content">
-                  <div class="project-tags">
-                    {project.data.tags.slice(0, 3).map((tag) => <span>{tag}</span>)}
-                  </div>
-                  {project.data.impact && <span class="project-impact">{project.data.impact}</span>}
-                  <h3>{project.data.title}</h3>
-                  <p>{project.data.description}</p>
-                </div>
-              </a>
-            </article>
-          ))
+          featuredProjects.map((project) => <ProjectCard project={project} />)
         ) : (
           <p class="empty-state">No projects yet. Check back soon!</p>
         )
       }
     </div>
-  </section>
+  </Section>
 
-  <section class="section cta-card">
+  <Section surface="inverse" class="cta-section">
     <h2>Let's Fix What's Slowing You Down</h2>
     <p>Tell me what's eating your time — I'll reply within a day or two with how I'd automate it.</p>
-    <a href="/contact" class="button">Get in Touch</a>
-  </section>
+    <a href={SITE_CONFIG.bookingUrl} class="button button-accent">Get in Touch</a>
+  </Section>
 
   <style>
     .hero {
-      padding: var(--space-3xl) 0;
       display: flex;
       gap: var(--space-2xl);
       align-items: center;
@@ -125,6 +107,42 @@ const projectCols = Math.min(featuredProjects.length, 3);
     .hero-content {
       max-width: 720px;
       text-align: left;
+    }
+
+    .eyebrow-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+
+    .pulse-dot {
+      position: relative;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .pulse-dot::after {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      opacity: 0.5;
+      animation: pulse-ring 2s ease-out infinite;
+    }
+
+    @keyframes pulse-ring {
+      0% {
+        transform: scale(0.6);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(1.8);
+        opacity: 0;
+      }
     }
 
     .hero-portrait {
@@ -178,9 +196,8 @@ const projectCols = Math.min(featuredProjects.length, 3);
     }
 
     .hero h1 {
-      font-size: var(--text-4xl);
+      max-width: 18ch;
       margin: 0 0 0;
-      color: var(--text-primary);
     }
 
     .hero-tagline {
@@ -188,39 +205,26 @@ const projectCols = Math.min(featuredProjects.length, 3);
       color: var(--text-secondary);
       margin: 0 0 var(--space-xl);
       line-height: 1.6;
+      max-width: 52ch;
     }
 
     .hero-cta {
       display: flex;
       gap: var(--space-md);
+      align-items: center;
       justify-content: flex-start;
       flex-wrap: wrap;
     }
 
-    .section {
-      margin-top: var(--space-3xl);
-    }
-
-    .section-header {
-      margin-bottom: var(--space-xl);
-    }
-
-    .section-header h2 {
-      margin: 0 0 0;
-    }
-
-    .section-link {
-      display: inline-block;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
+    .hero-tertiary {
+      color: var(--text-muted);
       font-size: var(--text-sm);
+      text-decoration: none;
       transition: color var(--transition-fast);
-      margin-top: var(--space-sm);
     }
 
-    .section-link:hover {
-      color: var(--accent-hover);
+    .hero-tertiary:hover {
+      color: var(--accent);
     }
 
     .services-list {
@@ -247,15 +251,8 @@ const projectCols = Math.min(featuredProjects.length, 3);
     }
 
     .service-icon {
-      font-size: 2.5rem;
-      flex-shrink: 0;
-      line-height: 1;
-    }
-
-    .service-step {
       color: var(--accent);
-      font-weight: 600;
-      font-family: var(--font-mono);
+      flex-shrink: 0;
     }
 
     .service-body h3 {
@@ -270,6 +267,46 @@ const projectCols = Math.min(featuredProjects.length, 3);
       line-height: 1.6;
     }
 
+    .process-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
+
+    .process-row {
+      display: flex;
+      gap: var(--space-xl);
+      align-items: baseline;
+      padding-block: var(--space-lg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .process-row:last-child {
+      border-bottom: none;
+    }
+
+    .process-number {
+      font-family: var(--font-mono);
+      font-size: var(--text-3xl);
+      font-weight: 600;
+      color: var(--accent);
+      flex-shrink: 0;
+      width: 2ch;
+    }
+
+    .process-body h3 {
+      margin: 0 0 var(--space-sm);
+      font-size: var(--text-lg);
+    }
+
+    .process-body p {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: var(--text-sm);
+      line-height: 1.6;
+      max-width: 60ch;
+    }
+
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -281,87 +318,6 @@ const projectCols = Math.min(featuredProjects.length, 3);
       margin-inline: auto;
     }
 
-    .project-card {
-      border-radius: var(--border-radius-lg);
-      overflow: hidden;
-      background-color: var(--bg);
-      border: 1px solid var(--border);
-      border-top: 2px solid var(--accent);
-      transition: border-color var(--transition-fast);
-    }
-
-    .project-card:hover {
-      border-color: var(--border-hover);
-      border-top-color: var(--accent);
-    }
-
-    .project-link {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      height: 100%;
-    }
-
-    .project-image {
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      background-color: var(--bg-secondary);
-    }
-
-    .project-image :global(img) {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .project-content {
-      padding: var(--space-lg);
-    }
-
-    .project-tags {
-      display: flex;
-      gap: var(--space-sm);
-      margin-bottom: var(--space-md);
-      flex-wrap: wrap;
-    }
-
-    .project-tags span {
-      font-size: var(--text-xs);
-      padding: 0.125rem 0.5rem;
-      border: 1px solid var(--border);
-      border-radius: var(--border-radius);
-      color: var(--text-secondary);
-      background-color: transparent;
-    }
-
-    .project-impact {
-      display: block;
-      color: var(--accent);
-      font-size: var(--text-xs);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: var(--space-xs);
-    }
-
-    .project-content h3 {
-      margin: 0 0 var(--space-sm);
-      font-size: var(--text-lg);
-      transition: color var(--transition-fast);
-    }
-
-    .project-card:hover .project-content h3 {
-      color: var(--accent);
-    }
-
-    .project-content p {
-      margin: 0;
-      color: var(--text-secondary);
-      font-size: var(--text-sm);
-      line-height: 1.6;
-    }
-
     .empty-state {
       text-align: center;
       color: var(--text-muted);
@@ -369,25 +325,20 @@ const projectCols = Math.min(featuredProjects.length, 3);
       grid-column: 1 / -1;
     }
 
-    .cta-card {
-      padding: var(--space-3xl) var(--space-2xl);
-      border-radius: var(--border-radius-lg);
-      border: 1px solid var(--border);
-      border-top: 2px solid var(--accent);
-      background-color: var(--bg);
+    .cta-section :global(.container) {
       text-align: center;
     }
 
-    .cta-card h2 {
+    .cta-section :global(h2) {
       margin: 0 0 var(--space-md);
     }
 
-    .cta-card p {
-      color: var(--text-secondary);
+    .cta-section :global(p) {
       font-size: var(--text-lg);
       max-width: 540px;
       margin: 0 auto var(--space-xl);
       line-height: 1.6;
+      opacity: 0.85;
     }
 
     @media (max-width: 768px) {
@@ -406,8 +357,8 @@ const projectCols = Math.min(featuredProjects.length, 3);
         left: calc(var(--space-md) + 8px);
       }
 
-      .hero h1 {
-        font-size: var(--text-3xl);
+      .process-row {
+        gap: var(--space-lg);
       }
     }
   </style>

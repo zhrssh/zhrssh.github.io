@@ -3,12 +3,15 @@ import "../styles/global.css";
 import type { HTMLAttributes } from "astro/types";
 import { SITE_CONFIG } from "../config";
 import BaseHead from "../components/BaseHead.astro";
+import Icon from "../components/Icon.astro";
 
 interface Props extends HTMLAttributes<"html"> {
   title: string;
+  description?: string;
+  image?: string;
 }
 
-const { title, ...astroAttributes } = Astro.props;
+const { title, description, image, ...astroAttributes } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) => {
@@ -16,10 +19,15 @@ const isActive = (href: string) => {
   return currentPath.startsWith(href);
 };
 const brand = SITE_CONFIG.title.split(' ').slice(0, 2).join(' ');
+const pageTitle = `${title} · ${SITE_CONFIG.title}`;
 ---
 
 <html lang="en" {...astroAttributes}>
-  <BaseHead title={title} description={SITE_CONFIG.description} />
+  <BaseHead
+    title={pageTitle}
+    description={description ?? SITE_CONFIG.description}
+    image={image ?? "/og-default.png"}
+  />
   <script is:inline>
     (function() {
       const savedTheme = localStorage.getItem("theme");
@@ -29,6 +37,7 @@ const brand = SITE_CONFIG.title.split(' ').slice(0, 2).join(' ');
     })();
   </script>
   <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <header class="site-header">
       <nav>
         <div class="site-name">
@@ -49,92 +58,25 @@ const brand = SITE_CONFIG.title.split(' ').slice(0, 2).join(' ');
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><path
-                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-              ></path></svg
-            >
+            <Icon name="github" size={20} />
           </a>
           <a
             href={SITE_CONFIG.socials.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><path
-                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
-              ></path><rect x="2" y="9" width="4" height="12"></rect><circle
-                cx="4"
-                cy="4"
-                r="2"></circle></svg
-            >
+            <Icon name="linkedin" size={20} />
           </a>
           <button id="theme-toggle" aria-label="Toggle dark mode">
             <span id="theme-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                ><circle cx="12" cy="12" r="5"></circle><line
-                  x1="12"
-                  y1="1"
-                  x2="12"
-                  y2="3"></line><line x1="12" y1="21" x2="12" y2="23"
-                ></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"
-                ></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"
-                ></line><line x1="1" y1="12" x2="3" y2="12"></line><line
-                  x1="21"
-                  y1="12"
-                  x2="23"
-                  y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"
-                ></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"
-                ></line></svg
-              >
+              <Icon name="sun" size={18} class="icon-sun" />
+              <Icon name="moon" size={18} class="icon-moon" />
             </span>
           </button>
         </div>
 
         <button id="menu-toggle" aria-label="Toggle menu">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><line x1="3" y1="12" x2="21" y2="12"></line><line
-              x1="3"
-              y1="6"
-              x2="21"
-              y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg
-          >
+          <Icon name="menu" size={24} />
         </button>
       </nav>
 
@@ -142,22 +84,7 @@ const brand = SITE_CONFIG.title.split(' ').slice(0, 2).join(' ');
         <div class="drawer-header">
           <a href="/" class="drawer-brand">{brand}</a>
           <button id="menu-close" aria-label="Close menu">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><line x1="18" y1="6" x2="6" y2="18"></line><line
-                x1="6"
-                y1="6"
-                x2="18"
-                y2="18"></line></svg
-            >
+            <Icon name="close" size={24} />
           </button>
         </div>
         <div class="drawer-nav-links">
@@ -175,7 +102,7 @@ const brand = SITE_CONFIG.title.split(' ').slice(0, 2).join(' ');
       <div id="drawer-backdrop"></div>
     </header>
 
-    <main>
+    <main id="main-content">
       <slot />
     </main>
 
@@ -194,10 +121,10 @@ const brand = SITE_CONFIG.title.split(' ').slice(0, 2).join(' ');
         </nav>
         <div class="footer-social">
           <a href={SITE_CONFIG.socials.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <Icon name="github" size={20} />
           </a>
           <a href={SITE_CONFIG.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            <Icon name="linkedin" size={20} />
           </a>
         </div>
       </div>
@@ -307,6 +234,25 @@ const brand = SITE_CONFIG.title.split(' ').slice(0, 2).join(' ');
           justify-content: center;
         }
       }
+
+      .skip-link {
+        position: absolute;
+        top: -3rem;
+        left: var(--space-md);
+        z-index: 3000;
+        background-color: var(--accent);
+        color: var(--text-on-inverse);
+        padding: 0.5rem 1rem;
+        border-radius: var(--border-radius);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: var(--text-sm);
+        transition: top var(--transition-fast);
+      }
+
+      .skip-link:focus {
+        top: var(--space-md);
+      }
     </style>
 
     <script>
@@ -323,52 +269,65 @@ const brand = SITE_CONFIG.title.split(' ').slice(0, 2).join(' ');
         }
       });
 
-      // Initialize icon based on current theme
-      const themeIcon = document.getElementById("theme-icon");
-      const currentTheme = htmlElement.getAttribute("data-theme");
-      if (themeIcon) {
-        themeIcon.innerHTML =
-          currentTheme === "dark"
-            ? `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`
-            : `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
-      }
-
       themeToggle?.addEventListener("click", () => {
         const currentTheme = htmlElement.getAttribute("data-theme");
         const newTheme = currentTheme === "dark" ? "light" : "dark";
 
         htmlElement.setAttribute("data-theme", newTheme);
         localStorage.setItem("theme", newTheme);
-
-        // Update icon
-        if (themeIcon) {
-          themeIcon.innerHTML =
-            newTheme === "dark"
-              ? `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`
-              : `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
-        }
       });
 
       // Mobile menu toggle
-      const menuToggle = document.getElementById("menu-toggle");
+      const menuToggle = document.getElementById("menu-toggle") as HTMLButtonElement | null;
       const menuClose = document.getElementById("menu-close");
       const mobileDrawer = document.getElementById("mobile-drawer");
       const drawerBackdrop = document.getElementById("drawer-backdrop");
 
-      const toggleMenu = () => {
-        mobileDrawer?.classList.toggle("active");
-        drawerBackdrop?.classList.toggle("active");
-        document.body.style.overflow = mobileDrawer?.classList.contains("active") ? "hidden" : "";
+      const getFocusable = (container: HTMLElement) =>
+        Array.from(
+          container.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          )
+        ).filter((el) => el.offsetParent !== null);
+
+      const openMenu = () => {
+        mobileDrawer?.classList.add("active");
+        drawerBackdrop?.classList.add("active");
+        document.body.style.overflow = "hidden";
+        if (mobileDrawer) getFocusable(mobileDrawer)[0]?.focus();
       };
 
-      menuToggle?.addEventListener("click", toggleMenu);
-      menuClose?.addEventListener("click", toggleMenu);
-      drawerBackdrop?.addEventListener("click", toggleMenu);
+      const closeMenu = () => {
+        mobileDrawer?.classList.remove("active");
+        drawerBackdrop?.classList.remove("active");
+        document.body.style.overflow = "";
+        menuToggle?.focus();
+      };
+
+      menuToggle?.addEventListener("click", openMenu);
+      menuClose?.addEventListener("click", closeMenu);
+      drawerBackdrop?.addEventListener("click", closeMenu);
 
       // Close on escape key
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && mobileDrawer?.classList.contains("active")) {
-          toggleMenu();
+          closeMenu();
+        }
+      });
+
+      // Trap focus inside the drawer while it is open
+      document.addEventListener("keydown", (e) => {
+        if (e.key !== "Tab" || !mobileDrawer?.classList.contains("active")) return;
+        const focusables = getFocusable(mobileDrawer);
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
         }
       });
 

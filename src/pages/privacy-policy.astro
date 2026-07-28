@@ -3,7 +3,11 @@ import MainLayout from "../layouts/MainLayout.astro";
 import { SITE_CONFIG } from "../config";
 ---
 
-<MainLayout title="Privacy Policy">
+<MainLayout
+  title="Privacy Policy"
+  description="How Zherish Galvin Mayordo collects, uses, and protects your contact information."
+>
+  <div class="container">
   <article class="policy">
     <header class="policy-header">
       <span class="eyebrow">Legal</span>
@@ -282,6 +286,7 @@ import { SITE_CONFIG } from "../config";
       >
     </p>
   </article>
+  </div>
 
   <style>
     .policy {

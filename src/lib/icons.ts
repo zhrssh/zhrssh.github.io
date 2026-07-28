@@ -1,0 +1,16 @@
+export type IconName =
+  | "github"
+  | "linkedin"
+  | "mail"
+  | "download"
+  | "search"
+  | "sun"
+  | "moon"
+  | "menu"
+  | "close"
+  | "whatsapp"
+  | "viber"
+  | "arrow-right"
+  | "ai-automation"
+  | "integration"
+  | "sales-automation";

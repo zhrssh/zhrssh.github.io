@@ -1,0 +1,96 @@
+---
+interface Props {
+  surface?: "default" | "raised" | "inverse";
+  eyebrow?: string;
+  title?: string;
+  rule?: boolean;
+  link?: { href: string; label: string };
+  class?: string;
+}
+
+const { surface = "default", eyebrow, title, rule = true, link, class: className } = Astro.props;
+---
+
+<section class:list={["section", `section-${surface}`, className]}>
+  <div class="container">
+    {
+      (eyebrow || title) && (
+        <div class="section-header">
+          {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+          {title && <h2>{title}</h2>}
+          {rule && <hr class="rule" />}
+          {link && (
+            <a href={link.href} class="section-link">
+              {link.label}
+            </a>
+          )}
+        </div>
+      )
+    }
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    padding-block: var(--space-3xl);
+    background-color: var(--surface);
+    transition: background-color var(--transition-slow);
+  }
+
+  .section-raised {
+    background-color: var(--surface-raised);
+  }
+
+  .section-inverse {
+    background-color: var(--surface-inverse);
+    color: var(--text-on-inverse);
+  }
+
+  .section-inverse :global(h1),
+  .section-inverse :global(h2),
+  .section-inverse :global(h3),
+  .section-inverse :global(p) {
+    color: var(--text-on-inverse);
+  }
+
+  .section-inverse :global(.eyebrow) {
+    color: var(--text-on-inverse);
+    opacity: 0.65;
+  }
+
+  .section-inverse :global(.rule) {
+    border-top-color: currentColor;
+    opacity: 0.2;
+  }
+
+  .section-header {
+    margin-bottom: var(--space-xl);
+  }
+
+  .section-header h2 {
+    margin: 0;
+  }
+
+  .section-link {
+    display: inline-block;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: var(--text-sm);
+    transition: color var(--transition-fast);
+    margin-top: var(--space-sm);
+  }
+
+  .section-link:hover {
+    color: var(--accent-hover);
+  }
+
+  .section-inverse .section-link {
+    color: var(--text-on-inverse);
+  }
+
+  .section-inverse .section-link:hover {
+    opacity: 0.8;
+  }
+</style>
