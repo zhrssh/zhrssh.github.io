@@ -1,13 +1,13 @@
 ---
-import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import MainLayout from "../layouts/MainLayout.astro";
-import Section from "../components/Section.astro";
+import { getCollection } from "astro:content";
+import me from "../assets/me.jpg";
+import Icon from "../components/Icon.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import ProofStrip from "../components/ProofStrip.astro";
-import Icon from "../components/Icon.astro";
+import Section from "../components/Section.astro";
 import { SITE_CONFIG } from "../config";
-import me from "../assets/me.jpg";
+import MainLayout from "../layouts/MainLayout.astro";
 
 const projects = await getCollection("projects");
 const featuredProjects = projects
@@ -18,8 +18,7 @@ const projectCols = Math.min(featuredProjects.length, 3);
 
 <MainLayout
   title="Home"
-  description="AI automation and workflow engineering for service businesses — n8n builds that save hours, cut errors, and free up your team every week."
->
+  description="AI automation and workflow engineering for service businesses — n8n builds that save hours, cut errors, and free up your team every week.">
   <Section class="hero-section">
     <div class="hero">
       <div class="hero-content">
@@ -30,17 +29,26 @@ const projectCols = Math.min(featuredProjects.length, 3);
         <h1>Automations that give your team its week back.</h1>
         <hr class="accent-rule" />
         <p class="hero-tagline">
-          I'm Zherish — I build AI-powered workflows for service businesses, so the manual bottlenecks stop costing you time and money.
+          I'm Zherish — I build AI-powered workflows for service businesses, so
+          the manual bottlenecks stop costing you time and money.
         </p>
         <div class="hero-cta">
           <a href={SITE_CONFIG.bookingUrl} class="button">Book a call</a>
           <a href="/projects" class="button button-secondary">View my work</a>
-          <a href={SITE_CONFIG.resumeUrl} class="hero-tertiary" download>Download CV →</a>
+          <a href={SITE_CONFIG.resumeUrl} class="hero-tertiary" download
+            >Download CV →</a
+          >
         </div>
       </div>
       <div class="hero-portrait">
         <div class="hero-img-frame">
-          <Image src={me} alt="Zherish Galvin Mayordo" width={640} height={640} loading="eager" />
+          <Image
+            src={me}
+            alt="Zherish Galvin Mayordo"
+            width={640}
+            height={640}
+            loading="eager"
+          />
         </div>
       </div>
     </div>
@@ -52,33 +60,45 @@ const projectCols = Math.min(featuredProjects.length, 3);
 
   <Section eyebrow="What I offer" title="My Services">
     <div class="services-list">
-      {SITE_CONFIG.services.map((service) => (
-        <div class="service-row">
-          <Icon name={service.icon} size={32} class="service-icon" />
-          <div class="service-body">
-            <h3>{service.title}</h3>
-            <p>{service.description}</p>
+      {
+        SITE_CONFIG.services.map((service) => (
+          <div class="service-row">
+            <Icon name={service.icon} size={32} class="service-icon" />
+            <div class="service-body">
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </Section>
 
-  <Section surface="raised" eyebrow="How it works" title="How We'd Work Together" class="process-section">
+  <Section
+    surface="raised"
+    eyebrow="How it works"
+    title="How We'd Work Together"
+    class="process-section">
     <div class="process-list">
-      {SITE_CONFIG.process.map((step) => (
-        <div class="process-row">
-          <span class="process-number">{step.number}</span>
-          <div class="process-body">
-            <h3>{step.title}</h3>
-            <p>{step.description}</p>
+      {
+        SITE_CONFIG.process.map((step) => (
+          <div class="process-row">
+            <span class="process-number">{step.number}</span>
+            <div class="process-body">
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </Section>
 
-  <Section eyebrow="Latest work" title="Projects" link={{ href: "/projects", label: "View all →" }} class="projects-section">
+  <Section
+    eyebrow="Latest work"
+    title="Projects"
+    link={{ href: "/projects", label: "View all →" }}
+    class="projects-section">
     <div class="projects-grid" data-cols={projectCols}>
       {
         featuredProjects.length > 0 ? (
@@ -92,8 +112,13 @@ const projectCols = Math.min(featuredProjects.length, 3);
 
   <Section surface="inverse" class="cta-section">
     <h2>Let's Fix What's Slowing You Down</h2>
-    <p>Tell me what's eating your time — I'll reply within a day or two with how I'd automate it.</p>
-    <a href={SITE_CONFIG.bookingUrl} class="button button-accent">Get in Touch</a>
+    <p>
+      Tell me what's eating your time — I'll reply within a day or two with how
+      I'd automate it.
+    </p>
+    <a href={SITE_CONFIG.bookingUrl} class="button button-accent"
+      >Get in Touch</a
+    >
   </Section>
 
   <style>

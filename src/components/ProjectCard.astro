@@ -24,7 +24,11 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
             width={1200}
             height={675}
             widths={[360, 600, 900, 1200]}
-            sizes="(max-width: 768px) 100vw, 380px"
+            sizes={
+              variant === "featured"
+                ? "(max-width: 1023px) 100vw, 560px"
+                : "(max-width: 768px) 100vw, 380px"
+            }
             quality={90}
             loading="lazy"
           />
@@ -46,8 +50,9 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
       {project.data.impact && <span class="project-impact">{project.data.impact}</span>}
       <h3>{project.data.title}</h3>
       <p>{project.data.description}</p>
+      {project.data.summary && <p class="project-summary">{project.data.summary}</p>}
       <div class="project-tags">
-        {project.data.tags.slice(0, variant === "featured" ? undefined : 3).map((tag) => <span>{tag}</span>)}
+        {project.data.tags.map((tag) => <span>{tag}</span>)}
       </div>
     </div>
   </a>
@@ -140,10 +145,24 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
     line-height: 1.6;
   }
 
+  .project-summary {
+    display: none;
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
   .project-tags {
     display: flex;
     gap: var(--space-sm);
     flex-wrap: wrap;
+  }
+
+  .project-tags span:nth-child(n + 4) {
+    display: none;
   }
 
   .project-tags span {
@@ -156,18 +175,31 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
   }
 
   /* Breakpoint must stay in sync with .project-item-featured's
-     `grid-column: span 2` in src/pages/projects/index.astro */
+     `grid-column: 1 / -1` in src/pages/projects/index.astro */
   @media (min-width: 1024px) {
     .project-card-featured .project-link {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      align-items: center;
+      align-items: stretch;
+    }
+
+    .project-card-featured .project-image {
+      aspect-ratio: auto;
+      height: 100%;
     }
 
     .project-card-featured .project-content {
       display: flex;
       flex-direction: column;
       justify-content: center;
+    }
+
+    .project-card-featured .project-summary {
+      display: -webkit-box;
+    }
+
+    .project-card-featured .project-tags span:nth-child(n + 4) {
+      display: revert;
     }
   }
 </style>

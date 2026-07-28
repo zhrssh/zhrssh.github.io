@@ -9,6 +9,8 @@ const allProjects = (await getCollection("projects")).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
 const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
+const featuredId = (allProjects.find((p) => p.data.featured) ?? allProjects[0])
+  ?.id;
 ---
 
 <MainLayout
@@ -44,19 +46,20 @@ const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
 
     <ul class="project-list" id="projects-list">
       {
-        allProjects.map((project, index) => (
+        allProjects.map((project) => (
           <li
             class:list={[
               "project-item",
-              index === 0 && "project-item-featured",
+              project.id === featuredId && "project-item-featured",
             ]}
+            data-featured={project.id === featuredId}
             data-tags={project.data.tags.join(" ")}
             data-title={project.data.title}
             data-description={project.data.description}
             data-date={project.data.date.getTime()}>
             <ProjectCard
               project={project}
-              variant={index === 0 ? "featured" : "compact"}
+              variant={project.id === featuredId ? "featured" : "compact"}
               showMeta
             />
           </li>
@@ -176,7 +179,7 @@ const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
        horizontal layout in src/components/ProjectCard.astro */
     @media (min-width: 1024px) {
       .project-item-featured {
-        grid-column: span 2;
+        grid-column: 1 / -1;
       }
     }
 
@@ -262,6 +265,20 @@ const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
             .getAttribute("data-title")!
             .localeCompare(b.getAttribute("data-title")!);
         return 0;
+      });
+
+      const isDefaultView =
+        !searchTerm && selectedTag === "all" && sortBy === "newest";
+
+      projectItems.forEach((item) => {
+        const isFeatured = item.dataset.featured === "true";
+        item.classList.toggle(
+          "project-item-featured",
+          isFeatured && isDefaultView,
+        );
+        item
+          .querySelector(".project-card")
+          ?.classList.toggle("project-card-featured", isFeatured && isDefaultView);
       });
 
       projectList.innerHTML = "";
