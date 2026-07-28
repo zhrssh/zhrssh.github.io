@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import { unified } from '@astrojs/markdown-remark';
-import remarkLoom from './src/plugins/remarkLoom.mjs';
+import remarkVideoEmbed from './src/plugins/remarkVideoEmbed.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,7 +11,7 @@ export default defineConfig({
   },
   markdown: {
     processor: unified({
-      remarkPlugins: [remarkLoom],
+      remarkPlugins: [remarkVideoEmbed],
     }),
   },
 });

@@ -12,6 +12,7 @@ tags: [
 ]
 impact: "Built to recover up to ₱60k/mo in missed bookings"
 coverImage: "../../assets/projects/spa-booking-demo/cover.png"
+bookCall: true
 ---
 
 https://www.loom.com/share/577ab90414ca45ada1dc5a6f82f116d7

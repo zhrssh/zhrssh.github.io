@@ -19,6 +19,7 @@ export const SITE_CONFIG = {
     { label: "Contact", href: "/contact" },
   ],
   resumeUrl: "/zherishgalvinmayordo-cv.pdf",
+  bookingUrl: "/contact",
   experience: [
     {
       role: "Trading Algorithm Programmer",

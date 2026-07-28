@@ -539,7 +539,7 @@ main {
 
 /* Loom embeds ------------------------------------------------------------ */
 
-.loom-embed {
+.video-embed {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -550,11 +550,17 @@ main {
   border-radius: var(--border-radius);
 }
 
-.loom-embed iframe {
+.video-embed iframe {
   display: block;
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+.video-embed-vertical {
+  aspect-ratio: 9 / 16;
+  max-width: 400px;
+  margin-inline: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -24,12 +24,17 @@ This portfolio utilizes a **minimalist, typography-driven** design:
 - **Color System:** Variable-driven high-contrast neutral palette with a blue accent.
 - **Layout:** Content-focused, structured with generous whitespace.
 
-## 🎥 Loom Embeds
+## 🎥 Video Embeds
 
-To embed a Loom video in a blog post or project, place its share URL on a line by itself:
+To embed a Loom or YouTube video in a blog post or project, place its URL on a line by itself:
 
 ```md
 https://www.loom.com/share/VIDEO_ID
+https://www.youtube.com/watch?v=VIDEO_ID
+https://youtu.be/VIDEO_ID
+https://www.youtube.com/shorts/VIDEO_ID
 ```
 
-The URL is converted into a responsive, lazy-loaded Loom player. Loom URLs used in regular paragraphs remain normal links.
+Accepted YouTube URL forms: `watch?v=`, `/embed/`, `/live/`, `/shorts/`, and `youtu.be/` short links, across `youtube.com`, `www.youtube.com`, and `m.youtube.com`. YouTube embeds use `youtube-nocookie.com`. Shorts render vertically (9:16, capped width, centred); every other embed renders 16:9.
+
+The URL is converted into a responsive, lazy-loaded player. Video URLs used in regular paragraphs remain normal links.

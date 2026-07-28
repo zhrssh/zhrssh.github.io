@@ -14,6 +14,7 @@ tags: [
 ]
 impact: "Cuts email prep from 6 minutes to a quick approval"
 coverImage: "../../assets/projects/spa-email-outreach/cover.png"
+bookCall: true
 ---
 
 https://www.loom.com/share/faa4ed5be576449a86da9808f2319b50

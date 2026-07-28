@@ -4,7 +4,7 @@ description: "A personal assistant for Telegram that remembers user preferences 
 date: 2026-07-03
 tags: ["AI", "RAG", "Agentic", "n8n", "Automation"]
 impact: "Saves users 10–15 minutes a day"
-github: "https://free-personal-assistant.onrender.com/?utm_source=portfolio&utm_medium=website&utm_campaign=telegram-assistant"
+demo: "https://free-personal-assistant.onrender.com/?utm_source=portfolio&utm_medium=website&utm_campaign=telegram-assistant"
 coverImage: "../../assets/projects/telegram-assistant/cover.png"
 ---
 

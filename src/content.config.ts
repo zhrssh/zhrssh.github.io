@@ -28,7 +28,11 @@ const projectsCollection = defineCollection({
       tags: z.array(z.string()).default([]),
       impact: z.string().optional(),
       link: z.url().optional(),
+      demo: z.url().optional(),
+      video: z.url().optional(),
+      caseStudy: z.url().optional(),
       github: z.url().optional(),
+      bookCall: z.boolean().default(false),
     }),
 });
 
