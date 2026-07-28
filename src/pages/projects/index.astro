@@ -99,7 +99,7 @@ const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
       min-width: 200px;
     }
 
-    .search-icon {
+    .search-wrapper :global(.search-icon) {
       position: absolute;
       left: var(--space-md);
       top: 50%;
@@ -121,7 +121,7 @@ const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
     }
 
     .search-wrapper input {
-      padding-left: var(--space-2xl);
+      padding-left: 2.75rem;
     }
 
     input:focus,
@@ -146,7 +146,7 @@ const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
     }
 
     .project-item {
-      display: block;
+      display: flex;
     }
 
     .project-list[hidden] {
@@ -172,6 +172,8 @@ const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
       font-size: var(--text-lg);
     }
 
+    /* Breakpoint must stay in sync with .project-card-featured's
+       horizontal layout in src/components/ProjectCard.astro */
     @media (min-width: 1024px) {
       .project-item-featured {
         grid-column: span 2;

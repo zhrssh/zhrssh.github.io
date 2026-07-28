@@ -9,7 +9,7 @@ interface Props {
   showMeta?: boolean;
 }
 
-const { project, variant = "featured", showMeta = false } = Astro.props;
+const { project, variant = "compact", showMeta = false } = Astro.props;
 const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
 ---
 
@@ -47,7 +47,7 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
       <h3>{project.data.title}</h3>
       <p>{project.data.description}</p>
       <div class="project-tags">
-        {project.data.tags.slice(0, variant === "compact" ? undefined : 3).map((tag) => <span>{tag}</span>)}
+        {project.data.tags.slice(0, variant === "featured" ? undefined : 3).map((tag) => <span>{tag}</span>)}
       </div>
     </div>
   </a>
@@ -55,6 +55,9 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
 
 <style>
   .project-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     border-radius: var(--border-radius-lg);
     overflow: hidden;
     background-color: var(--bg);
@@ -71,8 +74,9 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
   .project-link {
     text-decoration: none;
     color: inherit;
-    display: block;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
 
   .project-image {
@@ -89,6 +93,7 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
   }
 
   .project-content {
+    flex: 1;
     padding: var(--space-lg);
   }
 
@@ -148,5 +153,21 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
     border-radius: var(--border-radius);
     color: var(--text-secondary);
     background-color: transparent;
+  }
+
+  /* Breakpoint must stay in sync with .project-item-featured's
+     `grid-column: span 2` in src/pages/projects/index.astro */
+  @media (min-width: 1024px) {
+    .project-card-featured .project-link {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+    }
+
+    .project-card-featured .project-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   }
 </style>
