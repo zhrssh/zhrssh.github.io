@@ -12,7 +12,7 @@ tags: [
   "Prompt Engineering",
   "Workflow Automation"
 ]
-impact: "Cuts email prep from 6 minutes to a quick approval"
+impact: "Generates personalized cold outreach emails in seconds, reducing manual drafting time"
 coverImage: "../../assets/projects/spa-email-outreach/cover.png"
 bookCall: true
 ---

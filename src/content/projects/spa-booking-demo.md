@@ -10,7 +10,7 @@ tags: [
   "Booking System",
   "Email Automation"
 ]
-impact: "Built to recover up to ₱60k/mo in missed bookings"
+impact: "A booking system designed to prevent missed bookings — real-time availability, auto-confirmations, guest records"
 coverImage: "../../assets/projects/spa-booking-demo/cover.png"
 bookCall: true
 ---
