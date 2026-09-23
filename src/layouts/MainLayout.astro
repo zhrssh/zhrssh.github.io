@@ -36,6 +36,13 @@ const pageTitle = `${title} · ${SITE_CONFIG.title}`;
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       const theme = savedTheme || systemTheme;
       document.documentElement.setAttribute("data-theme", theme);
+      if (
+        "IntersectionObserver" in window &&
+        !CSS.supports("animation-timeline: view()") &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        document.documentElement.classList.add("reveal-js");
+      }
     })();
   </script>
   <body>
@@ -270,6 +277,21 @@ const pageTitle = `${title} · ${SITE_CONFIG.title}`;
           header?.classList.remove("scrolled");
         }
       });
+
+      // Scroll reveal fallback; flag is set in the inline head script
+      if (htmlElement.classList.contains("reveal-js")) {
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("revealed");
+              revealObserver.unobserve(entry.target);
+            });
+          },
+          { rootMargin: "0px 0px -10% 0px" }
+        );
+        document.querySelectorAll(".section > .container").forEach((el) => revealObserver.observe(el));
+      }
 
       themeToggle?.addEventListener("click", () => {
         const currentTheme = htmlElement.getAttribute("data-theme");

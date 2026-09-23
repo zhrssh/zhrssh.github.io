@@ -68,10 +68,12 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
     background-color: var(--bg);
     border: 1px solid var(--border);
     border-top: 2px solid var(--accent);
-    transition: border-color var(--transition-fast);
+    transition: border-color var(--transition-fast), transform var(--transition), box-shadow var(--transition);
   }
 
   .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
     border-color: var(--border-hover);
     border-top-color: var(--accent);
   }
