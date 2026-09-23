@@ -27,7 +27,8 @@ export const SITE_CONFIG = {
       company: "Robin Ho",
       duration: "Jul. 2026 - Present",
       description: [
-        "Developing trading algorithms to help traders position themselves in the market.",
+        "Developing automations and trading algorithms using Pine Script and MQL5 to help traders identify and execute market opportunities.",
+        "Analyzing market conditions, price patterns, and economic events to design and improve algorithmic trading strategies.",
       ],
     },
     {
