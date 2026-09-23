@@ -9,9 +9,10 @@ interface Props extends HTMLAttributes<"html"> {
   title: string;
   description?: string;
   image?: string;
+  type?: "website" | "article";
 }
 
-const { title, description, image, ...astroAttributes } = Astro.props;
+const { title, description, image, type, ...astroAttributes } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) => {
@@ -27,6 +28,7 @@ const pageTitle = `${title} · ${SITE_CONFIG.title}`;
     title={pageTitle}
     description={description ?? SITE_CONFIG.description}
     image={image ?? "/og-default.png"}
+    type={type}
   />
   <script is:inline>
     (function() {

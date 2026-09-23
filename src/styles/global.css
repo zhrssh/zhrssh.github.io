@@ -79,6 +79,12 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 4rem; /* sticky header height */
+}
+
+.section {
+  scroll-snap-align: start;
 }
 
 body {
@@ -617,7 +623,7 @@ main > .container {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html { scroll-behavior: auto; scroll-snap-type: none; }
   *, *::before, *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;

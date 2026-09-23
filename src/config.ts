@@ -2,7 +2,7 @@ export const SITE_CONFIG = {
   title: "Zherish Galvin Mayordo",
   description:
     "AI automation and workflow engineering for service businesses — I build systems that save time, cut costs, and scale with your growth.",
-  email: "zherishatbusiness@gmail.com",
+  email: "contact@zherishgalvin.com",
   phone: "+639957288817",
   socials: {
     github: "https://github.com/zhrssh",
