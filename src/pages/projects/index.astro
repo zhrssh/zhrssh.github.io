@@ -53,7 +53,7 @@ const featuredId = (allProjects.find((p) => p.data.featured) ?? allProjects[0])
               project.id === featuredId && "project-item-featured",
             ]}
             data-featured={project.id === featuredId}
-            data-tags={project.data.tags.join(" ")}
+            data-tags={project.data.tags.join("|")}
             data-title={project.data.title}
             data-description={project.data.description}
             data-date={project.data.date.getTime()}>
@@ -245,7 +245,7 @@ const featuredId = (allProjects.find((p) => p.data.featured) ?? allProjects[0])
           tags.includes(searchTerm);
         const matchesTag =
           selectedTag === "all" ||
-          item.getAttribute("data-tags")!.split(" ").includes(selectedTag);
+          item.getAttribute("data-tags")!.split("|").includes(selectedTag);
         return matchesSearch && matchesTag;
       });
 

@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import MainLayout from "../../layouts/MainLayout.astro";
+import Section from "../../components/Section.astro";
+import Icon from "../../components/Icon.astro";
 import { getReadingTime } from "../../utils/readingTime";
 
 const allBlogs = await getCollection("blog");
@@ -8,60 +10,52 @@ const allTags = [...new Set(allBlogs.flatMap((p) => p.data.tags))].sort();
 ---
 
 <MainLayout title="Blog">
-  <div class="page-header">
-    <span class="eyebrow">Writing</span>
-    <h1>Blog</h1>
-    <hr class="rule" />
-    <p class="page-description">
-      Thoughts, ideas, experiences, and lessons learned throughout my
-      professional journey.
-    </p>
-  </div>
-
-  <section class="controls">
-    <div class="search-wrapper">
-      <svg
-        class="search-icon"
-        xmlns="http://www.w3.org/2000/svg"
-        width="18"
-        height="18"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        ><circle cx="11" cy="11" r="8"></circle><line
-          x1="21"
-          y1="21"
-          x2="16.65"
-          y2="16.65"></line></svg
-      >
-      <input type="text" id="search-input" placeholder="Search posts..." />
+  <Section class="page-header-section">
+    <div class="page-header">
+      <span class="eyebrow">Writing</span>
+      <h1>Blog</h1>
+      <hr class="rule" />
+      <p class="page-description">
+        Thoughts, ideas, experiences, and lessons learned throughout my
+        professional journey.
+      </p>
     </div>
-    <select id="tag-filter">
-      <option value="all">All Tags</option>
-      {allTags.map((tag) => <option value={tag}>{tag}</option>)}
-    </select>
-    <select id="sort-select">
-      <option value="newest">Newest First</option>
-      <option value="oldest">Oldest First</option>
-      <option value="title">Alphabetical</option>
-    </select>
-  </section>
+  </Section>
 
-  <ul class="blog-list" id="blog-list">
-    {
-      allBlogs
-        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-        .map((post) => (
-          <li
-            class="blog-item"
-            data-tags={post.data.tags.join(" ")}
-            data-title={post.data.title}
-            data-date={post.data.date.getTime()}>
-            <a href={`/blog/${post.id}`} class="blog-link">
-              <div class="blog-content">
+  <div class="container">
+    <section class="controls">
+      <div class="search-wrapper">
+        <Icon name="search" size={18} class="search-icon" />
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search posts..."
+          aria-label="Search posts"
+        />
+      </div>
+      <select id="tag-filter" aria-label="Filter by tag">
+        <option value="all">All Tags</option>
+        {allTags.map((tag) => <option value={tag}>{tag}</option>)}
+      </select>
+      <select id="sort-select" aria-label="Sort posts">
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="title">Alphabetical</option>
+      </select>
+    </section>
+
+    <ul class="blog-list" id="blog-list">
+      {
+        allBlogs
+          .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+          .map((post) => (
+            <li
+              class="blog-item"
+              data-tags={post.data.tags.join("|")}
+              data-title={post.data.title}
+              data-description={post.data.description}
+              data-date={post.data.date.getTime()}>
+              <a href={`/blog/${post.id}`} class="blog-link">
                 <div class="blog-meta">
                   <time datetime={post.data.date.toISOString()}>
                     {post.data.date.toLocaleDateString("en-US", {
@@ -70,9 +64,9 @@ const allTags = [...new Set(allBlogs.flatMap((p) => p.data.tags))].sort();
                       year: "numeric",
                     })}
                   </time>
-                  <span class="meta-dot">•</span>
+                  <span class="meta-dot" aria-hidden="true">•</span>
                   <span>{getReadingTime(post.body || "")} min read</span>
-                  <span class="meta-dot">•</span>
+                  <span class="meta-dot" aria-hidden="true">•</span>
                   <span>{post.data.author}</span>
                 </div>
                 <h2 class="blog-title">{post.data.title}</h2>
@@ -83,14 +77,21 @@ const allTags = [...new Set(allBlogs.flatMap((p) => p.data.tags))].sort();
                       <span>{tag}</span>
                     ))}
                   </div>
-                  <span class="read-more">Read more →</span>
+                  <span class="read-more" aria-hidden="true">Read more →</span>
                 </div>
-              </div>
-            </a>
-          </li>
-        ))
-    }
-  </ul>
+              </a>
+            </li>
+          ))
+      }
+    </ul>
+
+    <div class="empty-state" id="empty-state" hidden>
+      <p>No posts match your filters.</p>
+      <button type="button" id="clear-filters" class="button button-secondary"
+        >Clear filters</button
+      >
+    </div>
+  </div>
 
   <script>
     const searchInput = document.getElementById(
@@ -103,58 +104,55 @@ const allTags = [...new Set(allBlogs.flatMap((p) => p.data.tags))].sort();
       "sort-select",
     ) as HTMLSelectElement;
     const blogList = document.getElementById("blog-list") as HTMLUListElement;
-    let blogCards = Array.from(
+    const emptyState = document.getElementById("empty-state") as HTMLElement;
+    const clearFiltersBtn = document.getElementById(
+      "clear-filters",
+    ) as HTMLButtonElement;
+    const blogItems = Array.from(
       document.querySelectorAll(".blog-item"),
     ) as HTMLElement[];
 
     function updateView() {
-      const searchTerm = searchInput.value.toLowerCase();
+      const searchTerm = searchInput.value.trim().toLowerCase();
       const selectedTag = tagFilter.value;
       const sortBy = sortSelect.value;
 
-      let filtered = blogCards.filter((card) => {
-        const title = card.getAttribute("data-title")!.toLowerCase();
-        const tags = card.getAttribute("data-tags")!;
-        const matchesSearch = title.includes(searchTerm);
+      const filtered = blogItems.filter((item) => {
+        const { title, description, tags } = item.dataset;
+        const matchesSearch =
+          !searchTerm ||
+          [title, description, tags].some((v) =>
+            v!.toLowerCase().includes(searchTerm),
+          );
         const matchesTag =
-          selectedTag === "all" || tags.split(" ").includes(selectedTag);
+          selectedTag === "all" || tags!.split("|").includes(selectedTag);
         return matchesSearch && matchesTag;
       });
 
       filtered.sort((a, b) => {
-        if (sortBy === "newest")
-          return (
-            parseInt(b.getAttribute("data-date")!) -
-            parseInt(a.getAttribute("data-date")!)
-          );
-        if (sortBy === "oldest")
-          return (
-            parseInt(a.getAttribute("data-date")!) -
-            parseInt(b.getAttribute("data-date")!)
-          );
-        if (sortBy === "title")
-          return a
-            .getAttribute("data-title")!
-            .localeCompare(b.getAttribute("data-title")!);
-        return 0;
+        if (sortBy === "newest") return +b.dataset.date! - +a.dataset.date!;
+        if (sortBy === "oldest") return +a.dataset.date! - +b.dataset.date!;
+        return a.dataset.title!.localeCompare(b.dataset.title!);
       });
 
-      blogList.innerHTML = "";
-      filtered.forEach((card) => blogList.appendChild(card));
+      blogList.replaceChildren(...filtered);
+      blogList.hidden = filtered.length === 0;
+      emptyState.hidden = filtered.length > 0;
     }
 
     searchInput.addEventListener("input", updateView);
     tagFilter.addEventListener("change", updateView);
     sortSelect.addEventListener("change", updateView);
+    clearFiltersBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      tagFilter.value = "all";
+      updateView();
+    });
   </script>
 
   <style>
-    .page-header {
-      margin-bottom: var(--space-2xl);
-    }
-
     .page-header h1 {
-      margin: 0 0 0;
+      margin: 0;
     }
 
     .page-description {
@@ -168,10 +166,9 @@ const allTags = [...new Set(allBlogs.flatMap((p) => p.data.tags))].sort();
       display: flex;
       gap: var(--space-md);
       flex-wrap: wrap;
-      padding: var(--space-md);
-      background-color: var(--bg);
+      padding: var(--space-md) var(--space-lg);
+      background-color: var(--surface-raised);
       border-radius: var(--border-radius);
-      border: 1px solid var(--border);
     }
 
     .search-wrapper {
@@ -180,7 +177,7 @@ const allTags = [...new Set(allBlogs.flatMap((p) => p.data.tags))].sort();
       min-width: 200px;
     }
 
-    .search-icon {
+    .search-wrapper :global(.search-icon) {
       position: absolute;
       left: var(--space-md);
       top: 50%;
@@ -202,7 +199,7 @@ const allTags = [...new Set(allBlogs.flatMap((p) => p.data.tags))].sort();
     }
 
     .search-wrapper input {
-      padding-left: var(--space-2xl);
+      padding-left: 2.75rem;
     }
 
     input:focus,
@@ -226,24 +223,28 @@ const allTags = [...new Set(allBlogs.flatMap((p) => p.data.tags))].sort();
       gap: 0;
     }
 
+    .blog-list[hidden] {
+      display: none;
+    }
+
     .blog-item {
       border-bottom: 1px solid var(--border);
-      background-color: var(--bg);
-      transition: border-color var(--transition-fast);
+    }
+
+    .blog-item:first-child {
+      border-top: 1px solid var(--border);
     }
 
     .blog-link {
       text-decoration: none;
       color: inherit;
       display: block;
-    }
-
-    .blog-content {
       padding: var(--space-lg) 0;
     }
 
     .blog-meta {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: var(--space-sm);
       font-size: var(--text-xs);
@@ -267,7 +268,8 @@ const allTags = [...new Set(allBlogs.flatMap((p) => p.data.tags))].sort();
       display: inline-block;
     }
 
-    .blog-item:hover .blog-title {
+    .blog-link:hover .blog-title,
+    .blog-link:focus-visible .blog-title {
       color: var(--accent);
       border-bottom-color: var(--accent);
     }
@@ -310,8 +312,27 @@ const allTags = [...new Set(allBlogs.flatMap((p) => p.data.tags))].sort();
       transition: color var(--transition-fast);
     }
 
-    .blog-item:hover .read-more {
+    .blog-link:hover .read-more {
       color: var(--accent-hover);
+    }
+
+    .empty-state {
+      display: none;
+      text-align: center;
+      padding: var(--space-3xl) var(--space-xl);
+      color: var(--text-muted);
+    }
+
+    .empty-state:not([hidden]) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-lg);
+    }
+
+    .empty-state p {
+      margin: 0;
+      font-size: var(--text-lg);
     }
 
     @media (max-width: 768px) {

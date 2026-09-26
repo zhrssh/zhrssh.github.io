@@ -288,10 +288,27 @@ if (entry.data.bookCall) {
     }
 
     .post-content :global(img) {
+      display: block;
       max-width: 100%;
       height: auto;
       border-radius: var(--border-radius);
+    }
+
+    /* Markdown wraps images in <p>; space the wrapper, not the image */
+    .post-content :global(p:has(> img)) {
       margin: var(--space-xl) 0;
+    }
+
+    /* An italic line right after an image is its caption */
+    .post-content :global(p:has(> img):has(+ p > em:only-child)) {
+      margin-bottom: var(--space-sm);
+    }
+
+    .post-content :global(p:has(> img) + p:has(> em:only-child)) {
+      margin-top: 0;
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.6;
     }
 
     .post-adjacent {

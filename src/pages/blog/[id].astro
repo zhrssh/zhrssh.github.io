@@ -24,6 +24,7 @@ const readingTime = getReadingTime(entry.body || "");
   image={entry.data.coverImage?.src}
   type="article"
 >
+  <div class="container">
   <article class="post">
     <header class="post-header">
       <span class="eyebrow">Blog</span>
@@ -46,7 +47,7 @@ const readingTime = getReadingTime(entry.body || "");
 
     {entry.data.coverImage && (
       <div class="post-cover">
-        <Image src={entry.data.coverImage} alt={entry.data.title} width={1440} height={810} widths={[480, 720, 1080, 1440]} sizes="(max-width: 768px) 100vw, 680px" quality={90} />
+        <Image src={entry.data.coverImage} alt={entry.data.title} width={1440} height={810} widths={[480, 720, 1080, 1440]} sizes="(max-width: 768px) 100vw, 750px" quality={90} />
       </div>
     )}
 
@@ -54,6 +55,7 @@ const readingTime = getReadingTime(entry.body || "");
       <Content />
     </div>
   </article>
+  </div>
 
   <style>
     .post {
@@ -203,10 +205,27 @@ const readingTime = getReadingTime(entry.body || "");
     }
 
     .post-content :global(img) {
+      display: block;
       max-width: 100%;
       height: auto;
       border-radius: var(--border-radius);
+    }
+
+    /* Markdown wraps images in <p>; space the wrapper, not the image */
+    .post-content :global(p:has(> img)) {
       margin: var(--space-xl) 0;
+    }
+
+    /* An italic line right after an image is its caption */
+    .post-content :global(p:has(> img):has(+ p > em:only-child)) {
+      margin-bottom: var(--space-sm);
+    }
+
+    .post-content :global(p:has(> img) + p:has(> em:only-child)) {
+      margin-top: 0;
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.6;
     }
 
     @media (max-width: 768px) {
