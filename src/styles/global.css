@@ -9,6 +9,7 @@
   --accent-hover: #5A4A2F;
   --border: #E3E1DA;
   --border-hover: #6E5A3C;
+  --danger: #B42318;
 
   /* Surfaces — banded section rhythm */
   --surface: var(--bg);
@@ -64,6 +65,7 @@
   --accent-hover: #D4BC8A;
   --border: #2A2E36;
   --border-hover: #BFA574;
+  --danger: #F28B82;
 
   /* Raised dark band: separates from the page without a bright slab */
   --surface-inverse: #2A2E35;

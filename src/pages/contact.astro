@@ -31,18 +31,21 @@ const viberUrl = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.socials.v
         <div class="field-row">
           <div class="field">
             <label for="first_name">First name</label>
-            <input type="text" id="first_name" name="first_name" required autocomplete="given-name" />
+            <input type="text" id="first_name" name="first_name" required autocomplete="given-name" aria-describedby="first_name-error" />
+            <p id="first_name-error" class="field-error" hidden></p>
           </div>
           <div class="field">
             <label for="last_name">Last name</label>
-            <input type="text" id="last_name" name="last_name" required autocomplete="family-name" />
+            <input type="text" id="last_name" name="last_name" required autocomplete="family-name" aria-describedby="last_name-error" />
+            <p id="last_name-error" class="field-error" hidden></p>
           </div>
         </div>
 
         <div class="field-row">
           <div class="field">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required autocomplete="email" />
+            <input type="email" id="email" name="email" required autocomplete="email" aria-describedby="email-error" />
+            <p id="email-error" class="field-error" hidden></p>
           </div>
           <div class="field">
             <label for="phone">Phone <span class="optional">(optional)</span></label>
@@ -52,12 +55,14 @@ const viberUrl = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.socials.v
 
         <div class="field">
           <label for="subject">Subject</label>
-          <input type="text" id="subject" name="subject" required />
+          <input type="text" id="subject" name="subject" required aria-describedby="subject-error" />
+          <p id="subject-error" class="field-error" hidden></p>
         </div>
 
         <div class="field">
           <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
+          <textarea id="message" name="message" rows="5" required aria-describedby="message-error"></textarea>
+          <p id="message-error" class="field-error" hidden></p>
         </div>
 
         <!-- Honeypot spam trap - real users won't fill this in -->
@@ -72,11 +77,12 @@ const viberUrl = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.socials.v
           <a href="/privacy-policy/">Privacy Policy</a>.
         </p>
 
-        <p id="form-success" class="form-message form-success" hidden>
+        <p id="form-success" class="form-message form-success" role="status" hidden>
           Thanks — your message has been sent. I'll reply to <span id="confirm-email"></span> shortly.
         </p>
-        <p id="form-error" class="form-message form-error" hidden>
-          Something went wrong sending your message. Please try again, or email me directly at
+        <p id="form-error" class="form-message form-error" role="alert" hidden>
+          <span id="error-reason"></span> Your message is still in the form, so you can try again in a minute,
+          or email me directly at
           <a href={`mailto:${SITE_CONFIG.email}`}>{SITE_CONFIG.email}</a>.
         </p>
       </form>
@@ -213,6 +219,17 @@ const viberUrl = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.socials.v
       outline: 2px solid var(--accent);
       outline-offset: 2px;
       border-radius: 2px;
+    }
+
+    .field [aria-invalid="true"] {
+      border-color: var(--danger);
+    }
+
+    .field-error {
+      margin: var(--space-xs) 0 0;
+      font-size: var(--text-sm);
+      line-height: 1.4;
+      color: var(--danger);
     }
 
     .honeypot {
@@ -356,10 +373,54 @@ const viberUrl = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.socials.v
     const errorEl = document.getElementById("form-error");
     const confirmEmail = document.getElementById("confirm-email");
 
+    const errorReason = document.getElementById("error-reason");
+    const fields = form.querySelectorAll("[required]");
+
+    const messages = {
+      first_name: "Enter your first name.",
+      last_name: "Enter your last name.",
+      email: "Enter your email so I can reply.",
+      subject: "Add a subject, even a few words.",
+      message: "Tell me a little about what you'd like to automate.",
+    };
+
+    // Returns true when valid; shows or clears the inline message
+    function check(field) {
+      const value = field.value.trim();
+      let msg = "";
+      if (!value) msg = messages[field.name];
+      else if (field.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
+        msg = "That email looks incomplete. Use a format like name@example.com.";
+      const errorEl = document.getElementById(`${field.id}-error`);
+      errorEl.textContent = msg;
+      errorEl.hidden = !msg;
+      if (msg) field.setAttribute("aria-invalid", "true");
+      else field.removeAttribute("aria-invalid");
+      return !msg;
+    }
+
+    // Once a field has been flagged, clear the message as soon as it's fixed
+    fields.forEach((field) => {
+      field.addEventListener("input", () => {
+        if (field.getAttribute("aria-invalid") === "true") check(field);
+      });
+    });
+
+    function showError(reason) {
+      errorReason.textContent = reason;
+      errorEl.hidden = false;
+    }
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       successEl.hidden = true;
       errorEl.hidden = true;
+
+      const invalid = [...fields].filter((field) => !check(field));
+      if (invalid.length) {
+        invalid[0].focus();
+        return;
+      }
 
       const formData = new FormData(form);
       const payload = Object.fromEntries(formData.entries());
@@ -384,17 +445,17 @@ const viberUrl = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.socials.v
           },
           body: JSON.stringify(payload),
         });
-        const data = await res.json();
+        const data = await res.json().catch(() => ({}));
 
         if (data.success) {
           confirmEmail.textContent = payload.email;
           successEl.hidden = false;
           form.reset();
         } else {
-          errorEl.hidden = false;
+          showError("The form service didn't accept the message, so it wasn't sent.");
         }
       } catch (err) {
-        errorEl.hidden = false;
+        showError("Couldn't reach the form service. Check your connection.");
       } finally {
         submitBtn.disabled = false;
         btnLabel.textContent = "Send message";
