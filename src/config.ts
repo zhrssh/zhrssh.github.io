@@ -127,6 +127,21 @@ export const SITE_CONFIG = {
         "You get a working system, a walkthrough of how it runs, and support after launch to keep it running.",
     },
   ],
+  // Home "Results" strip: hand-picked, number-led. `project` is a projects collection id.
+  proof: [
+    {
+      project: "propresenter-lyrics-formatter-2",
+      metric: "10+ min",
+      outcome: "saved per song preparing Sunday lyrics — hours back every month",
+      client: "Solace of Christ Church",
+    },
+    {
+      project: "telegram-assistant",
+      metric: "10–15 min",
+      outcome: "a day saved by managing Calendar, Gmail and Tasks from one chat",
+      client: "Project",
+    },
+  ],
   education: [
     {
       degree: "Bachelor of Science in Computer Engineering",
