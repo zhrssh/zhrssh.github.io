@@ -40,7 +40,6 @@ const groupedSkills = allCategories
         <Image src={me} alt="Zherish Galvin Mayordo" width={320} height={320} />
       </div>
       <div class="about-hero-text">
-        <span class="eyebrow">About</span>
         <h1>Zherish Galvin Mayordo</h1>
         <p class="about-bio">
           I'm an AI Automation Specialist and Computer Engineering graduate based in
@@ -62,7 +61,7 @@ const groupedSkills = allCategories
     </div>
   </Section>
 
-  <Section surface="raised" eyebrow="Skills" title="Technical Skills" class="about-section">
+  <Section surface="raised" title="Technical Skills" class="about-section">
     <div class="skills-cloud">
       {
         groupedSkills.map((group) => (
@@ -81,7 +80,7 @@ const groupedSkills = allCategories
     </div>
   </Section>
 
-  <Section eyebrow="Career" title="Experience" class="about-section">
+  <Section title="Experience" class="about-section">
     <div class="row-list experience-rows">
       {
         SITE_CONFIG.experience.map((exp) => (
@@ -104,7 +103,7 @@ const groupedSkills = allCategories
     </div>
   </Section>
 
-  <Section surface="raised" eyebrow="Education" title="Education" class="about-section">
+  <Section surface="raised" title="Education" class="about-section">
     <div class="row-list">
       {
         SITE_CONFIG.education.map((edu) => (
@@ -120,7 +119,7 @@ const groupedSkills = allCategories
     </div>
   </Section>
 
-  <Section eyebrow="Credentials" title="Certifications" class="about-section">
+  <Section title="Certifications" class="about-section">
     <div class="row-list">
       {
         SITE_CONFIG.certifications.map((cert) => (
@@ -263,17 +262,6 @@ const groupedSkills = allCategories
       gap: var(--space-lg);
       padding: var(--space-lg) 0;
       border-bottom: 1px solid var(--border);
-    }
-
-    .experience-rows .row {
-      border-left: 2px solid transparent;
-      padding-left: var(--space-md);
-      margin-left: calc(-1 * var(--space-md) - 2px);
-      transition: border-color var(--transition-fast);
-    }
-
-    .experience-rows .row:hover {
-      border-left-color: var(--accent);
     }
 
     .row:first-child {

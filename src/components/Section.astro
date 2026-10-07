@@ -1,22 +1,20 @@
 ---
 interface Props {
   surface?: "default" | "raised" | "inverse";
-  eyebrow?: string;
   title?: string;
   rule?: boolean;
   link?: { href: string; label: string };
   class?: string;
 }
 
-const { surface = "default", eyebrow, title, rule = true, link, class: className } = Astro.props;
+const { surface = "default", title, rule = true, link, class: className } = Astro.props;
 ---
 
 <section class:list={["section", `section-${surface}`, className]}>
   <div class="container">
     {
-      (eyebrow || title) && (
+      title && (
         <div class="section-header">
-          {eyebrow && <span class="eyebrow">{eyebrow}</span>}
           {title && <h2>{title}</h2>}
           {rule && <hr class="rule" />}
           {link && (
@@ -52,11 +50,6 @@ const { surface = "default", eyebrow, title, rule = true, link, class: className
   .section-inverse :global(h3),
   .section-inverse :global(p) {
     color: var(--text-on-inverse);
-  }
-
-  .section-inverse :global(.eyebrow) {
-    color: var(--text-on-inverse);
-    opacity: 0.65;
   }
 
   .section-inverse :global(.rule) {

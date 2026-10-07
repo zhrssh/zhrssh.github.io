@@ -23,7 +23,7 @@ const projectCols = Math.min(featuredProjects.length, 3);
   <Section class="hero-section">
     <div class="hero">
       <div class="hero-content">
-        <span class="eyebrow eyebrow-live">
+        <span class="status">
           <span class="pulse-dot" aria-hidden="true"></span>
           Available for work
         </span>
@@ -56,11 +56,11 @@ const projectCols = Math.min(featuredProjects.length, 3);
     </div>
   </Section>
 
-  <Section surface="raised" eyebrow="Proof" title="Results, not promises">
+  <Section surface="raised" title="Results, not promises">
     <ProofStrip />
   </Section>
 
-  <Section eyebrow="What I offer" title="My Services">
+  <Section title="My Services">
     <div class="services-list">
       {
         SITE_CONFIG.services.map((service) => (
@@ -78,7 +78,6 @@ const projectCols = Math.min(featuredProjects.length, 3);
 
   <Section
     surface="raised"
-    eyebrow="How it works"
     title="How We'd Work Together"
     class="process-section">
     <div class="process-list">
@@ -97,7 +96,6 @@ const projectCols = Math.min(featuredProjects.length, 3);
   </Section>
 
   <Section
-    eyebrow="Selected work"
     title="Projects"
     link={{ href: "/projects/", label: "View all →" }}
     class="projects-section">
@@ -136,10 +134,13 @@ const projectCols = Math.min(featuredProjects.length, 3);
       text-align: left;
     }
 
-    .eyebrow-live {
+    .status {
       display: inline-flex;
       align-items: center;
       gap: 0.5em;
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      margin-bottom: var(--space-sm);
     }
 
     .pulse-dot {
@@ -175,23 +176,6 @@ const projectCols = Math.min(featuredProjects.length, 3);
     .hero-portrait {
       position: relative;
       flex-shrink: 0;
-      padding: var(--space-md);
-      margin: calc(-1 * var(--space-md));
-    }
-
-    .hero-portrait::before {
-      content: "";
-      position: absolute;
-      top: calc(var(--space-md) + 12px);
-      left: calc(var(--space-md) + 12px);
-      width: clamp(220px, 24vw, 320px);
-      height: clamp(220px, 24vw, 320px);
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-top: 2px solid var(--accent);
-      border-radius: var(--border-radius-lg);
-      z-index: 0;
-      transition: transform var(--transition-fast);
     }
 
     .hero-img-frame {
@@ -200,7 +184,6 @@ const projectCols = Math.min(featuredProjects.length, 3);
       border-radius: var(--border-radius-lg);
       overflow: hidden;
       border: 1px solid var(--border);
-      border-top: 2px solid var(--accent);
       background: var(--bg);
       position: relative;
       z-index: 1;
@@ -209,10 +192,6 @@ const projectCols = Math.min(featuredProjects.length, 3);
 
     .hero-portrait:hover .hero-img-frame {
       transform: translateY(-2px);
-    }
-
-    .hero-portrait:hover::before {
-      transform: translate(2px, 2px);
     }
 
     .hero-img-frame :global(img) {
@@ -261,7 +240,6 @@ const projectCols = Math.min(featuredProjects.length, 3);
       padding: var(--space-lg);
       border-radius: var(--border-radius-lg);
       border: 1px solid var(--border);
-      border-top: 2px solid var(--accent);
       transition: border-color var(--transition-fast);
       background-color: var(--bg);
       align-items: flex-start;
@@ -269,7 +247,6 @@ const projectCols = Math.min(featuredProjects.length, 3);
 
     .service-row:hover {
       border-color: var(--border-hover);
-      border-top-color: var(--accent);
     }
 
     .service-row :global(.service-icon) {
