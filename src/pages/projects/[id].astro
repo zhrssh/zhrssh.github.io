@@ -102,13 +102,13 @@ if (entry.data.bookCall) {
 
     <nav class="post-adjacent" aria-label="More projects">
       {olderProject ? (
-        <a href={`/projects/${olderProject.id}`} class="adjacent-link adjacent-prev">
+        <a href={`/projects/${olderProject.id}/`} class="adjacent-link adjacent-prev">
           <span class="adjacent-label">&larr; Previous</span>
           <span class="adjacent-title">{olderProject.data.title}</span>
         </a>
       ) : <span class="adjacent-link adjacent-placeholder" aria-hidden="true" />}
       {newerProject ? (
-        <a href={`/projects/${newerProject.id}`} class="adjacent-link adjacent-next">
+        <a href={`/projects/${newerProject.id}/`} class="adjacent-link adjacent-next">
           <span class="adjacent-label">Next &rarr;</span>
           <span class="adjacent-title">{newerProject.data.title}</span>
         </a>

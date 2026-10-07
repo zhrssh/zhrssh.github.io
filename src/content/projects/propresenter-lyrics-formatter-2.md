@@ -13,7 +13,7 @@ coverImage: "../../assets/projects/propresenter-lyrics-formatter-2/cover.png"
 
 ## Summary
 
-This is a follow-up to my [first ProPresenter lyrics formatter](/projects/propresenter-lyrics-formatter), built after watching my churchmates actually use it. The original required people to upload a file and correctly tell the system whether it was one song per file or one song per page, which turned out to be a confusing and error-prone step for non-technical volunteers.
+This is a follow-up to my [first ProPresenter lyrics formatter](/projects/propresenter-lyrics-formatter/), built after watching my churchmates actually use it. The original required people to upload a file and correctly tell the system whether it was one song per file or one song per page, which turned out to be a confusing and error-prone step for non-technical volunteers.
 
 This version replaces that with a dedicated, access-gated web page for Solace of Christ Church (SCC). Volunteers paste in their chord chart text or upload the PDF file, the app extracts the lyrics client-side, and the results come back already split into individual songs with proper file names, ready to download one by one or as a single zip.
 

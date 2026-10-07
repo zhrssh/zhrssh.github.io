@@ -14,7 +14,7 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
 ---
 
 <article class:list={["project-card", `project-card-${variant}`]}>
-  <a href={`/projects/${project.id}`} class="project-link">
+  <a href={`/projects/${project.id}/`} class="project-link">
     {
       project.data.coverImage && (
         <div class="project-image">

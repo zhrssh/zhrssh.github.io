@@ -15,13 +15,13 @@ export const SITE_CONFIG = {
   },
   navLinks: [
     { label: "Home", href: "/" },
-    { label: "Projects", href: "/projects" },
-    { label: "Blog", href: "/blog" },
-    { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
+    { label: "Projects", href: "/projects/" },
+    { label: "Blog", href: "/blog/" },
+    { label: "About", href: "/about/" },
+    { label: "Contact", href: "/contact/" },
   ],
   resumeUrl: "/zherishgalvinmayordo-cv.pdf",
-  bookingUrl: "/contact",
+  bookingUrl: "/contact/",
   experience: [
     {
       role: "Trading Algorithm Programmer",

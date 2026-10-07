@@ -55,7 +55,7 @@ const allTags = [...new Set(allBlogs.flatMap((p) => p.data.tags))].sort();
               data-title={post.data.title}
               data-description={post.data.description}
               data-date={post.data.date.getTime()}>
-              <a href={`/blog/${post.id}`} class="blog-link">
+              <a href={`/blog/${post.id}/`} class="blog-link">
                 <div class="blog-meta">
                   <time datetime={post.data.date.toISOString()}>
                     {post.data.date.toLocaleDateString("en-US", {

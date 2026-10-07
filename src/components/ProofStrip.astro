@@ -28,7 +28,7 @@ function splitImpact(text: string): ImpactPart[] {
   withImpact.length > 0 && (
     <div class="proof-strip">
       {withImpact.map((project) => (
-        <a href={`/projects/${project.id}`} class="proof-item">
+        <a href={`/projects/${project.id}/`} class="proof-item">
           <p class="proof-impact">
             {splitImpact(project.data.impact!).map((part) =>
               part.accent ? <span class="proof-accent">{part.text}</span> : part.text

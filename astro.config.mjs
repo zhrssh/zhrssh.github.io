@@ -7,6 +7,7 @@ import remarkVideoEmbed from './src/plugins/remarkVideoEmbed.mjs';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://zherishgalvin.com',
+  trailingSlash: 'always',
   image: {
     domains: ['placehold.co'],
   },

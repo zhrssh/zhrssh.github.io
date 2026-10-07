@@ -34,7 +34,7 @@ const projectCols = Math.min(featuredProjects.length, 3);
         </p>
         <div class="hero-cta">
           <a href={SITE_CONFIG.bookingUrl} class="button">Book a call</a>
-          <a href="/projects" class="button button-secondary">View my work</a>
+          <a href="/projects/" class="button button-secondary">View my work</a>
           <a href={SITE_CONFIG.resumeUrl} class="hero-tertiary" download
             >Download CV →</a
           >
@@ -97,7 +97,7 @@ const projectCols = Math.min(featuredProjects.length, 3);
   <Section
     eyebrow="Latest work"
     title="Projects"
-    link={{ href: "/projects", label: "View all →" }}
+    link={{ href: "/projects/", label: "View all →" }}
     class="projects-section">
     <div class="projects-grid" data-cols={projectCols}>
       {
