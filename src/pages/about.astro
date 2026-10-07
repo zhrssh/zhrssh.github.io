@@ -42,11 +42,17 @@ const groupedSkills = allCategories
       <div class="about-hero-text">
         <h1>Zherish Galvin Mayordo</h1>
         <p class="about-bio">
-          I'm an AI Automation Specialist and Computer Engineering graduate based in
-          the Philippines. I build business automations that eliminate repetitive
-          work, connect applications, and streamline operations. I focus on
-          creating clean, maintainable, and reliable solutions that save businesses
-          time, reduce costs, and scale with their growth.
+          I help service businesses hand off the repetitive work that eats their
+          week: bookings, follow-ups, document formatting, admin. Every week,
+          volunteers at Solace of Christ Church use a tool I built to turn chord
+          charts into ProPresenter lyrics, saving 10+ minutes per song.
+        </p>
+        <p class="about-bio">
+          I'm a Computer Engineer based in the Philippines. Before freelancing, I
+          co-authored two machine-learning papers (one at IEEE TENCON 2024) and
+          built trading algorithms that run on live servers for traders. I bring
+          the same care to your workflows: built to be clear, maintainable and
+          dependable.
         </p>
         <div class="link-pills">
           <LinkPill href={SITE_CONFIG.socials.github} icon="github" label="GitHub" external />
@@ -61,26 +67,7 @@ const groupedSkills = allCategories
     </div>
   </Section>
 
-  <Section surface="raised" title="Technical Skills" class="about-section">
-    <div class="skills-cloud">
-      {
-        groupedSkills.map((group) => (
-          <div class="skill-row">
-            <span class="skill-row-label">{group.category}</span>
-            <span class="skill-chips">
-              {group.items.map((skill) => (
-                <span class:list={["skill-chip", group.category === "Automation" && "skill-chip-accent"]}>
-                  {skill.name}
-                </span>
-              ))}
-            </span>
-          </div>
-        ))
-      }
-    </div>
-  </Section>
-
-  <Section title="Experience" class="about-section">
+  <Section surface="raised" title="Experience" class="about-section">
     <div class="row-list experience-rows">
       {
         SITE_CONFIG.experience.map((exp) => (
@@ -103,7 +90,7 @@ const groupedSkills = allCategories
     </div>
   </Section>
 
-  <Section surface="raised" title="Education" class="about-section">
+  <Section title="Education" class="about-section">
     <div class="row-list">
       {
         SITE_CONFIG.education.map((edu) => (
@@ -113,6 +100,25 @@ const groupedSkills = allCategories
               <div class="row-sub">{edu.institution}</div>
             </div>
             <div class="row-right">{edu.year}</div>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section surface="raised" title="Technical Skills" class="about-section">
+    <div class="skills-cloud">
+      {
+        groupedSkills.map((group) => (
+          <div class="skill-row">
+            <span class="skill-row-label">{group.category}</span>
+            <span class="skill-chips">
+              {group.items.map((skill) => (
+                <span class:list={["skill-chip", group.category === "Automation" && "skill-chip-accent"]}>
+                  {skill.name}
+                </span>
+              ))}
+            </span>
           </div>
         ))
       }

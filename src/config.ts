@@ -24,20 +24,20 @@ export const SITE_CONFIG = {
   bookingUrl: "https://calendly.com/zherishmayordo/discovery-call-45m",
   experience: [
     {
+      role: "AI Automation Specialist",
+      company: "Freelance",
+      duration: "Jun. 2026 - Present",
+      description: [
+        "Developing automation solutions using n8n for service-based businesses to increase operational efficiency.",
+      ],
+    },
+    {
       role: "Trading Algorithm Programmer",
       company: "Robin Ho · Rejoined",
       duration: "Jul. 2026 - Present",
       description: [
         "Developing automations and trading algorithms using Pine Script and MQL5 to help traders identify and execute market opportunities.",
         "Analyzing market conditions, price patterns, and economic events to design and improve algorithmic trading strategies.",
-      ],
-    },
-    {
-      role: "AI Automation Specialist",
-      company: "Freelance",
-      duration: "Jun. 2026 - Present",
-      description: [
-        "Developing automation solutions using n8n for service-based businesses to increase operational efficiency.",
       ],
     },
     {

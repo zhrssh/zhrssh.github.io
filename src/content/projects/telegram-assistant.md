@@ -1,5 +1,5 @@
 ---
-title: "Personal Assistant for Telegram with Long-term Memory"
+title: "One Telegram chat for your calendar, inbox and to-dos"
 description: "A personal assistant for Telegram that remembers user preferences and generates personalized responses."
 date: 2026-07-03
 featured: true
@@ -18,6 +18,10 @@ It can also interact with Google services such as Calendar, Gmail, and Tasks in 
 ## The Problem
 
 Managing multiple applications for tasks, emails, and calendar events can be time-consuming and inefficient. Users often have to switch between different apps, which disrupts their workflow and leads to lost productivity.
+
+## Results
+
+I was able to build a personal assistant for Telegram that can integrate with Google services and provide relevant responses based on user preferences. The personal assistant can manage tasks, emails, and calendar events in a single platform, and can save users up to **10-15 minutes a day**.
 
 ## Project Objectives
 
@@ -74,10 +78,6 @@ Another example of the personal assistant's capability of storing user preferenc
 One of the challenges I faced when building this project was designing the prompts and structuring the agent's responses. Without a proper structure of the responses, the agent would not be able to store user preferences and provide relevant responses.
 
 Another challenge was designing the agent's memory. To be able to properly store user preferences, I need the agent to know about the metadata of the user's preferences, so that it can determine which preferences are relevant or have higher priority.
-
-## Results
-
-I was able to build a personal assistant for Telegram that can integrate with Google services and provide relevant responses based on user preferences. The personal assistant can manage tasks, emails, and calendar events in a single platform, and can save users up to **10-15 minutes a day**.
 
 ## Lessons Learned
 

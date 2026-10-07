@@ -1,5 +1,5 @@
 ---
-title: "Improved PDF/TXT File to ProPresenter-compatible Lyrics Formatter"
+title: "How a church team stopped hand-formatting lyrics"
 description: "A smart AI-powered document processing system that converts PDF/TXT files containing lyrics into ProPresenter-compatible lyrics."
 summary: "A dedicated, access-gated web app for Solace of Christ Church that turns chord charts into ProPresenter-ready lyrics in seconds, with individual or zipped downloads."
 date: 2026-07-26
@@ -25,6 +25,10 @@ The first version worked, but the upload flow put too much cognitive load on vol
 * A wrong selection produced garbled output, with no clear indication of what went wrong.
 * There was no dedicated interface, so the tool felt like a generic file-upload utility rather than something built for their weekly routine.
 * Getting multiple formatted songs back meant repeating the same upload-and-download cycle for each one.
+
+## Results
+
+Volunteers no longer have to think about file structure at all. Since the page is dedicated to SCC and pre-configured for their chord chart format, the entire interaction is reduced to pasting text in or uploading the PDF file and downloading formatted songs out, individually or as a zip. What used to be a multi-step, error-prone upload process is now a much smoother, purpose-built workflow.
 
 ## Project Objectives
 
@@ -67,10 +71,6 @@ The page itself is gated behind an access code, since it's built specifically fo
 The main challenge was rethinking where responsibility for extraction should live. The first version tried to handle every kind of PDF layout inside the n8n workflow itself, which is what led to the confusing "one song per file vs. one song per page" toggle in the first place.
 
 For this version, I moved text extraction out of n8n and into a dedicated client-facing app, so the workflow only ever deals with plain text. This simplified the n8n side considerably, but it meant designing the client app to reliably extract text from SCC's specific chord chart PDFs before handing it off. Splitting the responsibility this way took a few iterations to get right, but it made both halves of the system simpler than trying to handle everything in one place.
-
-## Results
-
-Volunteers no longer have to think about file structure at all. Since the page is dedicated to SCC and pre-configured for their chord chart format, the entire interaction is reduced to pasting text in or uploading the PDF file and downloading formatted songs out, individually or as a zip. What used to be a multi-step, error-prone upload process is now a much smoother, purpose-built workflow.
 
 ## Lessons Learned
 

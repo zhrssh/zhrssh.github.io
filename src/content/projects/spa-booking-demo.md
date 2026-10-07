@@ -1,5 +1,5 @@
 ---
-title: "Automated Booking System for Spas"
+title: "Spa bookings confirmed instantly, day or night"
 description: "An automated booking system that lets guests pick a therapist, view real-time availability, and book instantly, with confirmation emails and guest records saved automatically."
 date: 2026-07-21
 featured: true
@@ -29,6 +29,10 @@ Behind the page, an n8n backend checks each therapist's Google Calendar and Airt
 Spa businesses commonly handle booking inquiries manually across Facebook Messenger, SMS, and phone calls. Each inquiry requires a staff member to check therapist availability, confirm a slot, and manually record the guest's details, an exchange that can take minutes to complete and often stalls entirely outside business hours or when staff are occupied with walk-in guests.
 
 That delay costs bookings. At an estimated 2 missed bookings per day and an average guest spend of ₱1,000, a spa can lose up to ₱60,000 in bookings every month, all from inquiries that were never followed up on quickly enough to convert.
+
+## Results
+
+The booking page demonstrates how guests could view real-time openings and confirm an appointment entirely on their own, without reaching out over Messenger, SMS, or a phone call. Every booking is automatically logged in Airtable with a confirmation email sent immediately, showing spa businesses how this approach would capture and confirm inquiries the moment a guest submits them, directly addressing the lost-booking problem described above.
 
 ## Project Objectives
 
@@ -76,10 +80,6 @@ This is a demo built to show spa businesses what an automated booking flow could
 The biggest unsolved challenge is scaling past a handful of therapists. Both workflows currently have a dedicated node per therapist, a separate "get calendar" node for each therapist in the availability check, and a rules-based switch that branches into a separate "create appointment" node for each therapist in the booking submission. That works cleanly for four therapists, but it means every new therapist added to the business requires manually wiring up new nodes and branches in both workflows. At 10+ therapists this becomes unwieldy to build and maintain, and I haven't yet settled on the right way to make the calendar lookup and appointment creation steps dynamic instead of hardcoded per therapist.
 
 As a demo scoped to the happy path, it doesn't yet handle cases like two guests booking the same slot at nearly the same time, since availability is checked and booking is submitted as two separate requests with no lock or re-validation in between. That's an intentional scope cut for a proof of concept meant to pitch the concept to spa businesses, not a production booking system.
-
-## Results
-
-The booking page demonstrates how guests could view real-time openings and confirm an appointment entirely on their own, without reaching out over Messenger, SMS, or a phone call. Every booking is automatically logged in Airtable with a confirmation email sent immediately, showing spa businesses how this approach would capture and confirm inquiries the moment a guest submits them, directly addressing the lost-booking problem described above.
 
 ## Lessons Learned
 

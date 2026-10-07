@@ -1,5 +1,5 @@
 ---
-title: "AI-Powered Cold Email Outreach for Spas"
+title: "Personalized cold emails for spas, drafted in seconds"
 description: "An AI-powered workflow that automatically generates personalized cold emails and sends them to spa businesses, helping streamline lead outreach."
 date: 2026-07-16
 tags: [
@@ -28,6 +28,12 @@ This project automates the end-to-end cold email outreach process for spa busine
 Sending personalized cold emails manually was repetitive and time-consuming. For every lead, I had to copy a previous email, review my research notes in Notion, generate a personalized email using AI, regenerate it if it didn't match my writing style, copy the subject and body into my email client, add my Loom demo video link, proofread everything, and finally send the email.
 
 This process took 5 to 7 minutes per lead, making it difficult to scale outreach. As the number of leads grew, the manual work became a bottleneck. I was spending more time copying, pasting, and refining AI-generated emails than actually reaching out to prospects, while also increasing the risk of mistakes such as using the wrong content or overlooking important details.
+
+## Results
+
+The automation eliminated repetitive manual tasks such as generating email content, copying subjects and messages between applications, formatting emails, and updating lead records.
+
+Instead of spending 5 to 7 minutes preparing each email, the process now requires only a quick review and approval before sending. This significantly reduces the time required for outreach while making it easier to contact a larger number of prospects with consistent, personalized emails.
 
 ## Project Objectives
 
@@ -65,12 +71,6 @@ To eliminate the repetitive manual work, I developed an AI-powered cold email ou
 One of the biggest challenges was prompt engineering. I wanted the AI-generated emails to match my writing style and feel genuinely personalized rather than sounding like generic marketing templates. Achieving this required multiple iterations of prompt refinement, adjusting the instructions and context until the generated emails consistently followed the desired structure and tone.
 
 Another challenge was dealing with the Gemini API's rate limits during batch processing. When the API limit was reached, email generation would fail and interrupt the workflow. To make the automation more reliable, I implemented a basic error-handling path that waits for one minute before retrying the request, allowing the rate limit to reset and the workflow to continue without manual intervention.
-
-## Results
-
-The automation eliminated repetitive manual tasks such as generating email content, copying subjects and messages between applications, formatting emails, and updating lead records.
-
-Instead of spending 5 to 7 minutes preparing each email, the process now requires only a quick review and approval before sending. This significantly reduces the time required for outreach while making it easier to contact a larger number of prospects with consistent, personalized emails.
 
 ## Lessons Learned
 

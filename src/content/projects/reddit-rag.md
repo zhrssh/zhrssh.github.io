@@ -1,5 +1,5 @@
 ---
-title: "Smart Reddit Search (RAG)"
+title: "Hours of Reddit research, reduced to one search"
 description: "A smart reddit agentic AI built using n8n that searches for specific posts from a vector store."
 date: 2026-06-29
 tags: ["AI", "RAG", "n8n", "Automation"]
@@ -19,6 +19,12 @@ The entire workflow is orchestrated using n8n, combining web search, data proces
 ## The Problem
 
 Large language models often struggle with questions that depend on real user experiences or rapidly changing information. While Reddit contains valuable discussions, manually searching through multiple threads is slow and often produces inconsistent results.
+
+## Results
+
+This project saved me **at least 20 hours of work per week** searching through Reddit for relevant discussions. By automating the process, I can just prompt the AI agent to search for specific topics, and it will do the rest.
+
+The workflow enables natural-language search across thousands of indexed Reddit discussions, allowing relevant community insights to be retrieved in seconds instead of manually searching through multiple threads.
 
 ## Project Objectives
 
@@ -58,12 +64,6 @@ The entire process runs automatically inside n8n without manual intervention.
 ## Challenges
 
 One of the challenges I faced was figuring out how to use the data loader node. Just simply importing the json data into the node wasn't working because the embedding model was returning empty arrays, which caused the node to fail. I modified the data loader so only the title and body were embedded while the remaining fields were stored as metadata. This prevented empty embedding arrays and allowed the documents to be indexed correctly.
-
-## Results
-
-This project saved me **at least 20 hours of work per week** searching through Reddit for relevant discussions. By automating the process, I can just prompt the AI agent to search for specific topics, and it will do the rest.
-
-The workflow enables natural-language search across thousands of indexed Reddit discussions, allowing relevant community insights to be retrieved in seconds instead of manually searching through multiple threads.
 
 ## Lessons Learned
 

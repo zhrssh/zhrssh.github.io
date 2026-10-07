@@ -1,5 +1,5 @@
 ---
-title: "A Conversational AI with RAG Pipeline for Messenger"
+title: "A Messenger chatbot that answers from your own documents"
 description: "A smart Messenger chatbot that can converse, answer questions, and provide information using Retrieval-Augmented Generation (RAG)."
 date: 2026-07-01
 tags: ["AI", "LLM", "RAG", "Chatbot", "n8n", "Automation"]
@@ -14,6 +14,13 @@ Designed and built a production-ready conversational RAG chatbot for Facebook Me
 ## The Problem
 
 Traditional RAG systems typically retrieve documents once before immediately generating a response. If the retrieved context is incomplete or only partially relevant, the model may produce inaccurate, unsupported, or hallucinated answers.
+
+## Results
+
+- Secure handling of all incoming Messenger webhook requests.
+- More reliable responses through multi-query retrieval and answer verification.
+- Reduced unsupported answers by validating generated responses against retrieved context.
+- Context-aware conversations through persistent conversation memory.
 
 ## Project Objectives
 
@@ -127,13 +134,6 @@ Instead of following the malicious prompt, the chatbot ignored the request and r
 - Improving retrieval for ambiguous and multi-topic questions.
 - Designing structured prompts that consistently produce quality outputs.
 - Managing conversation history while avoiding irrelevant context.
-
-## Results
-
-- Secure handling of all incoming Messenger webhook requests.
-- More reliable responses through multi-query retrieval and answer verification.
-- Reduced unsupported answers by validating generated responses against retrieved context.
-- Context-aware conversations through persistent conversation memory.
 
 ## Lessons Learned
 
