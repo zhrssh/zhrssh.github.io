@@ -77,6 +77,10 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-snap-type: y proximity;
@@ -223,6 +227,11 @@ main {
 
 main > .container {
   padding-block: var(--space-3xl);
+}
+
+/* The header section already supplies the gap above the list. */
+main > .page-header-section + .container {
+  padding-top: 0;
 }
 
 .nav-links {

@@ -19,7 +19,9 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const readingTime = getReadingTime(entry.body || "");
 
-const projectsByDate = (await getCollection("projects")).sort(
+const projectsByDate = (
+  await getCollection("projects", ({ data }) => !data.archived)
+).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime()
 );
 const currentIndex = projectsByDate.findIndex((p) => p.id === entry.id);

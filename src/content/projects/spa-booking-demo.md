@@ -2,6 +2,7 @@
 title: "Automated Booking System for Spas"
 description: "An automated booking system that lets guests pick a therapist, view real-time availability, and book instantly, with confirmation emails and guest records saved automatically."
 date: 2026-07-21
+featured: true
 tags: [
   "n8n",
   "Workflow Automation",

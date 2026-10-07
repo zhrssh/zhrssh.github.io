@@ -23,7 +23,7 @@ const allTags = [...new Set(allBlogs.flatMap((p) => p.data.tags))].sort();
   </Section>
 
   <div class="container">
-    <section class="controls">
+    <section class="controls" hidden={allBlogs.length < 10}>
       <div class="search-wrapper">
         <Icon name="search" size={18} class="search-icon" />
         <input

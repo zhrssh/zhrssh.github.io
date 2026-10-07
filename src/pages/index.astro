@@ -9,10 +9,11 @@ import Section from "../components/Section.astro";
 import { SITE_CONFIG } from "../config";
 import MainLayout from "../layouts/MainLayout.astro";
 
-const projects = await getCollection("projects");
+const projects = await getCollection("projects", ({ data }) => !data.archived);
 const featuredProjects = projects
+  .filter((p) => p.data.featured)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 9);
+  .slice(0, 3);
 const projectCols = Math.min(featuredProjects.length, 3);
 ---
 
@@ -95,7 +96,7 @@ const projectCols = Math.min(featuredProjects.length, 3);
   </Section>
 
   <Section
-    eyebrow="Latest work"
+    eyebrow="Selected work"
     title="Projects"
     link={{ href: "/projects/", label: "View all →" }}
     class="projects-section">
