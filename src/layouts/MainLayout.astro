@@ -82,6 +82,9 @@ const pageTitle = `${title} · ${brand}`;
               <Icon name="moon" size={18} class="icon-moon" />
             </span>
           </button>
+          <a href={SITE_CONFIG.bookingUrl} class="button nav-cta" target="_blank" rel="noopener noreferrer">
+            Book a call<span class="sr-only"> (opens in a new tab)</span>
+          </a>
         </div>
 
         <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-drawer">
@@ -102,6 +105,15 @@ const pageTitle = `${title} · ${brand}`;
               {link.label}
             </a>
           ))}
+        </div>
+        <div class="drawer-cta">
+          <a href={SITE_CONFIG.bookingUrl} class="button" target="_blank" rel="noopener noreferrer">
+            Book a call<span class="sr-only"> (opens in a new tab)</span>
+          </a>
+          <a href={`https://wa.me/${SITE_CONFIG.socials.whatsapp}`} class="button button-secondary" target="_blank" rel="noopener noreferrer">
+            <Icon name="whatsapp" size={16} />
+            Message on WhatsApp
+          </a>
         </div>
         <div class="drawer-actions">
           <a href={SITE_CONFIG.socials.github} target="_blank" rel="noopener noreferrer">GitHub</a>

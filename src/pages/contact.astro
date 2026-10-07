@@ -1,26 +1,34 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import Section from '../components/Section.astro';
-import LinkPill from '../components/LinkPill.astro';
+import Icon from '../components/Icon.astro';
 import { SITE_CONFIG } from '../config';
 
 const whatsappUrl = `https://wa.me/${SITE_CONFIG.socials.whatsapp}`;
-const viberUrl = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.socials.viber)}`;
 ---
 
 <MainLayout
   title="Contact"
-  description="Get in touch to automate your workflows — book a call or reach out directly via email, WhatsApp, or Viber."
+  description="Get in touch to automate your workflows — book a discovery call, message on WhatsApp, or send a note by form or email."
 >
   <Section class="contact-header-section">
     <div class="contact-hero">
       <h1>Let's work together</h1>
       <hr class="accent-rule" />
       <p class="contact-intro">
-        Got a workflow to automate? Tell me about your project
-        and I'll get back to you within a day or two. Prefer to reach out directly?
-        Email, WhatsApp and Viber work too.
+        Got a workflow to automate? The quickest start is a 45-minute discovery call,
+        where we find what's eating your team's time. Not ready for a call?
+        Send a quick WhatsApp message, or write to me below.
       </p>
+      <div class="contact-cta">
+        <a href={SITE_CONFIG.bookingUrl} class="button" target="_blank" rel="noopener noreferrer">
+          Book a call<span class="sr-only"> (opens in a new tab)</span>
+        </a>
+        <a href={whatsappUrl} class="button button-secondary" target="_blank" rel="noopener noreferrer">
+          <Icon name="whatsapp" size={16} />
+          Message on WhatsApp
+        </a>
+      </div>
     </div>
   </Section>
 
@@ -89,31 +97,16 @@ const viberUrl = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.socials.v
     </div>
 
     <aside class="channels-column">
-      <h2>Reach me directly</h2>
+      <h2>Prefer email?</h2>
       <hr class="rule" />
       <p class="channels-intro">
-        No form required — pick whatever's easiest for you.
+        Write whenever suits you. I reply within a day or two.
       </p>
-      <div class="link-pills">
-        <LinkPill href={`mailto:${SITE_CONFIG.email}`} icon="mail" label="Email" />
-        <LinkPill href={whatsappUrl} icon="whatsapp" label="WhatsApp" external />
-        <LinkPill href={viberUrl} icon="viber" label="Viber" external />
-        <LinkPill href={SITE_CONFIG.socials.github} icon="github" label="GitHub" external />
-        <LinkPill href={SITE_CONFIG.socials.linkedin} icon="linkedin" label="LinkedIn" external />
-      </div>
 
       <div class="contact-meta">
         <div class="meta-row">
           <span class="meta-label">Email</span>
           <a href={`mailto:${SITE_CONFIG.email}`} class="meta-value">{SITE_CONFIG.email}</a>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Phone</span>
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="meta-value">{SITE_CONFIG.phone}</a>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Viber</span>
-          <a href={viberUrl} class="meta-value">{SITE_CONFIG.socials.viber}</a>
         </div>
         <div class="meta-row">
           <span class="meta-label">Based in</span>
@@ -139,11 +132,23 @@ const viberUrl = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.socials.v
       max-width: 60ch;
     }
 
+    .contact-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-xl);
+    }
+
+    .contact-cta .button {
+      padding: 0.75rem var(--space-lg);
+      font-size: var(--text-base);
+    }
+
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--space-2xl);
-      align-items: stretch;
+      align-items: start;
     }
 
     .form-column {
@@ -314,13 +319,6 @@ const viberUrl = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.socials.v
       line-height: 1.6;
     }
 
-    .link-pills {
-      display: flex;
-      gap: var(--space-sm);
-      flex-wrap: wrap;
-      margin-bottom: var(--space-2xl);
-    }
-
     .contact-meta {
       display: flex;
       flex-direction: column;
@@ -354,7 +352,19 @@ const viberUrl = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.socials.v
     }
 
     @media (max-width: 768px) {
-      .contact-grid {
+      .contact-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-xl);
+    }
+
+    .contact-cta .button {
+      padding: 0.75rem var(--space-lg);
+      font-size: var(--text-base);
+    }
+
+    .contact-grid {
         grid-template-columns: 1fr;
       }
 
