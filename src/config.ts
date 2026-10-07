@@ -107,26 +107,6 @@ export const SITE_CONFIG = {
       icon: "sales-automation" as const,
     },
   ],
-  process: [
-    {
-      number: "1",
-      title: "Discovery Call",
-      description:
-        "We talk through what's eating your time or costing you leads. No jargon, no obligation.",
-    },
-    {
-      number: "2",
-      title: "Build & Test",
-      description:
-        "I design and build the automation, test it against real scenarios, and share progress via short Loom walkthroughs.",
-    },
-    {
-      number: "3",
-      title: "Launch & Support",
-      description:
-        "You get a working system, a walkthrough of how it runs, and support after launch to keep it running.",
-    },
-  ],
   // Home "Results" strip: hand-picked, number-led. `project` is a projects collection id.
   proof: [
     {
