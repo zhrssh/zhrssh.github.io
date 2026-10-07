@@ -30,13 +30,13 @@ const featuredId = (allProjects.find((p) => p.data.featured) ?? allProjects[0])
     <section class="controls" hidden={allProjects.length < 10}>
       <div class="search-wrapper">
         <Icon name="search" size={18} class="search-icon" />
-        <input type="text" id="search-input" placeholder="Search projects..." />
+        <input type="text" id="search-input" placeholder="Search projects..." aria-label="Search projects" />
       </div>
-      <select id="tag-filter">
+      <select id="tag-filter" aria-label="Filter by tag">
         <option value="all">All Tags</option>
         {allTags.map((tag) => <option value={tag}>{tag}</option>)}
       </select>
-      <select id="sort-select">
+      <select id="sort-select" aria-label="Sort projects">
         <option value="newest">Newest First</option>
         <option value="oldest">Oldest First</option>
         <option value="title">Alphabetical</option>
@@ -60,6 +60,7 @@ const featuredId = (allProjects.find((p) => p.data.featured) ?? allProjects[0])
               project={project}
               variant={project.id === featuredId ? "featured" : "compact"}
               showMeta
+              headingLevel={2}
             />
           </li>
         ))

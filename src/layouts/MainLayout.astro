@@ -130,6 +130,7 @@ const pageTitle = `${title} · ${brand}`;
         <nav class="footer-nav">
           <a href="/">Home</a>
           <a href="/projects/">Projects</a>
+          <a href="/blog/">Blog</a>
           <a href="/about/">About</a>
           <a href="/contact/">Contact</a>
           <a href="/privacy-policy/">Privacy Policy</a>
@@ -147,7 +148,6 @@ const pageTitle = `${title} · ${brand}`;
     </footer>
 
     <div class="lightbox-overlay" id="lightbox" tabindex="-1" role="dialog" aria-modal="true" aria-label="Image viewer">
-      <img src="" alt="" />
       <span class="lightbox-caption"></span>
     </div>
 
@@ -366,23 +366,26 @@ const pageTitle = `${title} · ${brand}`;
 
       // Lightbox for in-body content images
       const lightbox = document.getElementById("lightbox");
-      const lightboxImg = lightbox?.querySelector("img") as HTMLImageElement | null;
+      // Created on open and removed on close, so no empty <img> sits in the page
+      const lightboxImg = document.createElement("img");
       const lightboxCaption = lightbox?.querySelector(".lightbox-caption") as HTMLElement | null;
       let activeImage: HTMLImageElement | null = null;
 
       const closeLightbox = () => {
         if (!lightbox) return;
         lightbox.classList.remove("active");
+        lightboxImg.remove();
         document.body.style.overflow = "";
         activeImage?.focus();
         activeImage = null;
       };
 
       const openLightbox = (img: HTMLImageElement) => {
-        if (!lightbox || !lightboxImg) return;
+        if (!lightbox) return;
         activeImage = img;
         lightboxImg.src = img.currentSrc || img.src;
         lightboxImg.alt = img.alt;
+        lightbox.prepend(lightboxImg);
         if (lightboxCaption) lightboxCaption.textContent = img.alt;
         lightbox.classList.add("active");
         document.body.style.overflow = "hidden";

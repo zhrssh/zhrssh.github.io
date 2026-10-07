@@ -601,6 +601,11 @@ main > .page-header-section + .container {
   visibility: visible;
 }
 
+::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
 .lightbox-overlay img {
   max-width: 95vw;
   max-height: 90vh;
