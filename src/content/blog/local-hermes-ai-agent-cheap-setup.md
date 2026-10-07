@@ -3,7 +3,7 @@ title: "How to Set Up a Local Hermes AI Agent for Cheap (That Gets Smarter the M
 description: "A step-by-step guide to running your own local Hermes AI agent on a budget, and how to set it up so it keeps improving the longer you use it."
 date: 2026-09-24
 author: "Zherish Galvin Mayordo"
-tags: ["ai", "hermes", "local-llm", "automation", "tutorial"]
+tags: ["AI", "Hermes", "Local LLM", "Automation", "Tutorial"]
 coverImage: "../../assets/blog/local-hermes-ai-agent-cheap-setup/cover.png"
 ---
 

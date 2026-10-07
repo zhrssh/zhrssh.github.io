@@ -11,7 +11,7 @@ tags: [
   "Booking System",
   "Email Automation"
 ]
-impact: "A booking system designed to prevent missed bookings — real-time availability, auto-confirmations, guest records"
+impact: "Prevents missed bookings with real-time availability"
 coverImage: "../../assets/projects/spa-booking-demo/cover.png"
 bookCall: true
 ---

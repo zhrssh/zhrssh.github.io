@@ -12,7 +12,7 @@ tags: [
   "Prompt Engineering",
   "Workflow Automation"
 ]
-impact: "Generates personalized cold outreach emails in seconds, reducing manual drafting time"
+impact: "Drafts personalized outreach emails in seconds"
 coverImage: "../../assets/projects/spa-email-outreach/cover.png"
 bookCall: true
 ---
