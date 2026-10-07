@@ -27,19 +27,20 @@ const projectCols = Math.min(featuredProjects.length, 3);
           <span class="pulse-dot" aria-hidden="true"></span>
           Available for work
         </span>
-        <h1>AI automation &amp; n8n workflows that give your team its week back.</h1>
+        <h1>Hand off the busywork.<br />Get hours back every week.</h1>
         <hr class="accent-rule" />
         <p class="hero-tagline">
-          I'm Zherish — I build AI-powered workflows for service businesses, so
-          the manual bottlenecks stop costing you time and money.
+          I build n8n and AI workflows that take bookings, chase follow-ups and
+          handle admin around the clock — so fewer leads slip through, fewer
+          errors creep in, and your team gets back to serving clients.
         </p>
         <div class="hero-cta">
-          <a href={SITE_CONFIG.bookingUrl} class="button">Book a call</a>
+          <a href={SITE_CONFIG.bookingUrl} class="button" target="_blank" rel="noopener noreferrer">Book a call</a>
           <a href="/projects/" class="button button-secondary">View my work</a>
-          <a href={SITE_CONFIG.resumeUrl} class="hero-tertiary" download
-            >Download CV →</a
-          >
         </div>
+        <p class="hero-credential">
+          Computer Engineer · Co-author of two machine-learning papers, including IEEE TENCON 2024
+        </p>
       </div>
       <div class="hero-portrait">
         <div class="hero-img-frame">
@@ -112,13 +113,13 @@ const projectCols = Math.min(featuredProjects.length, 3);
   </Section>
 
   <Section surface="inverse" class="cta-section">
-    <h2>Let's Fix What's Slowing You Down</h2>
+    <h2>Let's fix what's slowing you down</h2>
     <p>
-      Tell me what's eating your time — I'll reply within a day or two with how
-      I'd automate it.
+      In a 45-minute discovery call, we'll find what's eating your team's time
+      and how I'd automate it.
     </p>
-    <a href={SITE_CONFIG.bookingUrl} class="button button-accent"
-      >Get in Touch</a
+    <a href={SITE_CONFIG.bookingUrl} class="button button-accent" target="_blank" rel="noopener noreferrer"
+      >Book a call</a
     >
   </Section>
 
@@ -222,7 +223,7 @@ const projectCols = Math.min(featuredProjects.length, 3);
     }
 
     .hero h1 {
-      max-width: 18ch;
+      max-width: 22ch;
       margin: 0 0 0;
     }
 
@@ -242,15 +243,10 @@ const projectCols = Math.min(featuredProjects.length, 3);
       flex-wrap: wrap;
     }
 
-    .hero-tertiary {
+    .hero-credential {
       color: var(--text-muted);
       font-size: var(--text-sm);
-      text-decoration: none;
-      transition: color var(--transition-fast);
-    }
-
-    .hero-tertiary:hover {
-      color: var(--accent);
+      margin: var(--space-lg) 0 0;
     }
 
     .services-list {

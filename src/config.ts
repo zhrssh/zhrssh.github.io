@@ -21,11 +21,11 @@ export const SITE_CONFIG = {
     { label: "Contact", href: "/contact/" },
   ],
   resumeUrl: "/zherishgalvinmayordo-cv.pdf",
-  bookingUrl: "/contact/",
+  bookingUrl: "https://calendly.com/zherishmayordo/discovery-call-45m",
   experience: [
     {
       role: "Trading Algorithm Programmer",
-      company: "Robin Ho",
+      company: "Robin Ho · Rejoined",
       duration: "Jul. 2026 - Present",
       description: [
         "Developing automations and trading algorithms using Pine Script and MQL5 to help traders identify and execute market opportunities.",
