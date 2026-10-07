@@ -40,9 +40,23 @@ const { surface = "default", title, rule = true, link, class: className } = Astr
     background-color: var(--surface-raised);
   }
 
+  /* Inverse is the closing call-to-action band */
   .section-inverse {
     background-color: var(--surface-inverse);
     color: var(--text-on-inverse);
+    text-align: center;
+  }
+
+  .section-inverse :global(h2) {
+    margin: 0 0 var(--space-md);
+  }
+
+  .section-inverse :global(p) {
+    font-size: var(--text-lg);
+    max-width: 540px;
+    margin: 0 auto var(--space-xl);
+    line-height: 1.6;
+    opacity: 0.85;
   }
 
   .section-inverse :global(h1),

@@ -220,7 +220,8 @@ main > .container {
 }
 
 /* The header section already supplies the gap above the list. */
-main > .page-header-section + .container {
+main > .page-header-section + .container,
+main > .contact-header-section + .contact-body-section {
   padding-top: 0;
 }
 
@@ -405,7 +406,6 @@ main > .page-header-section + .container {
 .site-footer {
   text-align: center;
   padding: var(--space-3xl) var(--space-xl);
-  margin-top: var(--space-3xl);
   border-top: 1px solid var(--border);
   background-color: var(--bg);
   color: var(--text-secondary);
