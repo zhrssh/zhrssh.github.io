@@ -76,7 +76,7 @@ const pageTitle = `${title} · ${brand}`;
             aria-label="LinkedIn">
             <Icon name="linkedin" size={20} />
           </a>
-          <button id="theme-toggle" aria-label="Toggle dark mode">
+          <button id="theme-toggle" aria-label="Toggle dark mode" data-theme-toggle>
             <span id="theme-icon">
               <Icon name="sun" size={18} class="icon-sun" />
               <Icon name="moon" size={18} class="icon-moon" />
@@ -84,7 +84,7 @@ const pageTitle = `${title} · ${brand}`;
           </button>
         </div>
 
-        <button id="menu-toggle" aria-label="Toggle menu">
+        <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-drawer">
           <Icon name="menu" size={24} />
         </button>
       </nav>
@@ -106,6 +106,12 @@ const pageTitle = `${title} · ${brand}`;
         <div class="drawer-actions">
           <a href={SITE_CONFIG.socials.github} target="_blank" rel="noopener noreferrer">GitHub</a>
           <a href={SITE_CONFIG.socials.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <button type="button" class="drawer-theme" data-theme-toggle>
+            <Icon name="moon" size={16} class="icon-moon" />
+            <Icon name="sun" size={16} class="icon-sun" />
+            <span class="label-dark">Dark mode</span>
+            <span class="label-light">Light mode</span>
+          </button>
         </div>
       </div>
       <div id="drawer-backdrop"></div>
@@ -265,7 +271,6 @@ const pageTitle = `${title} · ${brand}`;
     </style>
 
     <script>
-      const themeToggle = document.getElementById("theme-toggle");
       const htmlElement = document.documentElement;
       const header = document.querySelector(".site-header");
 
@@ -293,13 +298,15 @@ const pageTitle = `${title} · ${brand}`;
         document.querySelectorAll(".section > .container").forEach((el) => revealObserver.observe(el));
       }
 
-      themeToggle?.addEventListener("click", () => {
-        const currentTheme = htmlElement.getAttribute("data-theme");
-        const newTheme = currentTheme === "dark" ? "light" : "dark";
+      document.querySelectorAll("[data-theme-toggle]").forEach((toggle) =>
+        toggle.addEventListener("click", () => {
+          const currentTheme = htmlElement.getAttribute("data-theme");
+          const newTheme = currentTheme === "dark" ? "light" : "dark";
 
-        htmlElement.setAttribute("data-theme", newTheme);
-        localStorage.setItem("theme", newTheme);
-      });
+          htmlElement.setAttribute("data-theme", newTheme);
+          localStorage.setItem("theme", newTheme);
+        })
+      );
 
       // Mobile menu toggle
       const menuToggle = document.getElementById("menu-toggle") as HTMLButtonElement | null;
@@ -318,6 +325,7 @@ const pageTitle = `${title} · ${brand}`;
         mobileDrawer?.classList.add("active");
         drawerBackdrop?.classList.add("active");
         document.body.style.overflow = "hidden";
+        menuToggle?.setAttribute("aria-expanded", "true");
         if (mobileDrawer) getFocusable(mobileDrawer)[0]?.focus();
       };
 
@@ -325,6 +333,7 @@ const pageTitle = `${title} · ${brand}`;
         mobileDrawer?.classList.remove("active");
         drawerBackdrop?.classList.remove("active");
         document.body.style.overflow = "";
+        menuToggle?.setAttribute("aria-expanded", "false");
         menuToggle?.focus();
       };
 

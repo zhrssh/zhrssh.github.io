@@ -65,9 +65,9 @@
   --border: #2A2E36;
   --border-hover: #BFA574;
 
-  /* Inverted relative to the dark page, so the band actually separates */
-  --surface-inverse: #E6E4DD;
-  --text-on-inverse: #1F2328;
+  /* Raised dark band: separates from the page without a bright slab */
+  --surface-inverse: #2A2E35;
+  --text-on-inverse: #E6E4DD;
 
   --shadow-md: 0 1px 4px 0 rgba(0, 0, 0, 0.4);
   --shadow-xl: 0 4px 12px 0 rgba(0, 0, 0, 0.5);
@@ -327,6 +327,33 @@ main > .page-header-section + .container {
   display: none;
 }
 
+.drawer-theme {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.5rem 0;
+  background: none;
+  border: 0;
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.drawer-theme:hover {
+  color: var(--accent);
+}
+
+.drawer-theme .label-light,
+[data-theme='dark'] .drawer-theme .label-dark {
+  display: none;
+}
+
+[data-theme='dark'] .drawer-theme .label-light {
+  display: inline;
+}
+
 /* Buttons — flat classic */
 .button {
   display: inline-flex;
@@ -507,7 +534,6 @@ main > .page-header-section + .container {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-  margin-top: auto;
   padding-top: var(--space-xl);
   border-top: 1px solid var(--border);
 }

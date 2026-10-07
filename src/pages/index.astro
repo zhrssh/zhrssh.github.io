@@ -24,10 +24,20 @@ const projectCols = Math.min(featuredProjects.length, 3);
   <Section class="hero-section">
     <div class="hero">
       <div class="hero-content">
-        <span class="status">
-          <span class="pulse-dot" aria-hidden="true"></span>
-          Available for work
-        </span>
+        <div class="hero-status">
+          <Image
+            src={me}
+            alt="Zherish Galvin Mayordo"
+            width={112}
+            height={112}
+            loading="eager"
+            class="hero-avatar"
+          />
+          <span class="status">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            Available for work
+          </span>
+        </div>
         <h1>Hand off the busywork.<br />Get hours back every week.</h1>
         <hr class="accent-rule" />
         <p class="hero-tagline">
@@ -140,13 +150,23 @@ const projectCols = Math.min(featuredProjects.length, 3);
       text-align: left;
     }
 
+    .hero-status {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-sm);
+    }
+
+    .hero-status :global(.hero-avatar) {
+      display: none;
+    }
+
     .status {
       display: inline-flex;
       align-items: center;
       gap: 0.5em;
       font-size: var(--text-sm);
       color: var(--text-muted);
-      margin-bottom: var(--space-sm);
     }
 
     .pulse-dot {
@@ -337,12 +357,16 @@ const projectCols = Math.min(featuredProjects.length, 3);
       }
 
       .hero-portrait {
-        align-self: center;
+        display: none;
       }
 
-      .hero-portrait::before {
-        top: calc(var(--space-md) + 8px);
-        left: calc(var(--space-md) + 8px);
+      .hero-status :global(.hero-avatar) {
+        display: block;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid var(--border);
       }
     }
   </style>
