@@ -1,9 +1,9 @@
 ---
 title: "One Telegram chat for your calendar, inbox and to-dos"
-description: "A personal assistant for Telegram that remembers user preferences and generates personalized responses."
+description: "Manage your Google Calendar, Gmail and Tasks from a single Telegram chat, with an assistant that remembers your preferences between sessions."
 date: 2026-07-03
 tags: ["AI", "RAG", "Agentic", "n8n", "Automation"]
-impact: "Saves users 10–15 minutes a day"
+impact: "Demo build · Calendar, inbox and tasks in one chat"
 demo: "https://free-personal-assistant.onrender.com/?utm_source=portfolio&utm_medium=website&utm_campaign=telegram-assistant"
 coverImage: "../../assets/projects/telegram-assistant/cover.png"
 ---
@@ -20,7 +20,7 @@ Managing multiple applications for tasks, emails, and calendar events can be tim
 
 ## Results
 
-I was able to build a personal assistant for Telegram that can integrate with Google services and provide relevant responses based on user preferences. The personal assistant can manage tasks, emails, and calendar events in a single platform, and can save users up to **10-15 minutes a day**.
+I was able to build a personal assistant for Telegram that can integrate with Google services and provide relevant responses based on user preferences. The personal assistant can manage tasks, emails, and calendar events in a single platform, without switching between apps.
 
 ## Project Objectives
 
@@ -61,7 +61,7 @@ In this example, I tested the personal assistant's capability of storing user pr
 ![Example 2](../../assets/projects/telegram-assistant/example-2.jpg)
 #### Example 2
 
-Another example of the personal assistant's capability of storing user preferences and testing it's ability to follow my preferences. The assistant was able to remember that I want it to speak only in a pirate language even after creating a new session.
+Another example of the personal assistant's capability of storing user preferences and testing its ability to follow my preferences. The assistant was able to remember that I want it to speak only in a pirate language even after creating a new session.
 
 ![Example 3](../../assets/projects/telegram-assistant/example-3.png)
 #### Example 3
@@ -80,7 +80,7 @@ Another challenge was designing the agent's memory. To be able to properly store
 
 ## Lessons Learned
 
-I was able to learn a lot from this project. First, I gained a better understanding on how to structure the agent's responses and prompts. Second, I was able to properly design the agent's memory to store user preferences and retrieve them when needed. Lastly, I learned about MCP client and servers, which allow the agent to discover the tools it can use without the need to hardcode them into the agent.
+I was able to learn a lot from this project. First, I gained a better understanding of how to structure the agent's responses and prompts. Second, I was able to properly design the agent's memory to store user preferences and retrieve them when needed. Lastly, I learned about MCP client and servers, which allow the agent to discover the tools it can use without the need to hardcode them into the agent.
 
 ## Future Improvements
 

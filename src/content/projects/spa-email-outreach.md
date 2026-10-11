@@ -1,6 +1,6 @@
 ---
 title: "Personalized cold emails for spas, drafted in seconds"
-description: "An AI-powered workflow that automatically generates personalized cold emails and sends them to spa businesses, helping streamline lead outreach."
+description: "An AI workflow that drafts a personalized cold email for each spa business on a lead list and sends it."
 date: 2026-07-16
 tags: [
   "AI",

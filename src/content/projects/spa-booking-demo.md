@@ -1,6 +1,6 @@
 ---
 title: "Spa bookings confirmed instantly, day or night"
-description: "An automated booking system that lets guests pick a therapist, view real-time availability, and book instantly, with confirmation emails and guest records saved automatically."
+description: "Guests pick a therapist, see live availability and book on their own. The calendar event, confirmation email and guest record are created automatically, with no staff in the loop."
 date: 2026-07-21
 featured: true
 tags: [
@@ -11,7 +11,7 @@ tags: [
   "Booking System",
   "Email Automation"
 ]
-impact: "Prevents missed bookings with real-time availability"
+impact: "Demo build · Bookings confirmed without staff"
 coverImage: "../../assets/projects/spa-booking-demo/cover.png"
 bookCall: true
 ---
@@ -26,9 +26,7 @@ Behind the page, an n8n backend checks each therapist's Google Calendar and Airt
 
 ## The Problem
 
-Spa businesses commonly handle booking inquiries manually across Facebook Messenger, SMS, and phone calls. Each inquiry requires a staff member to check therapist availability, confirm a slot, and manually record the guest's details, an exchange that can take minutes to complete and often stalls entirely outside business hours or when staff are occupied with walk-in guests.
-
-That delay costs bookings. At an estimated 2 missed bookings per day and an average guest spend of ₱1,000, a spa can lose up to ₱60,000 in bookings every month, all from inquiries that were never followed up on quickly enough to convert.
+Spa businesses commonly handle booking inquiries manually across Facebook Messenger, SMS, and phone calls. Each inquiry requires a staff member to check therapist availability, confirm a slot, and manually record the guest's details, an exchange that can take minutes to complete and often stalls entirely outside business hours or when staff are occupied with walk-in guests. Inquiries that wait too long for a reply often never become bookings.
 
 ## Results
 

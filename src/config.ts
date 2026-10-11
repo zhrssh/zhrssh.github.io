@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
   title: "Zherish Galvin Mayordo",
   description:
-    "Client-operations automation for digital agencies — I connect the tools you already use into reliable AI workflows, from onboarding through delivery and reporting.",
+    "Client-operations automation for digital agencies. I connect the tools you already use into reliable workflows for onboarding, delivery and reporting.",
   email: "contact@zherishgalvin.com",
   phone: "+639957288817",
   socials: {
@@ -28,12 +28,14 @@ export const SITE_CONFIG = {
       company: "Freelance",
       duration: "Jun. 2026 - Present",
       description: [
-        "Building client-operations automation for digital agencies — onboarding, delivery coordination and reporting — with n8n, Python and LLM APIs.",
+        "Built an access-gated lyrics formatter for Solace of Christ Church: an n8n workflow with a three-step AI chain, in weekly use and saving volunteers 10+ minutes per song.",
+        "Built demo workflows for self-service booking, a Telegram calendar and inbox assistant, and a document-grounded Messenger chatbot, using n8n, LLM APIs, Google Workspace and Airtable.",
+        "Focused on client-operations automation for digital agencies: onboarding, delivery coordination and reporting.",
       ],
     },
     {
       role: "Trading Algorithm Programmer",
-      company: "Robin Ho · Rejoined",
+      company: "Robin Ho",
       duration: "Jul. 2026 - Present",
       description: [
         "Developing automations and trading algorithms using Pine Script and MQL5 to help traders identify and execute market opportunities.",
@@ -47,7 +49,7 @@ export const SITE_CONFIG = {
       description: [
         "Responsible for managing, monitoring, and developing trading algorithms and indicators using Pine Script and MQL5 to help traders position themselves in the market.",
         "Deployed trading algorithms and indicators on MetaTrader 5 platform hosted on a Windows VPS.",
-        "Written PineScript library to simplify communication between TradingView and Pepperstone's Expert Advisor running on MetaTrader 5.",
+        "Wrote a Pine Script library to simplify communication between TradingView and Pepperstone's Expert Advisor running on MetaTrader 5.",
       ],
     },
     {
@@ -55,7 +57,7 @@ export const SITE_CONFIG = {
       company: "DOST - Advanced Science and Technology Institute (ASTI)",
       duration: "Mar. 2024 - Jul. 2024",
       description: [
-        "Trained a convolutional neural network (CNN) model on motor fault dataset that is tranformed using various data transformation methods for motor condition diagnosis.",
+        "Trained a convolutional neural network (CNN) model on a motor fault dataset transformed using various data transformation methods for motor condition diagnosis.",
         "Experimented with different configurations of Short Time Fourier Transform (STFT), Gabor, and Wavelet transformations to achieve best results for CNN model.",
         "Performed exploratory data analysis (EDA) on publicly available predictive maintenance datasets on motor condition diagnosis.",
         "Co-authored 'Machine Condition Diagnosis Using Deep Learning and Gabor-Transformed Motor Current Signatures' published in TENCON 2024 - 2024 IEEE Region 10 Conference.",
@@ -99,7 +101,7 @@ export const SITE_CONFIG = {
         "Collects forms, assets and access, and pulls details from documents into your systems",
         "Tells the right people, and flags whatever is still missing",
       ],
-      outcome: "Less manual setup, fewer forgotten steps, faster handoffs.",
+      outcome: "Less manual setup, and fewer steps forgotten between sales and delivery.",
       entry: true,
     },
     {
@@ -112,7 +114,7 @@ export const SITE_CONFIG = {
         "Uses AI to sort incoming requests and pull out action items",
         "Catches overdue, blocked or incomplete work and escalates it",
       ],
-      outcome: "More predictable delivery, less coordination overhead.",
+      outcome: "Delivery gets more predictable, with less chasing between tools.",
     },
     {
       stage: "Every week after",
@@ -124,7 +126,7 @@ export const SITE_CONFIG = {
         "Flags missing updates and overdue deliverables",
         "Alerts the right person when a workflow fails",
       ],
-      outcome: "Less reporting work, earlier warnings. Ongoing monitoring and support available.",
+      outcome: "You spend less time on reports and hear about problems sooner. I can also monitor and support the workflows after launch.",
     },
   ],
   education: [
@@ -148,19 +150,9 @@ export const SITE_CONFIG = {
       url: "https://www.coursera.org/account/accomplishments/specialization/certificate/RJYIXPVJDDO1",
     },
     {
-      name: "CCNAv7: Enterprise Networking, Security, and Automation",
+      name: "CCNAv7 (3-course series): Introduction to Networks; Switching, Routing, and Wireless Essentials; Enterprise Networking, Security, and Automation",
       issuer: "Cisco Networking",
-      year: "Issued Dec. 2023",
-    },
-    {
-      name: "CCNAv7: Switching, Routing, and Wireless Essentials",
-      issuer: "Cisco Networking",
-      year: "Issued Jan. 2023",
-    },
-    {
-      name: "CCNAv7: Introduction to Networks",
-      issuer: "Cisco Networking",
-      year: "Issued Oct. 2022",
+      year: "Issued Oct. 2022 – Dec. 2023",
     },
   ],
 };

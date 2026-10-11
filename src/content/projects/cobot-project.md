@@ -1,6 +1,6 @@
 ---
 title: "Design of Optimized Path Generation for Physical Guidance-Driven Collaborative Robot Using Metaheuristic Algorithm"
-description: "A thesis project that uses metaheuristic algorithms to allow robotic arms to learn through physical guidance. Hence, removing the need for users to learn technical terminologies and programming."
+description: "A thesis project that uses metaheuristic algorithms to allow robotic arms to learn through physical guidance. This removes the need for users to learn technical terminologies and programming."
 date: 2025-05-24
 tags: ["Robotics", "Genetic Algorithms", "Optimization", "IoT", "Arduino", "Python"]
 impact: "100% task fidelity across 20 trials"

@@ -1,6 +1,6 @@
 ---
 title: "Hours of Reddit research, reduced to one search"
-description: "A smart reddit agentic AI built using n8n that searches for specific posts from a vector store."
+description: "An n8n AI agent that searches a vector store of Reddit posts, so research that took hours of scrolling becomes one search."
 date: 2026-06-29
 tags: ["AI", "RAG", "n8n", "Automation"]
 impact: "Turns hours of manual research into one search"

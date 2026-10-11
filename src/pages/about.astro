@@ -32,7 +32,7 @@ const groupedSkills = allCategories
 
 <MainLayout
   title="About · AI Automation Specialist in the Philippines"
-  description="AI Automation Specialist and Computer Engineering graduate based in the Philippines, building automations that save businesses time and cut operational costs."
+  description="AI automation specialist in the Philippines who connects the tools digital agencies already use into reliable client-operations workflows."
 >
   <Section class="about-hero-section">
     <div class="about-hero">
@@ -42,19 +42,27 @@ const groupedSkills = allCategories
       <div class="about-hero-text">
         <h1>Zherish Galvin Mayordo</h1>
         <p class="about-bio">
-          I help digital agencies take the manual work out of client
-          operations: onboarding new clients, coordinating delivery across
-          tools, and pulling together status reports. Instead of adding another
-          platform, I make the tools you already use work together. Every week,
-          volunteers at Solace of Christ Church use a tool I built to turn chord
-          charts into ProPresenter lyrics, saving 10+ minutes per song.
+          Hi, I'm Zherish (Galvin or Zhe works too). As a kid I was hooked on
+          factory robots, the kind that build things on their own. I went into
+          Computer Engineering sure that robotics was my thing, and my thesis was
+          a robot arm you teach by guiding it with your hands. Around graduation
+          I realized it was never really the robots. It was the automation.
+          Hardware or software, if something can run by itself, I want to build
+          it.
         </p>
         <p class="about-bio">
-          I'm a Computer Engineer based in the Philippines. Before freelancing, I
-          co-authored two machine-learning papers (one at IEEE TENCON 2024) and
-          built trading algorithms that run on live servers for traders. I bring
-          the same care to your workflows: built to be clear, maintainable and
-          dependable.
+          Right now that means agency operations: setting up new clients,
+          handing work between tools, and the status reports nobody enjoys
+          writing. I'm based in the Philippines (GMT+8) and work remotely with
+          English-speaking agencies. My first client tool, a
+          <a href="/projects/propresenter-lyrics-formatter-2/">lyrics formatter
+          for Solace of Christ Church</a>, gets used every week.
+        </p>
+        <p class="about-bio">
+          Before this, I co-authored two machine-learning papers (one at IEEE
+          TENCON 2024). I also build trading algorithms that run on live
+          servers, where a failure nobody catches costs real money. I treat your
+          workflows with the same caution.
         </p>
         <div class="link-pills">
           <LinkPill href={SITE_CONFIG.socials.github} icon="github" label="GitHub" external />
@@ -92,23 +100,7 @@ const groupedSkills = allCategories
     </div>
   </Section>
 
-  <Section title="Education" class="about-section">
-    <div class="row-list">
-      {
-        SITE_CONFIG.education.map((edu) => (
-          <div class="row">
-            <div class="row-left">
-              <div class="row-title">{edu.degree}</div>
-              <div class="row-sub">{edu.institution}</div>
-            </div>
-            <div class="row-right">{edu.year}</div>
-          </div>
-        ))
-      }
-    </div>
-  </Section>
-
-  <Section surface="raised" title="Technical Skills" class="about-section">
+  <Section title="Technical Skills" class="about-section">
     <div class="skills-cloud">
       {
         groupedSkills.map((group) => (
@@ -121,6 +113,22 @@ const groupedSkills = allCategories
                 </span>
               ))}
             </span>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section surface="raised" title="Education" class="about-section">
+    <div class="row-list">
+      {
+        SITE_CONFIG.education.map((edu) => (
+          <div class="row">
+            <div class="row-left">
+              <div class="row-title">{edu.degree}</div>
+              <div class="row-sub">{edu.institution}</div>
+            </div>
+            <div class="row-right">{edu.year}</div>
           </div>
         ))
       }

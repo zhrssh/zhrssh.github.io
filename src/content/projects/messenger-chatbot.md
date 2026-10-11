@@ -1,15 +1,15 @@
 ---
 title: "A Messenger chatbot that answers from your own documents"
-description: "A smart Messenger chatbot that can converse, answer questions, and provide information using Retrieval-Augmented Generation (RAG)."
+description: "A Facebook Messenger chatbot that answers from your own documents, checks each answer against its sources before sending it, and says so when it doesn't know."
 date: 2026-07-01
 tags: ["AI", "LLM", "RAG", "Chatbot", "n8n", "Automation"]
-impact: "Fewer hallucinated answers via validated retrieval"
+impact: "Demo build · Every answer checked against its sources"
 coverImage: "../../assets/projects/messenger-chatbot/cover.png"
 ---
 
 ## Summary
 
-Designed and built a production-ready conversational RAG chatbot for Facebook Messenger using n8n as the orchestration engine. The system combines secure webhook authentication, conversational memory, query expansion, vector search, answer verification, and grounded response generation to deliver reliable answers from a company's knowledge base.
+Designed and built a conversational RAG chatbot for Facebook Messenger using n8n as the orchestration engine. The system combines secure webhook authentication, conversational memory, query expansion, vector search, answer verification, and grounded response generation to answer questions from a company's knowledge base.
 
 ## The Problem
 
@@ -19,7 +19,7 @@ Traditional RAG systems typically retrieve documents once before immediately gen
 
 - Secure handling of all incoming Messenger webhook requests.
 - More reliable responses through multi-query retrieval and answer verification.
-- Reduced unsupported answers by validating generated responses against retrieved context.
+- Unsupported answers are caught by validating each response against the retrieved context before it is sent.
 - Context-aware conversations through persistent conversation memory.
 
 ## Project Objectives
@@ -75,7 +75,7 @@ The workflow:
 - Deduplicates and merges retrieved documents.
 - Aggregates the final retrieval context for answer generation.
 
-This approach significantly improves document recall compared to traditional single-query retrieval.
+This finds relevant documents that a single query would miss, especially for multi-part questions.
 
 ![Workflow 3](../../assets/projects/messenger-chatbot/workflow-3.png)
 
@@ -123,7 +123,7 @@ The chatbot correctly answered the question about the services I offer and respo
 
 #### Example 4
 
-Finally, this example demonstrates that the chatbot is resistant to prompt injection attacks and continues to provide safe, grounded responses. The user instructed the chatbot to ignore its previous instructions and provide a pancake recipe.
+Finally, this example shows the chatbot holding up against a prompt injection attempt and staying grounded. The user instructed the chatbot to ignore its previous instructions and provide a pancake recipe.
 
 Instead of following the malicious prompt, the chatbot ignored the request and responded that it did not have enough information to answer the question.
 

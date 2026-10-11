@@ -1,7 +1,6 @@
 ---
 title: "How a church team stopped hand-formatting lyrics"
-description: "A smart AI-powered document processing system that converts PDF/TXT files containing lyrics into ProPresenter-compatible lyrics."
-summary: "A dedicated, access-gated web app for Solace of Christ Church that turns chord charts into ProPresenter-ready lyrics in seconds, with individual or zipped downloads."
+description: "Solace of Christ Church volunteers paste a chord chart or upload the PDF, and get back ProPresenter-ready lyrics for every song in seconds, one by one or as a zip."
 date: 2026-07-26
 tags: ["AI", "Document Processing", "n8n", "Automation"]
 impact: "Saves 10+ min per song, hours per month"

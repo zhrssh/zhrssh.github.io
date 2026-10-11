@@ -1,6 +1,6 @@
 ---
 title: "PDF/TXT File to ProPresenter-compatible Lyrics Formatter"
-description: "A smart AI-powered document processing system that converts PDF/TXT files containing lyrics into ProPresenter-compatible lyrics."
+description: "The first version of the church lyrics tool: upload a PDF or TXT file of lyrics and get back ProPresenter-compatible text."
 date: 2026-06-21
 tags: ["AI", "Document Processing", "n8n", "Automation"]
 impact: "Saves 10+ min per song, hours per month"
