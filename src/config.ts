@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
   title: "Zherish Galvin Mayordo",
   description:
-    "AI automation and workflow engineering for service businesses — I build systems that save time, cut costs, and scale with your growth.",
+    "Client-operations automation for digital agencies — I connect the tools you already use into reliable AI workflows, from onboarding through delivery and reporting.",
   email: "contact@zherishgalvin.com",
   phone: "+639957288817",
   socials: {
@@ -28,7 +28,7 @@ export const SITE_CONFIG = {
       company: "Freelance",
       duration: "Jun. 2026 - Present",
       description: [
-        "Developing automation solutions using n8n for service-based businesses to increase operational efficiency.",
+        "Building client-operations automation for digital agencies — onboarding, delivery coordination and reporting — with n8n, Python and LLM APIs.",
       ],
     },
     {
@@ -87,39 +87,44 @@ export const SITE_CONFIG = {
     { name: "Workflow Automation", category: "Automation" },
     { name: "AI Automation", category: "Automation" },
   ],
-  services: [
+  // Home "What I build" section, in client-lifecycle order. Also feeds `knowsAbout` in BaseHead.
+  offers: [
     {
-      title: "AI Automation",
-      description:
-        "Still doing repetitive tasks by hand? I build AI workflows that run them for you — 24/7, error-free, and ready to scale with your business.",
-      icon: "ai-automation" as const,
+      stage: "When a client signs",
+      title: "Automated Client Onboarding",
+      problem: "Every new client sets off hours of the same admin: workspaces, tasks, forms, chasing access.",
+      builds: [
+        "Starts the moment a deal is signed or an intake is approved",
+        "Creates the client workspace, project and standard tasks",
+        "Collects forms, assets and access, and pulls details from documents into your systems",
+        "Tells the right people, and flags whatever is still missing",
+      ],
+      outcome: "Less manual setup, fewer forgotten steps, faster handoffs.",
+      entry: true,
     },
     {
-      title: "Business System Integration",
-      description:
-        "Tools that don't talk to each other create busywork and mistakes. I connect your stack into one automated system where data stays in sync everywhere.",
-      icon: "integration" as const,
+      stage: "While the work is underway",
+      title: "Client Delivery Orchestration",
+      problem: "Work stalls because people coordinate tasks across tools by hand.",
+      builds: [
+        "Keeps project status in sync across the tools you approve",
+        "Assigns tasks and sends notifications from your own rules",
+        "Uses AI to sort incoming requests and pull out action items",
+        "Catches overdue, blocked or incomplete work and escalates it",
+      ],
+      outcome: "More predictable delivery, less coordination overhead.",
     },
     {
-      title: "Sales & Operations Automation",
-      description:
-        "Leads falling through the cracks? I automate your pipeline from first contact to onboarding, so nothing — and no one — gets missed.",
-      icon: "sales-automation" as const,
-    },
-  ],
-  // Home "Results" strip: hand-picked, number-led. `project` is a projects collection id.
-  proof: [
-    {
-      project: "propresenter-lyrics-formatter-2",
-      metric: "10+ min",
-      outcome: "saved per song preparing Sunday lyrics — hours back every month",
-      client: "Solace of Christ Church",
-    },
-    {
-      project: "telegram-assistant",
-      metric: "10–15 min",
-      outcome: "a day saved by managing Calendar, Gmail and Tasks from one chat",
-      client: "Project",
+      stage: "Every week after",
+      title: "Reporting & Operations Monitoring",
+      problem: "Status reports are assembled by hand, and problems surface too late.",
+      builds: [
+        "Pulls project and delivery data into one place",
+        "Writes scheduled internal summaries of what changed",
+        "Flags missing updates and overdue deliverables",
+        "Alerts the right person when a workflow fails",
+      ],
+      outcome: "Less reporting work, earlier warnings. Ongoing monitoring and support available.",
     },
   ],
   education: [

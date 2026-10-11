@@ -2,7 +2,6 @@
 title: "One Telegram chat for your calendar, inbox and to-dos"
 description: "A personal assistant for Telegram that remembers user preferences and generates personalized responses."
 date: 2026-07-03
-featured: true
 tags: ["AI", "RAG", "Agentic", "n8n", "Automation"]
 impact: "Saves users 10–15 minutes a day"
 demo: "https://free-personal-assistant.onrender.com/?utm_source=portfolio&utm_medium=website&utm_campaign=telegram-assistant"

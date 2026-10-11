@@ -6,6 +6,7 @@ tags: ["AI", "RAG", "n8n", "Automation"]
 impact: "Turns hours of manual research into one search"
 github: "https://github.com/zhrssh/n8n-reddit-rag"
 coverImage: "../../assets/projects/reddit-rag/cover.png"
+archived: true
 ---
 
 https://youtube.com/shorts/5sgShBaoqKg?feature=share

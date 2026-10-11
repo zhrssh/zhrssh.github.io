@@ -29,13 +29,13 @@ const jsonLd = {
     person,
     {
       "@type": "ProfessionalService",
-      name: `${SITE_CONFIG.title} — AI Automation`,
+      name: `${SITE_CONFIG.title} — Client-Operations Automation`,
       url: Astro.site!.href,
       description: SITE_CONFIG.description,
       founder: { "@id": person["@id"] },
       areaServed: "Worldwide",
       address: person.address,
-      knowsAbout: SITE_CONFIG.services.map((s) => s.title),
+      knowsAbout: SITE_CONFIG.offers.map((o) => o.title),
     },
   ],
 };

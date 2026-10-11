@@ -10,7 +10,4 @@ export type IconName =
   | "close"
   | "whatsapp"
   | "viber"
-  | "arrow-right"
-  | "ai-automation"
-  | "integration"
-  | "sales-automation";
+  | "arrow-right";
