@@ -25,3 +25,4 @@ pnpm-debug.log*
 
 # local ephemeral work
 .scratch/
+.impeccable/
