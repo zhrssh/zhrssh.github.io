@@ -1,0 +1,473 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-11T13:19:57.923324+00:00",
+  "title": "Design System: Zherish Galvin Mayordo",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "#FAFAF8",
+        "tonalRamp": [
+          "oklch(15% 0.003 106.4)",
+          "oklch(25% 0.003 106.4)",
+          "oklch(37% 0.003 106.4)",
+          "oklch(49% 0.003 106.4)",
+          "oklch(61% 0.003 106.4)",
+          "oklch(73% 0.003 106.4)",
+          "oklch(85% 0.003 106.4)",
+          "oklch(95% 0.003 106.4)"
+        ]
+      },
+      "paper-raised": {
+        "role": "neutral",
+        "displayName": "Raised Paper",
+        "canonical": "#F3F1EA",
+        "tonalRamp": [
+          "oklch(15% 0.010 93.6)",
+          "oklch(25% 0.010 93.6)",
+          "oklch(37% 0.010 93.6)",
+          "oklch(49% 0.010 93.6)",
+          "oklch(61% 0.010 93.6)",
+          "oklch(73% 0.010 93.6)",
+          "oklch(85% 0.010 93.6)",
+          "oklch(95% 0.010 93.6)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ledger Ink",
+        "canonical": "#1F2328",
+        "tonalRamp": [
+          "oklch(15% 0.011 254.0)",
+          "oklch(25% 0.011 254.0)",
+          "oklch(37% 0.011 254.0)",
+          "oklch(49% 0.011 254.0)",
+          "oklch(61% 0.011 254.0)",
+          "oklch(73% 0.011 254.0)",
+          "oklch(85% 0.011 254.0)",
+          "oklch(95% 0.011 254.0)"
+        ]
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Slate Ink",
+        "canonical": "#4A535E",
+        "tonalRamp": [
+          "oklch(15% 0.021 253.5)",
+          "oklch(25% 0.021 253.5)",
+          "oklch(37% 0.021 253.5)",
+          "oklch(49% 0.021 253.5)",
+          "oklch(61% 0.021 253.5)",
+          "oklch(73% 0.021 253.5)",
+          "oklch(85% 0.021 253.5)",
+          "oklch(95% 0.021 253.5)"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Faded Ink",
+        "canonical": "#636C76",
+        "tonalRamp": [
+          "oklch(15% 0.019 251.0)",
+          "oklch(25% 0.019 251.0)",
+          "oklch(37% 0.019 251.0)",
+          "oklch(49% 0.019 251.0)",
+          "oklch(61% 0.019 251.0)",
+          "oklch(73% 0.019 251.0)",
+          "oklch(85% 0.019 251.0)",
+          "oklch(95% 0.019 251.0)"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Ruled Hairline",
+        "canonical": "#E3E1DA",
+        "tonalRamp": [
+          "oklch(15% 0.010 93.6)",
+          "oklch(25% 0.010 93.6)",
+          "oklch(37% 0.010 93.6)",
+          "oklch(49% 0.010 93.6)",
+          "oklch(61% 0.010 93.6)",
+          "oklch(73% 0.010 93.6)",
+          "oklch(85% 0.010 93.6)",
+          "oklch(95% 0.010 93.6)"
+        ]
+      },
+      "ledger-umber": {
+        "role": "primary",
+        "displayName": "Ledger Umber",
+        "canonical": "#6E5A3C",
+        "tonalRamp": [
+          "oklch(15% 0.051 77.2)",
+          "oklch(25% 0.051 77.2)",
+          "oklch(37% 0.051 77.2)",
+          "oklch(49% 0.051 77.2)",
+          "oklch(61% 0.051 77.2)",
+          "oklch(73% 0.051 77.2)",
+          "oklch(85% 0.051 77.2)",
+          "oklch(95% 0.051 77.2)"
+        ]
+      },
+      "ledger-umber-deep": {
+        "role": "primary",
+        "displayName": "Deep Umber",
+        "canonical": "#5A4A2F",
+        "tonalRamp": [
+          "oklch(15% 0.046 80.0)",
+          "oklch(25% 0.046 80.0)",
+          "oklch(37% 0.046 80.0)",
+          "oklch(49% 0.046 80.0)",
+          "oklch(61% 0.046 80.0)",
+          "oklch(73% 0.046 80.0)",
+          "oklch(85% 0.046 80.0)",
+          "oklch(95% 0.046 80.0)"
+        ]
+      },
+      "danger": {
+        "role": "error",
+        "displayName": "Correction Red",
+        "canonical": "#B42318",
+        "tonalRamp": [
+          "oklch(15% 0.182 29.5)",
+          "oklch(25% 0.182 29.5)",
+          "oklch(37% 0.182 29.5)",
+          "oklch(49% 0.182 29.5)",
+          "oklch(61% 0.182 29.5)",
+          "oklch(73% 0.182 29.5)",
+          "oklch(85% 0.182 29.5)",
+          "oklch(95% 0.182 29.5)"
+        ]
+      },
+      "night-paper": {
+        "role": "neutral",
+        "displayName": "Night Paper",
+        "canonical": "#15171A",
+        "tonalRamp": [
+          "oklch(15% 0.007 258.4)",
+          "oklch(25% 0.007 258.4)",
+          "oklch(37% 0.007 258.4)",
+          "oklch(49% 0.007 258.4)",
+          "oklch(61% 0.007 258.4)",
+          "oklch(73% 0.007 258.4)",
+          "oklch(85% 0.007 258.4)",
+          "oklch(95% 0.007 258.4)"
+        ]
+      },
+      "night-raised": {
+        "role": "neutral",
+        "displayName": "Night Raised",
+        "canonical": "#1E2126",
+        "tonalRamp": [
+          "oklch(15% 0.010 260.7)",
+          "oklch(25% 0.010 260.7)",
+          "oklch(37% 0.010 260.7)",
+          "oklch(49% 0.010 260.7)",
+          "oklch(61% 0.010 260.7)",
+          "oklch(73% 0.010 260.7)",
+          "oklch(85% 0.010 260.7)",
+          "oklch(95% 0.010 260.7)"
+        ]
+      },
+      "night-band": {
+        "role": "neutral",
+        "displayName": "Night Band",
+        "canonical": "#2A2E35",
+        "tonalRamp": [
+          "oklch(15% 0.014 261.7)",
+          "oklch(25% 0.014 261.7)",
+          "oklch(37% 0.014 261.7)",
+          "oklch(49% 0.014 261.7)",
+          "oklch(61% 0.014 261.7)",
+          "oklch(73% 0.014 261.7)",
+          "oklch(85% 0.014 261.7)",
+          "oklch(95% 0.014 261.7)"
+        ]
+      },
+      "night-ink": {
+        "role": "neutral",
+        "displayName": "Night Ink",
+        "canonical": "#E6E4DD",
+        "tonalRamp": [
+          "oklch(15% 0.010 93.6)",
+          "oklch(25% 0.010 93.6)",
+          "oklch(37% 0.010 93.6)",
+          "oklch(49% 0.010 93.6)",
+          "oklch(61% 0.010 93.6)",
+          "oklch(73% 0.010 93.6)",
+          "oklch(85% 0.010 93.6)",
+          "oklch(95% 0.010 93.6)"
+        ]
+      },
+      "night-ink-secondary": {
+        "role": "neutral",
+        "displayName": "Night Slate",
+        "canonical": "#B4BAC3",
+        "tonalRamp": [
+          "oklch(15% 0.014 258.4)",
+          "oklch(25% 0.014 258.4)",
+          "oklch(37% 0.014 258.4)",
+          "oklch(49% 0.014 258.4)",
+          "oklch(61% 0.014 258.4)",
+          "oklch(73% 0.014 258.4)",
+          "oklch(85% 0.014 258.4)",
+          "oklch(95% 0.014 258.4)"
+        ]
+      },
+      "night-ink-muted": {
+        "role": "neutral",
+        "displayName": "Night Faded",
+        "canonical": "#8B929C",
+        "tonalRamp": [
+          "oklch(15% 0.017 257.2)",
+          "oklch(25% 0.017 257.2)",
+          "oklch(37% 0.017 257.2)",
+          "oklch(49% 0.017 257.2)",
+          "oklch(61% 0.017 257.2)",
+          "oklch(73% 0.017 257.2)",
+          "oklch(85% 0.017 257.2)",
+          "oklch(95% 0.017 257.2)"
+        ]
+      },
+      "night-hairline": {
+        "role": "neutral",
+        "displayName": "Night Hairline",
+        "canonical": "#2A2E36",
+        "tonalRamp": [
+          "oklch(15% 0.016 264.3)",
+          "oklch(25% 0.016 264.3)",
+          "oklch(37% 0.016 264.3)",
+          "oklch(49% 0.016 264.3)",
+          "oklch(61% 0.016 264.3)",
+          "oklch(73% 0.016 264.3)",
+          "oklch(85% 0.016 264.3)",
+          "oklch(95% 0.016 264.3)"
+        ]
+      },
+      "brass": {
+        "role": "primary",
+        "displayName": "Ledger Brass",
+        "canonical": "#BFA574",
+        "tonalRamp": [
+          "oklch(15% 0.072 82.9)",
+          "oklch(25% 0.072 82.9)",
+          "oklch(37% 0.072 82.9)",
+          "oklch(49% 0.072 82.9)",
+          "oklch(61% 0.072 82.9)",
+          "oklch(73% 0.072 82.9)",
+          "oklch(85% 0.072 82.9)",
+          "oklch(95% 0.072 82.9)"
+        ]
+      },
+      "brass-light": {
+        "role": "primary",
+        "displayName": "Light Brass",
+        "canonical": "#D4BC8A",
+        "tonalRamp": [
+          "oklch(15% 0.071 85.2)",
+          "oklch(25% 0.071 85.2)",
+          "oklch(37% 0.071 85.2)",
+          "oklch(49% 0.071 85.2)",
+          "oklch(61% 0.071 85.2)",
+          "oklch(73% 0.071 85.2)",
+          "oklch(85% 0.071 85.2)",
+          "oklch(95% 0.071 85.2)"
+        ]
+      },
+      "night-danger": {
+        "role": "error",
+        "displayName": "Night Correction",
+        "canonical": "#F28B82",
+        "tonalRamp": [
+          "oklch(15% 0.127 25.8)",
+          "oklch(25% 0.127 25.8)",
+          "oklch(37% 0.127 25.8)",
+          "oklch(49% 0.127 25.8)",
+          "oklch(61% 0.127 25.8)",
+          "oklch(73% 0.127 25.8)",
+          "oklch(85% 0.127 25.8)",
+          "oklch(95% 0.127 25.8)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page h1 only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section h2 titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Row, card and sub-section h3."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All running text."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Buttons, nav, tags, meta."
+      },
+      "marginal": {
+        "displayName": "Marginal",
+        "purpose": "Italic serif margin notes in ledger rows."
+      }
+    },
+    "shadows": [
+      {
+        "name": "header-scrolled",
+        "value": "0 1px 4px 0 rgba(0,0,0,0.06)",
+        "purpose": "Sticky header once the page scrolls (dark: 0.4 alpha)."
+      },
+      {
+        "name": "card-hover",
+        "value": "0 4px 12px 0 rgba(0,0,0,0.1)",
+        "purpose": "Project card lift on hover (dark: 0.5 alpha)."
+      }
+    ],
+    "motion": [
+      {
+        "name": "fast",
+        "value": "150ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Color and border changes on hover."
+      },
+      {
+        "name": "standard",
+        "value": "200ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Card lift, nav underline draw."
+      },
+      {
+        "name": "slow",
+        "value": "300ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Theme background crossfade."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tablet",
+        "value": "900px"
+      },
+      {
+        "name": "mobile",
+        "value": "768px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Default call to action: solid ink, turns umber on hover.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Book a call</a>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;padding:0.5rem 1.125rem;background:var(--text-primary,#1F2328);color:var(--bg,#FAFAF8);border:1px solid var(--text-primary,#1F2328);border-radius:3px;font-weight:600;font-size:0.9375rem;text-decoration:none;transition:background-color 150ms cubic-bezier(0.4,0,0.2,1),border-color 150ms cubic-bezier(0.4,0,0.2,1)}.ds-btn-primary:hover{background:var(--accent,#6E5A3C);border-color:var(--accent,#6E5A3C)}.ds-btn-primary:focus-visible{outline:2px solid var(--accent,#6E5A3C);outline-offset:2px}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Quiet alternative beside a primary: hairline outline, umber on hover.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">View my work</a>",
+      "css": ".ds-btn-secondary{display:inline-flex;align-items:center;padding:0.5rem 1.125rem;background:transparent;color:var(--text-primary,#1F2328);border:1px solid var(--border,#E3E1DA);border-radius:3px;font-weight:600;font-size:0.9375rem;text-decoration:none;transition:color 150ms,border-color 150ms}.ds-btn-secondary:hover{color:var(--accent,#6E5A3C);border-color:var(--accent,#6E5A3C)}.ds-btn-secondary:focus-visible{outline:2px solid var(--accent,#6E5A3C);outline-offset:2px}"
+    },
+    {
+      "name": "Accent Button",
+      "kind": "button",
+      "refersTo": "button-accent",
+      "description": "Only in the inverse closing band, where ink-on-ink would vanish.",
+      "html": "<a class=\"ds-btn-accent\" href=\"#\">Book a call</a>",
+      "css": ".ds-btn-accent{display:inline-flex;align-items:center;padding:0.5rem 1.125rem;background:var(--accent,#6E5A3C);color:var(--bg,#FAFAF8);border:1px solid var(--accent,#6E5A3C);border-radius:3px;font-weight:600;font-size:0.9375rem;text-decoration:none;transition:background-color 150ms}.ds-btn-accent:hover{background:var(--accent-hover,#5A4A2F);border-color:var(--accent-hover,#5A4A2F)}.ds-btn-accent:focus-visible{outline:2px solid var(--accent,#6E5A3C);outline-offset:2px}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Contact form field: hairline box, umber border on focus.",
+      "html": "<label class=\"ds-field\"><span>Email</span><input type=\"email\" placeholder=\"you@agency.com\"></label>",
+      "css": ".ds-field{display:grid;gap:0.25rem;font-size:0.9375rem;font-weight:500;color:var(--text-primary,#1F2328)}.ds-field input{padding:0.625rem 0.75rem;background:transparent;border:1px solid var(--border,#E3E1DA);border-radius:3px;font:inherit;font-weight:400;color:inherit;transition:border-color 150ms}.ds-field input:focus{outline:none;border-color:var(--accent,#6E5A3C)}.ds-field input:focus-visible{outline:2px solid var(--accent,#6E5A3C);outline-offset:2px}"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Top-bar link; an umber underline draws in from the left on hover and stays for the active page.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" class=\"is-active\">Home</a><a href=\"#\">Projects</a><a href=\"#\">About</a></nav>",
+      "css": ".ds-nav{display:flex;gap:1.5rem}.ds-nav a{position:relative;padding:0.25rem 0;color:var(--text-secondary,#4A535E);font-size:0.9375rem;font-weight:500;text-decoration:none;transition:color 150ms}.ds-nav a::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--accent,#6E5A3C);transform:scaleX(0);transform-origin:left;transition:transform 200ms cubic-bezier(0.4,0,0.2,1)}.ds-nav a:hover,.ds-nav a.is-active{color:var(--text-primary,#1F2328)}.ds-nav a:hover::after,.ds-nav a.is-active::after{transform:scaleX(1)}"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Project tech tag: hairline outline, no fill.",
+      "html": "<span class=\"ds-tag\">n8n</span>",
+      "css": ".ds-tag{display:inline-block;padding:0.125rem 0.5rem;font-size:0.8125rem;color:var(--text-secondary,#4A535E);border:1px solid var(--border,#E3E1DA);border-radius:3px}"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "The one boxed container: hairline frame, lifts 4px with a soft shadow on hover.",
+      "html": "<a class=\"ds-card\" href=\"#\"><div class=\"ds-card-img\"></div><div class=\"ds-card-body\"><span class=\"ds-card-impact\">Prevents missed bookings</span><h3>Spa bookings confirmed instantly</h3><p>Guests pick a therapist and book; confirmations go out automatically.</p></div></a>",
+      "css": ".ds-card{display:flex;flex-direction:column;max-width:360px;border:1px solid var(--border,#E3E1DA);border-radius:4px;overflow:hidden;background:var(--bg,#FAFAF8);color:inherit;text-decoration:none;transition:transform 200ms cubic-bezier(0.4,0,0.2,1),box-shadow 200ms,border-color 150ms}.ds-card:hover{transform:translateY(-4px);box-shadow:0 4px 12px 0 rgba(0,0,0,0.1);border-color:var(--accent,#6E5A3C)}.ds-card-img{aspect-ratio:16/9;background:var(--bg-secondary,#F3F1EA)}.ds-card-body{padding:1.5rem}.ds-card-impact{display:block;color:var(--accent,#6E5A3C);font-size:0.9375rem;font-weight:500;margin-bottom:0.25rem}.ds-card h3{margin:0 0 0.5rem;font-size:1.266rem;font-weight:600;line-height:1.3}.ds-card:hover h3{color:var(--accent,#6E5A3C)}.ds-card p{margin:0;font-size:0.9375rem;line-height:1.6;color:var(--text-secondary,#4A535E)}"
+    },
+    {
+      "name": "Ledger Row",
+      "kind": "custom",
+      "refersTo": "ledger-row",
+      "description": "Signature pattern: a ruled row with an italic serif marginal label, a title column and a detail column. Used for the offers.",
+      "html": "<div class=\"ds-ledger\"><p class=\"ds-ledger-stage\">When a client signs</p><div><h3>Automated Client Onboarding</h3><p class=\"ds-ledger-sub\">Every new client sets off hours of the same admin.</p></div><ul><li>Creates the workspace and tasks</li><li>Flags what's missing</li></ul></div>",
+      "css": ".ds-ledger{display:grid;grid-template-columns:minmax(9rem,1fr) minmax(0,2fr) minmax(0,2.4fr);gap:2rem;padding-block:3rem;border-top:1px solid var(--border,#E3E1DA);border-bottom:1px solid var(--border,#E3E1DA)}.ds-ledger-stage{margin:0;font-family:'Newsreader Variable',Georgia,serif;font-style:italic;font-size:1.2rem;color:var(--accent,#6E5A3C)}.ds-ledger h3{margin:0 0 0.5rem;font-size:1.4rem;font-weight:600}.ds-ledger-sub{margin:0;color:var(--text-secondary,#4A535E)}.ds-ledger ul{margin:0;padding-left:1.1em}.ds-ledger li::marker{color:var(--accent,#6E5A3C)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Engineer's Ledger",
+    "overview": "The site reads like a well-kept ledger: warm paper, dark ink, ruled hairlines, and a single umber ink for anything that matters. Serif headings give it the weight of a document. A geometric grotesque body keeps it technical and legible. Nothing is decorative; every line, rule and border records structure. The look carries the pitch: work that is recorded, checked and accounted for.\n\nDensity is calm and editorial. Sections band between paper and raised paper, and content is arranged in ruled rows and columns rather than boxes. Depth is almost absent: surfaces are flat, and only interactive cards lift on hover.\n\nThere is a light ledger and a dark ledger. Dark mode swaps paper for night paper and umber for a soft brass, keeping the same restraint.",
+    "keyCharacteristics": [
+      "Warm paper and ink, one umber accent",
+      "Newsreader serif display over Space Grotesk body",
+      "Hairline rules and dividers instead of boxes",
+      "Barely-there corners (3–4px)",
+      "Flat at rest; lift only on hover",
+      "Banded sections: paper, raised paper, ink"
+    ],
+    "rules": [
+      {
+        "name": "The One Ink Rule",
+        "body": "Ledger Umber is the only accent. It marks links, active states, stage labels and the occasional rule, and never fills large areas. The one exception is the accent button in the closing band.",
+        "section": "colors"
+      },
+      {
+        "name": "The Serif Speaks First Rule",
+        "body": "Newsreader is reserved for H1/H2, standout statements and short marginal notes. Every paragraph and UI label is Space Grotesk.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Ledger Rule",
+        "body": "Surfaces are flat at rest. A shadow appears only in response to hover or scroll.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Ruled Line Rule",
+        "body": "Group content with hairline rules and whitespace before reaching for a box. A bordered card is reserved for clickable items such as projects.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** alternate section bands (paper → raised paper → paper) and end every page with the ink closing band.",
+      "**Do** lay out lists of services, principles and steps as ruled rows (1px hairline top and bottom) with 3rem block padding.",
+      "**Do** use the italic Newsreader marginal note in Ledger Umber for row context, like a ledger's margin note.",
+      "**Do** keep the body measure at 40–65ch and secondary text in Slate Ink.",
+      "**Do** theme browser surfaces from the palette: umber text selection, and a 2px umber focus outline with a 2px offset."
+    ],
+    "donts": [
+      "**Don't** add a second accent color or gradients. Umber (brass in dark mode) is the only accent.",
+      "**Don't** use corners rounder than 4px, pill shapes, or heavy drop shadows.",
+      "**Don't** turn content sections into grids of same-size icon cards.",
+      "**Don't** put eyebrow labels above headings. Context goes in the margin column.",
+      "**Don't** set paragraphs or UI labels in the serif."
+    ]
+  }
+}
