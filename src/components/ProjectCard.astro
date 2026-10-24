@@ -15,9 +15,11 @@ const { project, variant = "compact", showMeta = false, headingLevel = 3 } = Ast
 const Heading = headingLevel === 2 ? "h2" : "h3";
 const titleId = `project-title-${project.id}`;
 const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
+// No cover image: the impact line, typeset, takes the image's place
+const impactPanel = !project.data.coverImage && project.data.impact;
 ---
 
-<article class:list={["project-card", `project-card-${variant}`, !project.data.coverImage && "project-card-text"]}>
+<article class:list={["project-card", `project-card-${variant}`]}>
   <a href={`/projects/${project.id}/`} class="project-link" aria-labelledby={titleId}>
     {
       project.data.coverImage && (
@@ -39,6 +41,11 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
         </div>
       )
     }
+    {impactPanel && (
+      <div class="project-image project-image-text">
+        <p>{project.data.impact}</p>
+      </div>
+    )}
     <div class="project-content">
       {
         showMeta && (
@@ -46,13 +53,17 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
             <time datetime={project.data.date.toISOString()}>
               {project.data.date.toLocaleDateString("en-US", { month: "short", year: "numeric" })}
             </time>
-            <span class="meta-dot">•</span>
-            <span>{readingTime} min read</span>
+            {!project.data.writeupPending && (
+              <>
+                <span class="meta-dot">•</span>
+                <span>{readingTime} min read</span>
+              </>
+            )}
           </div>
         )
       }
       {project.data.writeupPending && <span class="project-badge">Just handed over</span>}
-      {project.data.impact && <span class="project-impact">{project.data.impact}</span>}
+      {project.data.impact && !impactPanel && <span class="project-impact">{project.data.impact}</span>}
       <Heading id={titleId} class="project-title">{project.data.title}</Heading>
       <p>{project.data.description}</p>
       {project.data.summary && <p class="project-summary">{project.data.summary}</p>}
@@ -150,8 +161,22 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
     line-height: 1.6;
   }
 
-  .project-card-text .project-content p {
-    max-width: 65ch;
+  .project-image-text {
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-xl);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .project-image-text p {
+    margin: 0;
+    max-width: 18ch;
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 560;
+    line-height: 1.15;
+    text-wrap: balance;
+    color: var(--text-primary);
   }
 
   .project-summary {
@@ -186,14 +211,18 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
       align-items: stretch;
     }
 
-    /* No cover image: keep the text full width instead of half a grid */
-    .project-card-featured.project-card-text .project-link {
-      display: flex;
-    }
-
     .project-card-featured .project-image {
       aspect-ratio: auto;
       height: 100%;
+    }
+
+    .project-card-featured .project-image-text {
+      border-bottom: 0;
+      border-right: 1px solid var(--border);
+    }
+
+    .project-card-featured .project-image-text p {
+      font-size: var(--text-3xl);
     }
 
     .project-card-featured .project-content {

@@ -1,0 +1,19 @@
+---
+// The ink closing band every page ends on
+import Section from "./Section.astro";
+import { SITE_CONFIG } from "../config";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<Section surface="inverse" class="cta-section">
+  <h2>{title}</h2>
+  <p><slot /></p>
+  <a href={SITE_CONFIG.bookingUrl} class="button button-accent" target="_blank" rel="noopener noreferrer"
+    >Book a free discovery call<span class="sr-only"> (opens in a new tab)</span></a
+  >
+</Section>

@@ -34,7 +34,7 @@ export const SITE_CONFIG = {
     },
     {
       role: "Trading Algorithm Programmer",
-      company: "Robin Ho",
+      company: "Robin Ho · returned in 2026",
       duration: "Jul. 2026 - Present",
       description: [
         "Developing automations and trading algorithms using Pine Script and MQL5 to help traders identify and execute market opportunities.",
@@ -151,8 +151,8 @@ export const SITE_CONFIG = {
       a: "With a retainer, monitoring and fixes are covered, plus up to 8 hours a month of small changes. Without one, I quote fixes as they come up.",
     },
     {
-      q: "Do you work with clients outside the Philippines?",
-      a: "Yes. I'm based in the Philippines (GMT+8) and work remotely with clients anywhere. We'll find call times that suit us both.",
+      q: "Who do you work with?",
+      a: "Small teams of roughly 5 to 50 people: businesses, nonprofits and churches, in the Philippines and abroad. I'm based in the Philippines (GMT+8) and work remotely, so we'll find call times that suit us both.",
     },
     {
       q: "What do you need from my team?",

@@ -1,15 +1,12 @@
 ---
 import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
 import me from "../assets/me.jpg";
+import lyricsBeforeAfter from "../assets/projects/propresenter-lyrics-formatter-2/output.png";
+import CtaBand from "../components/CtaBand.astro";
 import Section from "../components/Section.astro";
 import { SITE_CONFIG } from "../config";
 import MainLayout from "../layouts/MainLayout.astro";
 import { formatPrice } from "../lib/currency";
-
-const projects = (await getCollection("projects", ({ data }) => !data.archived))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
 
 const { retainer } = SITE_CONFIG;
 const usd = formatPrice(retainer.usd, "USD");
@@ -49,9 +46,6 @@ const php = formatPrice(retainer.php, "PHP");
           >
           <a href="#how-i-work" class="button button-secondary">See how it works</a>
         </div>
-        <p class="hero-credential">
-          Computer Engineer · Co-author of two machine-learning papers, including IEEE TENCON 2024
-        </p>
       </div>
       <div class="hero-portrait">
         <div class="hero-img-frame">
@@ -68,23 +62,28 @@ const php = formatPrice(retainer.php, "PHP");
 
     <ul class="proof" aria-label="Results from real projects">
       <li>
-        <p class="proof-result">10+ minutes saved on every song</p>
-        <p class="proof-who">
-          <a href="/projects/propresenter-lyrics-formatter-2/">Solace of Christ Church</a>, for the
-          volunteers who prepare Sunday lyrics
-        </p>
+        <a href="/projects/propresenter-lyrics-formatter-2/" class="proof-link">
+          <span class="proof-result">10+ minutes saved on every song</span>
+          <span class="proof-who">
+            Solace of Christ Church, for the volunteers who prepare Sunday lyrics
+          </span>
+        </a>
       </li>
       <li>
-        <p class="proof-result">From a 10-account cap to no cap at all</p>
-        <p class="proof-who">
-          <a href="/projects/tradingview-mt5-bridge/">A forex trading team</a>, after moving off
-          PineConnector
-        </p>
+        <a href="/projects/tradingview-mt5-bridge/" class="proof-link">
+          <span class="proof-result">From a 10-account cap to no cap at all</span>
+          <span class="proof-who">
+            A forex trading team, now on a system of their own instead of a paid plan
+          </span>
+        </a>
       </li>
     </ul>
+    <p class="hero-credential">
+      Built by a Computer Engineer and co-author of two published machine-learning papers
+    </p>
   </Section>
 
-  <Section surface="raised" title="Work your team shouldn't still be doing by hand">
+  <Section surface="raised" title="Where your team's week goes">
     <p class="lead">
       Most of what I build starts with one of these. If a few of them sound like
       your week, that's usually a sign a system would pay for itself.
@@ -167,16 +166,22 @@ const php = formatPrice(retainer.php, "PHP");
         <p class="ledger-note">Every month after, if you want it</p>
         <h3>A monthly retainer</h3>
         <div class="ledger-body" data-retainer data-usd={usd} data-php={php}>
-          <p class="price">
-            <span data-price aria-live="polite">From {usd}</span>
-            <span class="price-per">/ month</span>
+          <p>
+            Optional. Once the free month ends, you can keep me on call for:
           </p>
+          <div class="price-row">
+            <p class="price">
+              <span data-price aria-live="polite">From {usd}</span>
+              <span class="price-per">/ month</span>
+            </p>
+            <div class="currency-switch" role="group" aria-label="Show price in" data-currency-switch hidden>
+              <button type="button" data-currency="PHP" aria-pressed="false">₱ PHP</button>
+              <button type="button" data-currency="USD" aria-pressed="true">$ USD</button>
+            </div>
+          </div>
           <noscript>
             <p class="price-alt">Clients in the Philippines: from {php} / month.</p>
           </noscript>
-          <button type="button" class="currency-toggle" data-currency-toggle hidden>
-            Showing USD · Switch to PHP
-          </button>
           <ul class="ledger-list">
             <li>I keep watch on the system and hear about failures first</li>
             <li>Fixes when something breaks</li>
@@ -187,7 +192,7 @@ const php = formatPrice(retainer.php, "PHP");
           </ul>
           <p class="fine">
             The exact price depends on the size of your system and is set in
-            your proposal. The retainer is optional, and you can skip it.
+            your proposal.
           </p>
         </div>
       </li>
@@ -196,29 +201,28 @@ const php = formatPrice(retainer.php, "PHP");
 
   <Section
     surface="raised"
-    title="Projects"
-    link={{ href: "/projects/", label: "View all →" }}
-    class="projects-section">
-    <ul class="ledger">
-      {
-        projects.map((project) => (
-          <li class="ledger-row">
-            <p class="ledger-note">
-              {project.data.writeupPending ? "Just handed over" : project.data.impact}
-            </p>
-            <h3>
-              <a href={`/projects/${project.id}/`} class="row-link">{project.data.title}</a>
-            </h3>
-            <div class="ledger-body">
-              <p>{project.data.description}</p>
-              {project.data.writeupPending && project.data.impact && (
-                <p class="row-impact">{project.data.impact}</p>
-              )}
-            </div>
-          </li>
-        ))
-      }
-    </ul>
+    title="What it looks like"
+    link={{ href: "/projects/", label: "All projects →" }}>
+    <figure class="artifact">
+      <a href="/projects/propresenter-lyrics-formatter-2/" class="artifact-frame">
+        <Image
+          src={lyricsBeforeAfter}
+          alt="Before and after: a chord-chart PDF with chord symbols above every line, and the same song as clean lyrics split into verses and chorus."
+          widths={[480, 800, 1200, 1695]}
+          sizes="(max-width: 1264px) calc(100vw - 4rem), 1200px"
+          loading="lazy"
+        />
+      </a>
+      <figcaption>
+        <p class="ledger-note">Solace of Christ Church</p>
+        <p>
+          Volunteers paste in a chord chart and get back every song cleaned
+          up, split into verses and choruses, and ready for the screen on
+          Sunday. It saves them 10+ minutes per song.
+        </p>
+        <a href="/projects/propresenter-lyrics-formatter-2/" class="text-action">Read how it was built →</a>
+      </figcaption>
+    </figure>
   </Section>
 
   <Section title="Questions people ask">
@@ -234,47 +238,42 @@ const php = formatPrice(retainer.php, "PHP");
     </div>
   </Section>
 
-  <Section surface="inverse" class="cta-section">
-    <h2>Tell me what your team is still doing by hand</h2>
-    <p>
-      A free 45-minute call. You'll leave knowing whether a custom system is worth
-      it for you, even if the answer is no.
-    </p>
-    <a href={SITE_CONFIG.bookingUrl} class="button button-accent" target="_blank" rel="noopener noreferrer"
-      >Book a free discovery call<span class="sr-only"> (opens in a new tab)</span></a
-    >
-  </Section>
+  <CtaBand title="Tell me what your team is still doing by hand">
+    A free 45-minute call. You'll leave knowing whether a custom system is worth
+    it for you, even if the answer is no.
+  </CtaBand>
 
   <script>
     import { pickCurrency, type Currency } from "../lib/currency";
 
     const box = document.querySelector<HTMLElement>("[data-retainer]");
     const amount = box?.querySelector<HTMLElement>("[data-price]");
-    const toggle = box?.querySelector<HTMLButtonElement>("[data-currency-toggle]");
+    const currencySwitch = box?.querySelector<HTMLElement>("[data-currency-switch]");
 
-    if (box && amount && toggle) {
+    if (box && amount && currencySwitch) {
       const KEY = "currency";
+      const buttons = currencySwitch.querySelectorAll<HTMLButtonElement>("button");
       let saved: string | null = null;
       try {
         saved = localStorage.getItem(KEY);
       } catch {}
 
       const show = (c: Currency) => {
-        const other = c === "USD" ? "PHP" : "USD";
         amount.textContent = `From ${c === "USD" ? box.dataset.usd : box.dataset.php}`;
-        toggle.textContent = `Showing ${c} · Switch to ${other}`;
-        toggle.dataset.currency = c;
+        buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.currency === c)));
       };
 
       show(pickCurrency(saved, Intl.DateTimeFormat().resolvedOptions().timeZone));
-      toggle.hidden = false;
-      toggle.addEventListener("click", () => {
-        const next: Currency = toggle.dataset.currency === "USD" ? "PHP" : "USD";
-        show(next);
-        try {
-          localStorage.setItem(KEY, next);
-        } catch {}
-      });
+      currencySwitch.hidden = false;
+      buttons.forEach((b) =>
+        b.addEventListener("click", () => {
+          const next = b.dataset.currency as Currency;
+          show(next);
+          try {
+            localStorage.setItem(KEY, next);
+          } catch {}
+        }),
+      );
     }
   </script>
 
@@ -385,6 +384,8 @@ const php = formatPrice(retainer.php, "PHP");
       color: var(--text-muted);
       font-size: var(--text-sm);
       margin: var(--space-lg) 0 0;
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--border);
     }
 
     /* Proof strip: two ruled results under the hero */
@@ -406,17 +407,41 @@ const php = formatPrice(retainer.php, "PHP");
       border-left: 1px solid var(--border);
     }
 
+    /* The whole result is the link: one big target */
+    .proof-link {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+      color: inherit;
+      text-decoration: none;
+    }
+
     .proof-result {
       font-family: var(--font-display);
       font-size: var(--text-xl);
       line-height: 1.3;
-      margin: 0 0 var(--space-xs);
+      color: var(--text-primary);
+      transition: color var(--transition-fast);
     }
 
     .proof-who {
       color: var(--text-muted);
       font-size: var(--text-sm);
-      margin: 0;
+    }
+
+    .proof-who::after {
+      content: " →";
+      color: var(--accent);
+    }
+
+    .proof-link:hover .proof-result {
+      color: var(--accent);
+    }
+
+    .proof-link:hover .proof-who {
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+      text-decoration-thickness: 1px;
     }
 
     .lead {
@@ -477,6 +502,13 @@ const php = formatPrice(retainer.php, "PHP");
       border-top: 1px solid var(--border);
     }
 
+    /* Straight under a section title, the title's rule is the top rule */
+    :global(.section-header) + .ledger,
+    :global(.section-header) + .faq {
+      border-top: 0;
+      margin-top: calc(-1 * var(--space-xl));
+    }
+
     .ledger-row {
       display: grid;
       grid-template-columns: minmax(9rem, 1fr) minmax(0, 1.4fr) minmax(0, 2.4fr);
@@ -507,19 +539,24 @@ const php = formatPrice(retainer.php, "PHP");
       max-width: 58ch;
     }
 
+    .price-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-sm) var(--space-lg);
+      margin: var(--space-sm) 0 var(--space-lg);
+    }
+
     .ledger-body .price {
       display: flex;
       align-items: baseline;
-      flex-wrap: wrap;
       gap: var(--space-sm);
-      margin: 0 0 var(--space-sm);
+      margin: 0;
     }
 
     .price [data-price] {
-      font-family: var(--font-display);
-      font-size: var(--text-3xl);
-      font-weight: 560;
-      line-height: 1.1;
+      font-size: var(--text-xl);
+      font-weight: 600;
       color: var(--text-primary);
       font-variant-numeric: tabular-nums;
     }
@@ -532,23 +569,43 @@ const php = formatPrice(retainer.php, "PHP");
       margin-bottom: var(--space-md);
     }
 
-    .currency-toggle {
+    /* Two-option currency switch, 44px tall for thumbs */
+    .currency-switch {
+      display: inline-flex;
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+    }
+
+    .currency-switch button {
       font: inherit;
       font-size: var(--text-sm);
       font-weight: 500;
-      color: var(--accent);
+      min-height: 2.75rem;
+      padding: 0 var(--space-md);
+      color: var(--text-secondary);
       background: none;
       border: 0;
-      padding: 0;
-      margin: 0 0 var(--space-lg);
       cursor: pointer;
-      text-decoration: underline;
-      text-underline-offset: 0.2em;
-      text-decoration-thickness: 1px;
+      font-variant-numeric: tabular-nums;
+      transition: color var(--transition-fast), background-color var(--transition-fast);
     }
 
-    .currency-toggle:hover {
-      color: var(--accent-hover);
+    .currency-switch button + button {
+      border-left: 1px solid var(--border);
+    }
+
+    .currency-switch button:hover {
+      color: var(--accent);
+    }
+
+    .currency-switch button[aria-pressed="true"] {
+      background-color: var(--text-primary);
+      color: var(--bg);
+    }
+
+    .currency-switch button:focus-visible {
+      outline-offset: -4px;
     }
 
     .ledger-list {
@@ -612,22 +669,51 @@ const php = formatPrice(retainer.php, "PHP");
       max-width: 58ch;
     }
 
-    .row-link {
-      color: inherit;
+    /* What it looks like: one real before/after, framed like a record */
+    .artifact {
+      display: grid;
+      grid-template-columns: minmax(0, 2.4fr) minmax(0, 1fr);
+      gap: var(--space-2xl);
+      align-items: end;
+      margin: 0;
+    }
+
+    .artifact-frame {
+      display: block;
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      background-color: var(--bg);
+    }
+
+    .artifact-frame :global(img) {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .artifact figcaption p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0 0 var(--space-lg);
+      max-width: 40ch;
+    }
+
+    .artifact figcaption .ledger-note {
+      color: var(--accent);
+      margin-bottom: var(--space-sm);
+    }
+
+    .text-action {
+      font-weight: 500;
       text-decoration: none;
     }
 
-    .row-link:hover {
-      color: var(--accent);
+    .text-action:hover {
+      color: var(--accent-hover);
       text-decoration: underline;
       text-underline-offset: 0.2em;
       text-decoration-thickness: 1px;
-    }
-
-    .ledger-body .row-impact {
-      margin-top: var(--space-sm);
-      color: var(--text-primary);
-      font-weight: 500;
     }
 
     /* FAQ: ruled, native disclosure */
@@ -689,7 +775,8 @@ const php = formatPrice(retainer.php, "PHP");
         gap: var(--space-sm);
       }
 
-      .split {
+      .split,
+      .artifact {
         grid-template-columns: minmax(0, 1fr);
         gap: var(--space-xl);
       }
@@ -717,12 +804,12 @@ const php = formatPrice(retainer.php, "PHP");
 
       .proof {
         grid-template-columns: minmax(0, 1fr);
-        margin-top: var(--space-2xl);
+        margin-top: var(--space-xl);
       }
 
       .proof li,
       .proof li + li {
-        padding: var(--space-lg) 0;
+        padding: var(--space-md) 0;
         border-left: 0;
       }
 
