@@ -14,6 +14,7 @@ tags: [
 impact: "Demo build · Bookings confirmed without staff"
 coverImage: "../../assets/projects/spa-booking-demo/cover.png"
 bookCall: true
+archived: true
 ---
 
 https://www.loom.com/share/577ab90414ca45ada1dc5a6f82f116d7

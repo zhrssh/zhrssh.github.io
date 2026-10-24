@@ -7,32 +7,11 @@ import LinkPill from "../components/LinkPill.astro";
 import Icon from "../components/Icon.astro";
 import me from "../assets/me.jpg";
 
-const categoryOrder = [
-  "Automation",
-  "Languages",
-  "Backend",
-  "Databases",
-  "Cloud",
-  "DevOps",
-];
-const knownCategories = new Set(categoryOrder);
-const allCategories = [
-  ...categoryOrder,
-  ...[...new Set(SITE_CONFIG.skills.map((s) => s.category))].filter(
-    (c) => !knownCategories.has(c),
-  ),
-];
-const groupedSkills = allCategories
-  .map((cat) => ({
-    category: cat,
-    items: SITE_CONFIG.skills.filter((s) => s.category === cat),
-  }))
-  .filter((g) => g.items.length > 0);
 ---
 
 <MainLayout
-  title="About · AI Automation Specialist in the Philippines"
-  description="AI automation specialist in the Philippines who connects the tools digital agencies already use into reliable client-operations workflows."
+  title="About · Internal Systems Developer in the Philippines"
+  description="Zherish Galvin Mayordo builds custom internal systems for small teams in the Philippines and abroad, handed over with docs and training."
 >
   <Section class="about-hero-section">
     <div class="about-hero">
@@ -51,18 +30,30 @@ const groupedSkills = allCategories
           it.
         </p>
         <p class="about-bio">
-          Right now that means agency operations: setting up new clients,
-          handing work between tools, and the status reports nobody enjoys
-          writing. I'm based in the Philippines (GMT+8) and work remotely with
-          English-speaking agencies. My first client tool, a
+          These days that means internal systems for small teams: the
+          automations, dashboards and tools that take the hand-work out of
+          someone's week. I'm based in the Philippines (GMT+8) and work
+          remotely with clients here and abroad. My first client tool, a
           <a href="/projects/propresenter-lyrics-formatter-2/">lyrics formatter
-          for Solace of Christ Church</a>, gets used every week.
+          for Solace of Christ Church</a>, gets used every week, and I recently
+          handed over a <a href="/projects/tradingview-mt5-bridge/">trading
+          bridge</a> that took a forex team past a 10-account cap.
         </p>
         <p class="about-bio">
           Before this, I co-authored two machine-learning papers (one at IEEE
           TENCON 2024). I also build trading algorithms that run on live
           servers, where a failure nobody catches costs real money. I treat your
-          workflows with the same caution.
+          systems with the same caution.
+        </p>
+        <p class="credentials">
+          {SITE_CONFIG.education[0].degree} ({SITE_CONFIG.education[0].year.replace("Completed ", "")})
+          · Co-author, IEEE TENCON 2024 and Diagnostika 2024 · Certificates from{" "}
+          {SITE_CONFIG.certifications.map((c, i) => (
+            <>
+              {i > 0 && (i === SITE_CONFIG.certifications.length - 1 ? " and " : ", ")}
+              {c.url ? <a href={c.url} target="_blank" rel="noopener noreferrer">{c.issuer}</a> : c.issuer}
+            </>
+          ))}
         </p>
         <div class="link-pills">
           <LinkPill href={SITE_CONFIG.socials.github} icon="github" label="GitHub" external />
@@ -94,68 +85,6 @@ const groupedSkills = allCategories
               )}
             </div>
             <div class="row-right">{exp.duration}</div>
-          </div>
-        ))
-      }
-    </div>
-  </Section>
-
-  <Section title="Technical Skills" class="about-section">
-    <div class="skills-cloud">
-      {
-        groupedSkills.map((group) => (
-          <div class="skill-row">
-            <span class="skill-row-label">{group.category}</span>
-            <span class="skill-chips">
-              {group.items.map((skill) => (
-                <span class:list={["skill-chip", group.category === "Automation" && "skill-chip-accent"]}>
-                  {skill.name}
-                </span>
-              ))}
-            </span>
-          </div>
-        ))
-      }
-    </div>
-  </Section>
-
-  <Section surface="raised" title="Education" class="about-section">
-    <div class="row-list">
-      {
-        SITE_CONFIG.education.map((edu) => (
-          <div class="row">
-            <div class="row-left">
-              <div class="row-title">{edu.degree}</div>
-              <div class="row-sub">{edu.institution}</div>
-            </div>
-            <div class="row-right">{edu.year}</div>
-          </div>
-        ))
-      }
-    </div>
-  </Section>
-
-  <Section title="Certifications" class="about-section">
-    <div class="row-list">
-      {
-        SITE_CONFIG.certifications.map((cert) => (
-          <div class="row">
-            <div class="row-left">
-              <div class="row-title">{cert.name}</div>
-              <div class="row-sub">{cert.issuer}</div>
-            </div>
-            <div class="row-right">
-              <span class="cert-year">{cert.year}</span>
-              {cert.url && (
-                <a
-                  href={cert.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="cert-link">
-                  Certificate →
-                </a>
-              )}
-            </div>
           </div>
         ))
       }
@@ -198,72 +127,18 @@ const groupedSkills = allCategories
       max-width: 60ch;
     }
 
+    .credentials {
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+      margin: 0 0 var(--space-lg);
+      max-width: 60ch;
+    }
+
     .link-pills {
       display: flex;
       gap: var(--space-sm);
       flex-wrap: wrap;
       align-items: center;
-    }
-
-    .skills-cloud {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-      max-width: 820px;
-    }
-
-    .skill-row {
-      display: flex;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: var(--space-md);
-    }
-
-    .skill-row-label {
-      flex: 0 0 auto;
-      min-width: 7rem;
-      text-align: right;
-      font-size: var(--text-xs);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    .skill-chips {
-      display: inline-flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: var(--space-xs) var(--space-sm);
-    }
-
-    .skill-chip {
-      display: inline-block;
-      padding: 0.25rem 0.6rem;
-      border: 1px solid var(--border);
-      border-radius: var(--border-radius);
-      font-size: var(--text-sm);
-      font-weight: 500;
-      color: var(--text-secondary);
-      white-space: nowrap;
-      transition:
-        border-color var(--transition-fast),
-        color var(--transition-fast);
-    }
-
-    .skill-chip:hover {
-      border-color: var(--border-hover);
-      color: var(--text-primary);
-    }
-
-    .skill-chip-accent {
-      border-color: var(--accent);
-      color: var(--text-primary);
-    }
-
-    .skill-chip-accent:hover {
-      border-color: var(--accent-hover);
     }
 
     .row-list {
@@ -334,18 +209,6 @@ const groupedSkills = allCategories
       gap: 0.25rem;
     }
 
-    .cert-link {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: var(--text-sm);
-      font-weight: 500;
-      transition: color var(--transition-fast);
-    }
-
-    .cert-link:hover {
-      color: var(--accent-hover);
-    }
-
     @media (max-width: 768px) {
       .about-hero {
         flex-direction: column;
@@ -357,19 +220,15 @@ const groupedSkills = allCategories
         margin-inline: auto;
       }
 
-      .link-pills {
+      .credentials {
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+      margin: 0 0 var(--space-lg);
+      max-width: 60ch;
+    }
+
+    .link-pills {
         justify-content: center;
-      }
-
-      .skill-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--space-xs);
-      }
-
-      .skill-row-label {
-        min-width: 0;
-        text-align: left;
       }
 
       .row {

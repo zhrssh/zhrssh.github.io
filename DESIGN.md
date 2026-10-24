@@ -1,6 +1,6 @@
 ---
 name: Zherish Galvin Mayordo
-description: Client-operations automation for digital agencies — a calm, ruled, ink-on-paper system.
+description: Custom internal systems for small teams — a calm, ruled, ink-on-paper system.
 colors:
   paper: "#FAFAF8"
   paper-raised: "#F3F1EA"

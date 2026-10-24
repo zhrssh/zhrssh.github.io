@@ -8,48 +8,48 @@ web
 
 ## Users
 
-Owners and operations managers of digital marketing, creative, and web development agencies with roughly 10–50 people, several active clients, and a stack of tools that don't talk to each other. They usually arrive from direct outreach and are deciding whether a discovery call is worth 45 minutes. B2B service firms beyond agencies (consultancies, studios) are a secondary audience.
+Owners and operations leads of small teams and organizations, roughly 5–50 people, including nonprofits and churches. Their teams still do a lot of work by hand: re-typing data between tools, chasing approvals in chat, building reports, keying in documents, or running the business from one fragile spreadsheet. They are in the Philippines (local) or abroad (foreign). Most aren't technical. They arrive from search, the blog or direct outreach, and are deciding whether a free discovery call is worth their time. Many are on a phone.
 
 ## Product Purpose
 
-The portfolio and service site of Zherish Galvin Mayordo, an AI automation specialist. It exists to win paid engagements automating agency client operations: the work that takes a newly signed client through onboarding, delivery, and reporting. Success means a qualified agency books a discovery call.
+The portfolio and service site of Zherish Galvin Mayordo, who builds custom internal systems: software only the client's own team uses to run the business, such as workflow automations, internal dashboards, admin panels, intake tools and document processors. Success means a fitting client books a discovery call.
 
 ## Positioning
 
-Instead of adding another tool to the agency's stack, Zherish connects the tools it already uses into reliable workflows. AI handles unstructured work (emails, documents, requests), and deterministic automation handles the rest. Workflows are built to fail loudly, never quietly. This is a specialist in client operations, not a generic AI consultant or chatbot builder.
-
-The agency niche is a hypothesis being validated (a 30-day plan starting October 2026). The positioning should be able to widen to B2B service firms if the results point there.
+Custom internal systems for the work a team still does by hand. The tools behind the work don't matter to the client; what changes for their team does. The discovery call is honest: if an off-the-shelf tool fits, Zherish says so. Every system is handed over with user documentation, technical documentation and a short training session, runs in the client's own accounts, and is owned by the client. There's no lock-in.
 
 ## Operating Context
 
-- Agencies run client onboarding, project setup, task coordination across PM/CRM/email/forms tools, and recurring status reporting, often by hand.
-- Visitors evaluate quickly, often on a phone, after a cold message.
-- The conversion path is a 45-minute discovery call booked through Calendly. A contact form, email, WhatsApp, and Viber are also available.
+- The engagement runs in five stages: discovery call (free), proposal (within two business days, with the full project fee), agreement, onboarding, then build, testing and handover.
+- After handover: a free support month, then an optional monthly retainer.
+- The conversion path is a discovery call booked through Calendly. A contact form, email, WhatsApp and Viber are also available.
 
 ## Capabilities and Constraints
 
-- Three offers, in client-lifecycle order: Automated Client Onboarding (the entry offer, "Start here"), Client Delivery Orchestration, and Reporting & Operations Monitoring (with ongoing monitoring and support).
-- **No prices on the site.** The pilot prices are untested.
-- Stack behind the work: n8n, Python, LLM APIs, PostgreSQL, APIs and webhooks.
-- Terminology follows `CONTEXT.md`: **agency** is the buyer; **agency client** is the agency's customer; **client operations** is the signed-to-reported lifecycle. Copy addresses the agency as "you" and "your client" to avoid ambiguity.
+- **Pricing rule:** the retainer is shown; the project fee never is. Retainer: from $300 / month for foreign clients, from ₱18,000 / month for local clients, covering monitoring, fixes and up to 8 hours of small changes a month (unused hours don't roll over). The currency follows the visitor's time zone, with a toggle; USD without JavaScript.
+- Builds typically take 2–6 weeks.
+- Terminology follows `CONTEXT.md`: **client**, **internal system**, **real project**, and the engagement stages. Customer-facing websites, public chatbots and mobile apps are out of scope.
+- English only.
 - Site: Astro static site on GitHub Pages; content in Markdown collections; site metadata in `src/config.ts`.
 
 ## Brand Commitments
 
-- Name: Zherish Galvin Mayordo. Based in the Philippines; serves English-speaking agencies internationally.
-- Voice: plain, direct, second person. Name concrete outcomes. No hype or AI buzzwords, and no claims beyond what has been proven. It should sound like a calm engineer, not a salesperson.
+- Name: Zherish Galvin Mayordo. Based in the Philippines; works with local and foreign clients.
+- Voice: plain, direct, second person, human. Name concrete outcomes. No hype, no AI buzzwords, no tool names in the main pitch, and no claims beyond what's proven. It should sound like a calm engineer talking to you, not a salesperson.
 
 ## Evidence on Hand
 
-- **The only real client result:** Solace of Christ Church, where a ProPresenter lyrics formatter saves 10+ minutes per song (`src/content/projects/propresenter-lyrics-formatter-2.md`, with a before/after image in `src/assets/projects/propresenter-lyrics-formatter-2/`).
-- **Personal or demo builds, not client work:** spa booking, Telegram assistant, Messenger RAG chatbot. Several more are archived.
-- **Credentials:** BS Computer Engineering; two co-authored ML papers (IEEE TENCON 2024; Diagnostika 2024); certificates from IBM, DeepLearning.AI/Stanford, and Cisco.
-- **Absent, and must not be fabricated:** testimonials, client logos, agency clients, agency case studies, savings figures for agencies, and pricing. The agency onboarding demo (synthetic data) is planned but not built.
+- **Real projects (the only ones shown):**
+  - Solace of Christ Church: a lyrics formatter that saves volunteers 10+ minutes per song. No testimonial; it's a volunteer project.
+  - A forex trading team: a TradingView-to-MT5 bridge, just handed over. They moved off a PineConnector plan capped at 10 accounts to unlimited accounts, with alerts when an MT5 terminal goes down or an alert doesn't trigger, and one dashboard for every account and the strategies running on it. Testimonial pending; the client stays unnamed until it arrives.
+- **Archived, never shown as work:** demos (spa booking, Telegram assistant, Messenger chatbot), personal tools (Reddit research, spa outreach) and academic work.
+- **Credentials:** BS Computer Engineering; two co-authored ML papers (IEEE TENCON 2024; Diagnostika 2024); certificates from IBM, DeepLearning.AI/Stanford and Cisco.
+- **Absent, and must not be fabricated:** testimonials, client logos, savings figures beyond the two above, client counts and project prices.
 
 ## Product Principles
 
-1. Speak to one buyer: agency operators. Everything else is secondary.
-2. Show proof before promises; never pad it with invented evidence.
-3. Reliability is the differentiator: lead with what happens when things go wrong.
-4. Make the next step a single, low-friction action: book a call.
-5. Keep the positioning cheap to widen; the niche is still being validated.
+1. Lead with the problem and the outcome, never the technology.
+2. Show proof before promises; never pad it with demos or invented evidence.
+3. Make working together legible: every stage, what's handed over, and what support costs.
+4. Be honest about fit. Telling someone they don't need a custom system is part of the offer.
+5. One next step everywhere: book a free discovery call.

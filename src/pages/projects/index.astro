@@ -9,19 +9,17 @@ const allProjects = (await getCollection("projects", ({ data }) => !data.archive
   (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
 const allTags = [...new Set(allProjects.flatMap((p) => p.data.tags))].sort();
-const featuredId = (allProjects.find((p) => p.data.featured) ?? allProjects[0])
-  ?.id;
 ---
 
 <MainLayout
-  title="AI Automation Projects & Case Studies"
-  description="Client work and demo builds in workflow automation and AI, with how each one works.">
+  title="Projects: Custom Internal Systems in Use"
+  description="Real internal systems built for real clients, and what changed for the people using them.">
   <Section class="page-header-section">
     <div class="page-header">
       <h1>Projects</h1>
       <hr class="rule" />
       <p class="page-description">
-        Workflows that take repetitive work off a team's plate: one in weekly use at a church, the rest built around bottlenecks service businesses hit every day.
+        Only real work for real clients. No demos. Each one starts with what the team was stuck doing by hand, and what changed once the system took over.
       </p>
     </div>
   </Section>
@@ -47,18 +45,14 @@ const featuredId = (allProjects.find((p) => p.data.featured) ?? allProjects[0])
       {
         allProjects.map((project) => (
           <li
-            class:list={[
-              "project-item",
-              project.id === featuredId && "project-item-featured",
-            ]}
-            data-featured={project.id === featuredId}
+            class="project-item"
             data-tags={project.data.tags.join("|")}
             data-title={project.data.title}
             data-description={project.data.description}
             data-date={project.data.date.getTime()}>
             <ProjectCard
               project={project}
-              variant={project.id === featuredId ? "featured" : "compact"}
+              variant="featured"
               showMeta
               headingLevel={2}
             />
@@ -141,7 +135,7 @@ const featuredId = (allProjects.find((p) => p.data.featured) ?? allProjects[0])
 
     .project-list {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      grid-template-columns: minmax(0, 1fr);
       gap: var(--space-xl);
       list-style: none;
       padding: 0;
@@ -175,14 +169,6 @@ const featuredId = (allProjects.find((p) => p.data.featured) ?? allProjects[0])
       font-size: var(--text-lg);
     }
 
-    /* Breakpoint must stay in sync with .project-card-featured's
-       horizontal layout in src/components/ProjectCard.astro */
-    @media (min-width: 1024px) {
-      .project-item-featured {
-        grid-column: 1 / -1;
-      }
-    }
-
     @media (min-width: 769px) {
       .controls {
         position: sticky;
@@ -192,10 +178,6 @@ const featuredId = (allProjects.find((p) => p.data.featured) ?? allProjects[0])
     }
 
     @media (max-width: 768px) {
-      .project-list {
-        grid-template-columns: 1fr;
-      }
-
       .controls {
         flex-direction: column;
       }
@@ -265,20 +247,6 @@ const featuredId = (allProjects.find((p) => p.data.featured) ?? allProjects[0])
             .getAttribute("data-title")!
             .localeCompare(b.getAttribute("data-title")!);
         return 0;
-      });
-
-      const isDefaultView =
-        !searchTerm && selectedTag === "all" && sortBy === "newest";
-
-      projectItems.forEach((item) => {
-        const isFeatured = item.dataset.featured === "true";
-        item.classList.toggle(
-          "project-item-featured",
-          isFeatured && isDefaultView,
-        );
-        item
-          .querySelector(".project-card")
-          ?.classList.toggle("project-card-featured", isFeatured && isDefaultView);
       });
 
       projectList.innerHTML = "";

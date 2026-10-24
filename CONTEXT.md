@@ -17,7 +17,21 @@
 
 ## Business Domain
 
-- **Agency**: The buyer — a digital marketing, creative, or web development agency (roughly 10–50 people) that hires Zherish. Owners or operations managers make the decision. _Avoid_: "client" on its own, which is ambiguous.
-- **Agency client**: The agency's own customer, whose onboarding and delivery the automation handles. On the site, address the agency in the second person ("your client") so the reader isn't left wondering whose client is meant.
-- **Client operations**: The work that takes a newly signed agency client through to a delivered, tracked, and reported project — onboarding, task coordination across tools, handoffs, and status reporting.
-- **B2B service firm**: The wider market beyond agencies (consultancies, studios, and similar). It is secondary positioning, kept so the site can widen if validation points elsewhere.
+- **Client**: The business that hires Zherish to build an internal system. _Avoid_: customer, agency, agency client.
+- **Internal system**: Software used only by the client's own team to run the business, such as a workflow automation, internal dashboard, admin panel, intake tool, or document processor. Customer-facing websites, public chatbots, and mobile apps are not internal systems. _Avoid_: automation (too narrow), app, solution.
+- **Real project**: A system built for and used by an actual client. Demos, personal tools, and academic work are not real projects and don't appear as portfolio work. _Avoid_: demo, case study (for anything that isn't a real project).
+
+### Engagement
+
+The stages a client goes through, in order:
+
+- **Discovery call**: A free first call to learn the client's needs and decide honestly whether a custom internal system is warranted at all. If an off-the-shelf tool fits, Zherish says so.
+- **Proposal**: A written scope and project fee, sent within two business days of the discovery call. The project fee is never published on the site.
+- **Agreement**: The signed contract that follows an accepted proposal.
+- **Onboarding**: Gathering the access, accounts, and context needed to start building.
+- **Build**: Building and testing the internal system.
+- **Handover**: Delivery of the finished system with user documentation, technical documentation, and a short training session. The client owns everything, running in the client's own accounts.
+- **Support month**: The free first month after handover, covering fixes to anything that doesn't work as agreed, plus questions and retraining. New features are change requests. _Avoid_: warranty, free support (as a noun).
+- **Retainer**: An optional monthly plan after the support month, covering monitoring, fixes, and a fixed number of hours of small changes. Priced per client region. _Avoid_: maintenance plan, subscription.
+- **Change request**: Any new feature or behavior beyond what the agreement covers.
+- **Client region**: Local (the Philippines, priced in PHP) or foreign (everywhere else, priced in USD).

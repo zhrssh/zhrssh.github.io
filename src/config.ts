@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
   title: "Zherish Galvin Mayordo",
   description:
-    "Client-operations automation for digital agencies. I connect the tools you already use into reliable workflows for onboarding, delivery and reporting.",
+    "Custom internal systems for small teams: automations, dashboards and tools that take over the work your team still does by hand. Handed over with docs and training, and yours to keep.",
   email: "contact@zherishgalvin.com",
   phone: "+639957288817",
   socials: {
@@ -24,13 +24,12 @@ export const SITE_CONFIG = {
   bookingUrl: "https://calendly.com/zherishmayordo/discovery-call-45m",
   experience: [
     {
-      role: "AI Automation Specialist",
+      role: "Internal Systems Developer",
       company: "Freelance",
       duration: "Jun. 2026 - Present",
       description: [
-        "Built an access-gated lyrics formatter for Solace of Christ Church: an n8n workflow with a three-step AI chain, in weekly use and saving volunteers 10+ minutes per song.",
-        "Built demo workflows for self-service booking, a Telegram calendar and inbox assistant, and a document-grounded Messenger chatbot, using n8n, LLM APIs, Google Workspace and Airtable.",
-        "Focused on client-operations automation for digital agencies: onboarding, delivery coordination and reporting.",
+        "Built an access-gated lyrics formatter for Solace of Christ Church, in weekly use and saving volunteers 10+ minutes per song.",
+        "Building custom internal systems for small teams, handed over with user docs, technical docs and training.",
       ],
     },
     {
@@ -65,68 +64,99 @@ export const SITE_CONFIG = {
       ],
     },
   ],
-  skills: [
-    { name: "Python", category: "Languages" },
-    { name: "TypeScript", category: "Languages" },
-    { name: "JavaScript", category: "Languages" },
-    { name: "Node.js", category: "Backend" },
-    { name: "Express.js", category: "Backend" },
-    { name: "Next.js", category: "Backend" },
-    { name: "FastAPI", category: "Backend" },
-    { name: "Flask", category: "Backend" },
-    { name: "REST APIs", category: "Backend" },
-    { name: "PostgreSQL", category: "Databases" },
-    { name: "SQLite", category: "Databases" },
-    { name: "MongoDB", category: "Databases" },
-    { name: "GCP", category: "Cloud" },
-    { name: "DigitalOcean", category: "Cloud" },
-    { name: "Docker", category: "DevOps" },
-    { name: "Linux", category: "DevOps" },
-    { name: "Git", category: "DevOps" },
-    { name: "GitHub Actions", category: "DevOps" },
-    { name: "CI/CD", category: "DevOps" },
-    { name: "n8n", category: "Automation" },
-    { name: "Workflow Automation", category: "Automation" },
-    { name: "AI Automation", category: "Automation" },
+  // Home page sections, in page order.
+  problems: [
+    {
+      today: "The same details get typed into a form, then a spreadsheet, then an email.",
+      fixed: "You enter it once, and it shows up everywhere it needs to be.",
+    },
+    {
+      today: "Requests and approvals get buried in group chats.",
+      fixed: "Every request has an owner, a status, and a record of who said yes.",
+    },
+    {
+      today: "Someone loses Friday afternoon to the weekly report.",
+      fixed: "The report puts itself together and lands in your inbox.",
+    },
+    {
+      today: "PDFs, invoices and forms are read and keyed in by hand.",
+      fixed: "The details are pulled out and filed. People only check the odd ones.",
+    },
+    {
+      today: "One spreadsheet runs the business, and everyone's scared to touch it.",
+      fixed: "A proper tool on the same data, where one wrong click can't break everything.",
+    },
+    {
+      today: "Nobody sees what's late, stuck or missing until a customer complains.",
+      fixed: "One screen shows what needs attention, and the right person gets a nudge.",
+    },
   ],
-  // Home "What I build" section, in client-lifecycle order. Also feeds `knowsAbout` in BaseHead.
-  offers: [
+  engagement: [
     {
-      stage: "When a client signs",
-      title: "Automated Client Onboarding",
-      problem: "Every new client sets off hours of the same admin: workspaces, tasks, forms, chasing access.",
-      builds: [
-        "Starts the moment a deal is signed or an intake is approved",
-        "Creates the client workspace, project and standard tasks",
-        "Collects forms, assets and access, and pulls details from documents into your systems",
-        "Tells the right people, and flags whatever is still missing",
-      ],
-      outcome: "Less manual setup, and fewer steps forgotten between sales and delivery.",
-      entry: true,
+      when: "Free, 45 minutes",
+      title: "Discovery call",
+      body: "You walk me through how the work gets done today and where the time goes. If you don't need a custom system, or a tool you can buy already does the job, I'll say so.",
     },
     {
-      stage: "While the work is underway",
-      title: "Client Delivery Orchestration",
-      problem: "Work stalls because people coordinate tasks across tools by hand.",
-      builds: [
-        "Keeps project status in sync across the tools you approve",
-        "Assigns tasks and sends notifications from your own rules",
-        "Uses AI to sort incoming requests and pull out action items",
-        "Catches overdue, blocked or incomplete work and escalates it",
-      ],
-      outcome: "Delivery gets more predictable, with less chasing between tools.",
+      when: "Within 2 business days",
+      title: "Proposal",
+      body: "A written plan: what I'll build, what it won't do, how long it takes, and the full price. You see the whole cost before you commit to anything.",
     },
     {
-      stage: "Every week after",
-      title: "Reporting & Operations Monitoring",
-      problem: "Status reports are assembled by hand, and problems surface too late.",
-      builds: [
-        "Pulls project and delivery data into one place",
-        "Writes scheduled internal summaries of what changed",
-        "Flags missing updates and overdue deliverables",
-        "Alerts the right person when a workflow fails",
-      ],
-      outcome: "You spend less time on reports and hear about problems sooner. I can also monitor and support the workflows after launch.",
+      when: "Once you're happy with it",
+      title: "Agreement",
+      body: "We sign a short agreement that pins down the scope and the price, so we both know exactly what's being built.",
+    },
+    {
+      when: "Before any building",
+      title: "Onboarding",
+      body: "I get access to the tools and accounts the system needs, and learn the quirks of how your team actually works.",
+    },
+    {
+      when: "Usually 2 to 6 weeks",
+      title: "Build, test and hand over",
+      body: "I build it in your accounts and test it until it does what we agreed. Then I hand it over and show your team how to use it.",
+    },
+  ],
+  handover: [
+    { title: "A user guide", body: "How your team uses it day to day, in plain language." },
+    { title: "Technical documentation", body: "How it's put together, so any developer can look after it, not just me." },
+    { title: "A training session", body: "A short walkthrough with the people who'll use it, with time for questions." },
+    { title: "Full ownership", body: "It runs in your accounts and belongs to you. No lock-in." },
+  ],
+  retainer: {
+    usd: 300,
+    php: 18000,
+    changeHours: 8,
+  },
+  faq: [
+    {
+      q: "How much does a project cost?",
+      a: "It depends on what the system has to do, so there's no price list. After the discovery call you get a proposal with the full price within two business days, before you commit to anything.",
+    },
+    {
+      q: "How long does a build take?",
+      a: "Most take 2 to 6 weeks. Your proposal includes a timeline for your system.",
+    },
+    {
+      q: "Do I actually need a custom system?",
+      a: "Maybe not. Plenty of problems are solved by a tool you can subscribe to today. Working that out is part of the discovery call, and if an existing tool fits, I'll tell you which one.",
+    },
+    {
+      q: "Who owns the system when you're done?",
+      a: "You do. It runs in your own accounts, and the documentation means you can keep it running with or without me.",
+    },
+    {
+      q: "What if something breaks after the first month?",
+      a: "With a retainer, monitoring and fixes are covered, plus up to 8 hours a month of small changes. Without one, I quote fixes as they come up.",
+    },
+    {
+      q: "Do you work with clients outside the Philippines?",
+      a: "Yes. I'm based in the Philippines (GMT+8) and work remotely with clients anywhere. We'll find call times that suit us both.",
+    },
+    {
+      q: "What do you need from my team?",
+      a: "Someone who knows the work to join the discovery call, access to the tools involved, and a little time to test things and give feedback during the build.",
     },
   ],
   education: [

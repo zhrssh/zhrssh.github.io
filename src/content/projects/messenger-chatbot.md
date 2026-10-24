@@ -5,6 +5,7 @@ date: 2026-07-01
 tags: ["AI", "LLM", "RAG", "Chatbot", "n8n", "Automation"]
 impact: "Demo build · Every answer checked against its sources"
 coverImage: "../../assets/projects/messenger-chatbot/cover.png"
+archived: true
 ---
 
 ## Summary

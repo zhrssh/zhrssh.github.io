@@ -5,12 +5,13 @@ interface Props {
   rule?: boolean;
   link?: { href: string; label: string };
   class?: string;
+  id?: string;
 }
 
-const { surface = "default", title, rule = true, link, class: className } = Astro.props;
+const { surface = "default", title, rule = true, link, class: className, id } = Astro.props;
 ---
 
-<section class:list={["section", `section-${surface}`, className]}>
+<section id={id} class:list={["section", `section-${surface}`, className]}>
   <div class="container">
     {
       title && (
