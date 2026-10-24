@@ -17,9 +17,8 @@ const viberUrl = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.socials.v
       <h1>Tell me how the work gets done today</h1>
       <hr class="accent-rule" />
       <p class="contact-intro">
-        Is your team still doing something by hand that it shouldn't be? The
-        quickest start is a free 45-minute discovery call. Not ready for a call?
-        Send a quick message on WhatsApp or Viber, or write to me below.
+        The quickest start is a free 45-minute discovery call. Not ready to
+        talk? Message me on WhatsApp or use the form.
       </p>
       <div class="contact-cta">
         <a href={SITE_CONFIG.bookingUrl} class="button" target="_blank" rel="noopener noreferrer">
@@ -28,10 +27,6 @@ const viberUrl = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.socials.v
         <a href={whatsappUrl} class="button button-secondary" target="_blank" rel="noopener noreferrer">
           <Icon name="whatsapp" size={16} />
           WhatsApp
-        </a>
-        <a href={viberUrl} class="button button-secondary">
-          <Icon name="viber" size={16} />
-          Viber
         </a>
       </div>
     </div>
@@ -103,20 +98,22 @@ const viberUrl = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.socials.v
     </div>
 
     <aside class="channels-column">
-      <h2>Prefer email?</h2>
-      <hr class="rule" />
-      <p class="channels-intro">
-        Write whenever suits you. I reply within a day or two.
-      </p>
-
       <div class="contact-meta">
         <div class="meta-row">
           <span class="meta-label">Email</span>
           <a href={`mailto:${SITE_CONFIG.email}`} class="meta-value">{SITE_CONFIG.email}</a>
         </div>
         <div class="meta-row">
+          <span class="meta-label">Viber</span>
+          <a href={viberUrl} class="meta-value">{SITE_CONFIG.socials.viber}</a>
+        </div>
+        <div class="meta-row">
           <span class="meta-label">Based in</span>
           <span class="meta-value">Philippines · Remote worldwide</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Replies</span>
+          <span class="meta-value">Within a day or two</span>
         </div>
       </div>
     </aside>
@@ -307,25 +304,6 @@ const viberUrl = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.socials.v
       text-decoration: underline;
     }
 
-    .channels-column {
-      padding: var(--space-2xl);
-      border: 1px solid var(--border);
-      border-radius: var(--border-radius-lg);
-      background-color: var(--bg);
-    }
-
-    .channels-column h2 {
-      margin: 0 0 0;
-      font-size: var(--text-xl);
-    }
-
-    .channels-intro {
-      color: var(--text-secondary);
-      font-size: var(--text-sm);
-      margin: 0 0 var(--space-lg);
-      line-height: 1.6;
-    }
-
     .contact-meta {
       display: flex;
       flex-direction: column;
@@ -363,25 +341,17 @@ const viberUrl = `viber://chat?number=${encodeURIComponent(SITE_CONFIG.socials.v
         grid-template-columns: 1fr;
       }
 
-      .form-column,
-      .channels-column {
+      .form-column {
         padding: var(--space-xl);
       }
     }
 
     /* Phones: drop the frame so the fields get the full width */
     @media (max-width: 480px) {
-      .form-column,
-      .channels-column {
+      .form-column {
         padding: 0;
         border: 0;
         background: none;
-      }
-
-      .channels-column {
-        padding-top: var(--space-xl);
-        border-top: 1px solid var(--border);
-        border-radius: 0;
       }
     }
   </style>
