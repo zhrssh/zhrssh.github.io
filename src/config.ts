@@ -102,6 +102,7 @@ export const SITE_CONFIG = {
     { title: "A user guide", body: "Day-to-day use, in plain language." },
     { title: "Technical documentation", body: "So any developer can look after it." },
     { title: "A training session", body: "A short walkthrough with your team." },
+    { title: "All the project files", body: "Code, workflows and settings, saved to your own repository or drive." },
     { title: "Full ownership", body: "It runs in your accounts. No lock-in." },
   ],
   retainer: {

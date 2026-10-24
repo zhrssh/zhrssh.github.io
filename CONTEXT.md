@@ -30,7 +30,8 @@ The stages a client goes through, in order:
 - **Agreement**: The signed contract that follows an accepted proposal.
 - **Onboarding**: Gathering the access, accounts, and context needed to start building.
 - **Build**: Building and testing the internal system.
-- **Handover**: Delivery of the finished system with user documentation, technical documentation, and a short training session. The client owns everything, running in the client's own accounts.
+- **Handover**: Delivery of the finished system with user documentation, technical documentation, a short training session, and the project files. The client owns everything built for them, running in the client's own accounts. Third-party tools stay under their own licenses.
+- **Project files**: Every file the build produced, delivered into the client's own accounts (their repository or shared drive) at handover. What that includes depends on the stack: source code, configuration, workflow exports, database schema, diagrams and specs. Credentials aren't project files: they're created in the client's accounts from the start. _Avoid_: deliverables, assets.
 - **Support month**: The free first month after handover, covering fixes to anything that doesn't work as agreed, plus questions and retraining. New features are change requests. _Avoid_: warranty, free support (as a noun).
 - **Retainer**: An optional monthly plan after the support month, covering monitoring, fixes, and a fixed number of hours of small changes. Priced per client region. _Avoid_: maintenance plan, subscription.
 - **Change request**: Any new feature or behavior beyond what the agreement covers.

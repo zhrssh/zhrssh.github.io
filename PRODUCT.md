@@ -16,7 +16,7 @@ The portfolio and service site of Zherish Galvin Mayordo, who builds custom inte
 
 ## Positioning
 
-Custom internal systems for the work a team still does by hand. The tools behind the work don't matter to the client; what changes for their team does. The discovery call is honest: if an off-the-shelf tool fits, Zherish says so. Every system is handed over with user documentation, technical documentation and a short training session, runs in the client's own accounts, and is owned by the client. There's no lock-in.
+Custom internal systems for the work a team still does by hand. The tools behind the work don't matter to the client; what changes for their team does. The discovery call is honest: if an off-the-shelf tool fits, Zherish says so. Every system is handed over with user documentation, technical documentation, a short training session and all the project files, runs in the client's own accounts, and is owned by the client. There's no lock-in.
 
 ## Operating Context
 
