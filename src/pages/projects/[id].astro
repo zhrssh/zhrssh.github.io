@@ -327,6 +327,48 @@ if (entry.data.bookCall) {
       line-height: 1.6;
     }
 
+    /* Technical detail tucked under a ruled disclosure, like the home FAQ */
+    .post-content :global(details) {
+      margin: var(--space-2xl) 0;
+      border-block: 1px solid var(--border);
+    }
+
+    .post-content :global(summary) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-lg);
+      padding-block: var(--space-lg);
+      font-weight: 600;
+      font-size: var(--text-lg);
+      line-height: 1.35;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .post-content :global(summary::-webkit-details-marker) {
+      display: none;
+    }
+
+    .post-content :global(summary::after) {
+      content: "";
+      flex-shrink: 0;
+      width: 0.55em;
+      height: 0.55em;
+      border-right: 1.5px solid var(--accent);
+      border-bottom: 1.5px solid var(--accent);
+      transform: translateY(-25%) rotate(45deg);
+      transition: transform var(--transition);
+    }
+
+    .post-content :global(details[open] summary::after) {
+      transform: translateY(25%) rotate(-135deg);
+    }
+
+    .post-content :global(summary:hover) {
+      color: var(--accent);
+    }
+
     .post-adjacent {
       display: grid;
       grid-template-columns: 1fr 1fr;

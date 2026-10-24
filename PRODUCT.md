@@ -41,7 +41,7 @@ Custom internal systems for the work a team still does by hand. The tools behind
 
 - **Real projects (the only ones shown):**
   - Solace of Christ Church: a lyrics formatter that saves volunteers 10+ minutes per song. No testimonial; it's a volunteer project.
-  - A forex trading team: a TradingView-to-MT5 bridge, just handed over. They moved off a PineConnector plan capped at 10 accounts to unlimited accounts, with alerts when an MT5 terminal goes down or an alert doesn't trigger, and one dashboard for every account and the strategies running on it. Testimonial pending; the client stays unnamed until it arrives.
+  - Robin Ho, a team that develops trading algorithms traders subscribe to (not a team trading its own money; never call them a "forex trading team"): a TradingView-to-MT5 bridge for the team's own MT5 accounts, just handed over. They moved off a PineConnector plan capped at 10 accounts to unlimited accounts, with alerts when an MT5 terminal goes down or an alert doesn't trigger, and one dashboard for every account and the strategies running on it. Testimonial pending; the client stays unnamed until it arrives.
 - **Archived, never shown as work:** demos (spa booking, Telegram assistant, Messenger chatbot), personal tools (Reddit research, spa outreach) and academic work.
 - **Credentials:** BS Computer Engineering; two co-authored ML papers (IEEE TENCON 2024; Diagnostika 2024); certificates from IBM, DeepLearning.AI/Stanford and Cisco.
 - **Absent, and must not be fabricated:** testimonials, client logos, savings figures beyond the two above, client counts and project prices.

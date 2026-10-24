@@ -33,20 +33,20 @@ const php = formatPrice(retainer.php, "PHP");
             Available for work
           </span>
         </div>
-        <h1>Custom internal systems for the work your team still does by hand.</h1>
+        <h1>The work your team does by hand, handled.</h1>
         <hr class="accent-rule" />
         <p class="hero-tagline">
-          Automations, dashboards, intake tools, admin panels: the software that
-          runs behind the scenes, built around how your team already works. And
-          if a tool you can buy would do the job, I'll tell you.
+          I build custom automations, dashboards and admin tools around how your
+          team already works.
         </p>
         <div class="hero-cta">
           <a href={SITE_CONFIG.bookingUrl} class="button" target="_blank" rel="noopener noreferrer"
             >Book a free discovery call<span class="sr-only"> (opens in a new tab)</span></a
           >
-          <a href="#how-i-work" class="button button-secondary">See how it works</a>
+          <a href="#how-it-works" class="button button-secondary">See how it works</a>
         </div>
       </div>
+
       <div class="hero-portrait">
         <div class="hero-img-frame">
           <Image
@@ -64,30 +64,19 @@ const php = formatPrice(retainer.php, "PHP");
       <li>
         <a href="/projects/propresenter-lyrics-formatter-2/" class="proof-link">
           <span class="proof-result">10+ minutes saved on every song</span>
-          <span class="proof-who">
-            Solace of Christ Church, for the volunteers who prepare Sunday lyrics
-          </span>
+          <span class="proof-who">Solace of Christ Church volunteers</span>
         </a>
       </li>
       <li>
         <a href="/projects/tradingview-mt5-bridge/" class="proof-link">
-          <span class="proof-result">From a 10-account cap to no cap at all</span>
-          <span class="proof-who">
-            A forex trading team, now on a system of their own instead of a paid plan
-          </span>
+          <span class="proof-result">From a 10-account cap to no cap</span>
+          <span class="proof-who">A team that builds trading algorithms for subscribers</span>
         </a>
       </li>
     </ul>
-    <p class="hero-credential">
-      Built by a Computer Engineer and co-author of two published machine-learning papers
-    </p>
   </Section>
 
   <Section surface="raised" title="Where your team's week goes">
-    <p class="lead">
-      Most of what I build starts with one of these. If a few of them sound like
-      your week, that's usually a sign a system would pay for itself.
-    </p>
     <div class="swaps">
       <div class="swaps-head" aria-hidden="true">
         <span>Today</span>
@@ -109,32 +98,44 @@ const php = formatPrice(retainer.php, "PHP");
     </div>
   </Section>
 
-  <Section id="how-i-work" title="How working together goes">
-      <p class="lead">
-        You'll know the full price before you commit, and you'll own everything at
-        the end.
-      </p>
-      <ol class="ledger">
-        {
-          SITE_CONFIG.engagement.map((step) => (
-            <li class="ledger-row">
-              <p class="ledger-note">{step.when}</p>
-              <h3>{step.title}</h3>
-              <p class="ledger-body">{step.body}</p>
-            </li>
-          ))
-        }
-      </ol>
+  <Section title="What it looks like" link={{ href: "/projects/", label: "All projects →" }}>
+    <figure class="artifact">
+      <a href="/projects/propresenter-lyrics-formatter-2/" class="artifact-frame">
+        <Image
+          src={lyricsBeforeAfter}
+          alt="Before and after: a chord-chart PDF with chord symbols above every line, and the same song as clean lyrics split into verses and chorus."
+          widths={[480, 800, 1200, 1695]}
+          sizes="(max-width: 1264px) calc(100vw - 4rem), 1200px"
+          loading="lazy"
+        />
+      </a>
+      <figcaption>
+        <p class="ledger-note">Solace of Christ Church</p>
+        <p>Volunteers paste in a chord chart and get Sunday-ready lyrics back.</p>
+        <a href="/projects/propresenter-lyrics-formatter-2/" class="text-action">Read the story →</a>
+      </figcaption>
+    </figure>
   </Section>
 
-  <Section surface="raised" class="handover-section">
+  <Section id="how-it-works" surface="raised" title="How it works">
+    <ol class="ledger">
+      {
+        SITE_CONFIG.engagement.map((step) => (
+          <li class="ledger-row">
+            <p class="ledger-note">{step.when}</p>
+            <h3>{step.title}</h3>
+            <p class="ledger-body">{step.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </Section>
+
+  <Section class="handover-section">
     <div class="split">
       <div class="split-intro">
-        <h2>What you get at handover</h2>
-        <p>
-          Nothing important stays in my head or my accounts. Your team can run it,
-          and any developer can pick it up.
-        </p>
+        <h2>What you get</h2>
+        <p>Everything your team needs to run it, and to keep it running.</p>
       </div>
       <dl class="split-list">
         {
@@ -147,28 +148,20 @@ const php = formatPrice(retainer.php, "PHP");
         }
       </dl>
     </div>
-  </Section>
 
-  <Section title="After handover">
-    <ol class="ledger">
+    <ol class="ledger support">
       <li class="ledger-row">
-        <p class="ledger-note">The first month</p>
-        <h3>Support, on me</h3>
-        <div class="ledger-body">
-          <p>
-            If anything doesn't work the way we agreed, I fix it. Questions and
-            a refresher for your team are covered too. New features are quoted
-            separately as a change request.
-          </p>
-        </div>
+        <p class="ledger-note">First month after handover</p>
+        <h3>Free support</h3>
+        <p class="ledger-body">
+          If something doesn't work as agreed, I fix it. New features are quoted
+          separately.
+        </p>
       </li>
       <li class="ledger-row">
-        <p class="ledger-note">Every month after, if you want it</p>
-        <h3>A monthly retainer</h3>
+        <p class="ledger-note">After your free month, optional</p>
+        <h3>Monthly retainer</h3>
         <div class="ledger-body" data-retainer data-usd={usd} data-php={php}>
-          <p>
-            Optional. Once the free month ends, you can keep me on call for:
-          </p>
           <div class="price-row">
             <p class="price">
               <span data-price aria-live="polite">From {usd}</span>
@@ -183,49 +176,16 @@ const php = formatPrice(retainer.php, "PHP");
             <p class="price-alt">Clients in the Philippines: from {php} / month.</p>
           </noscript>
           <ul class="ledger-list">
-            <li>I keep watch on the system and hear about failures first</li>
+            <li>Monitoring, so I hear about failures first</li>
             <li>Fixes when something breaks</li>
-            <li>
-              Up to {retainer.changeHours} hours a month of small changes. Unused
-              hours don't roll over.
-            </li>
+            <li>Up to {retainer.changeHours} hours of small changes a month, no rollover</li>
           </ul>
-          <p class="fine">
-            The exact price depends on the size of your system and is set in
-            your proposal.
-          </p>
         </div>
       </li>
     </ol>
   </Section>
 
-  <Section
-    surface="raised"
-    title="What it looks like"
-    link={{ href: "/projects/", label: "All projects →" }}>
-    <figure class="artifact">
-      <a href="/projects/propresenter-lyrics-formatter-2/" class="artifact-frame">
-        <Image
-          src={lyricsBeforeAfter}
-          alt="Before and after: a chord-chart PDF with chord symbols above every line, and the same song as clean lyrics split into verses and chorus."
-          widths={[480, 800, 1200, 1695]}
-          sizes="(max-width: 1264px) calc(100vw - 4rem), 1200px"
-          loading="lazy"
-        />
-      </a>
-      <figcaption>
-        <p class="ledger-note">Solace of Christ Church</p>
-        <p>
-          Volunteers paste in a chord chart and get back every song cleaned
-          up, split into verses and choruses, and ready for the screen on
-          Sunday. It saves them 10+ minutes per song.
-        </p>
-        <a href="/projects/propresenter-lyrics-formatter-2/" class="text-action">Read how it was built →</a>
-      </figcaption>
-    </figure>
-  </Section>
-
-  <Section title="Questions people ask">
+  <Section surface="raised" title="Questions people ask">
     <div class="faq">
       {
         SITE_CONFIG.faq.map((item) => (
@@ -239,8 +199,7 @@ const php = formatPrice(retainer.php, "PHP");
   </Section>
 
   <CtaBand title="Tell me what your team is still doing by hand">
-    A free 45-minute call. You'll leave knowing whether a custom system is worth
-    it for you, even if the answer is no.
+    Free, 45 minutes. You'll know if it's worth it, even if the answer is no.
   </CtaBand>
 
   <script>
@@ -380,13 +339,6 @@ const php = formatPrice(retainer.php, "PHP");
       flex-wrap: wrap;
     }
 
-    .hero-credential {
-      color: var(--text-muted);
-      font-size: var(--text-sm);
-      margin: var(--space-lg) 0 0;
-      padding-top: var(--space-lg);
-      border-top: 1px solid var(--border);
-    }
 
     /* Proof strip: two ruled results under the hero */
     .proof {
@@ -444,13 +396,6 @@ const php = formatPrice(retainer.php, "PHP");
       text-decoration-thickness: 1px;
     }
 
-    .lead {
-      font-size: var(--text-lg);
-      color: var(--text-secondary);
-      line-height: 1.6;
-      max-width: 60ch;
-      margin: 0 0 var(--space-2xl);
-    }
 
     /* Today → once it's built */
     .swaps ul {
@@ -611,7 +556,7 @@ const php = formatPrice(retainer.php, "PHP");
     .ledger-list {
       display: grid;
       gap: var(--space-xs);
-      margin: 0 0 var(--space-lg);
+      margin: 0;
       padding-left: 1.1em;
       color: var(--text-primary);
     }
@@ -620,10 +565,6 @@ const php = formatPrice(retainer.php, "PHP");
       color: var(--accent);
     }
 
-    .ledger-body .fine {
-      font-size: var(--text-sm);
-      color: var(--text-muted);
-    }
 
     /* Handover: statement beside a ruled list */
     .split {
@@ -645,6 +586,10 @@ const php = formatPrice(retainer.php, "PHP");
       line-height: 1.6;
       max-width: 40ch;
       margin: 0;
+    }
+
+    .support {
+      margin-top: var(--space-3xl);
     }
 
     .split-list {

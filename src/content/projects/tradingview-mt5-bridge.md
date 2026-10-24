@@ -1,17 +1,17 @@
 ---
-title: "Trading alerts to MT5, without the 10-account cap"
-description: "A forex trading team moved off PineConnector to a TradingView-to-MT5 bridge of their own: no cap on accounts, an alert the moment something fails, and one dashboard for all of it."
+title: "A trading system of their own, with no account cap"
+description: "A team that builds trading algorithms for subscribers swapped a capped, paid plan for a system of their own: no account limit, alerts when something fails, and one dashboard."
 date: 2026-10-24
 tags: ["TradingView", "MetaTrader 5"]
-impact: "From a 10-account cap to unlimited accounts"
+impact: "From a 10-account cap to no cap"
 writeupPending: true
 ---
 
 ## Where they started
 
-The team runs its strategies in TradingView and places trades through MetaTrader 5 (MT5). Something has to carry each TradingView alert across to MT5 as an order, and they were paying PineConnector to do it.
+The team builds trading algorithms that traders subscribe to. Its strategies run in TradingView, and trades go through MetaTrader 5 (MT5) on the team's own accounts. Something has to turn each alert into an MT5 order, and they were paying PineConnector to do it.
 
-Their PineConnector plan capped them at 10 accounts. Every account they wanted to add meant hitting that ceiling. And if an MT5 terminal went quiet, nobody found out until a trade they expected didn't happen.
+That plan capped them at 10 accounts. And if an MT5 terminal went quiet, nobody knew until an expected trade didn't happen.
 
 ## What I built
 
