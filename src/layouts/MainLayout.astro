@@ -32,7 +32,10 @@ const pageTitle = `${title} · ${brand}`;
   />
   <script is:inline>
     (function() {
-      const savedTheme = localStorage.getItem("theme");
+      let savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem("theme");
+      } catch {}
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
       const theme = savedTheme || systemTheme;
       document.documentElement.setAttribute("data-theme", theme);
@@ -108,7 +111,7 @@ const pageTitle = `${title} · ${brand}`;
         </div>
         <div class="drawer-cta">
           <a href={SITE_CONFIG.bookingUrl} class="button" target="_blank" rel="noopener noreferrer">
-            Book a call<span class="sr-only"> (opens in a new tab)</span>
+            Book a free discovery call<span class="sr-only"> (opens in a new tab)</span>
           </a>
           <a href={`https://wa.me/${SITE_CONFIG.socials.whatsapp}`} class="button button-secondary" target="_blank" rel="noopener noreferrer">
             <Icon name="whatsapp" size={16} />
@@ -137,7 +140,7 @@ const pageTitle = `${title} · ${brand}`;
       <div class="footer-content">
         <div class="footer-brand">
           <p class="footer-name">{brand}</p>
-          <p class="footer-tagline">n8n and AI automations for service businesses, built by a Computer Engineer in the Philippines.</p>
+          <p class="footer-tagline">Custom internal systems for small teams, built by a Computer Engineer in the Philippines.</p>
         </div>
         <nav class="footer-nav">
           <a href="/">Home</a>
@@ -200,9 +203,9 @@ const pageTitle = `${title} · ${brand}`;
 
       .footer-nav {
         display: flex;
-        flex-direction: column;
-        gap: var(--space-sm);
-        text-align: left;
+        flex-wrap: wrap;
+        gap: var(--space-sm) var(--space-lg);
+        align-self: center;
       }
 
       .footer-nav a {
@@ -316,7 +319,9 @@ const pageTitle = `${title} · ${brand}`;
           const newTheme = currentTheme === "dark" ? "light" : "dark";
 
           htmlElement.setAttribute("data-theme", newTheme);
-          localStorage.setItem("theme", newTheme);
+          try {
+            localStorage.setItem("theme", newTheme);
+          } catch {}
         })
       );
 

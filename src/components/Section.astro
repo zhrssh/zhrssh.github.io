@@ -5,23 +5,26 @@ interface Props {
   rule?: boolean;
   link?: { href: string; label: string };
   class?: string;
+  id?: string;
 }
 
-const { surface = "default", title, rule = true, link, class: className } = Astro.props;
+const { surface = "default", title, rule = true, link, class: className, id } = Astro.props;
 ---
 
-<section class:list={["section", `section-${surface}`, className]}>
+<section id={id} class:list={["section", `section-${surface}`, className]}>
   <div class="container">
     {
       title && (
         <div class="section-header">
-          {title && <h2>{title}</h2>}
+          <div class="section-title-row">
+            <h2>{title}</h2>
+            {link && (
+              <a href={link.href} class="section-link">
+                {link.label}
+              </a>
+            )}
+          </div>
           {rule && <hr class="rule" />}
-          {link && (
-            <a href={link.href} class="section-link">
-              {link.label}
-            </a>
-          )}
         </div>
       )
     }
@@ -79,6 +82,15 @@ const { surface = "default", title, rule = true, link, class: className } = Astr
     margin: 0;
   }
 
+  /* Title and its "View all" share a line; the rule runs under both */
+  .section-title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-xs) var(--space-lg);
+  }
+
   .section-link {
     display: inline-block;
     color: var(--accent);
@@ -86,7 +98,7 @@ const { surface = "default", title, rule = true, link, class: className } = Astr
     font-weight: 500;
     font-size: var(--text-sm);
     transition: color var(--transition-fast);
-    margin-top: var(--space-sm);
+    padding-block: var(--space-sm);
   }
 
   .section-link:hover {

@@ -6,6 +6,7 @@ tags: ["AI", "RAG", "Agentic", "n8n", "Automation"]
 impact: "Demo build · Calendar, inbox and tasks in one chat"
 demo: "https://free-personal-assistant.onrender.com/?utm_source=portfolio&utm_medium=website&utm_campaign=telegram-assistant"
 coverImage: "../../assets/projects/telegram-assistant/cover.png"
+archived: true
 ---
 
 ## Summary

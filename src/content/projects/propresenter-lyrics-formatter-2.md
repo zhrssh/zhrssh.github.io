@@ -2,7 +2,7 @@
 title: "How a church team stopped hand-formatting lyrics"
 description: "Solace of Christ Church volunteers paste a chord chart or upload the PDF, and get back ProPresenter-ready lyrics for every song in seconds, one by one or as a zip."
 date: 2026-07-26
-tags: ["AI", "Document Processing", "n8n", "Automation"]
+tags: ["n8n", "LLM APIs"]
 impact: "Saves 10+ min per song, hours per month"
 featured: true
 video: "https://youtu.be/ZZXVprN5Im0"
@@ -10,28 +10,32 @@ github: "https://github.com/zhrssh/n8n-propresenter-lyrics-formatter"
 coverImage: "../../assets/projects/propresenter-lyrics-formatter-2/cover.png"
 ---
 
-## Summary
+## What changed
 
-This is a follow-up to my [first ProPresenter lyrics formatter](/projects/propresenter-lyrics-formatter/), built after watching my churchmates actually use it. The original required people to upload a file and correctly tell the system whether it was one song per file or one song per page, which turned out to be a confusing and error-prone step for non-technical volunteers.
+Every week, volunteers at Solace of Christ Church (SCC) turn chord-chart PDFs into lyrics for ProPresenter, the software that puts words on the screen during Sunday service. They used to do it by hand, song by song. Now they paste in the chord chart or upload the PDF, and get back every song cleaned up, split into verses and choruses, and named, ready to download one at a time or as a zip.
 
-This version replaces that with a dedicated, access-gated web page for Solace of Christ Church (SCC). Volunteers paste in their chord chart text or upload the PDF file, the app extracts the lyrics client-side, and the results come back already split into individual songs with proper file names, ready to download one by one or as a single zip.
+That's **10+ minutes saved per song**, which adds up to hours every month for a team of volunteers giving up their own time.
 
-## The Problem
+![Before and after: a chord-chart PDF with chord symbols above every line, and the same song as clean, ProPresenter-ready lyrics split into verses and chorus.](../../assets/projects/propresenter-lyrics-formatter-2/output.png)
 
-The first version worked, but the upload flow put too much cognitive load on volunteers:
+## The problem
 
-* They had to correctly classify their own file as "one song per file" or "one song per page" before uploading, a distinction that wasn't always obvious from the source document.
-* A wrong selection produced garbled output, with no clear indication of what went wrong.
-* There was no dedicated interface, so the tool felt like a generic file-upload utility rather than something built for their weekly routine.
-* Getting multiple formatted songs back meant repeating the same upload-and-download cycle for each one.
+By hand, every song meant opening the PDF, copying the lyrics out, stripping the chord symbols, splitting verses and choruses, and reformatting it all for ProPresenter. Then doing it again for the next song, every week.
 
-## Results
+My first version of this tool helped, but watching volunteers use it showed me where it fell short:
 
-Volunteers no longer have to think about file structure at all. Since the page is dedicated to SCC and pre-configured for their chord chart format, the entire interaction is reduced to pasting text in or uploading the PDF file and downloading formatted songs out, individually or as a zip. What used to be a multi-step, error-prone upload process is now a much smoother, purpose-built workflow.
+* They had to tell it whether a file held one song or one song per page, which wasn't always obvious from the document.
+* A wrong choice produced garbled output, with no clue what went wrong.
+* It felt like a generic upload form, not something built for their Sunday routine.
+* Getting several songs back meant repeating the whole upload-and-download cycle for each one.
 
-## Project Objectives
+## What I built
 
-The goals for this iteration were to:
+A page made just for SCC, behind an access code. It already knows their chord-chart format, so nobody has to think about how a file is structured. Paste or upload, then download. That's the whole job now.
+
+## Goals
+
+This version set out to:
 
 * Remove the need for volunteers to classify their own input.
 * Give SCC a dedicated, purpose-built page instead of a generic upload form.
@@ -39,7 +43,7 @@ The goals for this iteration were to:
 * Return each song as a properly named, individually downloadable file, plus a zip of the full set.
 * Simplify the backend workflow so it's easier to maintain and extend.
 
-## The Solution
+## How it works
 
 Instead of asking users to upload a PDF and guess at its structure, the new page has them paste the extracted chord chart text directly. Text extraction from the PDF now happens client-side in the browser, so the app always receives plain text and never has to guess how the source file was structured.
 
@@ -47,10 +51,9 @@ That text is sent to an n8n workflow that runs it through a multi-step LLM chain
 
 The page itself is gated behind an access code, since it's built specifically for SCC's chord chart format and isn't meant for general public use.
 
-## Technical Implementation
-### Workflows
+### Under the hood
 ![Workflow 1](../../assets/projects/propresenter-lyrics-formatter-2/workflow-1.png)
-#### Workflow 1: Lyrics Formatting Pipeline
+#### The formatting workflow
 
 1. A webhook receives the extracted chord chart text from the client-facing page, along with the signature header.
 2. An `If` node validates the access code; requests that fail validation get a `401` response and stop there.
@@ -61,9 +64,6 @@ The page itself is gated behind an access code, since it's built specifically fo
 7. `Edit Fields` assigns each song a proper file name.
 8. `Aggregate` collects all formatted songs back into a single response.
 9. `Respond to Webhook` returns the finished set to the page for individual or zipped download.
-
-#### Sample Output
-![Output](../../assets/projects/propresenter-lyrics-formatter-2/output.png)
 
 ## Challenges
 

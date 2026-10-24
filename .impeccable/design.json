@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-11T13:19:57.923324+00:00",
+  "generatedAt": "2026-10-24T07:05:13.711678+00:00",
   "title": "Design System: Zherish Galvin Mayordo",
   "extensions": {
     "colorMeta": {
@@ -293,15 +293,15 @@
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Page h1 only."
+        "purpose": "Page H1 only, balanced, about 22ch."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Section h2 titles."
+        "purpose": "Section H2 titles; the 3xl step for the handover statement and the impact panel."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Row, card and sub-section h3."
+        "purpose": "Row, card and sub-section H3, and the retainer price."
       },
       "body": {
         "displayName": "Body",
@@ -309,11 +309,11 @@
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Buttons, nav, tags, meta."
+        "purpose": "Buttons, nav, tags, badges, the currency switch and meta."
       },
       "marginal": {
         "displayName": "Marginal",
-        "purpose": "Italic serif margin notes in ledger rows."
+        "purpose": "Italic serif margin notes in ledger rows and figure captions."
       }
     },
     "shadows": [
@@ -325,34 +325,61 @@
       {
         "name": "card-hover",
         "value": "0 4px 12px 0 rgba(0,0,0,0.1)",
-        "purpose": "Project card lift on hover (dark: 0.5 alpha)."
+        "purpose": "Project card lift on hover, with a 4px upward move (dark: 0.5 alpha)."
+      },
+      {
+        "name": "lightbox",
+        "value": "0 8px 32px rgba(0,0,0,0.5)",
+        "purpose": "The image lightbox only, floating over a dimmed page."
       }
     ],
     "motion": [
       {
         "name": "fast",
         "value": "150ms cubic-bezier(0.4, 0, 0.2, 1)",
-        "purpose": "Color and border changes on hover."
+        "purpose": "Color and border changes on hover, the currency switch."
       },
       {
         "name": "standard",
         "value": "200ms cubic-bezier(0.4, 0, 0.2, 1)",
-        "purpose": "Card lift, nav underline draw."
+        "purpose": "Card lift, nav underline draw, FAQ chevron turn."
       },
       {
         "name": "slow",
         "value": "300ms cubic-bezier(0.4, 0, 0.2, 1)",
         "purpose": "Theme background crossfade."
+      },
+      {
+        "name": "section-reveal",
+        "value": "rise-in, 40px (20px under 768px), scroll timeline cover 0 to 200px; fallback 600ms cubic-bezier(0.2, 0, 0, 1)",
+        "purpose": "Section content rises into view; bands stay put. Off under reduced motion."
+      },
+      {
+        "name": "page-transition",
+        "value": "400ms cubic-bezier(0.2, 0, 0, 1)",
+        "purpose": "View-transition cross-fade between pages; the header stays still."
       }
     ],
     "breakpoints": [
       {
+        "name": "wide",
+        "value": "1024px",
+        "purpose": "Project cards go image | text (min-width)."
+      },
+      {
         "name": "tablet",
-        "value": "900px"
+        "value": "900px",
+        "purpose": "Ledger rows, splits and figures collapse."
       },
       {
         "name": "mobile",
-        "value": "768px"
+        "value": "768px",
+        "purpose": "Drawer nav, hero avatar, stacked swap table, no scroll snap."
+      },
+      {
+        "name": "phone",
+        "value": "480px",
+        "purpose": "Form fields stack; contact form drops its frame."
       }
     ]
   },
@@ -362,7 +389,7 @@
       "kind": "button",
       "refersTo": "button-primary",
       "description": "Default call to action: solid ink, turns umber on hover.",
-      "html": "<a class=\"ds-btn-primary\" href=\"#\">Book a call</a>",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Book a free discovery call</a>",
       "css": ".ds-btn-primary{display:inline-flex;align-items:center;padding:0.5rem 1.125rem;background:var(--text-primary,#1F2328);color:var(--bg,#FAFAF8);border:1px solid var(--text-primary,#1F2328);border-radius:3px;font-weight:600;font-size:0.9375rem;text-decoration:none;transition:background-color 150ms cubic-bezier(0.4,0,0.2,1),border-color 150ms cubic-bezier(0.4,0,0.2,1)}.ds-btn-primary:hover{background:var(--accent,#6E5A3C);border-color:var(--accent,#6E5A3C)}.ds-btn-primary:focus-visible{outline:2px solid var(--accent,#6E5A3C);outline-offset:2px}"
     },
     {
@@ -370,7 +397,7 @@
       "kind": "button",
       "refersTo": "button-secondary",
       "description": "Quiet alternative beside a primary: hairline outline, umber on hover.",
-      "html": "<a class=\"ds-btn-secondary\" href=\"#\">View my work</a>",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">See how it works</a>",
       "css": ".ds-btn-secondary{display:inline-flex;align-items:center;padding:0.5rem 1.125rem;background:transparent;color:var(--text-primary,#1F2328);border:1px solid var(--border,#E3E1DA);border-radius:3px;font-weight:600;font-size:0.9375rem;text-decoration:none;transition:color 150ms,border-color 150ms}.ds-btn-secondary:hover{color:var(--accent,#6E5A3C);border-color:var(--accent,#6E5A3C)}.ds-btn-secondary:focus-visible{outline:2px solid var(--accent,#6E5A3C);outline-offset:2px}"
     },
     {
@@ -378,7 +405,7 @@
       "kind": "button",
       "refersTo": "button-accent",
       "description": "Only in the inverse closing band, where ink-on-ink would vanish.",
-      "html": "<a class=\"ds-btn-accent\" href=\"#\">Book a call</a>",
+      "html": "<a class=\"ds-btn-accent\" href=\"#\">Book a free discovery call</a>",
       "css": ".ds-btn-accent{display:inline-flex;align-items:center;padding:0.5rem 1.125rem;background:var(--accent,#6E5A3C);color:var(--bg,#FAFAF8);border:1px solid var(--accent,#6E5A3C);border-radius:3px;font-weight:600;font-size:0.9375rem;text-decoration:none;transition:background-color 150ms}.ds-btn-accent:hover{background:var(--accent-hover,#5A4A2F);border-color:var(--accent-hover,#5A4A2F)}.ds-btn-accent:focus-visible{outline:2px solid var(--accent,#6E5A3C);outline-offset:2px}"
     },
     {
@@ -386,7 +413,7 @@
       "kind": "input",
       "refersTo": "input",
       "description": "Contact form field: hairline box, umber border on focus.",
-      "html": "<label class=\"ds-field\"><span>Email</span><input type=\"email\" placeholder=\"you@agency.com\"></label>",
+      "html": "<label class=\"ds-field\"><span>Email</span><input type=\"email\" placeholder=\"you@yourteam.org\"></label>",
       "css": ".ds-field{display:grid;gap:0.25rem;font-size:0.9375rem;font-weight:500;color:var(--text-primary,#1F2328)}.ds-field input{padding:0.625rem 0.75rem;background:transparent;border:1px solid var(--border,#E3E1DA);border-radius:3px;font:inherit;font-weight:400;color:inherit;transition:border-color 150ms}.ds-field input:focus{outline:none;border-color:var(--accent,#6E5A3C)}.ds-field input:focus-visible{outline:2px solid var(--accent,#6E5A3C);outline-offset:2px}"
     },
     {
@@ -398,28 +425,60 @@
       "css": ".ds-nav{display:flex;gap:1.5rem}.ds-nav a{position:relative;padding:0.25rem 0;color:var(--text-secondary,#4A535E);font-size:0.9375rem;font-weight:500;text-decoration:none;transition:color 150ms}.ds-nav a::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--accent,#6E5A3C);transform:scaleX(0);transform-origin:left;transition:transform 200ms cubic-bezier(0.4,0,0.2,1)}.ds-nav a:hover,.ds-nav a.is-active{color:var(--text-primary,#1F2328)}.ds-nav a:hover::after,.ds-nav a.is-active::after{transform:scaleX(1)}"
     },
     {
-      "name": "Tag",
+      "name": "Tag & Status Badge",
       "kind": "chip",
-      "refersTo": "tag",
-      "description": "Project tech tag: hairline outline, no fill.",
-      "html": "<span class=\"ds-tag\">n8n</span>",
-      "css": ".ds-tag{display:inline-block;padding:0.125rem 0.5rem;font-size:0.8125rem;color:var(--text-secondary,#4A535E);border:1px solid var(--border,#E3E1DA);border-radius:3px}"
+      "refersTo": "badge",
+      "description": "Hairline tag for blog topics; umber-outlined badge for a single project state.",
+      "html": "<span class=\"ds-tag\">Automation</span> <span class=\"ds-badge\">Just handed over</span>",
+      "css": ".ds-tag{display:inline-block;padding:0.125rem 0.5rem;font-size:0.8125rem;color:var(--text-secondary,#4A535E);border:1px solid var(--border,#E3E1DA);border-radius:3px}.ds-badge{display:inline-block;padding:0.15em 0.6em;font-size:0.8125rem;font-weight:600;letter-spacing:0.02em;line-height:1.5;color:var(--accent,#6E5A3C);border:1px solid currentColor;border-radius:3px}"
     },
     {
       "name": "Project Card",
       "kind": "card",
       "refersTo": "card",
-      "description": "The one boxed container: hairline frame, lifts 4px with a soft shadow on hover.",
-      "html": "<a class=\"ds-card\" href=\"#\"><div class=\"ds-card-img\"></div><div class=\"ds-card-body\"><span class=\"ds-card-impact\">Prevents missed bookings</span><h3>Spa bookings confirmed instantly</h3><p>Guests pick a therapist and book; confirmations go out automatically.</p></div></a>",
-      "css": ".ds-card{display:flex;flex-direction:column;max-width:360px;border:1px solid var(--border,#E3E1DA);border-radius:4px;overflow:hidden;background:var(--bg,#FAFAF8);color:inherit;text-decoration:none;transition:transform 200ms cubic-bezier(0.4,0,0.2,1),box-shadow 200ms,border-color 150ms}.ds-card:hover{transform:translateY(-4px);box-shadow:0 4px 12px 0 rgba(0,0,0,0.1);border-color:var(--accent,#6E5A3C)}.ds-card-img{aspect-ratio:16/9;background:var(--bg-secondary,#F3F1EA)}.ds-card-body{padding:1.5rem}.ds-card-impact{display:block;color:var(--accent,#6E5A3C);font-size:0.9375rem;font-weight:500;margin-bottom:0.25rem}.ds-card h3{margin:0 0 0.5rem;font-size:1.266rem;font-weight:600;line-height:1.3}.ds-card:hover h3{color:var(--accent,#6E5A3C)}.ds-card p{margin:0;font-size:0.9375rem;line-height:1.6;color:var(--text-secondary,#4A535E)}"
+      "description": "The one boxed container. With no cover image, the impact line is typeset in the image slot instead of faking one.",
+      "html": "<a class=\"ds-card\" href=\"#\"><div class=\"ds-card-panel\"><p>From a 10-account cap to unlimited accounts</p></div><div class=\"ds-card-body\"><span class=\"ds-card-meta\">Oct 2026</span><span class=\"ds-badge-sm\">Just handed over</span><h3>Trading alerts to MT5, without the 10-account cap</h3><p>A forex trading team moved to a bridge of their own: no cap on accounts, and an alert the moment something fails.</p></div></a>",
+      "css": ".ds-card{display:flex;flex-direction:column;max-width:380px;border:1px solid var(--border,#E3E1DA);border-radius:4px;overflow:hidden;background:var(--bg,#FAFAF8);color:inherit;text-decoration:none;transition:transform 200ms cubic-bezier(0.4,0,0.2,1),box-shadow 200ms,border-color 150ms}.ds-card:hover{transform:translateY(-4px);box-shadow:0 4px 12px 0 rgba(0,0,0,0.1);border-color:var(--accent,#6E5A3C)}.ds-card:focus-visible{outline:2px solid var(--accent,#6E5A3C);outline-offset:2px}.ds-card-panel{aspect-ratio:16/9;display:flex;align-items:flex-end;padding:2rem;background:var(--bg-secondary,#F3F1EA);border-bottom:1px solid var(--border,#E3E1DA)}.ds-card-panel p{margin:0;max-width:18ch;font-family:'Newsreader Variable',Georgia,serif;font-size:1.6rem;font-weight:560;line-height:1.15;color:var(--text-primary,#1F2328)}.ds-card-body{padding:1.5rem}.ds-card-meta{display:block;font-size:0.8125rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted,#636C76);margin-bottom:0.5rem}.ds-badge-sm{display:inline-block;padding:0.15em 0.6em;margin-bottom:0.5rem;font-size:0.8125rem;font-weight:600;color:var(--accent,#6E5A3C);border:1px solid currentColor;border-radius:3px}.ds-card h3{margin:0 0 0.5rem;font-size:1.125rem;font-weight:600;line-height:1.3;transition:color 150ms}.ds-card:hover h3{color:var(--accent,#6E5A3C)}.ds-card p{margin:0;font-size:0.9375rem;line-height:1.6;color:var(--text-secondary,#4A535E)}"
     },
     {
       "name": "Ledger Row",
       "kind": "custom",
       "refersTo": "ledger-row",
-      "description": "Signature pattern: a ruled row with an italic serif marginal label, a title column and a detail column. Used for the offers.",
-      "html": "<div class=\"ds-ledger\"><p class=\"ds-ledger-stage\">When a client signs</p><div><h3>Automated Client Onboarding</h3><p class=\"ds-ledger-sub\">Every new client sets off hours of the same admin.</p></div><ul><li>Creates the workspace and tasks</li><li>Flags what's missing</li></ul></div>",
-      "css": ".ds-ledger{display:grid;grid-template-columns:minmax(9rem,1fr) minmax(0,2fr) minmax(0,2.4fr);gap:2rem;padding-block:3rem;border-top:1px solid var(--border,#E3E1DA);border-bottom:1px solid var(--border,#E3E1DA)}.ds-ledger-stage{margin:0;font-family:'Newsreader Variable',Georgia,serif;font-style:italic;font-size:1.2rem;color:var(--accent,#6E5A3C)}.ds-ledger h3{margin:0 0 0.5rem;font-size:1.4rem;font-weight:600}.ds-ledger-sub{margin:0;color:var(--text-secondary,#4A535E)}.ds-ledger ul{margin:0;padding-left:1.1em}.ds-ledger li::marker{color:var(--accent,#6E5A3C)}"
+      "description": "Signature pattern: a ruled row with an italic umber margin note, a title and a slate detail column. Used for the engagement stages and support terms.",
+      "html": "<div class=\"ds-ledger\"><p class=\"ds-ledger-note\">Within 2 business days</p><h3>Proposal</h3><p class=\"ds-ledger-body\">A written plan: what I'll build, what it won't do, how long it takes, and the full price.</p></div>",
+      "css": ".ds-ledger{display:grid;grid-template-columns:minmax(9rem,1fr) minmax(0,1.4fr) minmax(0,2.4fr);gap:2rem;padding-block:2rem;border-top:1px solid var(--border,#E3E1DA);border-bottom:1px solid var(--border,#E3E1DA)}.ds-ledger-note{margin:0;font-family:'Newsreader Variable',Georgia,serif;font-style:italic;font-size:1.2rem;line-height:1.35;color:var(--accent,#6E5A3C)}.ds-ledger h3{margin:0;font-size:1.4rem;font-weight:600;line-height:1.3}.ds-ledger-body{margin:0;max-width:58ch;line-height:1.6;color:var(--text-secondary,#4A535E)}"
+    },
+    {
+      "name": "Currency Switch",
+      "kind": "custom",
+      "refersTo": "currency-switch",
+      "description": "Two-option segmented control beside the retainer price; 44px tall, active option in ink.",
+      "html": "<div class=\"ds-price-row\"><p class=\"ds-price\"><span>From ₱18,000</span> <span class=\"ds-per\">/ month</span></p><div class=\"ds-switch\" role=\"group\" aria-label=\"Show price in\"><button type=\"button\" aria-pressed=\"true\">₱ PHP</button><button type=\"button\" aria-pressed=\"false\">$ USD</button></div></div>",
+      "css": ".ds-price-row{display:flex;flex-wrap:wrap;align-items:center;gap:0.5rem 1.5rem}.ds-price{margin:0;display:flex;align-items:baseline;gap:0.5rem}.ds-price span:first-child{font-size:1.5rem;font-weight:600;color:var(--text-primary,#1F2328);font-variant-numeric:tabular-nums}.ds-per{color:var(--text-muted,#636C76)}.ds-switch{display:inline-flex;border:1px solid var(--border,#E3E1DA);border-radius:3px;overflow:hidden}.ds-switch button{font:inherit;font-size:0.9375rem;font-weight:500;min-height:2.75rem;padding:0 1rem;color:var(--text-secondary,#4A535E);background:none;border:0;cursor:pointer;transition:color 150ms,background-color 150ms}.ds-switch button+button{border-left:1px solid var(--border,#E3E1DA)}.ds-switch button:hover{color:var(--accent,#6E5A3C)}.ds-switch button[aria-pressed=\"true\"]{background:var(--text-primary,#1F2328);color:var(--bg,#FAFAF8)}.ds-switch button:focus-visible{outline:2px solid var(--accent,#6E5A3C);outline-offset:-4px}"
+    },
+    {
+      "name": "Swap Table",
+      "kind": "custom",
+      "refersTo": "swap-table",
+      "description": "Before-and-after pairs on a ruled two-column grid under an italic umber header; stacks with an inline lead-in on phones.",
+      "html": "<div class=\"ds-swaps\"><div class=\"ds-swaps-head\"><span>Today</span><span>Once it's built</span></div><ul><li><p class=\"ds-today\">Someone loses Friday afternoon to the weekly report.</p><p class=\"ds-fixed\">The report puts itself together and lands in your inbox.</p></li><li><p class=\"ds-today\">Requests and approvals get buried in group chats.</p><p class=\"ds-fixed\">Every request has an owner, a status, and a record of who said yes.</p></li></ul></div>",
+      "css": ".ds-swaps ul{list-style:none;margin:0;padding:0}.ds-swaps-head,.ds-swaps li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3rem}.ds-swaps-head{padding-bottom:0.5rem;border-bottom:1px solid var(--border,#E3E1DA);font-family:'Newsreader Variable',Georgia,serif;font-style:italic;font-size:1.2rem;color:var(--accent,#6E5A3C)}.ds-swaps li{padding-block:1.5rem;border-bottom:1px solid var(--border,#E3E1DA)}.ds-swaps p{margin:0;line-height:1.6;max-width:46ch}.ds-today{color:var(--text-secondary,#4A535E)}.ds-fixed{font-weight:500;color:var(--text-primary,#1F2328)}@media (max-width:768px){.ds-swaps-head{display:none}.ds-swaps li{grid-template-columns:minmax(0,1fr);gap:0.5rem}.ds-fixed::before{content:\"Once it's built: \";font-family:'Newsreader Variable',Georgia,serif;font-style:italic;font-weight:400;color:var(--accent,#6E5A3C)}}"
+    },
+    {
+      "name": "Proof Strip",
+      "kind": "custom",
+      "refersTo": "proof-strip",
+      "description": "Two ruled results under the hero; each whole result is one link.",
+      "html": "<ul class=\"ds-proof\"><li><a href=\"#\"><span class=\"ds-proof-result\">10+ minutes saved on every song</span><span class=\"ds-proof-who\">Solace of Christ Church, for the volunteers who prepare Sunday lyrics</span></a></li><li><a href=\"#\"><span class=\"ds-proof-result\">From a 10-account cap to no cap at all</span><span class=\"ds-proof-who\">A forex trading team, now on a system of their own</span></a></li></ul>",
+      "css": ".ds-proof{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--border,#E3E1DA)}.ds-proof li{padding:1.5rem 2rem 0 0}.ds-proof li+li{padding-left:2rem;border-left:1px solid var(--border,#E3E1DA)}.ds-proof a{display:flex;flex-direction:column;gap:0.25rem;color:inherit;text-decoration:none}.ds-proof-result{font-family:'Newsreader Variable',Georgia,serif;font-size:1.4rem;line-height:1.3;color:var(--text-primary,#1F2328);transition:color 150ms}.ds-proof-who{font-size:0.9375rem;color:var(--text-muted,#636C76)}.ds-proof-who::after{content:\" →\";color:var(--accent,#6E5A3C)}.ds-proof a:hover .ds-proof-result{color:var(--accent,#6E5A3C)}.ds-proof a:hover .ds-proof-who{text-decoration:underline;text-underline-offset:0.2em}.ds-proof a:focus-visible{outline:2px solid var(--accent,#6E5A3C);outline-offset:2px}"
+    },
+    {
+      "name": "Closing Band",
+      "kind": "custom",
+      "refersTo": "closing-band",
+      "description": "The ink band every marketing page ends on: serif H2, one sentence, the umber accent button.",
+      "html": "<section class=\"ds-band\"><h2>Tell me what your team is still doing by hand</h2><p>A free 45-minute call. You'll leave knowing whether a custom system is worth it for you, even if the answer is no.</p><a class=\"ds-band-btn\" href=\"#\">Book a free discovery call</a></section>",
+      "css": ".ds-band{padding:4rem 2rem;text-align:center;background:var(--surface-inverse,#1F2328);color:var(--text-on-inverse,#FAFAF8)}.ds-band h2{margin:0 0 1rem;font-family:'Newsreader Variable',Georgia,serif;font-weight:560;font-size:2rem;line-height:1.15;color:inherit}.ds-band p{max-width:540px;margin:0 auto 2rem;font-size:1.2rem;line-height:1.6;opacity:0.85}.ds-band-btn{display:inline-flex;padding:0.5rem 1.125rem;font-weight:600;font-size:0.9375rem;text-decoration:none;color:var(--bg,#FAFAF8);background:var(--accent,#6E5A3C);border:1px solid var(--accent,#6E5A3C);border-radius:3px;transition:background-color 150ms,border-color 150ms}.ds-band-btn:hover{background:var(--accent-hover,#5A4A2F);border-color:var(--accent-hover,#5A4A2F)}.ds-band-btn:focus-visible{outline:2px solid currentColor;outline-offset:2px}"
     }
   ],
   "narrative": {
@@ -440,8 +499,18 @@
         "section": "colors"
       },
       {
+        "name": "The Recorded, Not Celebrated Rule",
+        "body": "Success is not green. A sent message is recorded in the one ink: an 8% umber tint with a 45% umber border, mixed from the token so it follows the theme. Failure is the only state that earns its own color, mixed the same way from Correction Red.",
+        "section": "colors"
+      },
+      {
         "name": "The Serif Speaks First Rule",
-        "body": "Newsreader is reserved for H1/H2, standout statements and short marginal notes. Every paragraph and UI label is Space Grotesk.",
+        "body": "Newsreader is reserved for H1/H2, standout statements, proof results and short marginal notes. Every paragraph and UI label is Space Grotesk.",
+        "section": "typography"
+      },
+      {
+        "name": "The Quiet Number Rule",
+        "body": "No price is set as a hero figure. The only number on the site, the optional retainer, sits in the title style after the sentence that says it is optional.",
         "section": "typography"
       },
       {
@@ -456,8 +525,10 @@
       }
     ],
     "dos": [
-      "**Do** alternate section bands (paper → raised paper → paper) and end every page with the ink closing band.",
-      "**Do** lay out lists of services, principles and steps as ruled rows (1px hairline top and bottom) with 3rem block padding.",
+      "**Do** alternate section bands (paper → raised paper → paper) and end every marketing page with the shared closing band.",
+      "**Do** lay out lists of services, principles and steps as ruled rows (1px hairline top and bottom) with 2rem block padding.",
+      "**Do** show a real artifact (a before/after, a screenshot of the actual system) when a section needs an image, framed with a 1px hairline and 4px corners.",
+      "**Do** make a whole result or card the link target, not a few words inside it, with touch targets at least 44px.",
       "**Do** use the italic Newsreader marginal note in Ledger Umber for row context, like a ledger's margin note.",
       "**Do** keep the body measure at 40–65ch and secondary text in Slate Ink.",
       "**Do** theme browser surfaces from the palette: umber text selection, and a 2px umber focus outline with a 2px offset."
@@ -467,7 +538,9 @@
       "**Don't** use corners rounder than 4px, pill shapes, or heavy drop shadows.",
       "**Don't** turn content sections into grids of same-size icon cards.",
       "**Don't** put eyebrow labels above headings. Context goes in the margin column.",
-      "**Don't** set paragraphs or UI labels in the serif."
+      "**Don't** set paragraphs or UI labels in the serif.",
+      "**Don't** use green, or any color besides Correction Red, for a state. Success is recorded in umber.",
+      "**Don't** fake a cover image for a project that has none. Use the typeset impact panel."
     ]
   }
 }

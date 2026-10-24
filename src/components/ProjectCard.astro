@@ -15,6 +15,8 @@ const { project, variant = "compact", showMeta = false, headingLevel = 3 } = Ast
 const Heading = headingLevel === 2 ? "h2" : "h3";
 const titleId = `project-title-${project.id}`;
 const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
+// No cover image: the impact line, typeset, takes the image's place
+const impactPanel = !project.data.coverImage && project.data.impact;
 ---
 
 <article class:list={["project-card", `project-card-${variant}`]}>
@@ -39,6 +41,11 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
         </div>
       )
     }
+    {impactPanel && (
+      <div class="project-image project-image-text">
+        <p>{project.data.impact}</p>
+      </div>
+    )}
     <div class="project-content">
       {
         showMeta && (
@@ -46,18 +53,20 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
             <time datetime={project.data.date.toISOString()}>
               {project.data.date.toLocaleDateString("en-US", { month: "short", year: "numeric" })}
             </time>
-            <span class="meta-dot">•</span>
-            <span>{readingTime} min read</span>
+            {!project.data.writeupPending && (
+              <>
+                <span class="meta-dot">•</span>
+                <span>{readingTime} min read</span>
+              </>
+            )}
           </div>
         )
       }
-      {project.data.impact && <span class="project-impact">{project.data.impact}</span>}
+      {project.data.writeupPending && <span class="project-badge">Just handed over</span>}
+      {project.data.impact && !impactPanel && <span class="project-impact">{project.data.impact}</span>}
       <Heading id={titleId} class="project-title">{project.data.title}</Heading>
       <p>{project.data.description}</p>
       {project.data.summary && <p class="project-summary">{project.data.summary}</p>}
-      <div class="project-tags">
-        {project.data.tags.map((tag) => <span>{tag}</span>)}
-      </div>
     </div>
   </a>
 </article>
@@ -152,6 +161,24 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
     line-height: 1.6;
   }
 
+  .project-image-text {
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-xl);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .project-image-text p {
+    margin: 0;
+    max-width: 18ch;
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 560;
+    line-height: 1.15;
+    text-wrap: balance;
+    color: var(--text-primary);
+  }
+
   .project-summary {
     display: none;
     color: var(--text-muted);
@@ -162,27 +189,21 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
     overflow: hidden;
   }
 
-  .project-tags {
-    display: flex;
-    gap: var(--space-sm);
-    flex-wrap: wrap;
-  }
-
-  .project-tags span:nth-child(n + 4) {
-    display: none;
-  }
-
-  .project-tags span {
+  .project-badge {
+    display: inline-block;
+    padding: 0.15em 0.6em;
     font-size: var(--text-xs);
-    padding: 0.125rem 0.5rem;
-    border: 1px solid var(--border);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+    color: var(--accent);
+    border: 1px solid currentColor;
     border-radius: var(--border-radius);
-    color: var(--text-secondary);
-    background-color: transparent;
+    align-self: flex-start;
+    margin-bottom: var(--space-sm);
   }
 
-  /* Breakpoint must stay in sync with .project-item-featured's
-     `grid-column: 1 / -1` in src/pages/projects/index.astro */
+  /* Featured cards go side by side (image | text) on wide screens */
   @media (min-width: 1024px) {
     .project-card-featured .project-link {
       display: grid;
@@ -195,6 +216,15 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
       height: 100%;
     }
 
+    .project-card-featured .project-image-text {
+      border-bottom: 0;
+      border-right: 1px solid var(--border);
+    }
+
+    .project-card-featured .project-image-text p {
+      font-size: var(--text-3xl);
+    }
+
     .project-card-featured .project-content {
       display: flex;
       flex-direction: column;
@@ -203,10 +233,6 @@ const readingTime = showMeta ? getReadingTime(project.body || "") : 0;
 
     .project-card-featured .project-summary {
       display: -webkit-box;
-    }
-
-    .project-card-featured .project-tags span:nth-child(n + 4) {
-      display: revert;
     }
   }
 </style>

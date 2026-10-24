@@ -93,6 +93,11 @@ html {
   scroll-snap-align: start;
 }
 
+/* Sections run many screens tall on phones; snapping there makes scrolling jump */
+@media (max-width: 768px) {
+  html { scroll-snap-type: none; }
+}
+
 body {
   background-color: var(--bg);
   color: var(--text-primary);

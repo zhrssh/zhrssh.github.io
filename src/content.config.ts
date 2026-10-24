@@ -37,6 +37,8 @@ const projectsCollection = defineCollection({
       caseStudy: z.url().optional(),
       github: z.url().optional(),
       bookCall: z.boolean().default(false),
+      // Just handed over; the full write-up waits for the client's review
+      writeupPending: z.boolean().default(false),
     }),
 });
 

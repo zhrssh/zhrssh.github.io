@@ -1,6 +1,6 @@
 ---
 name: Zherish Galvin Mayordo
-description: Client-operations automation for digital agencies — a calm, ruled, ink-on-paper system.
+description: Custom internal systems for small teams — a calm, ruled, ink-on-paper system.
 colors:
   paper: "#FAFAF8"
   paper-raised: "#F3F1EA"
@@ -109,6 +109,30 @@ components:
     textColor: "{colors.ink-secondary}"
     rounded: "{rounded.sm}"
     padding: "0.375rem 0.75rem"
+  badge:
+    backgroundColor: "transparent"
+    textColor: "{colors.ledger-umber}"
+    rounded: "{rounded.sm}"
+    padding: "0.15em 0.6em"
+  currency-switch:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink-secondary}"
+    rounded: "{rounded.sm}"
+    padding: "0 1rem"
+    height: "2.75rem"
+    typography: "{typography.label}"
+  currency-switch-active:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+  impact-panel:
+    backgroundColor: "{colors.paper-raised}"
+    textColor: "{colors.ink}"
+    typography: "{typography.headline}"
+    padding: "{spacing.xl}"
+  closing-band:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.paper}"
+    padding: "{spacing.3xl} 0"
 ---
 
 # Design System: Zherish Galvin Mayordo
@@ -136,7 +160,7 @@ There is a light ledger and a dark ledger. Dark mode swaps paper for night paper
 A near-monochrome paper-and-ink palette with one earthy accent. Every color token is a CSS custom property in `src/styles/global.css` and is redefined under `[data-theme='dark']`.
 
 ### Primary
-- **Ledger Umber**: links, active nav underline, the short accent rule under the hero H1, italic stage labels, list markers, focus outlines, text selection, and the "Start here" badge outline. On dark it becomes **Ledger Brass**.
+- **Ledger Umber**: links, active nav underline, the short accent rule under the home, contact and project-page H1s, italic margin notes, list markers, focus outlines, text selection, the outlined status badge ("Just handed over"), and the faint tint behind the form's sent confirmation. On dark it becomes **Ledger Brass**.
 - **Deep Umber**: hover state for links and the accent button. On dark it becomes **Light Brass**.
 
 ### Neutral
@@ -144,12 +168,14 @@ A near-monochrome paper-and-ink palette with one earthy accent. Every color toke
 - **Raised Paper**: alternate section band, used to separate sections without lines. On dark it becomes **Night Raised**.
 - **Ledger Ink**: primary text, the primary button fill, and the closing call-to-action band (the inverse surface). On dark the band becomes **Night Band**, so it never turns into a bright slab.
 - **Slate Ink**: secondary text: taglines, leads, descriptions, nav links at rest.
-- **Faded Ink**: meta text, credentials, status line.
+- **Faded Ink**: meta text, credentials, the status line, and the "who" line under each proof result.
 - **Ruled Hairline**: every 1px border, divider and rule.
-- **Correction Red**: form validation errors only.
+- **Correction Red**: form validation errors and the send-failed notice only. The sent confirmation is tinted Ledger Umber.
 
 ### Named Rules
 **The One Ink Rule.** Ledger Umber is the only accent. It marks links, active states, stage labels and the occasional rule, and never fills large areas. The one exception is the accent button in the closing band.
+
+**The Recorded, Not Celebrated Rule.** Success is not green. A sent message is recorded in the one ink: an 8% umber tint with a 45% umber border, mixed from the token so it follows the theme. Failure is the only state that earns its own color, mixed the same way from Correction Red.
 
 ## Typography
 
@@ -160,25 +186,31 @@ A near-monochrome paper-and-ink palette with one earthy accent. Every color toke
 
 ### Hierarchy
 - **Display** (560, fluid up to 3.75rem, 1.15): the page H1 only. It is balanced and kept to roughly 22ch.
-- **Headline** (560, fluid up to 2rem, 1.15): section H2 titles, followed by a hairline rule. Larger standalone statements use the 3xl step (up to 2.5rem).
-- **Title** (Space Grotesk 600, fluid up to 1.5rem, 1.3): H3s in ledger rows, cards and sub-sections. The lead row in a set may promote its title to the serif headline style.
+- **Headline** (560, fluid up to 2rem, 1.15): section H2 titles, followed by a hairline rule. Larger standalone statements use the 3xl step (up to 2.5rem): the handover statement and the impact panel on wide screens.
+- **Title** (Space Grotesk 600, fluid up to 1.5rem, 1.3): H3s in ledger rows, cards and sub-sections, and the retainer price ("From $300"), which is deliberately a title, not a display number.
 - **Body** (400, fluid 1–1.125rem, 1.7): running text. The measure is 40–65ch; leads use the lg step at 1.6 line height.
-- **Label** (500–600, 0.9375rem): buttons, nav, pills and tags. Project meta uses uppercase xs text with 0.08em tracking.
-- **Marginal** (Newsreader italic 400, lg): margin notes in ledger rows, such as "When a client signs".
+- **Label** (500–600, 0.9375rem): buttons, nav, pills, tags and the currency switch. Project meta uses uppercase xs text with 0.08em tracking.
+- **Marginal** (Newsreader italic 400, lg): margin notes in ledger rows and figure captions, such as "Free, 45 minutes" or "Solace of Christ Church".
+- **Proof** (Newsreader 400, xl, 1.3): the result line in the hero proof strip ("10+ minutes saved on every song").
 
 ### Named Rules
-**The Serif Speaks First Rule.** Newsreader is reserved for H1/H2, standout statements and short marginal notes. Every paragraph and UI label is Space Grotesk.
+**The Serif Speaks First Rule.** Newsreader is reserved for H1/H2, standout statements, proof results and short marginal notes. Every paragraph and UI label is Space Grotesk.
+
+**The Quiet Number Rule.** No price is set as a hero figure. The only number on the site, the optional retainer, sits in the title style after the sentence that says it is optional.
 
 ## Layout
 
-- **Container:** content sits in a 1200px container with 2rem side padding. Single-column reading pages use a 65ch measure.
-- **Section rhythm:** sections stack with 4rem block padding and alternate paper / raised paper bands. Every page ends on the ink closing band. A section header is an H2, a hairline rule, and an optional "View all →" link.
-- **Ledger rows:** the signature layout is a ruled row on a three-column grid (margin note 1fr, title 2fr, detail 2.4fr) with 2rem gaps and 3rem block padding. A two-column split (statement 1fr, ruled list 1.4fr) is used for principle-style content.
-- **Responsive:** at 900px and below, rows and splits collapse to a single column. At 768px the hero portrait hides and a 56px round avatar moves beside the status line. The page never scrolls horizontally on a 390px-wide screen.
+- **Container:** content sits in a 1200px container with 2rem side padding. Single-column reading pages use a 65ch measure. The container also bounds the footer, whose links sit in one wrapping row beside the brand.
+- **Section rhythm:** sections stack with 4rem block padding and alternate paper / raised paper bands. The home, about and project pages end on the ink closing band; contact, blog and the privacy policy end at the footer. A section header is an H2 with an optional "View all →" link on the same line, over a hairline rule. A ruled list placed straight under the header uses that rule as its top rule, so the line is never doubled.
+- **Ledger rows:** the signature layout is a ruled row on a three-column grid (margin note 1fr with a 9rem floor, title 1.4fr, detail 2.4fr) with 2rem gaps and 2rem block padding. A two-column split (statement 1fr, ruled list 1.4fr) holds principle-style content, and a two-column swap table ("Today" / "Once it's built") holds before-and-after pairs.
+- **Figure:** a real artifact sits on a 2.4fr / 1fr grid, the framed image beside a bottom-aligned caption with a margin note.
+- **Responsive:** at 900px and below, rows, splits and figures collapse to a single column. At 768px the hero portrait hides, a 56px round avatar moves beside the status line, the swap table stacks with an italic "Once it's built:" lead-in, and scroll snapping turns off. At 480px form fields stack and the contact form drops its frame so fields use the full width. The proof strip starts inside the first 844px screen on a phone, and the page never scrolls horizontally at 390px.
 
 ## Elevation & Depth
 
-Flat by default. Depth comes from tonal section bands and hairlines, not shadows. Only two shadows exist: a faint one under the sticky header once the page scrolls, and a soft lift under project cards on hover (with a 4px upward move). Their exact values are in `.impeccable/design.json`.
+Flat by default. Depth comes from tonal section bands and hairlines, not shadows. Only two shadows exist on the page: a faint one under the sticky header once the page scrolls, and a soft lift under project cards on hover (with a 4px upward move). The image lightbox carries its own heavier shadow because it floats over a dimmed page. Exact values are in `.impeccable/design.json`.
+
+Motion is one quiet gesture: section content rises into place as it scrolls into view (40px, 20px on phones), driven by scroll timelines with an observer fallback, while the bands themselves stay put. Pages cross-fade on navigation. Reduced motion turns all of it off.
 
 ### Named Rules
 **The Flat Ledger Rule.** Surfaces are flat at rest. A shadow appears only in response to hover or scroll.
@@ -187,7 +219,7 @@ Flat by default. Depth comes from tonal section bands and hairlines, not shadows
 
 ## Shapes
 
-Barely-there corners: 3px on buttons, inputs, tags and pills, and 4px on cards and framed images. The only circles are the status pulse dot and the mobile avatar. Borders are always 1px hairlines. The accent rule (a 2.5rem, 2px umber line) is the one heavier stroke.
+Barely-there corners: 3px on buttons, inputs, tags, pills, badges, focus outlines and the currency switch, and 4px on cards and framed images. The only circles are the status pulse dot and the two avatars (the mobile hero avatar and the About portrait). Borders are always 1px hairlines. The accent rule (a 2.5rem, 2px umber line) is the one heavier stroke.
 
 ## Components
 
@@ -196,11 +228,16 @@ Barely-there corners: 3px on buttons, inputs, tags and pills, and 4px on cards a
 - **Primary:** an ink fill with paper text, weight 600, 0.5rem × 1.125rem. It turns umber on hover with a 150ms color transition.
 - **Secondary:** transparent with a hairline border and ink text. The border and text turn umber on hover.
 - **Accent:** an umber fill, used only on the ink closing band. It deepens on hover.
-- **Text link action:** an umber link ending in "→", used for secondary calls to action inside rows ("Book a call →", "Read the full case study →").
+- **Text link action:** an umber link ending in "→", weight 500, used for secondary calls to action inside rows and captions ("Read how it was built →", "All projects →").
+- **Labels:** every booking button in the page body reads "Book a free discovery call". Only the compact header button says "Book a call".
 
-### Chips (tags and link pills)
-- **Style:** transparent with a hairline border, slate text and 3px corners. Project cards show at most three tags.
-- **Link pills** carry a 16px stroke icon and turn umber, text and border, on hover.
+### Chips (tags, link pills and badges)
+- **Tags:** transparent with a hairline border, slate text and 3px corners. They appear only on blog posts; projects list their tools once, as a plain "Built with" line at the end of the write-up.
+- **Link pills** carry a 16px stroke icon and turn umber, text and border, on hover. A plain umber text link with a download icon sits after them for the CV, so the primary button stays the only filled action.
+- **Status badge:** an umber outline and umber text, xs, weight 600, used for a single state such as "Just handed over".
+
+### Currency Switch
+A two-option segmented control (₱ PHP / $ USD) beside the retainer price. It has a hairline frame, 3px corners, label type and a 44px height for thumbs. The active option takes the ink fill with paper text and `aria-pressed`, and the inactive one is slate and turns umber on hover. It stays hidden without JS, which shows USD plus a plain PHP line instead.
 
 ### Cards / Containers
 - **Corner Style:** 4px.
@@ -208,26 +245,40 @@ Barely-there corners: 3px on buttons, inputs, tags and pills, and 4px on cards a
 - **Hover:** lifts 4px with the card shadow. The border and title turn umber.
 - **Internal Padding:** 1.5rem.
 - **Impact line:** an umber 0.9375rem line above the title states the result.
+- **Impact panel:** a project with no cover image never fakes one. Its impact line is set in the serif headline (3xl on wide screens) on raised paper in the image slot, bottom-aligned and capped at 18ch, and the small impact line is then left out.
+- **Layout:** on screens 1024px and wider, project cards sit image | text side by side, with a hairline between the panel and the text.
+
+### Closing Band
+The inverse section every marketing page ends on: an ink band (Night Band on dark) holding a centered serif H2, one sentence at 85% opacity, and the umber accent button "Book a free discovery call". It is one shared component, so the copy changes per page but the shape never does.
+
+### Swap Table
+Before-and-after pairs on a ruled two-column grid. An italic umber serif header row ("Today" / "Once it's built") sits over hairline-ruled rows. The left cell is the slate "today" problem; the right is the fix at weight 500 in ink. Each cell is capped at 46ch. Under 768px the header hides, each pair stacks, and the fix gains an italic umber "Once it's built:" lead-in, so the pairing still reads without columns.
+
+### Proof Strip
+Two ruled results under the hero, split by a vertical hairline (stacked on phones). Each result is a single link: a serif result line over a faded "who" line ending in an umber "→". On hover the result turns umber and the who line underlines. A faded credential line follows under its own hairline.
 
 ### Inputs / Fields
 - **Style:** transparent with a hairline border, 3px corners and 0.625rem × 0.75rem padding.
 - **Focus:** the border turns umber. Keyboard focus adds a 2px umber outline with a 2px offset.
-- **Error:** Correction Red message text with a matching border.
+- **Error:** Correction Red message text with a matching border. Focus moves to the first bad field, and the form keeps what was typed.
+- **Form notices:** the sent and failed notices are 3px-cornered tinted boxes following the Recorded, Not Celebrated Rule.
 
 ### Navigation
 - **Bar:** a solid paper top bar, sticky, with a bottom hairline and a faint shadow once scrolled.
 - **Links:** slate, weight 500, 0.9375rem. A 2px umber underline draws in from the left on hover and stays on the active page.
 - **Right side:** a theme toggle (a 2rem square with a hairline border) and a compact "Book a call" primary button.
-- **Mobile:** links collapse into a drawer behind a hairline-bordered menu button.
+- **Mobile:** links collapse into a drawer behind a hairline-bordered menu button. The drawer holds the full "Book a free discovery call" button, a WhatsApp shortcut and the theme toggle.
 
 ### Ledger Row (signature)
-A ruled row on the three-column grid: an italic umber marginal note, a title with a one-line problem in slate, and a detail column with umber-marked bullets, a bold outcome line and an action. The lead row may promote its title to the serif headline style and carry a small outlined umber badge such as "Start here".
+A ruled row on the three-column grid: an italic umber margin note ("Within 2 business days"), a title, and a slate detail column. A detail column may also hold umber-marked bullets, a price row and fine print in faded ink.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** alternate section bands (paper → raised paper → paper) and end every page with the ink closing band.
-- **Do** lay out lists of services, principles and steps as ruled rows (1px hairline top and bottom) with 3rem block padding.
+- **Do** alternate section bands (paper → raised paper → paper) and end every marketing page with the shared closing band.
+- **Do** lay out lists of services, principles and steps as ruled rows (1px hairline top and bottom) with 2rem block padding.
+- **Do** show a real artifact (a before/after, a screenshot of the actual system) when a section needs an image, framed with a 1px hairline and 4px corners.
+- **Do** make a whole result or card the link target, not a few words inside it, with touch targets at least 44px.
 - **Do** use the italic Newsreader marginal note in Ledger Umber for row context, like a ledger's margin note.
 - **Do** keep the body measure at 40–65ch and secondary text in Slate Ink.
 - **Do** theme browser surfaces from the palette: umber text selection, and a 2px umber focus outline with a 2px offset.
@@ -238,3 +289,5 @@ A ruled row on the three-column grid: an italic umber marginal note, a title wit
 - **Don't** turn content sections into grids of same-size icon cards.
 - **Don't** put eyebrow labels above headings. Context goes in the margin column.
 - **Don't** set paragraphs or UI labels in the serif.
+- **Don't** use green, or any color besides Correction Red, for a state. Success is recorded in umber.
+- **Don't** fake a cover image for a project that has none. Use the typeset impact panel.
