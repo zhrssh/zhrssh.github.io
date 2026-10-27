@@ -4,6 +4,7 @@ description: "Robin Ho's team, which builds trading algorithms for subscribers, 
 date: 2026-10-24
 tags: ["TradingView", "MetaTrader 5"]
 impact: "From a 10-account cap to no cap"
+coverImage: "../../assets/projects/tradingview-mt5-bridge/terminals.png"
 writeupPending: true
 ---
 
@@ -20,6 +21,12 @@ Their own bridge from TradingView to MT5, called rho-connector, built as part of
 - **No account cap.** TradingView alerts become MT5 orders on as many accounts as they want to run.
 - **Alerts when something goes wrong.** The team hears about it when an MT5 terminal goes down, or when an alert fires and MT5 doesn't act on it.
 - **One dashboard.** Every account in one place, with the alerts and strategies running on each.
+
+![Deployments: every strategy on every MT5 terminal, each trading under its own magic number](../../assets/projects/tradingview-mt5-bridge/deployments.png)
+
+![Alerts: each TradingView alert, the trade it placed, and how fast MT5 acted](../../assets/projects/tradingview-mt5-bridge/alerts.png)
+
+![Audit log: every change made in rho-connector, newest first](../../assets/projects/tradingview-mt5-bridge/audit.png)
 
 ## Where it is now
 
