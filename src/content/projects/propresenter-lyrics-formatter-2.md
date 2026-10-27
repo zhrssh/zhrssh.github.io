@@ -20,6 +20,8 @@ That's **10+ minutes saved per song**, which adds up to hours every month for a 
 
 ![Before and after: a chord-chart PDF with chord symbols above every line, and the same song as clean, ProPresenter-ready lyrics split into verses and chorus.](../../assets/projects/propresenter-lyrics-formatter-2/output.png)
 
+*Left: the chord chart volunteers start with. Right: the lyrics they get back, ready for ProPresenter.*
+
 ## The problem
 
 By hand, every song meant opening the PDF, copying the lyrics out, stripping the chord symbols, splitting verses and choruses, and reformatting it all for ProPresenter. Then doing it again for the next song, every week.
@@ -42,6 +44,8 @@ Text extraction from the PDF happens in the browser, so the backend always recei
 The text goes to an n8n workflow that runs a multi-step LLM chain: grouping the raw text into songs, cleaning up chord and formatting artifacts, and converting each song into ProPresenter-ready format.
 
 ![The n8n formatting workflow](../../assets/projects/propresenter-lyrics-formatter-2/workflow-1.png)
+
+*The n8n workflow behind the page. Each step is numbered below.*
 
 1. A webhook receives the extracted text, along with the signature header.
 2. An `If` node validates the access code; failed requests get a `401` and stop there.
