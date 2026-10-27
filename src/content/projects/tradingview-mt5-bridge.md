@@ -24,11 +24,19 @@ Their own bridge from TradingView to MT5, called rho-connector, built as part of
 
 ![Deployments: every strategy on every MT5 terminal, each trading under its own magic number](../../assets/projects/tradingview-mt5-bridge/deployments.png)
 
+*Each strategy runs on an MT5 terminal under its own magic number, and every terminal shows whether it's online. Terminal, strategy and key names are blurred.*
+
 ![Alerts: each TradingView alert, the trade it placed, and how fast MT5 acted](../../assets/projects/tradingview-mt5-bridge/alerts.png)
+
+*Every TradingView alert is logged with the trade it placed, whether MT5 executed or skipped it, and how long it took.*
 
 ![Telegram: a message when an MT5 terminal stops responding and when it's back, plus a daily count of trades per strategy](../../assets/projects/tradingview-mt5-bridge/telegram.png)
 
+*The team gets a Telegram message when a terminal stops responding and again when it's back, plus a daily count of trades per strategy.*
+
 ![Audit log: every change made in rho-connector, newest first](../../assets/projects/tradingview-mt5-bridge/audit.png)
+
+*Every change anyone makes in rho-connector is logged, newest first.*
 
 ## Where it is now
 
