@@ -45,6 +45,9 @@ Terms for the Robin Ho case study and its demo video. Copy uses these words, not
 - **Bridge**: The system that turns a TradingView alert into an MT5 trade. Its product name is rho-connector. _Avoid_: connector, integration.
 - **Strategy**: One trading algorithm running in TradingView that fires alerts. _Avoid_: key, script, bot.
 - **Alert**: A signal a strategy sends to the bridge, asking for one trade. _Avoid_: dispatch, webhook, signal.
-- **Account**: One MT5 account, usually a demo account, that the bridge places trades on. _Avoid_: deployment.
+- **Account**: One MT5 account, usually a demo account, that the bridge places trades on. One account holds many strategies. _Avoid_: deployment.
+- **Strategy ID**: The ID that keeps one strategy's trades apart from the others on a shared account. _Avoid_: magic number (in copy for non-traders).
+- **Market**: One instrument a strategy trades, such as NAS100. _Avoid_: symbol, pair, instrument.
+- **License**: A PineConnector license, the team's old setup: one license covers one account and one strategy. Used only when describing that setup.
 - **Terminal**: The running MT5 program that holds an account and reports back to the bridge. A terminal "going quiet" is what the team gets alerted about. _Avoid_: EA, Expert Advisor (in copy for non-traders).
 - **Trade**: An order the bridge placed on an account in response to an alert. Each one is either executed or skipped. _Avoid_: dispatch, position.
