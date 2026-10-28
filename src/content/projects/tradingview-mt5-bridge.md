@@ -4,6 +4,7 @@ description: "Robin Ho's team swapped a capped, paid plan for a bridge of their 
 date: 2026-10-24
 tags: ["TradingView", "MetaTrader 5"]
 impact: "No account cap · 188 trades in a day across 8 strategies"
+video: "https://youtu.be/JUEzSV2N75c"
 coverImage: "../../assets/projects/tradingview-mt5-bridge/alerts.png"
 writeupPending: true
 ---
