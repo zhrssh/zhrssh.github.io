@@ -36,3 +36,14 @@ The stages a client goes through, in order:
 - **Retainer**: An optional monthly plan after the support month, covering monitoring, fixes, and a fixed number of hours of small changes. Priced per client region. _Avoid_: maintenance plan, subscription.
 - **Change request**: Any new feature or behavior beyond what the agreement covers.
 - **Client region**: Local (the Philippines, priced in PHP) or foreign (everywhere else, priced in USD).
+
+### TradingView-to-MT5 bridge (rho-connector)
+
+Terms for the Robin Ho case study and its demo video. Copy uses these words, not the dashboard's own labels.
+
+- **Bridge**: The system that turns a TradingView alert into an MT5 trade. Its product name is rho-connector. _Avoid_: connector, integration.
+- **Strategy**: One trading algorithm running in TradingView that fires alerts. _Avoid_: key, script, bot.
+- **Alert**: A signal a strategy sends to the bridge, asking for one trade. _Avoid_: dispatch, webhook, signal.
+- **Account**: One MT5 account, usually a demo account, that the bridge places trades on. _Avoid_: deployment.
+- **Terminal**: The running MT5 program that holds an account and reports back to the bridge. A terminal "going quiet" is what the team gets alerted about. _Avoid_: EA, Expert Advisor (in copy for non-traders).
+- **Trade**: An order the bridge placed on an account in response to an alert. Each one is either executed or skipped. _Avoid_: dispatch, position.
