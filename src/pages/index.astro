@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import me from "../assets/me.jpg";
-import lyricsBeforeAfter from "../assets/projects/propresenter-lyrics-formatter-2/output.png";
+import bridgeAlerts from "../assets/projects/tradingview-mt5-bridge/alerts.png";
 import CtaBand from "../components/CtaBand.astro";
 import Section from "../components/Section.astro";
 import { SITE_CONFIG } from "../config";
@@ -62,15 +62,15 @@ const php = formatPrice(retainer.php, "PHP");
 
     <ul class="proof" aria-label="Results from real projects">
       <li>
-        <a href="/projects/propresenter-lyrics-formatter-2/" class="proof-link">
-          <span class="proof-result">10+ minutes saved on every song</span>
-          <span class="proof-who">Solace of Christ Church volunteers</span>
-        </a>
-      </li>
-      <li>
         <a href="/projects/tradingview-mt5-bridge/" class="proof-link">
           <span class="proof-result">From a 10-account cap to no cap</span>
           <span class="proof-who">A team that builds trading algorithms for subscribers</span>
+        </a>
+      </li>
+      <li>
+        <a href="/projects/propresenter-lyrics-formatter-2/" class="proof-link">
+          <span class="proof-result">10+ minutes saved on every song</span>
+          <span class="proof-who">Solace of Christ Church volunteers</span>
         </a>
       </li>
     </ul>
@@ -100,19 +100,19 @@ const php = formatPrice(retainer.php, "PHP");
 
   <Section title="What it looks like" link={{ href: "/projects/", label: "All projects →" }}>
     <figure class="artifact">
-      <a href="/projects/propresenter-lyrics-formatter-2/" class="artifact-frame">
+      <a href="/projects/tradingview-mt5-bridge/" class="artifact-frame">
         <Image
-          src={lyricsBeforeAfter}
-          alt="Before and after: a chord-chart PDF with chord symbols above every line, and the same song as clean lyrics split into verses and chorus."
-          widths={[480, 800, 1200, 1695]}
+          src={bridgeAlerts}
+          alt="The bridge's dashboard: a log of strategy alerts, each with the MT5 trade it placed, whether it was executed or skipped, and how long it took."
+          widths={[480, 800, 1200, 1600]}
           sizes="(max-width: 1264px) calc(100vw - 4rem), 1200px"
           loading="lazy"
         />
       </a>
       <figcaption>
-        <p class="ledger-note">Solace of Christ Church</p>
-        <p>Volunteers paste in a chord chart and get Sunday-ready lyrics back.</p>
-        <a href="/projects/propresenter-lyrics-formatter-2/" class="text-action">Read the story →</a>
+        <p class="ledger-note">Robin Ho's trading team</p>
+        <p>TradingView strategy alerts become MT5 trades on as many accounts as the team runs, with no cap.</p>
+        <a href="/projects/tradingview-mt5-bridge/" class="text-action">Read the story →</a>
       </figcaption>
     </figure>
   </Section>

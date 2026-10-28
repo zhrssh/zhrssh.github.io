@@ -2,7 +2,6 @@
 title: "Spa bookings confirmed instantly, day or night"
 description: "Guests pick a therapist, see live availability and book on their own. The calendar event, confirmation email and guest record are created automatically, with no staff in the loop."
 date: 2026-07-21
-featured: true
 tags: [
   "n8n",
   "Workflow Automation",

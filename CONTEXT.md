@@ -20,6 +20,7 @@
 - **Client**: The business that hires Zherish to build an internal system. _Avoid_: customer, agency, agency client.
 - **Internal system**: Software used only by the client's own team to run the business, such as a workflow automation, internal dashboard, admin panel, intake tool, or document processor. Customer-facing websites, public chatbots, and mobile apps are not internal systems. _Avoid_: automation (too narrow), app, solution.
 - **Real project**: A system built for and used by an actual client. Demos, personal tools, and academic work are not real projects and don't appear as portfolio work. _Avoid_: demo, case study (for anything that isn't a real project).
+- **Highlight project**: The one real project the home page shows as the example of the work, and the first one the hero points to. Only one project is the highlight at a time. _Avoid_: featured project, showcase.
 
 ### Engagement
 

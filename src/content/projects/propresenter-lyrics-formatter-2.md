@@ -4,7 +4,6 @@ description: "Volunteers at Solace of Christ Church paste in a chord chart and g
 date: 2026-07-26
 tags: ["n8n", "LLM APIs"]
 impact: "Saves 10+ min per song, hours per month"
-featured: true
 video: "https://youtu.be/ZZXVprN5Im0"
 github: "https://github.com/zhrssh/n8n-propresenter-lyrics-formatter"
 coverImage: "../../assets/projects/propresenter-lyrics-formatter-2/cover.png"
